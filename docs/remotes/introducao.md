@@ -27,6 +27,8 @@ O marketplace deve construir um middleware seguindo os padrões estabelecidos no
 >
 >Você tem um limite de 10 requisições por segundo por token.
 
+
+
 > #### Dúvidas, sugestões e feedbacks podem ser encaminhados por e-mail para: 
 > api@anymarket.com.br.
 
