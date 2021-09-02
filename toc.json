@@ -15,9 +15,25 @@
         },
         {
           "type": "item",
-          "title": "Ambientes",
-          "uri": "docs/remotes/ambientes.md"
+          "title": "Autenticação",
+          "uri": "docs/remotes/autenticacao.md"
         },
+        {
+          "type": "item",
+          "title": "Como a API de Marketplace funciona",
+          "uri": "docs/remotes/como_funciona.md"
+        },
+        {
+          "type": "item",
+          "title": "Como é o processo de homologação",
+          "uri": "docs/remotes/homologacao.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Configurações do Módulo",
+      "items": [
         {
           "type": "item",
           "title": "Autenticação",
@@ -25,8 +41,8 @@
         },
         {
           "type": "item",
-          "title": "Processo de Homologação",
-          "uri": "docs/remotes/homologacao.md"
+          "title": "Importação de Pedidos",
+          "uri": "docs/remotes/autenticacao.md"
         }
       ]
     },
