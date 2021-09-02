@@ -1,0 +1,149 @@
+openapi: 3.1.0
+info:
+  title: remote
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /testIntegration:
+    post:
+      summary: Teste de Integração com marketplace
+      operationId: post-testIntegration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+              examples:
+                Example:
+                  value: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModuleConfiguration'
+            examples: {}
+        description: Teste de Integração
+      tags:
+        - Configuração
+      description: Teste de Integração com marketplace
+  /saveAccount:
+    post:
+      summary: Salvar configurações de conta no marketplace
+      operationId: post-testIntegration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+              examples:
+                Example:
+                  value: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModuleConfiguration'
+            examples: {}
+        description: Teste de Integração
+      tags:
+        - Configuração
+      description: Salvar configurações de conta no marketplace
+components:
+  schemas:
+    ModuleConfiguration:
+      title: ModuleConfiguration
+      type: object
+      examples:
+        - id: 0
+          active: true
+          templateId: 0
+          accountName: string
+          discountType: PERCENT
+          useSandbox: true
+          accountDefault: true
+          priceFactor: 0
+          discountValue: 0
+          initialDateForOrderImport: 25-01-2021
+          updatePriceStockStatus: true
+          additionOfFreight: 0
+          dynamicFields:
+            field1: value1
+            field2: value2
+      properties:
+        id:
+          type: integer
+          format: int64
+          minimum: 0
+          description: Id do ANYMARKET
+        active:
+          type: boolean
+          description: Status da conta
+        templateId:
+          type: integer
+          format: int64
+          minimum: 0
+          description: Código do template padrão
+        accountName:
+          type: string
+          minLength: 0
+          maxLength: 255
+          description: Nome do usuário no marketplace
+        discountType:
+          type: string
+          minLength: 0
+          maxLength: 255
+          description: Tipo de desconto
+          default: PERCENT
+        useSandbox:
+          type: boolean
+          description: Informa se o uso é em Sandbox
+        accountDefault:
+          type: boolean
+          description: Informa se a conta é a padrão para o marketplace
+        priceFactor:
+          type: number
+          format: double
+          minimum: 0
+          description: Fator de preço
+        discountValue:
+          type: number
+          format: double
+          minimum: 0
+          description: Valor padrão de desconto
+        initialDateForOrderImport:
+          type: string
+          format: date
+          pattern: '^\d{2}-\d{2}-\d{4}$'
+          description: Data inicial para a importação de pedidos
+          example: 25-01-2021
+        updatePriceStockStatus:
+          type: boolean
+          description: Permite ou não atualizar o preço e status do estoque
+        additionOfFreight:
+          type: number
+          format: double
+          minimum: 0
+          description: Valor adicional de frete
+        dynamicFields:
+          type: object
+          description: Campos customizados para atender especifidade do MarketPlace
+          properties:
+            field:
+              type: string
+      required:
+        - id
+        - active
+        - accountName
+        - discountType
+        - useSandbox
+        - accountDefault
+        - priceFactor
+        - discountValue
+        - initialDateForOrderImport
+        - updatePriceStockStatus
+        - additionOfFreight
