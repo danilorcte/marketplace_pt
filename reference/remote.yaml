@@ -7,7 +7,7 @@ servers:
 paths:
   /testIntegration:
     post:
-      summary: Teste de Integração
+      summary: Teste de Integração com marketplace
       operationId: post-testIntegration
       responses:
         '200':
@@ -26,6 +26,33 @@ paths:
               $ref: '#/components/schemas/ModuleConfiguration'
             examples: {}
         description: Teste de Integração
+      tags:
+        - Configuração
+      description: Teste de Integração com marketplace
+  /saveAccount:
+    post:
+      summary: Salvar configurações de conta no marketplace
+      operationId: post-testIntegration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+              examples:
+                Example:
+                  value: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModuleConfiguration'
+            examples: {}
+        description: Teste de Integração
+      tags:
+        - Configuração
+      description: Salvar configurações de conta no marketplace
 components:
   schemas:
     ModuleConfiguration:
