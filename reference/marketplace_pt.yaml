@@ -1,10 +1,10 @@
-openapi: 3.1.0
+openapi: 3.0.0
 info:
-  title: V2 API
+  title: API MARKETPLACE
   version: '1.0'
   description: ''
 servers:
-  - url: 'http://sandbox-api.anymarket.com.br/v2'
+  - url: 'http://sandbox-api.anymarket.com.br/marketplace/api'
 paths:
   /brands:
     get:
@@ -309,8 +309,8 @@ components:
         - page
         - pageable
   securitySchemes:
-    gumgaToken:
-      name: gumgaToken
+    x-anymarket-token:
+      name: x-anymarket-token
       type: apiKey
       in: header
       description: Token de segurança fornecido pela Anymarket
