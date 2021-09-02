@@ -1,0 +1,69 @@
+{
+  "items": [
+    {
+      "type": "divider",
+      "title": "Introducao"
+    },
+    {
+      "type": "group",
+      "title": "Introdução",
+      "items": [
+        {
+          "type": "item",
+          "title": "Início",
+          "uri": "docs/introducao/introducao.md"
+        },
+        {
+          "type": "item",
+          "title": "Fluxo",
+          "uri": "docs/introducao/fluxo.md"
+        },
+        {
+          "type": "item",
+          "title": "Ambiente SandBox",
+          "uri": "docs/introducao/sandbox.md"
+        },
+        {
+          "type": "item",
+          "title": "Observações",
+          "uri": "docs/introducao/observacao.md"
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "title": "Exemplo de tags",
+      "uri": "docs/exemplos.md"
+    },
+    {
+      "type": "divider",
+      "title": "Regras de Negócio"
+    },
+    {
+      "type": "group",
+      "title": "Marcas",
+      "items": [
+        {
+          "type": "item",
+          "title": "Cadastrando uma marca",
+          "uri": "docs/brand/brands.md"
+        },
+        {
+          "type": "item",
+          "title": "Observações",
+          "uri": ""
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "title": "** Exemplo Link Externo** ",
+      "uri": "https://anymarket.com.br"
+    },
+    {
+      "type": "item",
+      "title": "V2 API",
+      "uri": "reference/api-v2.yaml"
+    }
+  ]
+}
