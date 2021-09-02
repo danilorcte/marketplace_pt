@@ -138,6 +138,14 @@ paths:
               $ref: '#/components/schemas/BrandAdd'
       tags:
         - Marcas
+  /testIntegration:
+    post:
+      summary: ''
+      operationId: post-testintegration
+      responses:
+        '200':
+          description: OK
+    parameters: []
 components:
   schemas:
     '404':
