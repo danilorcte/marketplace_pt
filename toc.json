@@ -2,42 +2,105 @@
   "items": [
     {
       "type": "divider",
-      "title": "Introducao"
+      "title": "API MARKETPLACE"
     },
     {
       "type": "group",
-      "title": "Introdução",
+      "title": "Primeiros passos",
       "items": [
         {
           "type": "item",
-          "title": "Início",
-          "uri": "docs/introducao/introducao.md"
+          "title": "Introdução",
+          "uri": "docs/remotes/introducao.md"
         },
         {
           "type": "item",
-          "title": "Fluxo",
-          "uri": "docs/introducao/fluxo.md"
+          "title": "Ambientes",
+          "uri": "docs/remotes/ambientes.md"
         },
         {
           "type": "item",
-          "title": "Ambiente SandBox",
-          "uri": "docs/introducao/sandbox.md"
+          "title": "Autenticação",
+          "uri": "docs/remotes/autenticacao.md"
         },
         {
           "type": "item",
-          "title": "Observações",
-          "uri": "docs/introducao/observacao.md"
+          "title": "Processo de Homologação",
+          "uri": "docs/remotes/homologacao.md"
         }
       ]
+    },
+    {
+      "type": "group",
+      "title": "Vinculações",
+      "items": [
+        {
+          "type": "item",
+          "title": "Anúncios",
+          "uri": "docs/remotes/vinculo_sku.md"
+        },
+        {
+          "type": "item",
+          "title": "Marcas",
+          "uri": "docs/remotes/vinculo_marca.md"
+        },
+        {
+          "type": "item",
+          "title": "Categorias e Atributos",
+          "uri": "docs/remotes/vinculo_categoria.md"
+        },
+        {
+          "type": "item",
+          "title": "Variações",
+          "uri": "docs/remotes/vinculo_variacoes.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Anúncios",
+      "items": [
+        {
+          "type": "item",
+          "title": "Pré-validações do Anúncio",
+          "uri": "docs/remotes/anuncios.md"
+        },
+        {
+          "type": "item",
+          "title": "Anúncios",
+          "uri": "docs/remotes/anuncios.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Pedidos",
+      "items": [
+        {
+          "type": "item",
+          "title": "Inclusão de Pedidos",
+          "uri": "docs/remotes/pedidos.md"
+        },
+        {
+          "type": "item",
+          "title": "Atualizações de Status (MARKETPLACE > ANYMARKET)",
+          "uri": "docs/remotes/pedidos.md"
+        },
+        {
+          "type": "item",
+          "title": "Atualizações de Status (ANYMARKET > MARKETPLACE)",
+          "uri": "docs/remotes/pedidos.md"
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "title": "Regras de Negócio"
     },
     {
       "type": "item",
       "title": "Exemplo de tags",
       "uri": "docs/exemplos.md"
-    },
-    {
-      "type": "divider",
-      "title": "Regras de Negócio"
     },
     {
       "type": "group",
