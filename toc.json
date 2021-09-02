@@ -62,8 +62,8 @@
     },
     {
       "type": "item",
-      "title": "V2 API",
-      "uri": "reference/api-v2.yaml"
+      "title": "API MARKETPLACE",
+      "uri": "reference/marketplace_pt.yaml"
     }
   ]
 }
