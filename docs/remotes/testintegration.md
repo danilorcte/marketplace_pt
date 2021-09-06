@@ -8,6 +8,7 @@ focus: false
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/1hmZJccVDNo)
 
 
+### Requisição
 
 ```json title="\testintegration" lineNumbers
 {
@@ -36,17 +37,16 @@ focus: false
   "type": "object",
   "properties": {
     "id": {
-      "type": "string",
+      "type": "integer",
       "description": "Id da Conta"
     },
     "active": {
-      "type": "string",
+      "type": "boolean",
       "description": ""
     },
     "templateId": {
       "type": "number",
-      "minimum": 0,
-      "maximum": 150
+      "description": ""
     },
     "accountName": {
       "type": "string",
@@ -57,31 +57,32 @@ focus: false
       "description": ""
     },
     "useSandbox": {
-      "type": "string",
+      "type": "boolean",
       "description": ""
     },
     "accountDefault": {
-      "type": "string",
+      "type": "boolean",
       "description": ""
     },
      "priceFactor": {
-      "type": "string",
+      "type": "number",
       "description": ""
     },
     "discountValue": {
-      "type": "string",
+      "type": "number",
       "description": ""
     },
     "initialDateForOrderImport": {
       "type": "string",
+      "format": "dd-MM-yyyy",
       "description": ""
     },
     "updatePriceStockStatus": {
-      "type": "string",
+      "type": "boolean",
       "description": ""
     },
     "additionOfFreight": {
-      "type": "string",
+      "type": "integer",
       "description": ""
     },
     "login": {
@@ -96,7 +97,7 @@ focus: false
 }
 ```
 
----
+### Respostas que esperamos
 
 ```json title="200 - OK" 
 true
