@@ -3,9 +3,6 @@
 
 Bem vindo a documentação da API ANYMARKET para Marketplaces.
 
-
-## Qual o objetivo da API
-
 Esta documentação tem como objetivo orientar as regras e comportamentos esperados na construção do middleware responsável pela integração das informações entre o ANYMARKET e MARKETPLACE.
 
 <!--
@@ -15,6 +12,8 @@ focus: false
 
 O responsável pela integração deve construir um middleware seguindo os padrões estabelecidos nos “remotes”, que serão os caminhos que o ANYMARKET irá enviar as chamadas para completar as ações que o seller realizar. Em conjunto com as notificações que o ANYMARKET encaminhará para o middleware, o mesmo precisará interpretar as chamadas e realizar as devidas ações, podendo ser processamentos internos do próprio marketplace ou chamadas para a nossa API afim de inserir informações, atualizar ou consumir dados pertinentes a ação que está sendo executada.
 
+Para o início do desenvolvimento da integração, deverá ser preenchido o formulário para liberação do Marketplace. Este formulário é enviado para a equipe de desenvolvimento que disponibiliza o novo marketplace dentro do ANYMARKET. Nesse momento, serão enviados para você um usuário do ANYMARKET para que você realize os testes do seu desenvolvimento e o appId, que é o identificador do seu marketplace dento do ANYMARKET.
+Este id deverá ser utilizado em todas as chamadas que você realizar para nossa API.
 
 A aplicação será divida em duas etapas de operações que vamos nomear de: "Remotes" e "Endpoints" que serão explicados mais adiante na documentação.
 
@@ -40,7 +39,7 @@ Remotes
 
 |               |                                     |               ||
 | ------------- | --- |--------------------------------- | ------------- |
-| POST   |/testintegration | Explicar para que serve  | obrigatório |
+| POST   |[/testintegration](./remotes/testintegration.md) | Explicar para que serve  | obrigatório |
 | POST   |/saveAccount | Explicar para que serve  | obrigatório |
 | GET    |/product/123?idAccount=123&definitionScope=COST  | Explicar para que serve  | obrigatório |
 | GET    |/brands | Explicar para que serve  | opcional |
