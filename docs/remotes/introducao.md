@@ -39,7 +39,7 @@ Remotes
 
 |               |                                     |               ||
 | ------------- | --- |--------------------------------- | ------------- |
-| POST   |[/testintegration](./remotes/testintegration.md) | Explicar para que serve  | obrigatório |
+| POST   |[/testintegration](./docs/remotes/testintegration.md) | Explicar para que serve  | obrigatório |
 | POST   |/saveAccount | Explicar para que serve  | obrigatório |
 | GET    |/product/123?idAccount=123&definitionScope=COST  | Explicar para que serve  | obrigatório |
 | GET    |/brands | Explicar para que serve  | opcional |

@@ -32,12 +32,12 @@
     },
     {
       "type": "group",
-      "title": "Configurações do Módulo",
+      "title": "Remotes",
       "items": [
         {
           "type": "item",
-          "title": "Autenticação",
-          "uri": "docs/remotes/autenticacao.md"
+          "title": "\testintegration",
+          "uri": "docs/remotes/testintegration.md"
         },
         {
           "type": "item",
