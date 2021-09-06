@@ -15,100 +15,33 @@
         },
         {
           "type": "item",
-          "title": "Autenticação",
-          "uri": "docs/remotes/autenticacao.md"
-        },
-        {
-          "type": "item",
-          "title": "Como a API de Marketplace funciona",
-          "uri": "docs/remotes/como_funciona.md"
-        },
-        {
-          "type": "item",
-          "title": "Como é o processo de homologação",
+          "title": "Processo de homologação",
           "uri": "docs/remotes/homologacao.md"
         }
       ]
     },
     {
       "type": "group",
-      "title": "Configurações do Módulo",
+      "title": "Remotes",
       "items": [
         {
           "type": "item",
-          "title": "Autenticação",
-          "uri": "docs/remotes/autenticacao.md"
+          "title": "testIntegration",
+          "uri": "docs/remotes/testintegration.md"
         },
         {
           "type": "item",
-          "title": "Importação de Pedidos",
-          "uri": "docs/remotes/autenticacao.md"
+          "title": "saveAccount",
+          "uri": "docs/remotes/saveaccount.md"
         }
       ]
     },
     {
-      "type": "group",
-      "title": "Vinculações",
-      "items": [
-        {
-          "type": "item",
-          "title": "Anúncios",
-          "uri": "docs/remotes/vinculo_sku.md"
-        },
-        {
-          "type": "item",
-          "title": "Marcas",
-          "uri": "docs/remotes/vinculo_marca.md"
-        },
-        {
-          "type": "item",
-          "title": "Categorias e Atributos",
-          "uri": "docs/remotes/vinculo_categoria.md"
-        },
-        {
-          "type": "item",
-          "title": "Variações",
-          "uri": "docs/remotes/vinculo_variacoes.md"
-        }
-      ]
+      "type": "item",
+      "title": "Release Notes",
+      "uri": "docs/remotes/pedidos.md"
     },
-    {
-      "type": "group",
-      "title": "Anúncios",
-      "items": [
-        {
-          "type": "item",
-          "title": "Pré-validações do Anúncio",
-          "uri": "docs/remotes/anuncios.md"
-        },
-        {
-          "type": "item",
-          "title": "Anúncios",
-          "uri": "docs/remotes/anuncios.md"
-        }
-      ]
-    },
-    {
-      "type": "group",
-      "title": "Pedidos",
-      "items": [
-        {
-          "type": "item",
-          "title": "Inclusão de Pedidos",
-          "uri": "docs/remotes/pedidos.md"
-        },
-        {
-          "type": "item",
-          "title": "Atualizações de Status (MARKETPLACE > ANYMARKET)",
-          "uri": "docs/remotes/pedidos.md"
-        },
-        {
-          "type": "item",
-          "title": "Atualizações de Status (ANYMARKET > MARKETPLACE)",
-          "uri": "docs/remotes/pedidos.md"
-        }
-      ]
-    },
+
     {
       "type": "divider",
       "title": "Regras de Negócio"
