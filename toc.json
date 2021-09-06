@@ -15,7 +15,7 @@
         },
         {
           "type": "item",
-          "title": "Como é o processo de homologação",
+          "title": "Processo de homologação",
           "uri": "docs/remotes/homologacao.md"
         }
       ]
@@ -41,28 +41,7 @@
       "title": "Release Notes",
       "uri": "docs/remotes/pedidos.md"
     },
-  
-    {
-      "type": "group",
-      "title": "Pedidos",
-      "items": [
-        {
-          "type": "item",
-          "title": "Inclusão de Pedidos",
-          "uri": "docs/remotes/pedidos.md"
-        },
-        {
-          "type": "item",
-          "title": "Atualizações de Status (MARKETPLACE > ANYMARKET)",
-          "uri": "docs/remotes/pedidos.md"
-        },
-        {
-          "type": "item",
-          "title": "Atualizações de Status (ANYMARKET > MARKETPLACE)",
-          "uri": "docs/remotes/pedidos.md"
-        }
-      ]
-    },
+
     {
       "type": "divider",
       "title": "Regras de Negócio"
