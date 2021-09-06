@@ -40,6 +40,12 @@ focus: false
 -->
 ![NovaAPIMarketplace2.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/aOVLFjR1HPs)
 
+<!--
+focus: false
+-->
+![NovaAPIMarketplace3.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/LTR5J8bmcoc)
+
+
 
 
 Remotes
