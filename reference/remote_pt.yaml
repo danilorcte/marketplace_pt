@@ -242,10 +242,10 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                type: boolean
               examples:
                 Example:
-                  value: Active
+                  value: true
       description: |-
         A finalidade deste remote é informar uma previa do SKU que o seller está querendo transmitir para o marketplace. O JSON que é encaminhado no corpo da chamada contem os dados do SKU e dados do produto.
         Neste momento é esperado que o marketplace faça uma breve analise do conteúdo, validando assim informações pertinentes a criação do anuncio no marketplace, como por exemplo, se dados como vinculação de categoria, marca e variação foram realizados pelo seller.
@@ -378,6 +378,13 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+              examples:
+                Example:
+                  value: true
       description: |-
         Após as chamadas anteriores terem sido respondidas corretamente o seller terá uma visualização no ANYMARKET das informações do anuncio, podendo assim realizar edições no título, EAN e preço.
         Após o seller confirmar as informações ou realizar as devidas alterações será disparado esse request contendo o JSON com todas as informações atualizadas e demais informações da transmissão.
@@ -388,6 +395,34 @@ paths:
             schema:
               $ref: '#/components/schemas/SkuMarketplaceCanSave'
         description: ''
+  /sendProduct:
+    post:
+      summary: Envio do anúncio ao marketplace
+      operationId: post-sendProduct
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicationResponse'
+      description: |-
+        O objetivo da chamada sendProduct é enviar o anúncio para o Marketplace informando que foi criado no ANYMARKET ou que teve uma atualização que deve ser refletida no marketplace. 
+        <!-- theme: warning -->
+        > #### Ponto de Atenção!
+        >
+        > É através deste remote que o ANYMARKET encaminhará a notificação para o markektplace que o anuncio teve alguma modificação, seja ela de preço, estoque ou cadastro. É importante que assim que o marketplace receber a notificação faça uma chamada de consulta para a nossa API no anuncio notificado, afim de consultar os dados e realizar a alteração na camada do marketplace. 
+
+        ### Orientações
+
+        - Quando identificado que é uma nova publicação é recomendado que o marketplace mantenha o publicationStatus como UNPUBLISHED e o marketplaceStatus como processando, conforme o primeiro exemplo. 
+        - Assim que o anuncio for processado o marketplace precisa realizar uma chamada na nossa API para atualizar o status ou descrever o motivo do não processamento.
+        - Em casos em que o marketplace identificar que se trata de uma atualização, o mesmo deve responder a chamada do /sendProduct avisando que está processando a atualização e posteriormente acionar a nossa API afim de retirar o sincronizando da transmissão e deixando atualizado o status do anuncio. (Exemplo 2).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendPublication'
 components:
   schemas:
     Attributes:
@@ -1613,3 +1648,97 @@ components:
           minimum: 0
           exclusiveMaximum: false
           maximum: 999
+    SendPublication:
+      description: ''
+      type: object
+      x-examples: {}
+      properties:
+        idSkuMarketplace:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        idSkuMarketplaceMain:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        status:
+          type: string
+          minLength: 1
+          enum:
+            - UNPUBLISHED
+            - CLOSED
+            - CORRUPTED
+            - PAUSED
+            - WITHOUT_STOCK
+            - ACTIVE
+        onlySync:
+          type: boolean
+        idSku:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        availableAmount:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        idAccount:
+          type: integer
+          minimum: 0
+          exclusiveMaximum: true
+          format: int64
+        idProduct:
+          type: integer
+          minimum: 0
+          exclusiveMaximum: true
+          format: int64
+        skuInMarketplace:
+          type: string
+          minLength: 1
+        onlySyncPrice:
+          type: boolean
+        onlySyncStock:
+          type: boolean
+        onlySyncStatus:
+          type: boolean
+      required:
+        - idSkuMarketplace
+        - idSkuMarketplaceMain
+        - status
+        - onlySync
+        - idSku
+        - availableAmount
+        - idAccount
+        - idProduct
+        - skuInMarketplace
+        - onlySyncPrice
+        - onlySyncStock
+        - onlySyncStatus
+    PublicationResponse:
+      title: PublicationResponse
+      type: object
+      properties:
+        publicationStatus:
+          type: string
+          enum:
+            - UNPUBLISHED
+            - CLOSED
+            - CORRUPTED
+            - WITHOUT_STOCK
+            - ACTIVE
+        marketplaceStatus:
+          type: string
+        transmissionStatus:
+          type: string
+          enum:
+            - WAITING_SYNC
+            - SENDING
+            - PAUSING
+            - CLOSING
+            - ERROR
+            - ACTIVATING
+            - SYNCING
+            - OK
