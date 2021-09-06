@@ -53,6 +53,38 @@ paths:
       tags:
         - Configuração
       description: Salvar configurações de conta no marketplace
+  '/product/{idProduct}':
+    get:
+      summary: Consulta produto no marketplace
+      tags: []
+      responses: {}
+      operationId: get-product
+      description: Consulta produto no marketplace
+      parameters:
+        - schema:
+            type: integer
+            format: int64
+            minimum: 0
+            exclusiveMaximum: true
+          in: query
+          name: idAccount
+          description: Código da conta no marketplace
+        - schema:
+            type: string
+            enum:
+              - COST
+              - SKU_MARKETPLACE
+              - SKU
+          in: query
+          name: definitionScope
+          description: Tipo da regra de preço do produto
+    parameters:
+      - schema:
+          type: string
+        name: idProduct
+        in: path
+        required: true
+        description: Código do produto
 components:
   schemas:
     ModuleConfiguration:
@@ -147,3 +179,334 @@ components:
         - initialDateForOrderImport
         - updatePriceStockStatus
         - additionOfFreight
+    PriceScope:
+      title: PriceScope
+      type: string
+    SkuMarketplace:
+      type: object
+      description: ''
+      examples:
+        - id: 0
+          idInMarketplace: string
+          marketPlace: B2W
+          accountName: string
+          idAccount: 0
+          index: 0
+          publicationStatus: ACTIVE
+          marketplaceStatus: string
+          price: 0
+          priceFactor: 0
+          discountPrice: 0
+          permalink: string
+          skuInMarketplace: string
+          fields:
+            title: string
+            template: string
+            priceFactor: string
+            DISCOUNT_TYPE: string
+            DISCOUNT_VALUE: string
+            HAS_DISCOUNT: string
+            CONCAT_ATTRIBUTES: string
+            delivery_type: string
+            SHIPMENT: string
+            crossDocking: string
+            CUSTOM_DESCRIPTION: string
+            EAN: string
+            MANUFACTURING_TIME: string
+            VALUE: string
+            PERCENT: string
+            bronze_price: string
+            bronze_price_factor: string
+            buying_mode: string
+            category_with_variation: string
+            condition: string
+            free_price: string
+            free_price_factor: string
+            free_shipping: string
+            gold_premium_price: string
+            gold_premium_price_factor: string
+            gold_price: string
+            gold_price_factor: string
+            gold_pro_price: string
+            gold_pro_price_factor: string
+            gold_special_price: string
+            gold_special_price_factor: string
+            listing_type_id: string
+            shipping_local_pick_up: string
+            shipping_mode: string
+            silver_price: string
+            silver_price_factor: string
+          attributes:
+            property1: string
+            property2: string
+          marketplaceItemCode: string
+          warnings:
+            - string
+      properties:
+        id:
+          type: integer
+          description: Id do anúncio no ANYMARKET
+          format: int64
+        idInMarketplace:
+          type: string
+          description: Id do anúncio no Marketplace
+          maxLength: 255
+          minLength: 0
+        marketPlace:
+          $ref: '#/components/schemas/MarketPlace'
+        index:
+          type: integer
+          description: Índice do anúncio por Marketplace
+          format: int64
+        accountName:
+          type: string
+          description: Identificador da conta no marketplace
+        publicationStatus:
+          type: string
+          description: Status da publicação
+        marketplaceStatus:
+          type: string
+          description: Status da publicação no marketplace
+        price:
+          type: number
+          description: Preço do anúncio
+          format: double
+        idAccount:
+          type: number
+          description: Id da conta gerado automático pelo ANYMARKET
+        priceFactor:
+          type: number
+          description: Markup da transmissão
+          format: double
+        discountPrice:
+          type: number
+          description: Preço com desconto do anúncio
+          format: double
+        permalink:
+          type: string
+          description: Link da publicação no marketplace
+        skuInMarketplace:
+          type: string
+          description: Identificador do SKU no marketplace
+        fields:
+          $ref: '#/components/schemas/SkuMarketplaceField'
+        attributes:
+          type: object
+          description: |
+            Lista os vínculos de tipo de variação e valor da variação da publicação com os valores do marketplace. Podem ser texto ou números de acordo com cada marketplace.
+
+
+
+            {
+              "63000":"71994"
+            }
+
+
+
+            Exemplo do Mercado Livre onde para o tipo de variação (cor, tamanho, outros) e para os valores são utilizados valores numéricos.
+          additionalProperties:
+            type: string
+        marketplaceItemCode:
+          type: string
+          description: Código do anúncio no marketplace
+        warnings:
+          type: array
+          description: 'Lista de pendências do produto. Caso exista alguma pendência, o anúncio somente terá atualização de preço, estoque e status'
+          items:
+            type: string
+            description: Descrição da pendência
+        transmissionStatus:
+          type: string
+          description: Status da transmissão
+        errorMsg:
+          type: string
+      required:
+        - id
+        - marketPlace
+        - index
+        - accountName
+        - publicationStatus
+        - price
+        - idAccount
+        - priceFactor
+        - fields
+    SkuMarketplaceField:
+      type: object
+      description: Informações especificas do anúncio por marketplace
+      properties:
+        title:
+          type: string
+          description: 'B2W,WALMART,MERCADO LIVRE'
+          format: int64
+        template:
+          type: string
+          description: MERCADO LIVRE
+        priceFactor:
+          type: string
+          description: 'B2W,CNOVA,WALMART,ECOMMERCE,MERCADO LIVRE'
+          format: int64
+        DISCOUNT_TYPE:
+          type: string
+          description: 'B2W,CNOVA,WALMART,ECOMMERCE,MERCADO LIVRE'
+          format: int64
+        DISCOUNT_VALUE:
+          type: string
+          description: 'B2W,CNOVA,WALMART,ECOMMERCE,MERCADO LIVRE'
+          format: int64
+        HAS_DISCOUNT:
+          type: string
+          description: 'B2W,CNOVA,ECOMMERCE'
+          format: int64
+        CONCAT_ATTRIBUTES:
+          type: string
+          description: B2W
+          format: int64
+        delivery_type:
+          type: string
+          description: B2W
+          format: int64
+        SHIPMENT:
+          type: string
+          description: B2W
+          format: int64
+        crossDocking:
+          type: string
+          description: B2W
+          format: int64
+        CUSTOM_DESCRIPTION:
+          type: string
+          description: B2W
+          format: int64
+        EAN:
+          type: string
+          description: 'B2W,CNOVA'
+          format: int64
+        MANUFACTURING_TIME:
+          type: string
+          description: CNOVA
+          format: int64
+        VALUE:
+          type: string
+          description: 'WALMART,MERCADO LIVRE'
+          format: int64
+        PERCENT:
+          type: string
+          description: 'WALMART,MERCADO LIVRE'
+          format: int64
+        bronze_price:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        bronze_price_factor:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        buying_mode:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        category_with_variation:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        condition:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        free_price:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        free_price_factor:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        free_shipping:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        gold_premium_price:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        gold_premium_price_factor:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        gold_price:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        gold_price_factor:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        gold_pro_price:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        gold_pro_price_factor:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        gold_special_price:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        gold_special_price_factor:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        listing_type_id:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        shipping_local_pick_up:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        shipping_mode:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        silver_price:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+        silver_price_factor:
+          type: string
+          description: MERCADO LIVRE
+          format: int64
+    MarketPlace:
+      title: marketPlace
+      type: string
+      description: Identificador do Marketplace
+      enum:
+        - B2W
+        - CNOVA
+        - ECOMMERCE
+        - MERCADO_LIVRE
+        - WALMART
+        - GFG
+        - NETSHOES
+        - VTEX;
+      examples: []
+    SkuMarketPlaceMessage:
+      title: SkuMarketPlaceMessage
+      type: object
+      properties:
+        message:
+          type: string
+        key:
+          type: string
+        parameters:
+          type: object
+          properties:
+            string:
+              type: string
+      examples:
+        - message: string
+          key: string
+          parameters:
+            parameter1: value1
+            parameter2: value2
