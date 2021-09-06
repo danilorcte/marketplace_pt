@@ -1,0 +1,3 @@
+# como_funciona
+
+The beginning of an awesome article...
