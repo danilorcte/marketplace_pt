@@ -76,6 +76,11 @@
       "type": "item",
       "title": "API MARKETPLACE",
       "uri": "reference/marketplace_pt.yaml"
+    },
+    {
+      "type": "item",
+      "title": "API REMOTE",
+      "uri": "reference/remote_pt.yaml"
     }
   ]
 }
