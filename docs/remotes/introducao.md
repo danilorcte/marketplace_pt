@@ -100,7 +100,7 @@ APIs ANYMARKET
 >
 > Seja legal. Se você estiver enviando muitas requisições rapidamente, nós retornaremos um código de erro 429 (too many requests). 
 >
->Você tem um limite de 10 requisições por segundo por token.
+>Você tem um limite de 10 requisições por segundo por token
 
 
 
