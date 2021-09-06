@@ -35,6 +35,17 @@ Abaixo contem os remotes de cadas uma das aplicações que o marketplace deve re
 
 Para padronizar o comportamento e experíencia para os sellers:
 
+
+
+
+Legenda |          |
+--------|----------|
+LARANJA | Ações realizadas pelo Seller no ANYMARKET |
+VERDE   | Remotes que serão notificados no MIDDLEWARE |
+AMARELO | APIs do ANYMARKET que serão utilizadas nos processos |
+AZUL    | Processamento que o ANYMARKET/MIDDLEWARE deve realizar após as notificações |
+
+
 <!--
 focus: false
 -->
