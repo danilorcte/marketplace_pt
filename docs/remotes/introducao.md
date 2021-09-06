@@ -30,32 +30,19 @@ Os Remotes serão os "caminhos" que sua API deve conter. A API ANYMARKET funcion
 
 Abaixo contem os remotes de cadas uma das aplicações que o marketplace deve realizar com base na regra de negocio previamente formalizada na PGP.
 
+## Etapas
+
+1. Formulario de liberaçaõ de marketplace.
+2. Liberação de Ambiente Sandbox + appId (Este id deverá ser utilizado em todas as chamadas que você realizar para nossa API.)
+3. Construção do Middleware
+4. Homologação
+5. Beta
+6. Produção
+
 
 ## Como a integração funciona
 
 Para padronizar o comportamento e experíencia para os sellers:
-
-
-
-
-Legenda |          |
---------|----------|
-LARANJA | Ações realizadas pelo Seller no ANYMARKET |
-VERDE   | Remotes que serão notificados no MIDDLEWARE |
-AMARELO | APIs do ANYMARKET que serão utilizadas nos processos |
-AZUL    | Processamento que o ANYMARKET/MIDDLEWARE deve realizar após as notificações |
-
-
-<!--
-focus: false
--->
-![NovaAPIMarketplace6.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/knfnyuV3Qdo)
-
-
-
-
-
-
 
 Remotes
 
@@ -96,6 +83,29 @@ APIs ANYMARKET
 | GET   |/orders/{id} | Explicar para que serve  | obrigatório |
 | PUT   |/orders/{id}/transmissionStatus | Explicar para que serve  | obrigatório |
 
+## Fluxo
+
+Legenda |          |
+--------|----------|
+LARANJA | Ações realizadas pelo Seller no ANYMARKET |
+VERDE   | Remotes que serão notificados no MIDDLEWARE |
+AMARELO | APIs do ANYMARKET que serão utilizadas nos processos |
+AZUL    | Processamento que o ANYMARKET/MIDDLEWARE deve realizar após as notificações |
+
+
+<!--
+focus: false
+-->
+![NovaAPIMarketplace6.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/knfnyuV3Qdo)
+
+
+
+
+
+
+
+
+
 
 <!-- theme: info -->
 
@@ -104,17 +114,6 @@ APIs ANYMARKET
 > **Sandbox:** http://sandbox-api.anymarket.com.br/marketplace/api
 >
 > **Produção:** https://api.anymarket.com.br/marketplace/api
-
-
-
-## Etapas
-
-1. Formulario de liberaçaõ de marketplace.
-2. Liberação de Ambiente Sandbox + appId (Este id deverá ser utilizado em todas as chamadas que você realizar para nossa API.)
-3. Construção do Middleware
-4. Homologação
-5. Beta
-6. Produção
 
 
 
