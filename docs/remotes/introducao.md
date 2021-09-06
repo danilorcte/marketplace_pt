@@ -35,6 +35,13 @@ Abaixo contem os remotes de cadas uma das aplicações que o marketplace deve re
 
 Para padronizar o comportamento e experíencia para os sellers:
 
+<!--
+focus: false
+-->
+![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/r2k7uTr9Aeo)
+
+
+
 Remotes
 
 |               |                                     |               ||
