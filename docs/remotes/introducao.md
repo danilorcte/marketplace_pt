@@ -38,7 +38,8 @@ Para padronizar o comportamento e experíencia para os sellers:
 <!--
 focus: false
 -->
-![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/Y8b7dNk4a9Y)
+![NovaAPIMarketplace.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/Z6x2nXvrwHM)
+
 
 
 Remotes
