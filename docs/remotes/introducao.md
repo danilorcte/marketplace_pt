@@ -38,13 +38,7 @@ Para padronizar o comportamento e experíencia para os sellers:
 <!--
 focus: false
 -->
-![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/r2k7uTr9Aeo)
-
-<!--
-focus: false
--->
-![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/y0vip7qVefc)
-
+![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/Y8b7dNk4a9Y)
 
 
 Remotes
