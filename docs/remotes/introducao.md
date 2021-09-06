@@ -15,6 +15,23 @@ focus: false
 
 O responsável pela integração deve construir um middleware seguindo os padrões estabelecidos nos “remotes”, que serão os caminhos que o ANYMARKET irá enviar as chamadas para completar as ações que o seller realizar. Em conjunto com as notificações que o ANYMARKET encaminhará para o middleware, o mesmo precisará interpretar as chamadas e realizar as devidas ações, podendo ser processamentos internos do próprio marketplace ou chamadas para a nossa API afim de inserir informações, atualizar ou consumir dados pertinentes a ação que está sendo executada.
 
+
+A aplicação será divida em duas etapas de operações que vamos nomear de: "Remotes" e "Endpoints" que serão explicados mais adiante na documentação.
+
+Para inicio, precisamos entender como a integração ira funcionar. Como dito na introdução, será encaminhado para vocês um formulário que deve ser preenchido com as URL's do middleware a ser implementado para comunicação com o ANYMARKET. Para liberação será necessário 3 URL's, que serão elas:
+
+
+1- TELA DO MODULO
+
+2- URL BASE MIDDLEWARE
+
+
+Remotes
+Os Remotes serão os "caminhos" que sua API deve conter. A API ANYMARKET funcionará como um sistema de notificações aonde já temos os remotes prontos que serão disparados na URL base da API que vocês nos informaram no preenchimento do documento de liberação.
+
+Abaixo contem os remotes de cadas uma das aplicações que o marketplace deve realizar com base na regra de negocio previamente formalizada na PGP.
+
+
 ## Como a integração funciona
 
 Para padronizar o comportamento e experíencia para os sellers:
