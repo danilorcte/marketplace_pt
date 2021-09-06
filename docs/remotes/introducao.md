@@ -38,7 +38,9 @@ Para padronizar o comportamento e experíencia para os sellers:
 <!--
 focus: false
 -->
-![NovaAPIMarketplace5.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/7Wz0bDJptoE)
+![NovaAPIMarketplace6.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/knfnyuV3Qdo)
+
+
 
 
 
