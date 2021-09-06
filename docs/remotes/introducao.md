@@ -88,7 +88,7 @@ APIs ANYMARKET
 > Nós fazemos o nosso melhor para que todas as nossas URLs sejam RESTful. Cada URL pode suportar um dos quatro diferentes tipos de verbos HTTP:
 >
 > |               |                                     |   
-> | ------------- | :---------------------------------: | 
+> | ------------- | ---------------------------------   | 
 > | GET           | obtém informações sobre um recurso  |
 > | POST          | cria um recurso                     | 
 > | PUT           | atualiza um recurso                 | 
