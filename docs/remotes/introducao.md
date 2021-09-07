@@ -17,6 +17,12 @@ Este id deverá ser utilizado em todas as chamadas que você realizar para nossa
 
 A aplicação será divida em duas etapas de operações que vamos nomear de: "Remotes" e "Endpoints" que serão explicados mais adiante na documentação.
 
+<!--
+focus: false
+-->
+![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/QNhsD4Yn164)
+
+
 Para inicio, precisamos entender como a integração ira funcionar. Como dito na introdução, será encaminhado para vocês um formulário que deve ser preenchido com as URL's do middleware a ser implementado para comunicação com o ANYMARKET. Para liberação será necessário 3 URL's, que serão elas:
 
 
