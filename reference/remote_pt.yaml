@@ -605,7 +605,7 @@ paths:
       summary: Exclusão de publicação
       operationId: delete-deletePublication
       x-groupName: Api Integration
-      x-sortIndex: 2      
+      x-sortIndex: 2
       responses:
         '200':
           description: OK
@@ -638,6 +638,9 @@ paths:
                   onlySyncStock: true
                   onlySyncStatus: true
         description: ''
+      tags:
+        - Configuração
+        - Order
   '/order/force/{idInMarketPlace}':
     parameters:
       - schema:
@@ -654,6 +657,9 @@ paths:
         '200':
           description: OK
       description: Order force
+      tags:
+        - Configuração
+        - Order
 components:
   schemas:
     Attributes:
