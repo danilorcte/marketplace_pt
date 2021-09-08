@@ -638,9 +638,6 @@ paths:
                   onlySyncStock: true
                   onlySyncStatus: true
         description: ''
-      tags:
-        - Configuração
-        - Order
   '/order/force/{idInMarketPlace}':
     parameters:
       - schema:
@@ -648,6 +645,7 @@ paths:
         name: idInMarketPlace
         in: path
         required: true
+        description: Código do pedido no marketplace
     post:
       summary: Order force
       operationId: post-order-force-idInMarketPlace
@@ -656,10 +654,66 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+              examples:
+                Example:
+                  value: true
       description: Order force
-      tags:
-        - Configuração
-        - Order
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: idAccount
+          description: Código da conta
+        - schema:
+            type: string
+          in: query
+          name: oi
+          description: Código oi do cliente
+          required: true
+  /forceImportOrders:
+    post:
+      summary: ''
+      operationId: post-forceImportOrders
+      responses:
+        '200':
+          description: OK
+      description: 'Criar possivel Remote informando a data, para que o parceiro consiga criar no ANYMARKET os pedidos'
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: idAccount
+          required: true
+          description: Código da conta
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigurationDTO'
+            examples:
+              Example:
+                value:
+                  id: 0
+                  oi: string
+                  active: true
+                  templateId: 0
+                  accountName: string
+                  marketplace: string
+                  discountType: PERCENT
+                  useSandbox: true
+                  accountDefault: true
+                  priceFactor: 0
+                  discountValue: 0
+                  initialDateForOrderImport: '2019-08-24'
+                  updatePriceStockStatus: true
+                  additionOfFreight: 0
+                  fields:
+                    - string
+        description: ''
 components:
   schemas:
     Attributes:
@@ -2042,3 +2096,70 @@ components:
         - idSku
         - skuInMarketplace
       title: ''
+    ConfigurationDTO:
+      title: ConfigurationDTO
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        oi:
+          type: string
+        active:
+          type: boolean
+        templateId:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        accountName:
+          type: string
+        marketplace:
+          type: string
+        discountType:
+          type: string
+          minLength: 0
+          maxLength: 255
+          description: Tipo de desconto
+          default: PERCENT
+        useSandbox:
+          type: boolean
+        accountDefault:
+          type: boolean
+        priceFactor:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        discountValue:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        initialDateForOrderImport:
+          type: string
+          format: date
+        updatePriceStockStatus:
+          type: boolean
+        additionOfFreight:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        fields:
+          type: array
+          items:
+            type: string
+      required:
+        - active
+        - accountName
+        - discountType
+        - useSandbox
+        - accountDefault
+        - priceFactor
+        - discountValue
+        - initialDateForOrderImport
+        - updatePriceStockStatus
+        - additionOfFreight
