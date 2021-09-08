@@ -33,7 +33,7 @@ paths:
   /saveAccount:
     post:
       summary: Salvar configurações de conta no marketplace
-      operationId: post-testIntegration
+      operationId: post-saveAccount
       responses:
         '200':
           description: OK
