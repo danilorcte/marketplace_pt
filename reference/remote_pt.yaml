@@ -600,6 +600,120 @@ paths:
                   onlySyncStock: true
                   onlySyncStatus: true
         description: ''
+  /deletePublication:
+    delete:
+      summary: Exclusão de publicação
+      operationId: delete-deletePublication
+      x-groupName: Api Integration
+      x-sortIndex: 2
+      responses:
+        '200':
+          description: OK
+      description: |-
+        O remote tem intuito de notificar o marketplace que a publicação está sendo removida do ANYMARKET e com isso o marketplace não recebera mais atualizações de preço, estoque e consequentemente realizar a inserção de pedidos na base.
+
+        <!-- theme: warning -->
+
+        > #### Ponto de Atenção!
+        >
+        > Por isso, quando o marketplace receber a notificação é importante que o mesmo inative o produto para vendas, evitando assim vendas sem estoque e problemas futuros. 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeletePublication'
+            examples:
+              Example:
+                value:
+                  idSkuMarketplace: 0
+                  idSkuMarketplaceMain: 0
+                  status: UNPUBLISHED
+                  onlySync: true
+                  idSku: 0
+                  availableAmount: 0
+                  idAccount: 0
+                  idProduct: 0
+                  skuInMarketplace: string
+                  onlySyncPrice: true
+                  onlySyncStock: true
+                  onlySyncStatus: true
+        description: ''
+  '/order/force/{idInMarketPlace}':
+    parameters:
+      - schema:
+          type: string
+        name: idInMarketPlace
+        in: path
+        required: true
+        description: Código do pedido no marketplace
+    post:
+      summary: Order force
+      operationId: post-order-force-idInMarketPlace
+      x-groupName: Api Integration
+      x-sortIndex: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+              examples:
+                Example:
+                  value: true
+      description: Order force
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: idAccount
+          description: Código da conta
+        - schema:
+            type: string
+          in: query
+          name: oi
+          description: Código oi do cliente
+          required: true
+  /forceImportOrders:
+    post:
+      summary: /forceImportOrders
+      operationId: post-forceImportOrders
+      responses:
+        '200':
+          description: OK
+      description: 'Criar possivel Remote informando a data, para que o parceiro consiga criar no ANYMARKET os pedidos'
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: idAccount
+          required: true
+          description: Código da conta
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigurationDTO'
+            examples:
+              Example:
+                value:
+                  id: 0
+                  oi: string
+                  active: true
+                  templateId: 0
+                  accountName: string
+                  marketplace: string
+                  discountType: PERCENT
+                  useSandbox: true
+                  accountDefault: true
+                  priceFactor: 0
+                  discountValue: 0
+                  initialDateForOrderImport: '2019-08-24'
+                  updatePriceStockStatus: true
+                  additionOfFreight: 0
+                  fields:
+                    - string
+        description: ''
 components:
   schemas:
     Attributes:
@@ -1919,3 +2033,133 @@ components:
             - ACTIVATING
             - SYNCING
             - OK
+    DeletePublication:
+      description: ''
+      type: object
+      x-examples: {}
+      x-internal: false
+      properties:
+        idSkuMarketplace:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        idSkuMarketplaceMain:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        status:
+          type: string
+          minLength: 1
+          enum:
+            - UNPUBLISHED
+            - CLOSED
+            - CORRUPTED
+            - PAUSED
+            - WITHOUT_STOCK
+            - ACTIVE
+        onlySync:
+          type: boolean
+        idSku:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        availableAmount:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        idAccount:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        idProduct:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        skuInMarketplace:
+          type: string
+          minLength: 1
+        onlySyncPrice:
+          type: boolean
+        onlySyncStock:
+          type: boolean
+        onlySyncStatus:
+          type: boolean
+      required:
+        - idSkuMarketplace
+        - onlySync
+        - idSku
+        - skuInMarketplace
+      title: ''
+    ConfigurationDTO:
+      title: ConfigurationDTO
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        oi:
+          type: string
+        active:
+          type: boolean
+        templateId:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        accountName:
+          type: string
+        marketplace:
+          type: string
+        discountType:
+          type: string
+          minLength: 0
+          maxLength: 255
+          description: Tipo de desconto
+          default: PERCENT
+        useSandbox:
+          type: boolean
+        accountDefault:
+          type: boolean
+        priceFactor:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        discountValue:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        initialDateForOrderImport:
+          type: string
+          format: date
+        updatePriceStockStatus:
+          type: boolean
+        additionOfFreight:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        fields:
+          type: array
+          items:
+            type: string
+      required:
+        - active
+        - accountName
+        - discountType
+        - useSandbox
+        - accountDefault
+        - priceFactor
+        - discountValue
+        - initialDateForOrderImport
+        - updatePriceStockStatus
+        - additionOfFreight
