@@ -53,15 +53,15 @@ focus: false
 
 ## Como a integração funciona
 
-Para padronizar o comportamento e experíencia para os sellers:
+Para facilitar a compreensão de como o **Middleware** deve funcionar, seguem abaixo a relação dos **Remotes** que o middleware precisa disponibilizar e seus objetivos, as **APIs do ANYMARKET** disponíveis para o middleware completar as ações dos processos, além do desenho do fluxo de como o middleware se comunica com o ANYMARKET e Marketplace:
 
-Remotes
+### Remotes
 
 |               |                                     |               ||
 | ------------- | --- |--------------------------------- | ------------- |
 | POST   |[/testIntegration](./docs/remotes/testintegration.md) | Explicar para que serve  | obrigatório |
 | POST   |/saveAccount | Explicar para que serve  | obrigatório |
-| GET    |/product/123?idAccount=123&definitionScope=COST  | Explicar para que serve  | obrigatório |
+| GET    |/product/{id}  | Explicar para que serve  | obrigatório |
 | GET    |/brands | Explicar para que serve  | opcional |
 | GET    |/categories | Explicar para que serve  | opcional |
 | GET    |/categories/details/{{codeInMarketplace}} | Explicar para que serve  | opcional |
@@ -78,7 +78,7 @@ Remotes
 | PUT   |/updateOrderStatusInMarketplace | Explicar para que serve  | obrigatório |
 
 
-APIs ANYMARKET
+### APIs ANYMARKET
 
 |               |                                     |               ||
 | ------------- | --- |--------------------------------- | ------------- |
@@ -94,12 +94,12 @@ APIs ANYMARKET
 | GET   |/orders/{id} | Explicar para que serve  | obrigatório |
 | PUT   |/orders/{id}/transmissionStatus | Explicar para que serve  | obrigatório |
 
-## Fluxo
+### Fluxo
 
 Legenda |          |
 --------|----------|
-LARANJA | Ações realizadas pelo Seller no ANYMARKET |
-VERDE   | Remotes que serão notificados no MIDDLEWARE |
+LARANJA | Ações realizadas pelo Seller no painel do ANYMARKET |
+VERDE   | Remotes que serão notificados ou consultados no MIDDLEWARE |
 AMARELO | APIs do ANYMARKET que serão utilizadas nos processos |
 AZUL    | Processamento que o ANYMARKET/MIDDLEWARE deve realizar após as notificações |
 
