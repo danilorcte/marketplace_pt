@@ -742,9 +742,7 @@ paths:
         required: true
         description: Código do pedido no marketplace
     get:
-      summary: Your GET endpoint
-      tags:
-        - Pedidos
+      summary: '/order/{idInMarketPlace}'
       responses:
         '200':
           description: OK
@@ -760,6 +758,8 @@ paths:
           name: idAccount
           description: Código da conta
           required: true
+      tags:
+        - Pedidos
 components:
   schemas:
     Attributes:
