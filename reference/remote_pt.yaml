@@ -2228,9 +2228,6 @@ components:
           type: string
         partnerId:
           type: string
-        marketPlaceStatus - copy:
-          type: string
-          example: '2020-02-08T19:52:16Z'
         createdAt:
           type: string
           format: date-time
@@ -2337,7 +2334,6 @@ components:
       required:
         - id
         - partnerId
-        - marketPlaceStatus - copy
         - createdAt
         - paymentDate
         - cancelDate
