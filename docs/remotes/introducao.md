@@ -10,40 +10,45 @@ focus: false
 -->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/9WruoSt9JOQ)
 
-O responsável pela integração deve construir um middleware seguindo os padrões estabelecidos nos “remotes”, que serão os caminhos que o ANYMARKET irá enviar as chamadas para completar as ações que o seller realizar. Em conjunto com as notificações que o ANYMARKET encaminhará para o middleware, o mesmo precisará interpretar as chamadas e realizar as devidas ações, podendo ser processamentos internos do próprio marketplace ou chamadas para a nossa API afim de inserir informações, atualizar ou consumir dados pertinentes a ação que está sendo executada.
+O responsável pela integração deve construir uma aplicação **Middleware** seguindo os padrões de endpoints estabelecidos no tópico de **“remotes”**. Estes remotes serão os caminhos que o ANYMARKET irá enviar as notificações ou consultas para completar as ações que o seller realizar. 
 
-Para o início do desenvolvimento da integração, deverá ser preenchido o formulário para liberação do Marketplace. Este formulário é enviado para a equipe de desenvolvimento que disponibiliza o novo marketplace dentro do ANYMARKET. Nesse momento, serão enviados para você um usuário do ANYMARKET para que você realize os testes do seu desenvolvimento e o appId, que é o identificador do seu marketplace dento do ANYMARKET.
-Este id deverá ser utilizado em todas as chamadas que você realizar para nossa API.
+```json title="Exemplo de URLs do Middleware que serão notificadas"
+{{URL_MIDDLEWARE}}\sendproduct
+{{URL_MIDDLEWARE}}\brands
+```
 
-A aplicação será divida em duas etapas de operações que vamos nomear de: "Remotes" e "Endpoints" que serão explicados mais adiante na documentação.
+Após receber as notificações e consultas que o ANYMARKET encaminhará para o middleware, o mesmo precisará interpretar as chamadas e realizar as devidas ações para completar as solicitações do Seller, podendo ser processamentos internos do próprio marketplace ou chamadas para a API ANYMARKET afim de inserir informações, atualizar ou consumir dados pertinentes a ação que está sendo executada.
+
+A aplicação **Middleware** será divida em duas etapas de operações que vamos nomear de:
+
+> #### REMOTES
+> Os remotes serão os "caminhos" que sua API deve conter. A API ANYMARKET funcionará como um sistema de notificações aonde já temos os remotes prontos que serão disparados na URL base da API que vocês nos informaram no preenchimento do documento de liberação.
+
+
+> #### API ANYMARKET
+> Conjunto de APIs do ANYMARKET que permitem ao middleware inserir informações, atualizar ou consumir dados pertinentes a ação que está sendo executada.
+
+
+Na imagem abaixo temos de forma macro as informações que serão trafegadas através do middleware:
 
 <!--
 focus: false
 -->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/QNhsD4Yn164)
 
-
-Para inicio, precisamos entender como a integração ira funcionar. Como dito na introdução, será encaminhado para vocês um formulário que deve ser preenchido com as URL's do middleware a ser implementado para comunicação com o ANYMARKET. Para liberação será necessário 3 URL's, que serão elas:
-
-
-1- TELA DO MODULO
-
-2- URL BASE MIDDLEWARE
-
-
-Remotes
-Os Remotes serão os "caminhos" que sua API deve conter. A API ANYMARKET funcionará como um sistema de notificações aonde já temos os remotes prontos que serão disparados na URL base da API que vocês nos informaram no preenchimento do documento de liberação.
-
-Abaixo contem os remotes de cadas uma das aplicações que o marketplace deve realizar com base na regra de negocio previamente formalizada na PGP.
+>No tópico **"Remotes do Middleware"** da nossa documentação, existem mais informações sobre cada notificação ou consulta que o ANYMARKET realiza no middleware, qual ação o seller está solicitando e os comportamentos esperados para cada ação, visando garantir a melhor experiência ao Seller.
 
 ## Etapas
 
-1. Formulario de liberaçaõ de marketplace.
-2. Liberação de Ambiente Sandbox + appId (Este id deverá ser utilizado em todas as chamadas que você realizar para nossa API.)
-3. Construção do Middleware
-4. Homologação
-5. Beta
-6. Produção
+|#|Etapa|Responsável|Descrição|
+|-|--------------------------------------------------------------|----|-|
+|1|Prenchimento do "Formulário de liberação de novo marketplace" ||Marketplace|Neste formulário constam informações como URL do Middleware, campos necessários para autenticação no marketplace (login/senha ou token), descrição, comportamentos)|
+|2|Liberação de Ambiente Sandbox                                 |ANYMARKET|Nesta etapa o ANYMARKET criará o novo canal com base nas informações do formulário da etapa anterior e fornecerá: **Usuário de acesso ao ANYMARKET** para que você realize os testes durante o desenvolvimento. E também o seu **"appId"** que será o identificador do seu marketplace dento do ANYMARKET, este id deverá ser utilizado em todas as chamadas que você realizar para nossa API.|
+|3|Construção do Middleware                                      |Marketplace|Etapa de contrução do middleware pelo marketplace.|
+|4|Homologação                                                   |ANYMARKET|Nesta etapa nossa equipe de qualidade irá realizar os testes do novo marketplace visando garantir que a integração está de acordo com os critérios de aceitação previstos. Mais informações sobre esse processo podem ser acessadas no tópico **"Processo de homologação"** da nossa documentação.|
+|5|Liberação do marketplace em Beta                              |ANYMARKET|Nesta etapa acompanhamos os 5 primeiros sellers, visando garantir que está tudo funcionando corretamente em ambiente de produção.|
+|6|Liberação do marketplace em Produção                          |ANYMARKET|Disponibilizamos o novo marketplace para todos os Sellers do ANYMARKET.|
+
 
 
 ## Como a integração funciona

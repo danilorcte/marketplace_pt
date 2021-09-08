@@ -6,7 +6,7 @@ Neste remote iremos disparar uma notificação sempre.
 focus: false
 -->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/1hmZJccVDNo)
-
+### Comportamento esperado
 
 ### Requisição
 
