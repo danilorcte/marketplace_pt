@@ -24,6 +24,7 @@ A aplicação **Middleware** será divida em duas etapas de operações que vamo
 > #### REMOTES
 > Os remotes serão os "caminhos" que sua API deve conter. A API ANYMARKET funcionará como um sistema de notificações aonde já temos os remotes prontos que serão disparados na URL base da API que vocês nos informaram no preenchimento do documento de liberação.
 
+---
 
 > #### API ANYMARKET
 > Conjunto de APIs do ANYMARKET que permitem ao middleware inserir informações, atualizar ou consumir dados pertinentes a ação que está sendo executada.
@@ -38,11 +39,11 @@ focus: false
 
 >No tópico **"Remotes do Middleware"** da nossa documentação, existem mais informações sobre cada notificação ou consulta que o ANYMARKET realiza no middleware, qual ação o seller está solicitando e os comportamentos esperados para cada ação, visando garantir a melhor experiência ao Seller.
 
-## Etapas
+## Etapas da integração
 
 |#|Etapa|Responsável|Descrição|
 |-|--------------------------------------------------------------|----|-|
-|1|Prenchimento do "Formulário de liberação de novo marketplace" ||Marketplace|Neste formulário constam informações como URL do Middleware, campos necessários para autenticação no marketplace (login/senha ou token), descrição, comportamentos)|
+|1|Prenchimento do "Formulário de liberação de novo marketplace"|Marketplace|Neste formulário constam informações como URL do Middleware, campos necessários para autenticação no marketplace (login/senha ou token), descrição, comportamentos)|
 |2|Liberação de Ambiente Sandbox                                 |ANYMARKET|Nesta etapa o ANYMARKET criará o novo canal com base nas informações do formulário da etapa anterior e fornecerá: **Usuário de acesso ao ANYMARKET** para que você realize os testes durante o desenvolvimento. E também o seu **"appId"** que será o identificador do seu marketplace dento do ANYMARKET, este id deverá ser utilizado em todas as chamadas que você realizar para nossa API.|
 |3|Construção do Middleware                                      |Marketplace|Etapa de contrução do middleware pelo marketplace.|
 |4|Homologação                                                   |ANYMARKET|Nesta etapa nossa equipe de qualidade irá realizar os testes do novo marketplace visando garantir que a integração está de acordo com os critérios de aceitação previstos. Mais informações sobre esse processo podem ser acessadas no tópico **"Processo de homologação"** da nossa documentação.|
