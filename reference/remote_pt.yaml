@@ -733,6 +733,32 @@ paths:
         description: ''
       tags:
         - Pedidos
+  '/order/{idInMarketPlace}':
+    parameters:
+      - schema:
+          type: string
+        name: idInMarketPlace
+        in: path
+        required: true
+        description: Código do pedido no marketplace
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiOrder'
+      operationId: get-order-idInMarketPlace
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: idAccount
+          description: Código da conta
+          required: true
 components:
   schemas:
     Attributes:
@@ -1447,7 +1473,7 @@ components:
           type: number
           description: Markup da transmissão
           format: double
-          minimum: '00'
+          minimum: 0
           example: 1
         discountPrice:
           type: number
@@ -2182,3 +2208,399 @@ components:
         - initialDateForOrderImport
         - updatePriceStockStatus
         - additionOfFreight
+    ApiOrder:
+      description: ''
+      type: object
+      x-examples: {}
+      properties:
+        id:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        marketPlaceId:
+          type: string
+        marketPlaceNumber:
+          type: string
+        marketPlace:
+          type: string
+        partnerId:
+          type: string
+        marketPlaceStatus - copy:
+          type: string
+          example: '2020-02-08T19:52:16Z'
+        createdAt:
+          type: string
+          format: date-time
+        paymentDate:
+          type: string
+          format: date-time
+        cancelDate:
+          type: string
+          format: date-time
+        cancellationCode:
+          type: string
+          enum:
+            - WITHOUT_STOCK
+            - SHIPPING_ADDRESS
+            - CUSTOMER_EXCHANGE
+            - GENERAL_ADJUSTMENT
+            - CUSTOMER_RETURN
+            - BUYER_CANCELED
+            - OTHER
+        transmissionStatus:
+          type: string
+          enum:
+            - OK
+            - ERROR
+            - WAITING
+        status:
+          type: string
+          enum:
+            - PENDING
+            - PAID_WAITING_SHIP
+            - INVOICED
+            - PAID_WAITING_DELIVERY
+            - CONCLUDED
+            - CANCELED
+        marketPlaceUrl:
+          type: string
+        marketPlaceShipmentStatus:
+          type: string
+        invoice:
+          $ref: '#/components/schemas/ApiInvoice'
+        marketPlaceStatus:
+          type: string
+        marketPlaceStatusComplement:
+          type: string
+        discount:
+          type: number
+        freight:
+          type: number
+        productGross:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        productNet:
+          type: number
+        total:
+          type: number
+        interestValue:
+          type: number
+        shipping:
+          $ref: '#/components/schemas/ApiShipping'
+        billingAddress:
+          $ref: '#/components/schemas/ApiBillingAddress'
+        buyer:
+          $ref: '#/components/schemas/ApiBuyer'
+        tracking:
+          $ref: '#/components/schemas/ApiBuyer'
+        payments:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/ApiPayment'
+        items:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/ApiOrderItem'
+        deliveryStatus:
+          type: string
+          enum:
+            - UNKNOWN
+            - IN_TRANSIT
+            - DELIVERED
+            - HOLD_FOR_PICKUP
+            - DELAYED
+            - DELIVERED_LATE
+        observation:
+          type: string
+        anymarketAddress:
+          $ref: '#/components/schemas/ApiAnymarketOrderAddress'
+        idAccount:
+          type: integer
+          minimum: 0
+          exclusiveMaximum: true
+        accountName:
+          type: string
+        shipmentExceptionDate:
+          type: string
+          format: date-time
+        shipmentExceptionDescription:
+          type: string
+      required:
+        - id
+        - partnerId
+        - marketPlaceStatus - copy
+        - createdAt
+        - paymentDate
+        - cancelDate
+        - cancellationCode
+        - transmissionStatus
+        - status
+        - marketPlaceUrl
+        - marketPlaceShipmentStatus
+        - invoice
+        - marketPlaceStatus
+        - marketPlaceStatusComplement
+        - discount
+        - freight
+        - productGross
+        - productNet
+        - total
+        - interestValue
+        - shipping
+        - billingAddress
+        - buyer
+        - tracking
+        - payments
+        - items
+        - deliveryStatus
+        - observation
+        - anymarketAddress
+    ApiInvoice:
+      title: ApiInvoice
+      type: object
+      properties:
+        accessKey:
+          type: string
+        series:
+          type: string
+        number:
+          type: string
+        date:
+          type: string
+          format: date
+        linkNfe:
+          type: string
+          format: date
+    ApiShipping:
+      title: ApiShipping
+      type: object
+      properties:
+        city:
+          type: string
+        state:
+          type: string
+        stateNameNormalized:
+          type: string
+        country:
+          type: string
+        countryAcronymNormalized:
+          type: string
+        countryNameNormalized:
+          type: string
+        number:
+          type: string
+        neighborhood:
+          type: string
+        street:
+          type: string
+        comment:
+          type: string
+        reference:
+          type: string
+        zipCode:
+          type: string
+        address:
+          type: string
+        promisedShippingTime:
+          type: string
+          format: date
+        receiverName:
+          type: string
+      description: ''
+    ApiBillingAddress:
+      title: ApiShipping
+      type: object
+      properties:
+        city:
+          type: string
+        state:
+          type: string
+        stateNameNormalized:
+          type: string
+        country:
+          type: string
+        countryAcronymNormalized:
+          type: string
+        countryNameNormalized:
+          type: string
+        number:
+          type: string
+        neighborhood:
+          type: string
+        street:
+          type: string
+        comment:
+          type: string
+        reference:
+          type: string
+        zipCode:
+          type: string
+      description: ''
+    ApiAnymarketOrderAddress:
+      title: ApiAnymarketOrderAddress
+      type: object
+      description: ''
+      properties:
+        country:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        zipCode:
+          type: string
+        neighborhood:
+          type: string
+        address:
+          type: string
+        street:
+          type: string
+        number:
+          type: string
+        comment:
+          type: string
+        receiverName:
+          type: string
+        promisedShippingTime:
+          type: string
+          format: date-time
+    ApiBuyer:
+      title: ApiBuyer
+      type: object
+      properties:
+        Long:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        marketPlaceId:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        document:
+          type: string
+        documentType:
+          type: string
+        phone:
+          type: string
+        cellPhone:
+          type: string
+        documentNumberNormalized:
+          type: string
+    ApiTracking:
+      title: ApiTracking
+      type: object
+      properties:
+        url:
+          type: string
+        number:
+          type: string
+        carrier:
+          type: string
+        carrierDocument:
+          type: string
+        date:
+          type: string
+          format: date
+        estimateDate:
+          type: string
+          format: date
+        shippedDate:
+          type: string
+          format: date
+        deliveredDate:
+          type: string
+          format: date
+    ApiPayment:
+      title: ApiPayment
+      type: object
+      properties:
+        method:
+          type: string
+        status:
+          type: string
+        value:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        installments:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        marketplaceId:
+          type: string
+        paymentMethodNormalized:
+          type: string
+        paymentDetailNormalized:
+          type: string
+        dueDate:
+          type: string
+          format: date-time
+    ApiOrderItemShipping:
+      title: ApiOrderItemShipping
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        shippingtype:
+          type: string
+        shippingCarrierNormalized:
+          type: string
+        shippingCarrierTypeNormalized:
+          type: string
+    ApiOrderItem:
+      title: ApiOrderItem
+      type: object
+      properties:
+        partnerId:
+          type: string
+        amount:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        unit:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        gross:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        total:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        discount:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        shippings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiOrderItemShipping'
+        marketPlaceId:
+          type: string
+        orderItemId:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
