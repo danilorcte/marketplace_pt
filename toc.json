@@ -13,6 +13,11 @@
           "title": "Introdução",
           "uri": "docs/remotes/introducao.md"
         },
+         {
+          "type": "item",
+          "title": "Autenticação",
+          "uri": "docs/remotes/autenticacao.md"
+        },
         {
           "type": "item",
           "title": "Processo de homologação",
@@ -22,7 +27,7 @@
     },
     {
       "type": "group",
-      "title": "Remotes",
+      "title": "Remotes do Middleware",
       "items": [
         {
           "type": "item",
@@ -40,38 +45,7 @@
       "type": "item",
       "title": "Release Notes",
       "uri": "docs/remotes/releasenotes.md"
-    },
-
-    {
-      "type": "divider",
-      "title": "Regras de Negócio"
-    },
-    {
-      "type": "item",
-      "title": "Exemplo de tags",
-      "uri": "docs/exemplos.md"
-    },
-    {
-      "type": "group",
-      "title": "Marcas",
-      "items": [
-        {
-          "type": "item",
-          "title": "Cadastrando uma marca",
-          "uri": "docs/brand/brands.md"
-        },
-        {
-          "type": "item",
-          "title": "Observações",
-          "uri": ""
-        }
-      ]
-    },
-    {
-      "type": "item",
-      "title": "** Exemplo Link Externo** ",
-      "uri": "https://anymarket.com.br"
-    },
+    },  
     {
       "type": "item",
       "title": "API MARKETPLACE",
@@ -81,6 +55,15 @@
       "type": "item",
       "title": "API REMOTE",
       "uri": "reference/remote_pt.yaml"
+    },
+        {
+      "type": "divider",
+      "title": "Exemplos MARKDOWN (apagar)"
+    },
+    {
+      "type": "item",
+      "title": "Exemplo de tags",
+      "uri": "docs/exemplos.md"
     }
   ]
 }
