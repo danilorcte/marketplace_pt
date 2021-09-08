@@ -760,6 +760,7 @@ paths:
           required: true
       tags:
         - Pedidos
+      description: 'A chamada de consulta do pedido consiste em obter os dados mais atualizados do pedido. A notificação será encaminhada quando o ANYMARKET for retentar algum pedido criticado ou caso o seller realize o force de forma manual. '
 components:
   schemas:
     Attributes:
