@@ -638,8 +638,6 @@ paths:
                   onlySyncStock: true
                   onlySyncStatus: true
         description: ''
-      tags:
-        - Order
   '/order/force/{idInMarketPlace}':
     parameters:
       - schema:
@@ -656,9 +654,6 @@ paths:
         '200':
           description: OK
       description: Order force
-      tags:
-        - Configuração
-        - Order
 components:
   schemas:
     Attributes:
