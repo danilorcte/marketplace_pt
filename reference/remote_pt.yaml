@@ -604,6 +604,8 @@ paths:
     delete:
       summary: Exclusão de publicação
       operationId: delete-deletePublication
+      x-groupName: Api Integration
+      x-sortIndex: 2      
       responses:
         '200':
           description: OK
@@ -648,6 +650,8 @@ paths:
     post:
       summary: Order force
       operationId: post-order-force-idInMarketPlace
+      x-groupName: Api Integration
+      x-sortIndex: 1
       responses:
         '200':
           description: OK
