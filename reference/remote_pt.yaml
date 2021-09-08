@@ -743,7 +743,8 @@ paths:
         description: Código do pedido no marketplace
     get:
       summary: Your GET endpoint
-      tags: []
+      tags:
+        - Pedidos
       responses:
         '200':
           description: OK
