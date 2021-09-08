@@ -60,40 +60,40 @@ Para facilitar a compreensão de como o **Middleware** deve funcionar, seguem ab
 
 |               |                                     |               ||
 | ------------- | --- |--------------------------------- | ------------- |
-| POST   |[/testIntegration](./docs/remotes/testintegration.md) | Explicar para que serve  | obrigatório |
-| POST   |/saveAccount | Explicar para que serve  | obrigatório |
-| GET    |/product/{id}  | Explicar para que serve  | obrigatório |
-| GET    |/brands | Explicar para que serve  | opcional |
-| GET    |/categories | Explicar para que serve  | opcional |
-| GET    |/categories/details/{{codeInMarketplace}} | Explicar para que serve  | opcional |
-| GET    |/categories/attributes/{{idAnymarketCategory}} | Explicar para que serve  | opcional |
-| GET    |/variations/types | Explicar para que serve  | opcional |
-| POST   |/canActive | Explicar para que serve  | opcional |
-| GET    |/getDefaultSkuFields | Explicar para que serve  | opcional |
-| POST   |/canSave | Explicar para que serve  | obrigatório |
-| POST   |/sendProduct | Explicar para que serve  | obrigatório |
-| DELETE |/deletePublication | Explicar para que serve  | obrigatório |
-| POST   |/order/force/{orderIdInMarketPlace} | Explicar para que serve  | obrigatório |
-| POST   |/forceImportOrders | Explicar para que serve  | obrigatório |
-| GET   |/order/(orderIdInMarketPlace) | Explicar para que serve  | obrigatório |
-| PUT   |/updateOrderStatusInMarketplace | Explicar para que serve  | obrigatório |
+| POST   |[/testIntegration](./docs/remotes/testintegration.md) | obrigatório | Nesta notificação enviamos os dados de autenticação no marketplace configurados pelo Seller, para que o middleware valide o acesso.|
+| POST   |/saveAccount | obrigatório | Nesta notificação enviamos os dados da configuração informados pelo Seller caso o middleware queira armazena.   |
+| GET    |/product/{{id}} | obrigatório | Esta consulta serve para obtermos os anúncios do marketplace, para vincularmos com as transmissões do ANYMARKET. |
+| GET    |/brands | opcional | Esta consulta serve para obtermos as marcas do marketplace e vincularmos com as marcas do ANYMARKET.  |
+| GET    |/categories| opcional | Esta consulta serve para obtermos as categorias do marketplace e vincularmos com as categorias do ANYMARKET.  |
+| GET    |/categories/details/{{id}} | opcional | Esta consulta serve para obtermos as categorias filhas do marketplace e vincularmos com as categorias do ANYMARKET.   |
+| GET    |/categories/attributes/{{id}} | opcional | Esta consulta serve para obtermos os atributos do marketplace e vincularmos com os produtos do ANYMARKET.  |
+| GET    |/variations/types | opcional | Esta consulta serve para obtermos as variações do marketplace e vincularmos com as variações do ANYMARKET.   |
+| POST   |/canActive | opcional | Nesta notificação enviamos uma prévia dos dados do produto/sku para que o middleware possa validar se o mesmo pode ser publicado no marketplace. (Ação disparada quando o seller acessa a funcionalidade "Nova Publicação")   |
+| GET    |/getDefaultSkuFields | opcional | Esta consulta serve para que o marketplace informe campos adicionais para que o seller preencha ao incluir uma "Nova Publicação" |
+| POST   |/canSave | obrigatório | Nesta notificação enviamos uma prévia dos dados do anúncio para que o middleware possa validar se o mesmo pode ser publicado no marketplace. (Ação disparada quando o seller grava uma "Nova Publicação").  |
+| POST   |/sendProduct | obrigatório | Nesta notificação enviamos todas as alterações realizadas em um anúncio: Nova Publicação, Alterações do cadasto do anúncio, Alterações de estoque, Alterações de preço, Pausar um anúncio, Finalizar um anúncio e Reenviar um anúncio. |
+| DELETE |/deletePublication | obrigatório | Esta notificação será disparada quando uma transmissão for excluída do painel do ANYMARKET, para que oo marketplace inative o anúncio. |
+| POST   |/order/force/{{id}} | obrigatório | Enviaremos essa notificação sempre que o seller solicitar o reenvio do pedido do marketplace para o ANYMARKET (Monitoring)  |
+| POST   |/forceImportOrders | obrigatório | Enviaremos essa notificação quando o seller solicitar a importação de todos os pedidos para o painel do ANYMARKET (Tela de Configuração).|
+| GET    |/order/{{id}} | obrigatório | Esta consulta serve para consultarmos informações do pedido do marketplace.   |
+| PUT    |/updateOrderStatusInMarketplace | obrigatório |Esta notificação é enviada sempre que há uma alteração no pedido no ANYMARKET, para que o middleware consulte as informações atualizadas do pedido e replique ao marketplace. |
 
 
 ### APIs ANYMARKET
 
 |               |                                     |               ||
 | ------------- | --- |--------------------------------- | ------------- |
-| GET   |/api/configuration | Explicar para que serve  | opcional |
-| GET   |/api/configuration/{id} | Explicar para que serve  | opcional |
-| GET   |/skumarketplace/{id} | Explicar para que serve  | obrigatório |
-| PUT   |/skumarketplace/{id} | Explicar para que serve  | obrigatório |
-| POST  |/orders | Explicar para que serve  | obrigatório |
-| PUT   |/orders/{id}/markAsPaid | Explicar para que serve  | obrigatório |
-| PUT   |/orders/{id}/markAsCanceled | Explicar para que serve  | obrigatório |
-| PUT   |/orders/{id}/markAsShipped | Explicar para que serve  | opcional |
-| PUT   |/orders/{id}/markAsDelivered | Explicar para que serve  | opcional |
-| GET   |/orders/{id} | Explicar para que serve  | obrigatório |
-| PUT   |/orders/{id}/transmissionStatus | Explicar para que serve  | obrigatório |
+| GET   |/api/configuration | opcional | Consulta todas as configurações realizadas pelo seller no ANYMARKET. |
+| GET   |/api/configuration/{id} | opcional | Consulta  pelo ID da conta as configurações realizadas pelo seller no ANYMARKET.  |
+| GET   |/skumarketplace/{id} | obrigatório | Consulta os dados do anúncio no ANYMARKET.   |
+| PUT   |/skumarketplace/{id} | obrigatório | Utilizado para que o middleware marque o anúncio como atualizado.   |
+| POST  |/orders | obrigatório | Utilizado para que o middleware grave o pedido no ANYMARKET.|
+| PUT   |/orders/{id}/markAsPaid | obrigatório | Utilizado para que o middleware marque o pedido como PAGO no ANYMARKET.  |
+| PUT   |/orders/{id}/markAsCanceled | obrigatório | Utilizado para que o middleware marque o pedido como CANCELADO no ANYMARKET.  |
+| PUT   |/orders/{id}/markAsShipped | opcional | Utilizado para que o middleware marque o pedido como ENVIADO no ANYMARKET.   |
+| PUT   |/orders/{id}/markAsDelivered | opcional | Utilizado para que o middleware marque o pedido como ENTREGUE no ANYMARKET.  |
+| GET   |/orders/{id} | obrigatório | Permite o middlewar consulta os dados do pedido no ANYMARKET.  |
+| PUT   |/orders/{id}/transmissionStatus | obrigatório | Utilizado para que o middleware marque o pedido como atualizado.    |
 
 ### Fluxo
 

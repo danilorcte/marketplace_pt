@@ -3,7 +3,9 @@
 
 ## Fluxo de liberação de um novo marketplace
 
-
+<!--
+focus: false
+-->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/869DEmQbqyQ)
 
 
@@ -19,23 +21,41 @@
 - Durante a realização dos testes, caso os nossos analistas encontrem necessidades de correções, eles irão reportar através do Trello que será compartilhado com o marketplace, para ciência da equipe de desenvolvimento responsável, possibilitando assim uma melhor visão dos ajustes necessários e andamento do processo de homologação.
 
 ## Roteiro dos testes realizados
-
+<!--
+focus: false
+-->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/Dtb4Ka07I6k)
-
+<!--
+focus: false
+-->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/YukYgROMzMw)
-
+<!--
+focus: false
+-->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/QRH761vu3GI)
-
+<!--
+focus: false
+-->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/ZgtZGI660Js)
-
+<!--
+focus: false
+-->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/djbdHwe5yig)
-
+<!--
+focus: false
+-->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/NHjl6gHihGk)
-
+<!--
+focus: false
+-->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/bG71zsgRkR0)
-
+<!--
+focus: false
+-->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/ucGAVzQFEXs)
-
+<!--
+focus: false
+-->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/PVoYN17QBhI)
 
 
@@ -43,16 +63,19 @@
 ## Canais de Comunicação
 
 Para facilitar a comunicação entre o Time ANYMARKET e o parceiro em relação ao report de erros e evolução do processo de homologação iremos fornecer os seguintes canais:
-- Slack – Será disponibilizado um canal para sanar dúvidas rápidas durante o processo de homologação e ajustes. Neste canal será adicionado os envolvidos na homologação do Marketplace.
-- Trello – Será criado um Board no Trello com as partes envolvidas na homologação, para registrar os erros encontrados e acompanhar o andamento dos ajustes pelo parceiro.
+- **Slack** – Será disponibilizado um canal para sanar dúvidas rápidas durante o processo de homologação e ajustes. Neste canal será adicionado os envolvidos na homologação do Marketplace.
+- **Trello** – Será criado um Board no Trello com as partes envolvidas na homologação, para registrar os erros encontrados e acompanhar o andamento dos ajustes pelo parceiro.
 
+<!--
+focus: false
+-->
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/KJYr7WEb2Pw)
 
-- Bug Report / Em análise – Erros encontrados pelo Time de Qualidade ANYMARKET, em revisão interna. 
-- Sugestões – Possíveis sugestões de melhorias no módulo.
-- Bug Report – Erros encontrados, que precisam ser analisados pela equipe do marketplace.
-- Em análise (Parceiro) – Tarefas em análise pelo marketplace.
-- Tarefas Concluídas – Tarefas com ajustes já realizados pelo Marketplace, pendente de revalidação pelo time de qualidade  
-- Concluída Homologação – Tarefas já revalidadas pelo time de qualidade.
+- **Bug Report / Em análise** – Erros encontrados pelo Time de Qualidade ANYMARKET, em revisão interna. 
+- **Sugestões** – Possíveis sugestões de melhorias no módulo.
+- **Bug Report** – Erros encontrados, que precisam ser analisados pela equipe do marketplace.
+- **Em análise (Parceiro)** – Tarefas em análise pelo marketplace.
+- **Tarefas Concluídas** – Tarefas com ajustes já realizados pelo Marketplace, pendente de revalidação pelo time de qualidade  
+- **Concluída Homologação** – Tarefas já revalidadas pelo time de qualidade.
 
 
