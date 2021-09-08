@@ -28,6 +28,7 @@ paths:
         description: Teste de Integração
       tags:
         - Configuração
+        - Test
       description: Teste de Integração com marketplace
   /saveAccount:
     post:
@@ -52,6 +53,7 @@ paths:
         description: Teste de Integração
       tags:
         - Configuração
+        - Salva
       description: Salvar configurações de conta no marketplace
   '/product/{idProduct}':
     get:
