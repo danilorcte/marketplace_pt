@@ -5,30 +5,6 @@ info:
 servers:
   - url: 'http://localhost:3000'
 paths:
-  /testIntegration:
-    post:
-      summary: Teste de Integração com marketplace
-      operationId: post-testIntegration
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: boolean
-              examples:
-                Example:
-                  value: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ModuleConfiguration'
-            examples: {}
-        description: Teste de Integração
-      tags:
-        - Configuração
-      description: Teste de Integração com marketplace
   /saveAccount:
     post:
       summary: Salvar configurações de conta no marketplace
@@ -53,6 +29,30 @@ paths:
       tags:
         - Configuração
       description: Salvar configurações de conta no marketplace
+  /testIntegration:
+    post:
+      summary: Teste de Integração com marketplace
+      operationId: post-testIntegration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+              examples:
+                Example:
+                  value: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModuleConfiguration'
+            examples: {}
+        description: Teste de Integração
+      tags:
+        - Configuração
+      description: Teste de Integração com marketplace
   '/product/{idProduct}':
     get:
       summary: Consulta produto no marketplace
