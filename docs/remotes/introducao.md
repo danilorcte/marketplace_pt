@@ -108,7 +108,8 @@ AZUL    | Processamento que o ANYMARKET/MIDDLEWARE deve realizar após as notifi
 <!--
 focus: false
 -->
-![NovaAPIMarketplace6.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/knfnyuV3Qdo)
+![NovaAPIMarketplace7.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/tl6o14hZH4g)
+
 
 
 
