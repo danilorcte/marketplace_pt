@@ -28,7 +28,6 @@ paths:
         description: Teste de Integração
       tags:
         - Configuração
-        - Test
       description: Teste de Integração com marketplace
   /saveAccount:
     post:
@@ -53,7 +52,6 @@ paths:
         description: Teste de Integração
       tags:
         - Configuração
-        - Salva
       description: Salvar configurações de conta no marketplace
   '/product/{idProduct}':
     get:
@@ -356,7 +354,7 @@ paths:
                   String:
                     type: string
               examples:
-                example-1:
+                Example:
                   value:
                     EAN: '7894566666666'
                     title: Panela Elétrica de Arroz Visor Glass Philco Preta 220V
@@ -396,6 +394,161 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SkuMarketplaceCanSave'
+            examples:
+              Example:
+                value:
+                  id: 0
+                  mainSkuMarketplace: 0
+                  catalog: true
+                  idInMarketplace: string
+                  status: string
+                  marketplaceStatus: string
+                  transmissionStatus: string
+                  errorMsg: string
+                  skuMarketPlaceMessage:
+                    message: string
+                    key: string
+                    parameters:
+                      parameter1: value1
+                      parameter2: value2
+                  idInSite: string
+                  fields:
+                    title: string
+                    template: string
+                    priceFactor: string
+                    DISCOUNT_TYPE: string
+                    DISCOUNT_VALUE: string
+                    HAS_DISCOUNT: string
+                    CONCAT_ATTRIBUTES: string
+                    delivery_type: string
+                    SHIPMENT: string
+                    crossDocking: string
+                    CUSTOM_DESCRIPTION: string
+                    EAN: string
+                    MANUFACTURING_TIME: string
+                    VALUE: string
+                    PERCENT: string
+                    bronze_price: string
+                    bronze_price_factor: string
+                    buying_mode: string
+                    category_with_variation: string
+                    condition: string
+                    free_price: string
+                    free_price_factor: string
+                    free_shipping: string
+                    gold_premium_price: string
+                    gold_premium_price_factor: string
+                    gold_price: string
+                    gold_price_factor: string
+                    gold_pro_price: string
+                    gold_pro_price_factor: string
+                    gold_special_price: string
+                    gold_special_price_factor: string
+                    listing_type_id: string
+                    shipping_local_pick_up: string
+                    shipping_mode: string
+                    silver_price: string
+                    silver_price_factor: string
+                  isCatalog: true
+                  permalink: string
+                  title: string
+                  ean: string
+                  skuInMarketplace: string
+                  priceFactor: 0
+                  price: 0
+                  discountPrice: 0
+                  idAccount: 0
+                  accountName: string
+                  marketPlace: B2W
+                  stock:
+                    amount: 0
+                    availableAmount: 0
+                    cost: 0
+                    totalReservation: 0
+                    physicalAmount: 0
+                    reservedPending: 0
+                    reservedPaid: 0
+                    totalInInvoicedStatus: 0
+                    stockLocal: string
+                    additionalTime: 0
+                  attributes:
+                    ATRIBUTO: string
+                    TESTE: string
+                    NOVO ATRIBUTO: string
+                  sku:
+                    id: 0
+                    partnerId: string
+                    amount: 0
+                    ean: string
+                    title: string
+                    price: 0
+                    sellPrice: 0
+                    additionalTime: 0
+                    variations:
+                      - id: 0
+                        idInMarketplace: string
+                        description: string
+                        type:
+                          id: 0
+                          idInMarketplace: string
+                          name: string
+                          partnerId: string
+                          visualVariation: true
+                        partnerId: string
+                    product:
+                      id: 0
+                      title: string
+                      description: string
+                      model: string
+                      nbm:
+                        id: string
+                        description: string
+                      videoUrl: string
+                      definitionPriceScope: COST
+                      characteristics:
+                        - index: 0
+                          name: string
+                          value: string
+                      origin:
+                        id: 0
+                        name: NACIONAL
+                      category:
+                        id: 0
+                        idInMarketplace: string
+                        name: string
+                        path: string
+                      height: 0
+                      length: 0
+                      width: 0
+                      weight: 0
+                      images:
+                        - id: 0
+                          index: 0
+                          variation: string
+                          thumbnailUrl: string
+                          standardUrl: string
+                          lowResolutionUrl: string
+                          originalImage: string
+                          url: string
+                          statusMessage: string
+                          status: UNPROCESSED
+                          main: true
+                          standardWidth: string
+                          standardHeight: string
+                          originalWidth: string
+                          originalHeight: string
+                      brand:
+                        id: 0
+                        idInMarketplace: string
+                        name: string
+                        partnerId: string
+                      warrantyTime: 0
+                      warrantyText: string
+                      priceFactor: 0
+                      calculatedPrice: true
+                      hasVariations: true
+                      gender: MALE
+                      allowAutomaticSkuMarketplaceCreation: true
         description: ''
   /sendProduct:
     post:
@@ -408,6 +561,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublicationResponse'
+              examples:
+                Example:
+                  value:
+                    publicationStatus: UNPUBLISHED
+                    marketplaceStatus: string
+                    transmissionStatus: WAITING_SYNC
       description: |-
         O objetivo da chamada sendProduct é enviar o anúncio para o Marketplace informando que foi criado no ANYMARKET ou que teve uma atualização que deve ser refletida no marketplace. 
         <!-- theme: warning -->
@@ -425,6 +584,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SendPublication'
+            examples:
+              Example:
+                value:
+                  idSkuMarketplace: 0
+                  idSkuMarketplaceMain: 0
+                  status: UNPUBLISHED
+                  onlySync: true
+                  idSku: 0
+                  availableAmount: 0
+                  idAccount: 0
+                  idProduct: 0
+                  skuInMarketplace: string
+                  onlySyncPrice: true
+                  onlySyncStock: true
+                  onlySyncStatus: true
+        description: ''
 components:
   schemas:
     Attributes:
