@@ -676,7 +676,7 @@ paths:
           required: true
   /forceImportOrders:
     post:
-      summary: ''
+      summary: /forceImportOrders
       operationId: post-forceImportOrders
       responses:
         '200':
