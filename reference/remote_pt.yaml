@@ -56,7 +56,8 @@ paths:
   '/product/{idProduct}':
     get:
       summary: Consulta produto no marketplace
-      tags: []
+      tags:
+        - Vínculo de SKU
       responses:
         '200':
           description: OK
@@ -94,7 +95,8 @@ paths:
   /brands:
     get:
       summary: Consulta marcas no marketplace
-      tags: []
+      tags:
+        - Vínculo de Marca
       operationId: get-brands
       description: Consulta marcas no marketplace
       responses:
@@ -114,7 +116,8 @@ paths:
   /categories:
     get:
       summary: Consulta categoria no marketplace
-      tags: []
+      tags:
+        - Vínculo de Categoria
       responses:
         '200':
           description: OK
@@ -147,7 +150,8 @@ paths:
         description: Código de categoria no Anymarket
     get:
       summary: Consulta vínculo de categoria no marketplace
-      tags: []
+      tags:
+        - Vínculo de Categoria
       responses:
         '200':
           description: OK
@@ -179,7 +183,8 @@ paths:
         description: Código de categoria no Anymarket
     get:
       summary: Consulta dos atributos vinculados à categoria
-      tags: []
+      tags:
+        - Vínculo de Categoria
       responses:
         '200':
           description: OK
@@ -212,7 +217,8 @@ paths:
   /variations/types:
     get:
       summary: Consulta os tipos e valores possíveis para o seller realizar o de/para.
-      tags: []
+      tags:
+        - Vínculo de Variação
       responses:
         '200':
           description: OK
@@ -332,6 +338,8 @@ paths:
                     gender: MALE
                     allowAutomaticSkuMarketplaceCreation: true
         description: ''
+      tags:
+        - Anúncio
   '/getDefaultSkuFields/{idSku}':
     parameters:
       - schema:
@@ -342,7 +350,8 @@ paths:
         description: Código do Sku no Anymarket
     get:
       summary: Obter dados obrigatórios do SKU no marketplace
-      tags: []
+      tags:
+        - Anúncio
       responses:
         '200':
           description: OK
@@ -550,6 +559,8 @@ paths:
                       gender: MALE
                       allowAutomaticSkuMarketplaceCreation: true
         description: ''
+      tags:
+        - Anúncio
   /sendProduct:
     post:
       summary: Envio do anúncio ao marketplace
@@ -600,6 +611,8 @@ paths:
                   onlySyncStock: true
                   onlySyncStatus: true
         description: ''
+      tags:
+        - Anúncio
   /deletePublication:
     delete:
       summary: Exclusão de publicação
@@ -638,6 +651,8 @@ paths:
                   onlySyncStock: true
                   onlySyncStatus: true
         description: ''
+      tags:
+        - Anúncio
   '/order/force/{idInMarketPlace}':
     parameters:
       - schema:
@@ -674,6 +689,8 @@ paths:
           name: oi
           description: Código oi do cliente
           required: true
+      tags:
+        - Pedidos
   /forceImportOrders:
     post:
       summary: /forceImportOrders
@@ -714,6 +731,8 @@ paths:
                   fields:
                     - string
         description: ''
+      tags:
+        - Pedidos
 components:
   schemas:
     Attributes:
