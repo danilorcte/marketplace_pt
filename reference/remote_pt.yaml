@@ -600,6 +600,61 @@ paths:
                   onlySyncStock: true
                   onlySyncStatus: true
         description: ''
+  /deletePublication:
+    delete:
+      summary: Exclusão de publicação
+      operationId: delete-deletePublication
+      responses:
+        '200':
+          description: OK
+      description: |-
+        O remote tem intuito de notificar o marketplace que a publicação está sendo removida do ANYMARKET e com isso o marketplace não recebera mais atualizações de preço, estoque e consequentemente realizar a inserção de pedidos na base.
+
+        <!-- theme: warning -->
+
+        > #### Ponto de Atenção!
+        >
+        > Por isso, quando o marketplace receber a notificação é importante que o mesmo inative o produto para vendas, evitando assim vendas sem estoque e problemas futuros. 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeletePublication'
+            examples:
+              Example:
+                value:
+                  idSkuMarketplace: 0
+                  idSkuMarketplaceMain: 0
+                  status: UNPUBLISHED
+                  onlySync: true
+                  idSku: 0
+                  availableAmount: 0
+                  idAccount: 0
+                  idProduct: 0
+                  skuInMarketplace: string
+                  onlySyncPrice: true
+                  onlySyncStock: true
+                  onlySyncStatus: true
+        description: ''
+      tags:
+        - Order
+  '/order/force/{idInMarketPlace}':
+    parameters:
+      - schema:
+          type: string
+        name: idInMarketPlace
+        in: path
+        required: true
+    post:
+      summary: Order force
+      operationId: post-order-force-idInMarketPlace
+      responses:
+        '200':
+          description: OK
+      description: Order force
+      tags:
+        - Configuração
+        - Order
 components:
   schemas:
     Attributes:
@@ -1919,3 +1974,66 @@ components:
             - ACTIVATING
             - SYNCING
             - OK
+    DeletePublication:
+      description: ''
+      type: object
+      x-examples: {}
+      x-internal: false
+      properties:
+        idSkuMarketplace:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        idSkuMarketplaceMain:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        status:
+          type: string
+          minLength: 1
+          enum:
+            - UNPUBLISHED
+            - CLOSED
+            - CORRUPTED
+            - PAUSED
+            - WITHOUT_STOCK
+            - ACTIVE
+        onlySync:
+          type: boolean
+        idSku:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        availableAmount:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        idAccount:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        idProduct:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        skuInMarketplace:
+          type: string
+          minLength: 1
+        onlySyncPrice:
+          type: boolean
+        onlySyncStock:
+          type: boolean
+        onlySyncStatus:
+          type: boolean
+      required:
+        - idSkuMarketplace
+        - onlySync
+        - idSku
+        - skuInMarketplace
+      title: ''
