@@ -158,23 +158,26 @@ paths:
           description: OK
       requestBody:
         content:
-          multipart/form-data: # Media type
-            schema:            # Request payload
+          multipart/form-data:
+            schema:
               type: object
-              properties:      # Request parts
-                id:            # Part 1 (string value)
+              properties:
+                id:
                   type: string
                   format: uuid
-                address:       # Part2 (object)
+                address:
                   type: object
                   properties:
                     street:
                       type: string
                     city:
                       type: string
-                profileImage:  # Part 3 (an image)
+                profileImage:
                   type: string
                   format: binary
+                profileImage - copy:
+                  type: string
+                  format: byte
 components:
   schemas:
     '400':
