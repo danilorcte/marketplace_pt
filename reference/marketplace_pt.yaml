@@ -10,7 +10,7 @@ info:
     url: 'https://anymarket.com.br/wp-content/uploads/2018/07/icon-anymarket-300x300.png'
   x-preferred: true
   x-providerName: API MARKETPLACE
-  description: |+
+  description: |
     Nesse conjunto de chamadas irá conter as chamadas necessárias que o marketplace precisa realizar na camada ANYMARKET afim de obter dados como:
 
     - Informações sobre produto;
@@ -21,7 +21,6 @@ info:
     - Atualizar informações de pedidos;
     - Cotação de frete;
     - Monitoramento;
-
 servers:
   - url: 'http://sandbox-api.anymarket.com.br/marketplace/api'
     description: Sandbox
@@ -166,6 +165,21 @@ paths:
         '200':
           description: OK
     parameters: []
+  /api/configuration:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Configuração
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ./remote_pt.yaml#/components/schemas/ConfigurationDTO
+      operationId: get-api-configuration
 components:
   schemas:
     '404':
