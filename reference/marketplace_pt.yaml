@@ -113,8 +113,87 @@ paths:
       description: ''
       tags:
         - Anúncios
+  /orders:
+    post:
+      summary: ''
+      operationId: post-orders
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+              examples:
+                Example - 1:
+                  value:
+                    code: '400'
+                    message: Erro ao criar o recurso. Somente é possivel criar recurso com status x ou y.
+                Example - 2:
+                  value:
+                    code: '400'
+                    message: 'Erro ao criar o pedido. Já existe um pedido com id [%s].'
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: orderNewPattern
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderPost'
 components:
   schemas:
+    '500':
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          value:
+            code: '500'
+            message: Internal Server Error
+      properties:
+        code:
+          type: string
+          minLength: 1
+        message:
+          type: string
+          minLength: 1
+      examples:
+        - code: '500'
+          message: Internal Server Error
+      x-tags:
+        - erro
+      title: 500 - Error    
+    '400':
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          value:
+            code: '400'
+            message: Erro ao criar o recurso. Somente é possivel criar recurso com status x ou y.
+      properties:
+        code:
+          type: string
+          minLength: 1
+        message:
+          type: string
+          minLength: 1
+      examples:
+        - code: '400'
+          message: Erro ao criar o recurso. Somente é possivel criar recurso com status x ou y.
+      x-tags:
+        - erro
+      title: 400 - Error
     '404':
       description: ''
       type: object
@@ -496,6 +575,249 @@ components:
               type: string
             marketPlace:
               type: string
+    OrderPut:
+      title: OrderPut
+      type: object
+      properties:
+        marketPlaceUrl:
+          type: string
+        marketPlaceStatus:
+          type: string
+        marketPlaceStatusComplement:
+          type: string
+        shipping:
+          $ref: ./remote_pt.yaml#/components/schemas/ApiShipping
+        billingAddress:
+          $ref: ./remote_pt.yaml#/components/schemas/ApiBillingAddress
+        buyer:
+          $ref: ./remote_pt.yaml#/components/schemas/ApiBuyer
+        payments:
+          type: array
+          items:
+            $ref: ./remote_pt.yaml#/components/schemas/ApiPayment
+        observation:
+          type: string
+        anymarketAddress:
+          $ref: ./remote_pt.yaml#/components/schemas/ApiAnymarketOrderAddress
+        tracking:
+          $ref: ./remote_pt.yaml#/components/schemas/ApiTracking
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+        documentIntermediator:
+          type: string
+        intermediateRegistrationId:
+          type: string
+        documentPaymentInstitution:
+          type: string
+        subChannel:
+          type: string
+        subChannelNormalized:
+          type: string
+    OrderItem:
+      title: OrderItem
+      type: object
+      properties:
+        partnerId:
+          type: string
+        sku:
+          type: object
+          properties:
+            partnerId:
+              type: string
+        amount:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        unit:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        gross:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        total:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        discount:
+          type: number
+          format: double
+          minimum: 0
+          exclusiveMaximum: true
+        shippings:
+          type: array
+          items:
+            $ref: ./remote_pt.yaml#/components/schemas/ApiOrderItemShipping
+        marketPlaceId:
+          type: string
+        orderItemId:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+    OrderPost:
+      title: OrderPost
+      allOf:
+        - type: object
+          properties:
+            marketPlaceId:
+              type: string
+            marketPlaceNumber:
+              type: string
+            createdAt:
+              type: string
+              format: date-time
+            discount:
+              type: number
+              format: double
+              minimum: 0
+              exclusiveMaximum: true
+            freight:
+              type: number
+              format: double
+              minimum: 0
+              exclusiveMaximum: true
+            productNet:
+              type: number
+              format: double
+              minimum: 0
+              exclusiveMaximum: true
+            gross:
+              type: number
+              format: double
+              minimum: 0
+              exclusiveMaximum: true
+            total:
+              type: number
+              format: double
+              minimum: 0
+              exclusiveMaximum: true
+            interestValue:
+              type: number
+              format: double
+              minimum: 0
+              exclusiveMaximum: true
+            items:
+              format: double
+              type: array
+              items:
+                $ref: '#/components/schemas/OrderItem'
+            idAccount:
+              type: integer
+              format: int64
+              minimum: 0
+              exclusiveMaximum: true
+            accountName:
+              type: string
+            status:
+              type: string
+              enum:
+                - PENDING
+                - PAID
+                - INVOICED
+                - SHIPPED
+                - DELIVERED
+                - CANCELED
+            subChannel:
+              type: string
+            subChannelNormalized:
+              type: string
+        - $ref: '#/components/schemas/OrderPut'
+      x-examples: {}
+      description: ''
+    Invoice:
+      title: Invoice
+      type: object
+      properties:
+        accessKey:
+          type: string
+        series:
+          type: string
+        number:
+          type: string
+        date:
+          type: string
+          format: date
+        linkNfe:
+          type: string
+          format: date
+        invoiceLink:
+          type: string
+        cfop:
+          type: string
+    Order:
+      title: Order
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              minimum: 0
+              exclusiveMaximum: true
+            partnerId:
+              type: string
+            paymentDate:
+              type: string
+              format: date-time
+            cancelDate:
+              type: string
+              format: date-time
+            cancellationCode:
+              type: string
+              enum:
+                - WITHOUT_STOCK
+                - SHIPPING_ADDRESS
+                - CUSTOMER_EXCHANGE
+                - GENERAL_ADJUSTMENT
+                - CUSTOMER_RETURN
+                - BUYER_CANCELED
+                - OTHER
+            transmissionStatus:
+              type: string
+              enum:
+                - OK
+                - ERROR
+                - WAITING
+            marketPlaceShipmentStatus:
+              type: string
+            invoice:
+              $ref: '#/components/schemas/Invoice'
+            deliveryStatus:
+              type: string
+              enum:
+                - UNKNOWN
+                - IN_TRANSIT
+                - DELIVERED
+                - HOLD_FOR_PICKUP
+                - DELAYED
+                - DELIVERED_LATE
+            shipmentExceptionDate:
+              type: string
+              format: date-time
+            shipmentExceptionDescription:
+              type: string
+            metadata:
+              type: object
+              properties:
+                string:
+                  type: string
+            cancelDetails:
+              type: string
+            documentIntermediator:
+              type: string
+            intermediateRegistrationId:
+              type: string
+            documentPaymentInstitution:
+              type: string
+        - $ref: '#/components/schemas/OrderPost'
   securitySchemes:
     x-anymarket-token:
       name: x-anymarket-token

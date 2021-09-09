@@ -2458,7 +2458,7 @@ components:
           type: string
       description: ''
     ApiBillingAddress:
-      title: ApiShipping
+      title: ApiBillingAddress
       type: object
       properties:
         city:
