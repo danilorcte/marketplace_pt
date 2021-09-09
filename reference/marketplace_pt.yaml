@@ -150,29 +150,33 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrderPost'
+    put:
+      summary: ''
+      operationId: put-orders
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data: # Media type
+            schema:            # Request payload
+              type: object
+              properties:      # Request parts
+                id:            # Part 1 (string value)
+                  type: string
+                  format: uuid
+                address:       # Part2 (object)
+                  type: object
+                  properties:
+                    street:
+                      type: string
+                    city:
+                      type: string
+                profileImage:  # Part 3 (an image)
+                  type: string
+                  format: binary
 components:
   schemas:
-    '500':
-      description: ''
-      type: object
-      x-examples:
-        example-1:
-          value:
-            code: '500'
-            message: Internal Server Error
-      properties:
-        code:
-          type: string
-          minLength: 1
-        message:
-          type: string
-          minLength: 1
-      examples:
-        - code: '500'
-          message: Internal Server Error
-      x-tags:
-        - erro
-      title: 500 - Error    
     '400':
       description: ''
       type: object
@@ -236,6 +240,27 @@ components:
       x-tags:
         - erro
       title: 422 - Error
+    '500':
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          value:
+            code: '500'
+            message: Internal Server Error
+      properties:
+        code:
+          type: string
+          minLength: 1
+        message:
+          type: string
+          minLength: 1
+      examples:
+        - code: '500'
+          message: Internal Server Error
+      x-tags:
+        - erro
+      title: 500 - Error
     SkuMarketplace:
       description: ''
       examples:
