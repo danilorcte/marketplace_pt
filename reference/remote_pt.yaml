@@ -1,9 +1,18 @@
 openapi: 3.0.0
 info:
-  title: remote
+  title: REMOTE MARKETPLACE
   version: '1.0'
+  contact:
+    email: anymarketdev@db1.com.br
+    name: AnyMarket Developers
+    url: 'http://developers.anymarket.com.br/'  
+  x-logo:
+    url: >-
+      https://anymarket.com.br/wp-content/uploads/2018/07/icon-anymarket-300x300.png
+  x-preferred: true
+  x-providerName: REMOTE MARKETPLACE
 servers:
-  - url: 'http://localhost:3000'
+  - url: 'ENDEREÇO_MARKETPLACE_API'
 paths:
   /canActive:
     post:
