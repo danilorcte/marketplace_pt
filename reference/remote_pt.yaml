@@ -5,10 +5,9 @@ info:
   contact:
     email: anymarketdev@db1.com.br
     name: AnyMarket Developers
-    url: 'http://developers.anymarket.com.br/'  
+    url: 'http://developers.anymarket.com.br/'
   x-logo:
-    url: >-
-      https://anymarket.com.br/wp-content/uploads/2018/07/icon-anymarket-300x300.png
+    url: 'https://anymarket.com.br/wp-content/uploads/2018/07/icon-anymarket-300x300.png'
   x-preferred: true
   x-providerName: REMOTE MARKETPLACE
 servers:
@@ -428,7 +427,7 @@ paths:
                   onlySyncStatus: true
         description: ''
       tags:
-        - Anúncio  
+        - Anúncio
   /saveAccount:
     post:
       summary: Salvar configurações de conta no marketplace
@@ -584,7 +583,32 @@ paths:
           required: true
       tags:
         - Pedidos
-      description: 'A chamada de consulta do pedido consiste em obter os dados mais atualizados do pedido. A notificação será encaminhada quando o ANYMARKET for retentar algum pedido criticado ou caso o seller realize o force de forma manual. '      
+      description: 'A chamada de consulta do pedido consiste em obter os dados mais atualizados do pedido. A notificação será encaminhada quando o ANYMARKET for retentar algum pedido criticado ou caso o seller realize o force de forma manual. '
+  /order/updateOrderStatusInMarketPlace:
+    put:
+      summary: PUT Update Order Status In MarketPlace
+      operationId: put-order-updateOrderStatusInMarketPlace
+      responses:
+        '200':
+          description: OK
+      description: |
+        O endpoint será acionado quando o seller realizar alguma alteração de status de pedido. Com isso será encaminhado a notificação no endpoint acima passando algumas informações referente ao pedido.
+        Assim que o marketplace receber a chamada o mesmo deve consultar o pedido em questão na nossa API afim de coletar os dados mais atualizados do pedido e assim confirmar que a atualização ocorreu sem problemas.
+
+        <!-- theme: warning -->
+
+        > #### Ponto de Atenção!
+        >
+        > O marketplace deve estar preparado quando ocorrer um "salto de status", ou seja, quando o seller realizar uma mudança de status de "PAGO" direto para "ENVIADO" ou "CONCLUÍDO".
+        É importante que o marketplace tenha esse cenário contemplado para evitar problemas futuros de integração. 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemoteApiUpdateOrderStatus'
+        description: ''
+      tags:
+        - Pedidos      
   /categories:
     get:
       summary: Consulta categoria no marketplace
@@ -706,7 +730,7 @@ paths:
                 Example:
                   value:
                     - codeInMarketplace: string
-                      name: string           
+                      name: string
   '/product/{idProduct}':
     get:
       summary: Consulta produto no marketplace
@@ -745,7 +769,7 @@ paths:
         name: idProduct
         in: path
         required: true
-        description: Código do produto 
+        description: Código do produto
   /variations/types:
     get:
       summary: Consulta os tipos e valores possíveis para o seller realizar o de/para.
@@ -2611,3 +2635,32 @@ components:
           format: int64
           minimum: 0
           exclusiveMaximum: true
+    RemoteApiUpdateOrderStatus:
+      title: RemoteApiUpdateOrderStatus
+      type: object
+      properties:
+        orderId:
+          type: integer
+          format: int64
+          minimum: 0
+          exclusiveMaximum: true
+        idInMarketplace:
+          type: string
+        oldStatus:
+          type: string
+          enum:
+            - PENDING
+            - PAID
+            - INVOICED
+            - SHIPPED
+            - DELIVERED
+            - CANCELED
+        currentStatus:
+          type: string
+          enum:
+            - PENDING
+            - PAID
+            - INVOICED
+            - SHIPPED
+            - DELIVERED
+            - CANCELED
