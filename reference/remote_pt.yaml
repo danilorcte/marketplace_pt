@@ -4,21 +4,7 @@ info:
   version: '1.0'
 servers:
   - url: 'http://localhost:3000'
-tags:
-  - name: AAnúncio
-    description: Account operations
-  - name: Configuração
-    description: Billing operations
-  - name: Pedidos
-    description: User operations
-  - name: Vínculo de Categoria
-    description: Meeting operations
-  - name: Vínculo de Marca
-    description: Webinar operations
-  - name: Vínculo de SKU
-    description: Group operations
-  - name: Vínculo de Variação
-    description: IM Group operations
+
     
 paths:
   /saveAccount:
