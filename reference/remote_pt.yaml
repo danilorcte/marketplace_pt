@@ -5,7 +5,7 @@ info:
 servers:
   - url: 'http://localhost:3000'
 tags:
-  - name: Anúncio
+  - name: AAnúncio
     description: Account operations
   - name: Configuração
     description: Billing operations
