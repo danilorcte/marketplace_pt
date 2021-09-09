@@ -4,242 +4,7 @@ info:
   version: '1.0'
 servers:
   - url: 'http://localhost:3000'
-
-    
 paths:
-  /saveAccount:
-    post:
-      summary: Salvar configurações de conta no marketplace
-      operationId: post-saveAccount
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: boolean
-              examples:
-                Example:
-                  value: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ModuleConfiguration'
-            examples: {}
-        description: Teste de Integração
-      tags:
-        - Configuração
-      description: Salvar configurações de conta no marketplace
-  /testIntegration:
-    post:
-      summary: Teste de Integração com marketplace
-      operationId: post-testIntegration
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: boolean
-              examples:
-                Example:
-                  value: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ModuleConfiguration'
-            examples: {}
-        description: Teste de Integração
-      tags:
-        - Configuração
-      description: Teste de Integração com marketplace
-  '/product/{idProduct}':
-    get:
-      summary: Consulta produto no marketplace
-      tags:
-        - Vínculo de SKU
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SkuMarketplace'
-      operationId: get-product
-      description: Consulta produto no marketplace
-      parameters:
-        - schema:
-            type: integer
-            format: int64
-            minimum: 0
-            exclusiveMaximum: true
-          in: query
-          name: idAccount
-          description: Código da conta no marketplace
-        - schema:
-            type: string
-            enum:
-              - COST
-              - SKU_MARKETPLACE
-              - SKU
-          in: query
-          name: definitionScope
-          description: Tipo da regra de preço do produto
-    parameters:
-      - schema:
-          type: string
-        name: idProduct
-        in: path
-        required: true
-        description: Código do produto
-  /brands:
-    get:
-      summary: Consulta marcas no marketplace
-      tags:
-        - Vínculo de Marca
-      operationId: get-brands
-      description: Consulta marcas no marketplace
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Brand'
-              examples:
-                Example:
-                  value:
-                    - codeInMarketplace: string
-                      name: string
-  /categories:
-    get:
-      summary: Consulta categoria no marketplace
-      tags:
-        - Vínculo de Categoria
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Category'
-              examples:
-                Example:
-                  value:
-                    - codeInMarketplace: string
-                      name: string
-      operationId: get-categories
-      description: Consulta categoria no marketplace
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: accountIdentifier
-          description: Identificação da conta
-  '/categories/bind/{idAnymarketCategory}':
-    parameters:
-      - schema:
-          type: string
-        name: idAnymarketCategory
-        in: path
-        required: true
-        description: Código de categoria no Anymarket
-    get:
-      summary: Consulta vínculo de categoria no marketplace
-      tags:
-        - Vínculo de Categoria
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CategoryAssociation'
-              examples:
-                Example:
-                  value:
-                    idCategoryMarketplace: string
-                    idCategoryAnymarket: 0
-                    accountIdentifier: string
-      operationId: get-categories-bind-id
-      description: Consulta vínculo de categoria no marketplace
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: accountIdentifier
-          description: Identificação da conta
-  '/categories/attributes/{idAnymarketCategory}':
-    parameters:
-      - schema:
-          type: string
-        name: idAnymarketCategory
-        in: path
-        required: true
-        description: Código de categoria no Anymarket
-    get:
-      summary: Consulta dos atributos vinculados à categoria
-      tags:
-        - Vínculo de Categoria
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/CategoryAttribute'
-              examples:
-                Example:
-                  value:
-                    - codeInMarketPlace: string
-                      description: string
-                      required: true
-                      recommended: true
-                      type: STRING_INPUT
-                      values:
-                        - codeInMarketplace: string
-                          name: string
-                      dataDefinitions:
-                        - codeInMarketPlace: string
-                          name: string
-                          dataDefinitionType: STRING_INPUT
-                          values:
-                            - codeInMarketplace: string
-                              name: string
-      operationId: get-categories-attributes-id
-      description: Consulta dos atributos vinculados à categoria
-  /variations/types:
-    get:
-      summary: Consulta os tipos e valores possíveis para o seller realizar o de/para.
-      tags:
-        - Vínculo de Variação
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/VariationType'
-              examples:
-                Example:
-                  value:
-                    - codeInMarketplace: string
-                      name: string
-                      values:
-                        - codeInMarketplace: string
-                          name: string
-      operationId: get-variations-types
-      description: Consulta os tipos e valores possíveis para o seller realizar o de/para.
   /canActive:
     post:
       summary: Validação das informações do Sku
@@ -654,7 +419,55 @@ paths:
                   onlySyncStatus: true
         description: ''
       tags:
-        - Anúncio
+        - Anúncio  
+  /saveAccount:
+    post:
+      summary: Salvar configurações de conta no marketplace
+      operationId: post-saveAccount
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+              examples:
+                Example:
+                  value: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModuleConfiguration'
+            examples: {}
+        description: Teste de Integração
+      tags:
+        - Configuração
+      description: Salvar configurações de conta no marketplace
+  /testIntegration:
+    post:
+      summary: Teste de Integração com marketplace
+      operationId: post-testIntegration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+              examples:
+                Example:
+                  value: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModuleConfiguration'
+            examples: {}
+        description: Teste de Integração
+      tags:
+        - Configuração
+      description: Teste de Integração com marketplace
   '/order/force/{idInMarketPlace}':
     parameters:
       - schema:
@@ -762,7 +575,192 @@ paths:
           required: true
       tags:
         - Pedidos
-      description: 'A chamada de consulta do pedido consiste em obter os dados mais atualizados do pedido. A notificação será encaminhada quando o ANYMARKET for retentar algum pedido criticado ou caso o seller realize o force de forma manual. '
+      description: 'A chamada de consulta do pedido consiste em obter os dados mais atualizados do pedido. A notificação será encaminhada quando o ANYMARKET for retentar algum pedido criticado ou caso o seller realize o force de forma manual. '      
+  /categories:
+    get:
+      summary: Consulta categoria no marketplace
+      tags:
+        - Vínculo de Categoria
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+              examples:
+                Example:
+                  value:
+                    - codeInMarketplace: string
+                      name: string
+      operationId: get-categories
+      description: Consulta categoria no marketplace
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: accountIdentifier
+          description: Identificação da conta
+  '/categories/bind/{idAnymarketCategory}':
+    parameters:
+      - schema:
+          type: string
+        name: idAnymarketCategory
+        in: path
+        required: true
+        description: Código de categoria no Anymarket
+    get:
+      summary: Consulta vínculo de categoria no marketplace
+      tags:
+        - Vínculo de Categoria
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryAssociation'
+              examples:
+                Example:
+                  value:
+                    idCategoryMarketplace: string
+                    idCategoryAnymarket: 0
+                    accountIdentifier: string
+      operationId: get-categories-bind-id
+      description: Consulta vínculo de categoria no marketplace
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: accountIdentifier
+          description: Identificação da conta
+  '/categories/attributes/{idAnymarketCategory}':
+    parameters:
+      - schema:
+          type: string
+        name: idAnymarketCategory
+        in: path
+        required: true
+        description: Código de categoria no Anymarket
+    get:
+      summary: Consulta dos atributos vinculados à categoria
+      tags:
+        - Vínculo de Categoria
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoryAttribute'
+              examples:
+                Example:
+                  value:
+                    - codeInMarketPlace: string
+                      description: string
+                      required: true
+                      recommended: true
+                      type: STRING_INPUT
+                      values:
+                        - codeInMarketplace: string
+                          name: string
+                      dataDefinitions:
+                        - codeInMarketPlace: string
+                          name: string
+                          dataDefinitionType: STRING_INPUT
+                          values:
+                            - codeInMarketplace: string
+                              name: string
+      operationId: get-categories-attributes-id
+      description: Consulta dos atributos vinculados à categoria
+  /brands:
+    get:
+      summary: Consulta marcas no marketplace
+      tags:
+        - Vínculo de Marca
+      operationId: get-brands
+      description: Consulta marcas no marketplace
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Brand'
+              examples:
+                Example:
+                  value:
+                    - codeInMarketplace: string
+                      name: string           
+  '/product/{idProduct}':
+    get:
+      summary: Consulta produto no marketplace
+      tags:
+        - Vínculo de SKU
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkuMarketplace'
+      operationId: get-product
+      description: Consulta produto no marketplace
+      parameters:
+        - schema:
+            type: integer
+            format: int64
+            minimum: 0
+            exclusiveMaximum: true
+          in: query
+          name: idAccount
+          description: Código da conta no marketplace
+        - schema:
+            type: string
+            enum:
+              - COST
+              - SKU_MARKETPLACE
+              - SKU
+          in: query
+          name: definitionScope
+          description: Tipo da regra de preço do produto
+    parameters:
+      - schema:
+          type: string
+        name: idProduct
+        in: path
+        required: true
+        description: Código do produto 
+  /variations/types:
+    get:
+      summary: Consulta os tipos e valores possíveis para o seller realizar o de/para.
+      tags:
+        - Vínculo de Variação
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VariationType'
+              examples:
+                Example:
+                  value:
+                    - codeInMarketplace: string
+                      name: string
+                      values:
+                        - codeInMarketplace: string
+                          name: string
+      operationId: get-variations-types
+      description: Consulta os tipos e valores possíveis para o seller realizar o de/para.
 components:
   schemas:
     Attributes:
