@@ -150,34 +150,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrderPost'
-    put:
-      summary: ''
-      operationId: put-orders
-      responses:
-        '200':
-          description: OK
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: string
-                  format: uuid
-                address:
-                  type: object
-                  properties:
-                    street:
-                      type: string
-                    city:
-                      type: string
-                profileImage:
-                  type: string
-                  format: binary
-                profileImage - copy:
-                  type: string
-                  format: byte
+      tags:
+        - Pedidos
 components:
   schemas:
     '400':
