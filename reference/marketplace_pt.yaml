@@ -152,6 +152,107 @@ paths:
               $ref: '#/components/schemas/OrderPost'
       tags:
         - Pedidos
+  '/orders/{id}/markAsPaid':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: Your GET endpoint
+      tags:
+        - Pedidos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      operationId: put-orders-id-markAsPaid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date
+  '/orders/{id}/markAsShipped':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: Your put endpoint
+      tags:
+        - Pedidos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      operationId: put-id-markAsShipped
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./remote_pt.yaml#/components/schemas/ApiTracking
+  '/orders/{id}/markAsDelivered':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: Your put endpoint
+      tags:
+        - Pedidos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      operationId: put-orders-id-markAsDelivered
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./remote_pt.yaml#/components/schemas/ApiTracking
+  '/orders/{id}/markAsInvoiced':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: Your put endpoint
+      tags:
+        - Pedidos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      operationId: put-orders-id-markAsInvoiced
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderStatusUpdate'
+      description: ''
 components:
   schemas:
     '400':
@@ -820,6 +921,18 @@ components:
             documentPaymentInstitution:
               type: string
         - $ref: '#/components/schemas/OrderPost'
+    OrderStatusUpdate:
+      title: OrderStatusUpdate
+      type: object
+      properties:
+        success:
+          type: boolean
+        errorMessage:
+          type: string
+        orderMessage:
+          $ref: ./remote_pt.yaml#/components/schemas/SkuMarketPlaceMessage
+        marketPlaceStatus:
+          type: string
   securitySchemes:
     x-anymarket-token:
       name: x-anymarket-token
