@@ -5,20 +5,21 @@ info:
 servers:
   - url: 'http://localhost:3000'
 tags:
-  - description: Account operations
-    name: Anúncio
-  - description: Billing operations
-    name: Configuração
-  - description: User operations
-    name: Pedidos
-  - description: Meeting operations
-    name: Vínculo de Categoria
-  - description: Webinar operations
-    name: Vínculo de Marca
-  - description: Group operations
-    name: Vínculo de SKU
-  - description: IM Group operations
-    name: Vínculo de Variação
+  - name: Anúncio
+    description: Account operations
+  - name: Configuração
+    description: Billing operations
+  - name: Pedidos
+    description: User operations
+  - name: Vínculo de Categoria
+    description: Meeting operations
+  - name: Vínculo de Marca
+    description: Webinar operations
+  - name: Vínculo de SKU
+    description: Group operations
+  - name: Vínculo de Variação
+    description: IM Group operations
+    
 paths:
   /saveAccount:
     post:
