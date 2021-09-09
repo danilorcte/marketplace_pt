@@ -25,149 +25,9 @@ servers:
   - url: 'http://sandbox-api.anymarket.com.br/marketplace/api'
     description: Sandbox
 paths:
-  /brands:
+  /configuration:
     get:
-      summary: Consulta todas as marcas
-      operationId: get-brands
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Page_Brand'
-              examples:
-                example-1:
-                  $ref: '#/components/examples/brands_200'
-          headers: {}
-      description: Consulta todas as marcas
-      parameters:
-        - $ref: '#/components/parameters/offset'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/sort'
-      tags:
-        - Marcas
-    post:
-      summary: Cria uma marca com os dados informados
-      operationId: post-brands
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Brand'
-        '422':
-          description: Unprocessable Entity (WebDAV)
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/422'
-      description: Cria uma marca com os dados informados
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BrandAdd'
-        description: ''
-      tags:
-        - Marcas
-  '/brands/{id}':
-    get:
-      summary: Consulta marca
-      operationId: get-brands-id
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Brand'
-              examples:
-                example-1:
-                  $ref: '#/components/examples/brands_200'
-          headers: {}
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/404'
-      description: Consulta os detalhes de uma marca
-      parameters: []
-      tags:
-        - Marcas
-    parameters:
-      - schema:
-          type: integer
-          format: int64
-          minimum: 1
-          exclusiveMaximum: true
-        name: id
-        in: path
-        required: true
-        description: Id da marca gerado pelo ANYMARKET
-    delete:
-      summary: Exclui uma marca
-      operationId: delete-brands-id
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Brand'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/404'
-      description: Exclui uma marca
-      tags:
-        - Marcas
-    put:
-      summary: Atualiza os dados de uma marca
-      operationId: put-brands-id
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Brand'
-              examples: {}
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/404'
-        '422':
-          description: Unprocessable Entity (WebDAV)
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/422'
-      description: Atualiza os dados de uma marca
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BrandAdd'
-      tags:
-        - Marcas
-  /testIntegration:
-    post:
-      summary: ''
-      operationId: post-testintegration
-      responses:
-        '200':
-          description: OK
-    parameters: []
-  /api/configuration:
-    get:
-      summary: Your GET endpoint
+      summary: Lista configurações
       tags:
         - Configuração
       responses:
@@ -180,6 +40,77 @@ paths:
                 items:
                   $ref: ./remote_pt.yaml#/components/schemas/ConfigurationDTO
       operationId: get-api-configuration
+      description: Lista configurações
+    parameters: []
+  '/configuration/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Código de configuração gerado pelo Anymarket
+    get:
+      summary: Lista configurações com id específico
+      tags:
+        - Configuração
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./remote_pt.yaml#/components/schemas/ConfigurationDTO
+      operationId: get-api-configuration-id
+  '/skumarketplace/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Anúncios
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkuMarketplace'
+      operationId: get-skumarketplace-id
+    put:
+      summary: ''
+      operationId: put-skumarketplace-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      idSku:
+                        type: integer
+                        format: int64
+                        minimum: 0
+                        exclusiveMaximum: true
+                  - $ref: ./remote_pt.yaml#/components/schemas/SkuMarketplace
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SkuMarketPlacePut'
+      description: ''
 components:
   schemas:
     '404':
@@ -187,8 +118,9 @@ components:
       type: object
       x-examples:
         example-1:
-          code: '422'
-          message: O nome reduzido deve ter no máximo 30 caracteres.
+          value:
+            code: '404'
+            message: Recurso com o id 'xxx' não encontrado.
       properties:
         code:
           type: string
@@ -201,14 +133,15 @@ components:
           message: Recurso com o id 'xxx' não encontrado.
       x-tags:
         - erro
-      title: 422 - Error
+      title: 404 - Error
     '422':
       description: ''
       type: object
       x-examples:
         example-1:
-          code: '422'
-          message: O nome reduzido deve ter no máximo 30 caracteres.
+          value:
+            code: '422'
+            message: O campo informado esta fora das especificações.
       properties:
         code:
           type: string
@@ -222,134 +155,345 @@ components:
       x-tags:
         - erro
       title: 422 - Error
-    Brand:
-      title: Brand
+    SkuMarketplace:
+      description: ''
+      examples:
+        - id: 0
+          idInMarketplace: string
+          marketPlace: B2W
+          index: 0
+          publicationStatus: string
+          marketplaceStatus: string
+          transmissionStatus: string
+          errorMsg: string
+          skuMarketPlaceMessage:
+            message: string
+            key: string
+            parameters:
+              parameter1: value1
+              parameter2: value2
+          price: 0
+          priceFactor: 1
+          discountPrice: 0
+          skuInMarketplace: string
+          marketplaceItemCode: string
+          fields:
+            title: string
+            template: string
+            priceFactor: string
+            DISCOUNT_TYPE: string
+            DISCOUNT_VALUE: string
+            HAS_DISCOUNT: string
+            CONCAT_ATTRIBUTES: string
+            delivery_type: string
+            SHIPMENT: string
+            crossDocking: string
+            CUSTOM_DESCRIPTION: string
+            EAN: string
+            MANUFACTURING_TIME: string
+            VALUE: string
+            PERCENT: string
+            bronze_price: string
+            bronze_price_factor: string
+            buying_mode: string
+            category_with_variation: string
+            condition: string
+            free_price: string
+            free_price_factor: string
+            free_shipping: string
+            gold_premium_price: string
+            gold_premium_price_factor: string
+            gold_price: string
+            gold_price_factor: string
+            gold_pro_price: string
+            gold_pro_price_factor: string
+            gold_special_price: string
+            gold_special_price_factor: string
+            listing_type_id: string
+            shipping_local_pick_up: string
+            shipping_mode: string
+            silver_price: string
+            silver_price_factor: string
+          availableStock:
+            amount: 0
+            availableAmount: 0
+            cost: 0
+            totalReservation: 0
+            physicalAmount: 0
+            reservedPending: 0
+            reservedPaid: 0
+            totalInInvoicedStatus: 0
+            stockLocal: string
+            additionalTime: 0
+          attributes:
+            cor: azul
+            tamanho: grande
+            material: inox
+          idAccount: 0
+          accountName: string
+          origin: BIND
+          isCatalog: true
+          permalink: string
+          title: string
+          ean: string
+      title: SkuMarketplace
+      x-examples:
+        example-1:
+          value:
+            id: -9223372036854776000
+            idInMarketplace: string
+            marketPlace: string
+            index: 0
+            publicationStatus: string
+            marketplaceStatus: string
+            transmissionStatus: string
+            errorMsg: string
+            skuMarketPlaceMessage:
+              message: string
+              key: string
+              parameters:
+                parameter1: value1
+                parameter2: value2
+            price: 0
+            priceFactor: 0
+            discountPrice: 0
+            skuInMarketplace: string
+            marketplaceItemCode: string
+            fields:
+              title: string
+              template: string
+              priceFactor: string
+              DISCOUNT_TYPE: string
+              DISCOUNT_VALUE: string
+              HAS_DISCOUNT: string
+              CONCAT_ATTRIBUTES: string
+              delivery_type: string
+              SHIPMENT: string
+              crossDocking: string
+              CUSTOM_DESCRIPTION: string
+              EAN: string
+              MANUFACTURING_TIME: string
+              VALUE: string
+              PERCENT: string
+              bronze_price: string
+              bronze_price_factor: string
+              buying_mode: string
+              category_with_variation: string
+              condition: string
+              free_price: string
+              free_price_factor: string
+              free_shipping: string
+              gold_premium_price: string
+              gold_premium_price_factor: string
+              gold_price: string
+              gold_price_factor: string
+              gold_pro_price: string
+              gold_pro_price_factor: string
+              gold_special_price: string
+              gold_special_price_factor: string
+              listing_type_id: string
+              shipping_local_pick_up: string
+              shipping_mode: string
+              silver_price: string
+              silver_price_factor: string
+            availableStock:
+              amount: 0
+              availableAmount: 0
+              cost: 0
+              totalReservation: 0
+              physicalAmount: 0
+              reservedPending: 0
+              reservedPaid: 0
+              totalInInvoicedStatus: 0
+              stockLocal: string
+              additionalTime: 0
+            attributes:
+              cor: azul
+              tamanho: grande
+              material: inox
+            idAccount: 0
+            accountName: string
+            origin: BIND
+            isCatalog: true
+            permalink: string
+            title: string
+            ean: string
+            status: string
+            idInSite: string
+            endDate: '2019-08-24T14:15:22Z'
+            stock:
+              amount: 0
+              availableAmount: 0
+              cost: 0
+              totalReservation: 0
+              physicalAmount: 0
+              reservedPending: 0
+              reservedPaid: 0
+              totalInInvoicedStatus: 0
+              stockLocal: string
+              additionalTime: 0
+            sku:
+              id: -9223372036854776000
+              partnerId: string
+              amount: 0
+              ean: string
+              title: string
+              price: 0
+              sellPrice: 0
+              additionalTime: 0
+              variations:
+                - id: 0
+                  idInMarketplace: string
+                  description: string
+                  type:
+                    id: 0
+                    idInMarketplace: string
+                    name: string
+                    partnerId: string
+                    visualVariation: true
+                  partnerId: string
+              product:
+                id: 0
+                title: string
+                description: string
+                model: string
+                nbm:
+                  id: string
+                  description: string
+                videoUrl: string
+                definitionPriceScope: COST
+                characteristics:
+                  - index: 0
+                    name: string
+                    value: string
+                origin:
+                  id: 0
+                  name: NACIONAL
+                category:
+                  id: 0
+                  idInMarketplace: string
+                  name: string
+                  path: string
+                height: 0
+                length: 0
+                width: 0
+                weight: 0
+                images:
+                  - id: 0
+                    index: 0
+                    variation: string
+                    thumbnailUrl: string
+                    standardUrl: string
+                    lowResolutionUrl: string
+                    originalImage: string
+                    url: string
+                    statusMessage: string
+                    status: UNPROCESSED
+                    main: true
+                    standardWidth: string
+                    standardHeight: string
+                    originalWidth: string
+                    originalHeight: string
+                brand:
+                  id: 0
+                  idInMarketplace: string
+                  name: string
+                  partnerId: string
+                warrantyTime: 0
+                warrantyText: string
+                priceFactor: 0
+                calculatedPrice: true
+                hasVariations: true
+                gender: MALE
+                allowAutomaticSkuMarketplaceCreation: true
+            mainSkuMarketplace: 0
       allOf:
+        - $ref: '#/components/schemas/SkuMarketPlaceBase'
         - properties:
             id:
               type: integer
+              description: Id do anúncio no ANYMARKET
+              format: int64
+            stock:
+              $ref: ./remote_pt.yaml#/components/schemas/Stock
+            attributes:
+              $ref: ./remote_pt.yaml#/components/schemas/Attributes
+            sku:
+              $ref: ./remote_pt.yaml#/components/schemas/SKU
+            mainSkuMarketplace:
+              type: integer
+              description: Status da publicação
               format: int64
               minimum: 0
-              description: Id interno
-            name:
-              type: string
-              description: Nome da marca
-              minLength: 1
-              maxLength: 255
-            reducedName:
-              type: string
-              description: Nome reduzido da marca
-              minLength: 0
-              maxLength: 30
-            partinerId:
-              type: string
-              minLength: 0
-              maxLength: 255
-              description: Id da marca no parceiro
-      type: object
-      examples:
-        - id: 123456
-          name: Brastemp
-          reducedName: brastemp
-          partinerId: marca-001-brastemp
-      description: Model return brand
-      x-tags:
-        - Marcas
-    BrandAdd:
-      title: BrandAdd
-      allOf:
-        - properties:
-            name:
-              type: string
-              description: Nome da marca
-              minLength: 1
-              maxLength: 255
-            reducedName:
-              type: string
-              description: Nome reduzido da marca
-              minLength: 0
-              maxLength: 30
-            partinerId:
-              type: string
-              minLength: 0
-              maxLength: 255
-              description: Id da marca no parceiro
-          required:
-            - name
-      description: Model brand add
-      type: object
-      x-tags:
-        - Marcas
-    Page_Brand:
-      title: Page_Brand
-      allOf:
-        - properties:
-            links:
-              type: array
-              description: Referências de paginação
-              uniqueItems: false
-              minItems: 1
-              maxItems: 1
-              items:
-                $ref: '#/components/schemas/PageLinks'
-            content:
-              type: array
-              description: Lista de marcas
-              items:
-                $ref: '#/components/schemas/Brand'
-            page:
-              $ref: '#/components/schemas/PageMetadata'
-      type: object
-      x-tags:
-        - Marcas
-      description: ''
-    PageLinks:
-      title: PageLinks
-      type: object
-      x-tags:
-        - page
-        - pageable
-      properties:
-        rel:
-          type: string
-          description: Relacionamento do hyperlink
-          example: next
-        href:
-          type: string
-          description: Url de definição do recurso
-          example: 'https://.../v2/component?limit=5&offset=5'
-          format: uri
-    PageMetadata:
-      title: PageMetadata
+              exclusiveMaximum: true
+      required:
+        - id
+        - attributes
+        - sku
+        - mainSkuMarketplace
+    SkuMarketPlacePut:
+      title: SkuMarketPlacePut
       type: object
       properties:
-        size:
-          type: integer
-          description: Tamanho da página
-          format: int64
-          minimum: 5
-          readOnly: true
-        totalElements:
-          type: integer
-          description: Total de elementos existentes
-          format: int64
-          minimum: 0
-          readOnly: true
-        totalPages:
-          type: integer
-          description: Total de páginas disponíveis
-          format: int64
-          minimum: 1
-          readOnly: true
-        number:
-          type: integer
-          description: Número da página atual
-          format: int64
-          minimum: 1
-          readOnly: true
-      x-tags:
-        - page
-        - pageable
+        idInMarketplace:
+          type: string
+        status:
+          type: string
+        marketplaceStatus:
+          type: string
+        transmissionStatus:
+          type: string
+        errorMsg:
+          type: string
+        skuMarketPlaceMessage:
+          $ref: ./remote_pt.yaml#/components/schemas/SkuMarketPlaceMessage
+        idInSite:
+          type: string
+        fields:
+          $ref: ./remote_pt.yaml#/components/schemas/SkuMarketplaceField
+        isCatalog:
+          type: boolean
+        permalink:
+          type: string
+        endDate:
+          type: string
+          format: date-time
+    SkuMarketPlaceBase:
+      title: SkuMarketPlaceBase
+      x-examples: {}
+      allOf:
+        - $ref: '#/components/schemas/SkuMarketPlacePut'
+        - properties:
+            title:
+              type: string
+            ean:
+              type: string
+            skuInMarketplace:
+              type: string
+            priceFactor:
+              type: number
+              format: double
+              minimum: 0
+              exclusiveMaximum: true
+            price:
+              type: number
+              format: double
+              minimum: 0
+              exclusiveMaximum: true
+            discountPrice:
+              type: number
+              format: double
+              minimum: 0
+              exclusiveMaximum: true
+            idAccount:
+              type: integer
+              format: int64
+              minimum: 0
+              exclusiveMaximum: true
+            accountName:
+              type: string
+            marketPlace:
+              type: string
   securitySchemes:
     x-anymarket-token:
       name: x-anymarket-token
@@ -403,4 +547,4 @@ components:
           totalPages: 0
           number: 0
 security:
-  - gumgaToken: []
+  - x-anymarket-token: []

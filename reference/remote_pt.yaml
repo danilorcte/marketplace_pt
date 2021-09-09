@@ -1481,6 +1481,8 @@ components:
           permalink: string
           title: string
           ean: string
+      title: SkuMarketplace
+      x-examples: {}
       properties:
         id:
           type: integer
@@ -1574,7 +1576,6 @@ components:
         - skuInMarketplace
         - marketplaceItemCode
         - fields
-      title: SkuMarketplace
     SkuMarketPlaceMessage:
       title: SkuMarketPlaceMessage
       type: object
