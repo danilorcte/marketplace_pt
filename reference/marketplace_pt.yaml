@@ -115,7 +115,7 @@ paths:
         - Anúncios
   /orders:
     post:
-      summary: ''
+      summary: Criando um pedido no ANYMARKET
       operationId: post-orders
       responses:
         '200':
@@ -152,6 +152,41 @@ paths:
               $ref: '#/components/schemas/OrderPost'
       tags:
         - Pedidos
+    get:
+      summary: Order All
+      operationId: get-orders
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page_Order'
+      tags:
+        - Pedidos
+      description: Obtém todos os pedidos do marketplace na base do cliente.
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/sort'
+        - schema:
+            type: string
+            enum:
+              - PENDING
+              - PAID
+              - INVOICED
+              - SHIPPED
+              - DELIVERED
+              - CANCELED
+          in: query
+          name: status
+          description: Status do pedido
+        - schema:
+            type: string
+            format: date-time
+          in: query
+          name: createdAfter
+          description: Data da criação do pedido
   '/orders/{id}/markAsPaid':
     parameters:
       - schema:
@@ -160,7 +195,7 @@ paths:
         in: path
         required: true
     put:
-      summary: Your GET endpoint
+      summary: Marcar pedido como Pago
       tags:
         - Pedidos
       responses:
@@ -180,6 +215,7 @@ paths:
                 date:
                   type: string
                   format: date
+      description: esse request informando a data de pagamento. Feito isso o ANYMARKET ira atualizar o status do pedido para PAGO.
   '/orders/{id}/markAsShipped':
     parameters:
       - schema:
@@ -188,7 +224,7 @@ paths:
         in: path
         required: true
     put:
-      summary: Your put endpoint
+      summary: Marcar pedido como Enviado
       tags:
         - Pedidos
       responses:
@@ -204,6 +240,7 @@ paths:
           application/json:
             schema:
               $ref: ./remote_pt.yaml#/components/schemas/ApiTracking
+      description: Marcar pedido como Enviado
   '/orders/{id}/markAsDelivered':
     parameters:
       - schema:
@@ -212,7 +249,7 @@ paths:
         in: path
         required: true
     put:
-      summary: Your put endpoint
+      summary: Marcar pedido como Concluído
       tags:
         - Pedidos
       responses:
@@ -228,6 +265,7 @@ paths:
           application/json:
             schema:
               $ref: ./remote_pt.yaml#/components/schemas/ApiTracking
+      description: Marcar pedido como Concluído
   '/orders/{id}/markAsInvoiced':
     parameters:
       - schema:
@@ -236,7 +274,7 @@ paths:
         in: path
         required: true
     put:
-      summary: Your put endpoint
+      summary: Marcar pedido como Faturado
       tags:
         - Pedidos
       responses:
@@ -252,7 +290,32 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrderStatusUpdate'
-      description: ''
+      description: Marcar pedido como Concluído
+  '/orders/{id}/transmissionStatus':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: Alterar status | Confirmação de consumo de atualização
+      tags:
+        - Pedidos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      operationId: put-orders-id-transmissionStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderStatusUpdate'
+      description: 'Quando o marketplace receber a notificação de atualização de um pedido, seja ele mudando para FATURADO, ENVIADO, CONCLUIDO ou CANCELADO no endpoint /updateOrderStatusInMarketPlace. Necessariamente o marketplace deve realizar o GET para consultar os dados do pedido e na sequencia utilizar do endpoint citado a cima, removendo a sinalização de sincronização e identificando qual o status do pedido no marketplace. Lembrando que caso não processe, o erro deve ser informado também nesse endpoint.'
 components:
   schemas:
     '400':
@@ -933,6 +996,76 @@ components:
           $ref: ./remote_pt.yaml#/components/schemas/SkuMarketPlaceMessage
         marketPlaceStatus:
           type: string
+    Page_Order:
+      title: Page_Brand
+      allOf:
+        - properties:
+            links:
+              type: array
+              description: Referências de paginação
+              uniqueItems: false
+              minItems: 1
+              maxItems: 1
+              items:
+                $ref: '#/components/schemas/PageLinks'
+            content:
+              type: array
+              description: Lista de marcas
+              items:
+                $ref: '#/components/schemas/Order'
+            page:
+              $ref: '#/components/schemas/PageMetadata'
+      x-tags:
+        - Marcas
+      description: ''
+      type: object
+    PageLinks:
+      title: PageLinks
+      type: object
+      x-tags:
+        - page
+        - pageable
+      properties:
+        rel:
+          type: string
+          description: Relacionamento do hyperlink
+          example: next
+        href:
+          type: string
+          description: Url de definição do recurso
+          example: 'https://.../v2/component?limit=5&offset=5'
+          format: uri
+    PageMetadata:
+      title: PageMetadata
+      type: object
+      properties:
+        size:
+          type: integer
+          description: Tamanho da página
+          format: int64
+          minimum: 5
+          readOnly: true
+        totalElements:
+          type: integer
+          description: Total de elementos existentes
+          format: int64
+          minimum: 0
+          readOnly: true
+        totalPages:
+          type: integer
+          description: Total de páginas disponíveis
+          format: int64
+          minimum: 1
+          readOnly: true
+        number:
+          type: integer
+          description: Número da página atual
+          format: int64
+          minimum: 1
+          readOnly: true
+      x-tags:
+        - page
+        - pageable
   securitySchemes:
     x-anymarket-token:
       name: x-anymarket-token
