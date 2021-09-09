@@ -12,7 +12,7 @@ info:
   x-preferred: true
   x-providerName: REMOTE MARKETPLACE
 servers:
-  - url: 'ENDEREÇO_MARKETPLACE_API'
+  - url: 'http://endereco.marketplace.com.br'
 paths:
   /canActive:
     post:
