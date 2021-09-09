@@ -10,8 +10,20 @@ info:
     url: 'https://anymarket.com.br/wp-content/uploads/2018/07/icon-anymarket-300x300.png'
   x-preferred: true
   x-providerName: REMOTE MARKETPLACE
+  description: |-
+    Esta API deve ser implementada pelo marketplace. A API ANYMARKET funcionará como um sistema de notificações aonde já temos os remotes prontos que serão disparados na URL base da API que vocês nos informaram no preenchimento do documento de liberação.
+
+    Abaixo contem os remotes de cadas uma das aplicações que o marketplace deve realizar com base na regra de negocio previamente formalizada na PGP.
+
+    ### Identificando um seller
+
+    As chamadas abaixo serão disparadas para obter algumas informações referente a identificação do seller. As mesmas serão utilizadas como identificador em alguns momento como:
+    Envio de anúncios para o marketplace;
+    Atualizações dos anúncios;
+    Ativações de algumas funcionalidades internas que o seller pode utilizar no ANYMARKET como criação de campanhas e entre outros. 
 servers:
   - url: 'http://endereco.marketplace.com.br'
+    description: Servidor do Marketplace
 paths:
   /canActive:
     post:
@@ -596,11 +608,10 @@ paths:
         Assim que o marketplace receber a chamada o mesmo deve consultar o pedido em questão na nossa API afim de coletar os dados mais atualizados do pedido e assim confirmar que a atualização ocorreu sem problemas.
 
         <!-- theme: warning -->
-
         > #### Ponto de Atenção!
         >
         > O marketplace deve estar preparado quando ocorrer um "salto de status", ou seja, quando o seller realizar uma mudança de status de "PAGO" direto para "ENVIADO" ou "CONCLUÍDO".
-        É importante que o marketplace tenha esse cenário contemplado para evitar problemas futuros de integração. 
+        >É importante que o marketplace tenha esse cenário contemplado para evitar problemas futuros de integração. 
       requestBody:
         content:
           application/json:
@@ -608,7 +619,7 @@ paths:
               $ref: '#/components/schemas/RemoteApiUpdateOrderStatus'
         description: ''
       tags:
-        - Pedidos      
+        - Pedidos
   /categories:
     get:
       summary: Consulta categoria no marketplace
@@ -2664,3 +2675,11 @@ components:
             - SHIPPED
             - DELIVERED
             - CANCELED
+  securitySchemes:
+    x-anymarket-token:
+      name: x-anymarket-token
+      type: apiKey
+      in: header
+      description: Token de segurança fornecido pela Anymarket
+security:
+  - x-anymarket-token: []

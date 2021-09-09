@@ -2,9 +2,29 @@ openapi: 3.0.0
 info:
   title: API MARKETPLACE
   version: '1.0'
-  description: ''
+  contact:
+    email: anymarketdev@db1.com.br
+    name: AnyMarket Developers
+    url: 'http://developers.anymarket.com.br/'
+  x-logo:
+    url: 'https://anymarket.com.br/wp-content/uploads/2018/07/icon-anymarket-300x300.png'
+  x-preferred: true
+  x-providerName: API MARKETPLACE
+  description: |+
+    Nesse conjunto de chamadas irá conter as chamadas necessárias que o marketplace precisa realizar na camada ANYMARKET afim de obter dados como:
+
+    - Informações sobre produto;
+    - Informação de atualização de dados das transmissões;
+    - Atualizar status de transmissões;
+    - Inserir pedidos;
+    - Informação de dados do pedido;
+    - Atualizar informações de pedidos;
+    - Cotação de frete;
+    - Monitoramento;
+
 servers:
   - url: 'http://sandbox-api.anymarket.com.br/marketplace/api'
+    description: Sandbox
 paths:
   /brands:
     get:
