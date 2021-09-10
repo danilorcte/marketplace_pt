@@ -64,6 +64,11 @@
       "type": "item",
       "title": "Exemplo de tags",
       "uri": "docs/exemplos.md"
+    },
+    {
+      "type": "item",
+      "title": "Importando Collection",
+      "uri": "docs/ImportCollection.md"
     }
   ]
 }
