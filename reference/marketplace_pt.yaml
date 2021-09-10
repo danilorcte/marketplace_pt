@@ -113,6 +113,31 @@ paths:
               schema:
                 $ref: ./remote_pt.yaml#/components/schemas/ConfigurationDTO
       operationId: get-api-configuration-id
+  '/orders/{id}/transmissionStatus':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: Alterar status | Confirmação de consumo de atualização
+      tags:
+        - Pedidos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      operationId: put-orders-id-transmissionStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderStatusUpdate'
+      description: 'Quando o marketplace receber a notificação de atualização de um pedido, seja ele mudando para FATURADO, ENVIADO, CONCLUIDO ou CANCELADO no endpoint /updateOrderStatusInMarketPlace. Necessariamente o marketplace deve realizar o GET para consultar os dados do pedido e na sequencia utilizar do endpoint citado a cima, removendo a sinalização de sincronização e identificando qual o status do pedido no marketplace. Lembrando que caso não processe, o erro deve ser informado também nesse endpoint.'      
   /orders:
     post:
       summary: Criando um pedido no ANYMARKET
@@ -151,7 +176,7 @@ paths:
             schema:
               $ref: '#/components/schemas/OrderPost'
       tags:
-        - Pedidos
+        - Pedidos        
     get:
       summary: Listar todas os pedidos
       operationId: get-orders
@@ -187,6 +212,27 @@ paths:
           in: query
           name: createdAfter
           description: Data da criação do pedido
+  '/orders/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Código do pedido gerado pelo Anymarket
+    get:
+      summary: Lista pedido por id
+      tags:
+        - Pedidos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      operationId: get-orders-id
+      description: Lista pedido por id          
   '/orders/{id}/markAsPaid':
     parameters:
       - schema:
@@ -316,52 +362,6 @@ paths:
             schema:
               $ref: '#/components/schemas/OrderStatusUpdate'
       description: Marcar pedido como Faturado
-  '/orders/{id}/transmissionStatus':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-    put:
-      summary: Alterar status | Confirmação de consumo de atualização
-      tags:
-        - Pedidos
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Order'
-      operationId: put-orders-id-transmissionStatus
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrderStatusUpdate'
-      description: 'Quando o marketplace receber a notificação de atualização de um pedido, seja ele mudando para FATURADO, ENVIADO, CONCLUIDO ou CANCELADO no endpoint /updateOrderStatusInMarketPlace. Necessariamente o marketplace deve realizar o GET para consultar os dados do pedido e na sequencia utilizar do endpoint citado a cima, removendo a sinalização de sincronização e identificando qual o status do pedido no marketplace. Lembrando que caso não processe, o erro deve ser informado também nesse endpoint.'
-  '/orders/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-        description: Código do pedido gerado pelo Anymarket
-    get:
-      summary: Lista pedido por id
-      tags:
-        - Pedidos
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Order'
-      operationId: get-orders-id
-      description: Lista pedido por id
 components:
   schemas:
     '400':
