@@ -647,16 +647,16 @@ paths:
           in: query
           name: accountIdentifier
           description: Identificação da conta
-  '/categories/bind/{idAnymarketCategory}':
+  '/categories/{categoryIdInMarketplace}':
     parameters:
       - schema:
           type: string
-        name: idAnymarketCategory
+        name: categoryIdInMarketplace
         in: path
         required: true
-        description: Código de categoria no Anymarket
+        description: Código da categoria no marketplace
     get:
-      summary: Consulta vínculo de categoria no marketplace
+      summary: Consulta detalhes de categoria no marketplace
       tags:
         - Vínculo de Categoria
       responses:
@@ -665,15 +665,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CategoryAssociation'
+                $ref: '#/components/schemas/ApiCategoryDetails'
               examples:
                 Example:
                   value:
                     idCategoryMarketplace: string
                     idCategoryAnymarket: 0
                     accountIdentifier: string
-      operationId: get-categories-bind-id
-      description: Consulta vínculo de categoria no marketplace
+      operationId: get-categories-details-categoryIdInMarketplace
+      description: Consulta detalhes de categoria no marketplace
       parameters:
         - schema:
             type: string
@@ -2683,6 +2683,30 @@ components:
             - SHIPPED
             - DELIVERED
             - CANCELED
+    ApiCategoryDetails:
+      title: ApiCategoryDetails
+      type: object
+      properties:
+        codeInMarketPlace:
+          type: string
+        name:
+          type: string
+        isReceivingItens:
+          type: boolean
+        variationsMandatory:
+          type: boolean
+        canBeSelected:
+          type: boolean
+        path:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        completePath:
+          type: string
   securitySchemes:
     x-anymarket-token:
       name: x-anymarket-token
