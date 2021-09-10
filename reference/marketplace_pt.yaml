@@ -241,6 +241,31 @@ paths:
             schema:
               $ref: ./remote_pt.yaml#/components/schemas/ApiTracking
       description: Marcar pedido como Enviado
+  '/orders/{id}/markAsCanceled':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: Marcar pedido como Cancelado
+      tags:
+        - Pedidos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      operationId: put-id-markAsCanceled
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CanceledStatusDTO'
+      description: Marcar pedido como Cancelado
   '/orders/{id}/markAsDelivered':
     parameters:
       - schema:
@@ -290,7 +315,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrderStatusUpdate'
-      description: Marcar pedido como Concluído
+      description: Marcar pedido como Faturado
   '/orders/{id}/transmissionStatus':
     parameters:
       - schema:
@@ -316,6 +341,27 @@ paths:
             schema:
               $ref: '#/components/schemas/OrderStatusUpdate'
       description: 'Quando o marketplace receber a notificação de atualização de um pedido, seja ele mudando para FATURADO, ENVIADO, CONCLUIDO ou CANCELADO no endpoint /updateOrderStatusInMarketPlace. Necessariamente o marketplace deve realizar o GET para consultar os dados do pedido e na sequencia utilizar do endpoint citado a cima, removendo a sinalização de sincronização e identificando qual o status do pedido no marketplace. Lembrando que caso não processe, o erro deve ser informado também nesse endpoint.'
+  '/orders/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Código do pedido gerado pelo Anymarket
+    get:
+      summary: Lista pedido por id
+      tags:
+        - Pedidos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      operationId: get-orders-id
+      description: Lista pedido por id
 components:
   schemas:
     '400':
@@ -1066,6 +1112,25 @@ components:
       x-tags:
         - page
         - pageable
+    CanceledStatusDTO:
+      title: CanceledStatusDTO
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        code:
+          type: string
+          enum:
+            - WITHOUT_STOCK
+            - SHIPPING_ADDRESS
+            - CUSTOMER_EXCHANGE
+            - GENERAL_ADJUSTMENT
+            - CUSTOMER_RETURN
+            - BUYER_CANCELED
+            - OTHER
+        marketplaceStatus:
+          type: string
   securitySchemes:
     x-anymarket-token:
       name: x-anymarket-token
