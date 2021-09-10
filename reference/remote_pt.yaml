@@ -727,7 +727,14 @@ paths:
       tags:
         - Vínculo de Marca
       operationId: get-brands
-      description: Consulta marcas no marketplace
+      description: |-
+        A vinculação de marcas nada mais é que um DE/PARA que o seller ira realizar na camada ANYMARKET, informando ao marketplace que a marca "X" corresponde a marca "Y" do marketplace em questão. Nesse cenário, o parceiro receberá a chamada GET para que o ANYMARKET possa obter a informação de marca existente no marketplace e posteriormente as chamadas de vinculação e obtenção do vinculo.
+
+        Lembrando que ao realizar o vínculo de marca, o parceiro deve armazenar os IDs da vinculação, para posteriormente, quando for enviado o produto vinculado a marca o mesmo saber qual foi o de/para realizado pelo cliente no processo de vinculação.
+
+        > #### Objetivo
+        > Obter as marcas disponíveis no marketplace para vinculação.
+        O retorno esperado será um array contendo as marcas disponíveis para vinculação. 
       responses:
         '200':
           description: OK
