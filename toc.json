@@ -66,6 +66,10 @@
       "uri": "docs/exemplos.md"
     },
     {
+      "type": "divider",
+      "title": "Ajuda"
+    },        
+    {
       "type": "item",
       "title": "Importando Collection",
       "uri": "docs/ImportCollection.md"
