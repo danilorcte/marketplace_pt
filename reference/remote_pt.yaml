@@ -577,7 +577,7 @@ paths:
         required: true
         description: Código do pedido no marketplace
     get:
-      summary: '/order/{idInMarketPlace}'
+      summary: Lista dados atualizados do Pedido no MarketPlace
       responses:
         '200':
           description: OK
@@ -598,7 +598,7 @@ paths:
       description: 'A chamada de consulta do pedido consiste em obter os dados mais atualizados do pedido. A notificação será encaminhada quando o ANYMARKET for retentar algum pedido criticado ou caso o seller realize o force de forma manual. '
   /order/updateOrderStatusInMarketPlace:
     put:
-      summary: PUT Update Order Status In MarketPlace
+      summary: Atualizar o Status no Marketplace
       operationId: put-order-updateOrderStatusInMarketPlace
       responses:
         '200':
@@ -1056,9 +1056,8 @@ components:
         initialDateForOrderImport:
           type: string
           format: date
-          pattern: '^\d{2}-\d{2}-\d{4}$'
           description: Data inicial para a importação de pedidos
-          example: 25-01-2021
+          example: '2021-12-31'
         updatePriceStockStatus:
           type: boolean
           description: Permite ou não atualizar o preço e status do estoque
@@ -2417,10 +2416,10 @@ components:
           type: string
         date:
           type: string
-          format: date
+          format: date-time
         linkNfe:
           type: string
-          format: date
+          format: date-time
     ApiShipping:
       title: ApiShipping
       type: object
@@ -2453,7 +2452,7 @@ components:
           type: string
         promisedShippingTime:
           type: string
-          format: date
+          format: date-time
         receiverName:
           type: string
       description: ''
@@ -2553,16 +2552,16 @@ components:
           type: string
         date:
           type: string
-          format: date
+          format: date-time
         estimateDate:
           type: string
-          format: date
+          format: date-time
         shippedDate:
           type: string
-          format: date
+          format: date-time
         deliveredDate:
           type: string
-          format: date
+          format: date-time
     ApiPayment:
       title: ApiPayment
       type: object
