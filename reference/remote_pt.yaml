@@ -528,7 +528,7 @@ paths:
         - Pedidos
   /forceImportOrders:
     post:
-      summary: /forceImportOrders
+      summary: Forçar a importação de Pedidos do Marketplace para o Anymarket
       operationId: post-forceImportOrders
       responses:
         '200':
