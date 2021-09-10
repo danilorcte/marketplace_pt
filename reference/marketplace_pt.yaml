@@ -25,6 +25,57 @@ servers:
   - url: 'http://sandbox-api.anymarket.com.br/marketplace/api'
     description: Sandbox
 paths:
+  '/skumarketplace/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Consulta anúncio
+      tags:
+        - Anúncios
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkuMarketplace'
+      operationId: get-skumarketplace-id
+    put:
+      summary: Atualizar dados da transmissão
+      operationId: put-skumarketplace-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      idSku:
+                        type: integer
+                        format: int64
+                        minimum: 0
+                        exclusiveMaximum: true
+                  - $ref: ./remote_pt.yaml#/components/schemas/SkuMarketplace
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SkuMarketPlacePut'
+      description: Atualizar dados da transmissão
+      tags:
+        - Anúncios
   /configuration:
     get:
       summary: Lista configurações
@@ -62,57 +113,6 @@ paths:
               schema:
                 $ref: ./remote_pt.yaml#/components/schemas/ConfigurationDTO
       operationId: get-api-configuration-id
-  '/skumarketplace/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-    get:
-      summary: Your GET endpoint
-      tags:
-        - Anúncios
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SkuMarketplace'
-      operationId: get-skumarketplace-id
-    put:
-      summary: ''
-      operationId: put-skumarketplace-id
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      idSku:
-                        type: integer
-                        format: int64
-                        minimum: 0
-                        exclusiveMaximum: true
-                  - $ref: ./remote_pt.yaml#/components/schemas/SkuMarketplace
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/404'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SkuMarketPlacePut'
-      description: ''
-      tags:
-        - Anúncios
   /orders:
     post:
       summary: Criando um pedido no ANYMARKET
