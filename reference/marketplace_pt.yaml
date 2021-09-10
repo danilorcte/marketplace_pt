@@ -32,18 +32,6 @@ paths:
         name: id
         in: path
         required: true
-    get:
-      summary: Consulta anúncio
-      tags:
-        - Anúncios
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SkuMarketplace'
-      operationId: get-skumarketplace-id
     put:
       summary: Atualizar dados da transmissão
       operationId: put-skumarketplace-id
@@ -75,7 +63,19 @@ paths:
               $ref: '#/components/schemas/SkuMarketPlacePut'
       description: Atualizar dados da transmissão
       tags:
+        - Anúncios        
+    get:
+      summary: Consulta anúncio
+      tags:
         - Anúncios
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkuMarketplace'
+      operationId: get-skumarketplace-id
   /configuration:
     get:
       summary: Lista configurações
