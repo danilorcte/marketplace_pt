@@ -76,7 +76,7 @@ paths:
                   onlySyncStatus: true
         description: ''
       tags:
-        - Anúncio
+        - Anúncios
   /deletePublication:
     delete:
       summary: Exclusão de publicação
@@ -116,7 +116,7 @@ paths:
                   onlySyncStatus: true
         description: ''
       tags:
-        - Anúncio
+        - Anúncios
   '/getDefaultSkuFields/{idSku}':
     parameters:
       - schema:
@@ -128,7 +128,7 @@ paths:
     get:
       summary: Obter dados obrigatórios do SKU no marketplace
       tags:
-        - Anúncio
+        - Anúncios
       responses:
         '200':
           description: OK
@@ -337,7 +337,7 @@ paths:
                       allowAutomaticSkuMarketplaceCreation: true
         description: ''
       tags:
-        - Anúncio
+        - Anúncios
   /canActive:
     post:
       summary: Validação das informações do Sku
@@ -439,7 +439,7 @@ paths:
                     allowAutomaticSkuMarketplaceCreation: true
         description: ''
       tags:
-        - Anúncio
+        - Anúncios
   /saveAccount:
     post:
       summary: Salvar configurações de conta no marketplace
