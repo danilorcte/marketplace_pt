@@ -25,105 +25,95 @@ servers:
   - url: 'http://endereco.marketplace.com.br'
     description: Servidor do Marketplace
 paths:
-  /canActive:
+  /sendProduct:
     post:
-      summary: Validação das informações do Sku
-      operationId: post-canActive
+      summary: Envio do anúncio ao marketplace
+      operationId: post-sendProduct
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                type: boolean
+                $ref: '#/components/schemas/PublicationResponse'
               examples:
                 Example:
-                  value: true
+                  value:
+                    publicationStatus: UNPUBLISHED
+                    marketplaceStatus: string
+                    transmissionStatus: WAITING_SYNC
       description: |-
-        A finalidade deste remote é informar uma previa do SKU que o seller está querendo transmitir para o marketplace. O JSON que é encaminhado no corpo da chamada contem os dados do SKU e dados do produto.
-        Neste momento é esperado que o marketplace faça uma breve analise do conteúdo, validando assim informações pertinentes a criação do anuncio no marketplace, como por exemplo, se dados como vinculação de categoria, marca e variação foram realizados pelo seller.
-        Em caso de sucesso o marketplace deve retornar um http status 200 e tendo como response body um valor booleano, em caso de negativa é esperado que o marketplace retorne o motivo, para assim o seller ter o retorno visual da negativa e aplicar as correções apresentadas.
+        O objetivo da chamada sendProduct é enviar o anúncio para o Marketplace informando que foi criado no ANYMARKET ou que teve uma atualização que deve ser refletida no marketplace. 
+        <!-- theme: warning -->
+        > #### Ponto de Atenção!
+        >
+        > É através deste remote que o ANYMARKET encaminhará a notificação para o markektplace que o anuncio teve alguma modificação, seja ela de preço, estoque ou cadastro. É importante que assim que o marketplace receber a notificação faça uma chamada de consulta para a nossa API no anuncio notificado, afim de consultar os dados e realizar a alteração na camada do marketplace. 
+
+        ### Orientações
+
+        - Quando identificado que é uma nova publicação é recomendado que o marketplace mantenha o publicationStatus como UNPUBLISHED e o marketplaceStatus como processando, conforme o primeiro exemplo. 
+        - Assim que o anuncio for processado o marketplace precisa realizar uma chamada na nossa API para atualizar o status ou descrever o motivo do não processamento.
+        - Em casos em que o marketplace identificar que se trata de uma atualização, o mesmo deve responder a chamada do /sendProduct avisando que está processando a atualização e posteriormente acionar a nossa API afim de retirar o sincronizando da transmissão e deixando atualizado o status do anuncio. (Exemplo 2).
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SKU'
+              $ref: '#/components/schemas/SendPublication'
             examples:
               Example:
                 value:
-                  id: 0
-                  partnerId: string
-                  amount: 0
-                  ean: string
-                  title: string
-                  price: 0
-                  sellPrice: 0
-                  additionalTime: 0
-                  variations:
-                    - id: 0
-                      idInMarketplace: string
-                      description: string
-                      type:
-                        id: 0
-                        idInMarketplace: string
-                        name: string
-                        partnerId: string
-                        visualVariation: true
-                      partnerId: string
-                  product:
-                    id: 0
-                    title: string
-                    description: string
-                    model: string
-                    nbm:
-                      id: string
-                      description: string
-                    videoUrl: string
-                    definitionPriceScope: COST
-                    characteristics:
-                      - index: 0
-                        name: string
-                        value: string
-                    origin:
-                      id: 0
-                      name: NACIONAL
-                    category:
-                      id: 0
-                      idInMarketplace: string
-                      name: string
-                      path: string
-                    height: 0
-                    length: 0
-                    width: 0
-                    weight: 0
-                    images:
-                      - id: 0
-                        index: 0
-                        variation: string
-                        thumbnailUrl: string
-                        standardUrl: string
-                        lowResolutionUrl: string
-                        originalImage: string
-                        url: string
-                        statusMessage: string
-                        status: UNPROCESSED
-                        main: true
-                        standardWidth: string
-                        standardHeight: string
-                        originalWidth: string
-                        originalHeight: string
-                    brand:
-                      id: 0
-                      idInMarketplace: string
-                      name: string
-                      partnerId: string
-                    warrantyTime: 0
-                    warrantyText: string
-                    priceFactor: 0
-                    calculatedPrice: true
-                    hasVariations: true
-                    gender: MALE
-                    allowAutomaticSkuMarketplaceCreation: true
+                  idSkuMarketplace: 0
+                  idSkuMarketplaceMain: 0
+                  status: UNPUBLISHED
+                  onlySync: true
+                  idSku: 0
+                  availableAmount: 0
+                  idAccount: 0
+                  idProduct: 0
+                  skuInMarketplace: string
+                  onlySyncPrice: true
+                  onlySyncStock: true
+                  onlySyncStatus: true
+        description: ''
+      tags:
+        - Anúncio
+  /deletePublication:
+    delete:
+      summary: Exclusão de publicação
+      operationId: delete-deletePublication
+      x-groupName: Api Integration
+      x-sortIndex: 2
+      responses:
+        '200':
+          description: OK
+      description: |-
+        O remote tem intuito de notificar o marketplace que a publicação está sendo removida do ANYMARKET e com isso o marketplace não recebera mais atualizações de preço, estoque e consequentemente realizar a inserção de pedidos na base.
+
+        <!-- theme: warning -->
+
+        > #### Ponto de Atenção!
+        >
+        > Por isso, quando o marketplace receber a notificação é importante que o mesmo inative o produto para vendas, evitando assim vendas sem estoque e problemas futuros. 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeletePublication'
+            examples:
+              Example:
+                value:
+                  idSkuMarketplace: 0
+                  idSkuMarketplaceMain: 0
+                  status: UNPUBLISHED
+                  onlySync: true
+                  idSku: 0
+                  availableAmount: 0
+                  idAccount: 0
+                  idProduct: 0
+                  skuInMarketplace: string
+                  onlySyncPrice: true
+                  onlySyncStock: true
+                  onlySyncStatus: true
         description: ''
       tags:
         - Anúncio
@@ -348,95 +338,105 @@ paths:
         description: ''
       tags:
         - Anúncio
-  /sendProduct:
+  /canActive:
     post:
-      summary: Envio do anúncio ao marketplace
-      operationId: post-sendProduct
+      summary: Validação das informações do Sku
+      operationId: post-canActive
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PublicationResponse'
+                type: boolean
               examples:
                 Example:
-                  value:
-                    publicationStatus: UNPUBLISHED
-                    marketplaceStatus: string
-                    transmissionStatus: WAITING_SYNC
+                  value: true
       description: |-
-        O objetivo da chamada sendProduct é enviar o anúncio para o Marketplace informando que foi criado no ANYMARKET ou que teve uma atualização que deve ser refletida no marketplace. 
-        <!-- theme: warning -->
-        > #### Ponto de Atenção!
-        >
-        > É através deste remote que o ANYMARKET encaminhará a notificação para o markektplace que o anuncio teve alguma modificação, seja ela de preço, estoque ou cadastro. É importante que assim que o marketplace receber a notificação faça uma chamada de consulta para a nossa API no anuncio notificado, afim de consultar os dados e realizar a alteração na camada do marketplace. 
-
-        ### Orientações
-
-        - Quando identificado que é uma nova publicação é recomendado que o marketplace mantenha o publicationStatus como UNPUBLISHED e o marketplaceStatus como processando, conforme o primeiro exemplo. 
-        - Assim que o anuncio for processado o marketplace precisa realizar uma chamada na nossa API para atualizar o status ou descrever o motivo do não processamento.
-        - Em casos em que o marketplace identificar que se trata de uma atualização, o mesmo deve responder a chamada do /sendProduct avisando que está processando a atualização e posteriormente acionar a nossa API afim de retirar o sincronizando da transmissão e deixando atualizado o status do anuncio. (Exemplo 2).
+        A finalidade deste remote é informar uma previa do SKU que o seller está querendo transmitir para o marketplace. O JSON que é encaminhado no corpo da chamada contem os dados do SKU e dados do produto.
+        Neste momento é esperado que o marketplace faça uma breve analise do conteúdo, validando assim informações pertinentes a criação do anuncio no marketplace, como por exemplo, se dados como vinculação de categoria, marca e variação foram realizados pelo seller.
+        Em caso de sucesso o marketplace deve retornar um http status 200 e tendo como response body um valor booleano, em caso de negativa é esperado que o marketplace retorne o motivo, para assim o seller ter o retorno visual da negativa e aplicar as correções apresentadas.
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SendPublication'
+              $ref: '#/components/schemas/SKU'
             examples:
               Example:
                 value:
-                  idSkuMarketplace: 0
-                  idSkuMarketplaceMain: 0
-                  status: UNPUBLISHED
-                  onlySync: true
-                  idSku: 0
-                  availableAmount: 0
-                  idAccount: 0
-                  idProduct: 0
-                  skuInMarketplace: string
-                  onlySyncPrice: true
-                  onlySyncStock: true
-                  onlySyncStatus: true
-        description: ''
-      tags:
-        - Anúncio
-  /deletePublication:
-    delete:
-      summary: Exclusão de publicação
-      operationId: delete-deletePublication
-      x-groupName: Api Integration
-      x-sortIndex: 2
-      responses:
-        '200':
-          description: OK
-      description: |-
-        O remote tem intuito de notificar o marketplace que a publicação está sendo removida do ANYMARKET e com isso o marketplace não recebera mais atualizações de preço, estoque e consequentemente realizar a inserção de pedidos na base.
-
-        <!-- theme: warning -->
-
-        > #### Ponto de Atenção!
-        >
-        > Por isso, quando o marketplace receber a notificação é importante que o mesmo inative o produto para vendas, evitando assim vendas sem estoque e problemas futuros. 
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DeletePublication'
-            examples:
-              Example:
-                value:
-                  idSkuMarketplace: 0
-                  idSkuMarketplaceMain: 0
-                  status: UNPUBLISHED
-                  onlySync: true
-                  idSku: 0
-                  availableAmount: 0
-                  idAccount: 0
-                  idProduct: 0
-                  skuInMarketplace: string
-                  onlySyncPrice: true
-                  onlySyncStock: true
-                  onlySyncStatus: true
+                  id: 0
+                  partnerId: string
+                  amount: 0
+                  ean: string
+                  title: string
+                  price: 0
+                  sellPrice: 0
+                  additionalTime: 0
+                  variations:
+                    - id: 0
+                      idInMarketplace: string
+                      description: string
+                      type:
+                        id: 0
+                        idInMarketplace: string
+                        name: string
+                        partnerId: string
+                        visualVariation: true
+                      partnerId: string
+                  product:
+                    id: 0
+                    title: string
+                    description: string
+                    model: string
+                    nbm:
+                      id: string
+                      description: string
+                    videoUrl: string
+                    definitionPriceScope: COST
+                    characteristics:
+                      - index: 0
+                        name: string
+                        value: string
+                    origin:
+                      id: 0
+                      name: NACIONAL
+                    category:
+                      id: 0
+                      idInMarketplace: string
+                      name: string
+                      path: string
+                    height: 0
+                    length: 0
+                    width: 0
+                    weight: 0
+                    images:
+                      - id: 0
+                        index: 0
+                        variation: string
+                        thumbnailUrl: string
+                        standardUrl: string
+                        lowResolutionUrl: string
+                        originalImage: string
+                        url: string
+                        statusMessage: string
+                        status: UNPROCESSED
+                        main: true
+                        standardWidth: string
+                        standardHeight: string
+                        originalWidth: string
+                        originalHeight: string
+                    brand:
+                      id: 0
+                      idInMarketplace: string
+                      name: string
+                      partnerId: string
+                    warrantyTime: 0
+                    warrantyText: string
+                    priceFactor: 0
+                    calculatedPrice: true
+                    hasVariations: true
+                    gender: MALE
+                    allowAutomaticSkuMarketplaceCreation: true
         description: ''
       tags:
         - Anúncio
