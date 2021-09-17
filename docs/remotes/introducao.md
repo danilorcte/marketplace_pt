@@ -60,7 +60,7 @@ Para facilitar a compreensão de como o **Middleware** deve funcionar, seguem ab
 
 |               |                                     |               ||
 | ------------- | --- |--------------------------------- | ------------- |
-| POST   |[/testIntegration](./docs/remotes/testintegration.md) | obrigatório | Nesta notificação enviamos os dados de autenticação no marketplace configurados pelo Seller, para que o middleware valide o acesso.|
+| POST   |/testIntegration | obrigatório | Nesta notificação enviamos os dados de autenticação no marketplace configurados pelo Seller, para que o middleware valide o acesso.|
 | POST   |/saveAccount | obrigatório | Nesta notificação enviamos os dados da configuração informados pelo Seller caso o middleware queira armazena.   |
 | GET    |/product/{{id}} | obrigatório | Esta consulta serve para obtermos os anúncios do marketplace, para vincularmos com as transmissões do ANYMARKET. |
 | GET    |/brands | opcional | Esta consulta serve para obtermos as marcas do marketplace e vincularmos com as marcas do ANYMARKET.  |
