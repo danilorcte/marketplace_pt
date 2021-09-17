@@ -1,4 +1,3 @@
-develop
 # ARTIGO DE EXEMPLO
 
 ## TITULO 1
