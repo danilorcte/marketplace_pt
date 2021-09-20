@@ -367,10 +367,6 @@ paths:
       description: Marcar pedido como Faturado
 components:
   securitySchemes:
-    appId:
-      name: API Key
-      type: apiKey
-      in: header
     token:
       name: token
       type: apiKey
