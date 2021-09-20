@@ -63,7 +63,7 @@ paths:
               $ref: '#/components/schemas/SkuMarketPlacePut'
       description: Atualizar dados da transmissão
       tags:
-        - Anúncios        
+        - Anúncios
     get:
       summary: Consulta anúncio
       tags:
@@ -137,7 +137,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrderStatusUpdate'
-      description: 'Quando o marketplace receber a notificação de atualização de um pedido, seja ele mudando para FATURADO, ENVIADO, CONCLUIDO ou CANCELADO no endpoint /updateOrderStatusInMarketPlace. Necessariamente o marketplace deve realizar o GET para consultar os dados do pedido e na sequencia utilizar do endpoint citado a cima, removendo a sinalização de sincronização e identificando qual o status do pedido no marketplace. Lembrando que caso não processe, o erro deve ser informado também nesse endpoint.'      
+      description: 'Quando o marketplace receber a notificação de atualização de um pedido, seja ele mudando para FATURADO, ENVIADO, CONCLUIDO ou CANCELADO no endpoint /updateOrderStatusInMarketPlace. Necessariamente o marketplace deve realizar o GET para consultar os dados do pedido e na sequencia utilizar do endpoint citado a cima, removendo a sinalização de sincronização e identificando qual o status do pedido no marketplace. Lembrando que caso não processe, o erro deve ser informado também nesse endpoint.'
   /orders:
     post:
       summary: Criando um pedido no ANYMARKET
@@ -176,7 +176,7 @@ paths:
             schema:
               $ref: '#/components/schemas/OrderPost'
       tags:
-        - Pedidos        
+        - Pedidos
     get:
       summary: Listar todas os pedidos
       operationId: get-orders
@@ -232,7 +232,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Order'
       operationId: get-orders-id
-      description: Lista pedido por id          
+      description: Lista pedido por id
   '/orders/{id}/markAsPaid':
     parameters:
       - schema:
@@ -1132,11 +1132,15 @@ components:
         marketplaceStatus:
           type: string
   securitySchemes:
-    x-anymarket-token:
-      name: x-anymarket-token
+    appId:
+      name: appId
       type: apiKey
       in: header
       description: Token de segurança fornecido pela Anymarket
+    token:
+      name: token
+      type: apiKey
+      in: header
   parameters:
     offset:
       name: offset
@@ -1185,3 +1189,4 @@ components:
           number: 0
 security:
   - x-anymarket-token: []
+  - token: []
