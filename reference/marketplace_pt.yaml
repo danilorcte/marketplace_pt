@@ -1136,7 +1136,7 @@ components:
       name: appId
       type: apiKey
       in: header
-      description: Token de segurança fornecido pela Anymarket
+      description: App id fornecido pela Anymarket
     token:
       name: token
       type: apiKey
@@ -1188,5 +1188,5 @@ components:
           totalPages: 0
           number: 0
 security:
-  - x-anymarket-token: []
   - token: []
+  - appId: []
