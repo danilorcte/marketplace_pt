@@ -1136,7 +1136,7 @@ components:
     appId:
       name: API Key
       type: apiKey
-      in: query
+      in: header
     token:
       name: token
       type: apiKey
