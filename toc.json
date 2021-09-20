@@ -27,17 +27,12 @@
     },
     {
       "type": "group",
-      "title": "Remotes do Middleware",
+      "title": "Guias de Integração",
       "items": [
         {
           "type": "item",
           "title": "testIntegration",
           "uri": "docs/remotes/testintegration.md"
-        },
-        {
-          "type": "item",
-          "title": "saveAccount",
-          "uri": "docs/remotes/saveaccount.md"
         }
       ]
     },

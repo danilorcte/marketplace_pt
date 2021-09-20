@@ -9,7 +9,6 @@ focus: false
 ![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/869DEmQbqyQ)
 
 
-
 - Atualmente levamos em média 40 horas para realização da homologação de um novo marketplace, porém o leadtime de conclusão depende do número de correções identificadas e o tempo de resposta em relação aos ajustes realizados pelo parceiro.
  - O processo de homologação é realizado dentro das nossas Sprints de desenvolvimento (3 semanas), sendo limitadas a 2 homologações concorrentes por sprint. Dessa forma, o prazo de início de homologação será de acordo com a disponibilidade de agenda de sprints.
 - Para que tenhamos uma melhor agilidade no processo de homologação, por favor avaliarem os pré-requisitos exigidos e o roteiro de testes que iremos considerar durante o processo.
