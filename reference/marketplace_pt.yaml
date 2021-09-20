@@ -364,6 +364,15 @@ paths:
               $ref: '#/components/schemas/OrderStatusUpdate'
       description: Marcar pedido como Faturado
 components:
+  securitySchemes:
+    appId:
+      name: API Key
+      type: apiKey
+      in: header
+    token:
+      name: token
+      type: apiKey
+      in: header
   schemas:
     '400':
       description: ''
@@ -1132,15 +1141,6 @@ components:
             - OTHER
         marketplaceStatus:
           type: string
-  securitySchemes:
-    appId:
-      name: API Key
-      type: apiKey
-      in: header
-    token:
-      name: token
-      type: apiKey
-      in: header
   parameters:
     offset:
       name: offset
