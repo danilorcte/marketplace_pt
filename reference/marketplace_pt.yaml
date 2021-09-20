@@ -65,7 +65,7 @@ paths:
       tags:
         - Anúncios
     get:
-      summary: Consulta anúncio
+      summary: Consulta anúncio.
       tags:
         - Anúncios
       responses:
