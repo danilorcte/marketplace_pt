@@ -33,7 +33,7 @@ paths:
         in: path
         required: true
     put:
-      summary: Atualizar dados da transmissão
+      summary: Atualizar dados da transmissão.
       operationId: put-skumarketplace-id
       responses:
         '200':
@@ -61,7 +61,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SkuMarketPlacePut'
-      description: Atualizar dados da transmissão
+      description: Atualizar dados da transmissão.
       tags:
         - Anúncios
     get:
