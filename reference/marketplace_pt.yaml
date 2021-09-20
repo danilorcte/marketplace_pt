@@ -76,6 +76,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/SkuMarketplace'
       operationId: get-skumarketplace-id
+      parameters:
+        - schema:
+            type: string
+          in: header
+      security:
+        - appId: []
+        - token: []
   /configuration:
     get:
       summary: Lista configurações
