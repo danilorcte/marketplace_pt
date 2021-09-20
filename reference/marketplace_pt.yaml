@@ -76,13 +76,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SkuMarketplace'
       operationId: get-skumarketplace-id
-      parameters:
-        - schema:
-            type: string
-          in: header
-      security:
-        - appId: []
-        - token: []
+      parameters: []
   /configuration:
     get:
       summary: Lista configurações
@@ -1140,10 +1134,9 @@ components:
           type: string
   securitySchemes:
     appId:
-      name: appId
+      name: API Key
       type: apiKey
-      in: header
-      description: App id fornecido pela Anymarket
+      in: query
     token:
       name: token
       type: apiKey
@@ -1196,4 +1189,4 @@ components:
           number: 0
 security:
   - token: []
-  - appId: []
+    appId: []
