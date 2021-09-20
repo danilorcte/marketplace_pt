@@ -22,6 +22,11 @@
           "type": "item",
           "title": "Processo de homologação",
           "uri": "docs/remotes/homologacao.md"
+        },
+        {
+          "type": "item",
+          "title": "Importando a Collection das APIs",
+          "uri": "docs/ImportCollection.md"
         }
       ]
     },
@@ -59,15 +64,6 @@
       "type": "item",
       "title": "Exemplo de tags",
       "uri": "docs/exemplos.md"
-    },
-    {
-      "type": "divider",
-      "title": "Ajuda"
-    },        
-    {
-      "type": "item",
-      "title": "Importando Collection",
-      "uri": "docs/ImportCollection.md"
     }
   ]
 }
