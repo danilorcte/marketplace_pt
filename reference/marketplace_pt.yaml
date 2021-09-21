@@ -65,7 +65,7 @@ paths:
       tags:
         - Anúncios
     get:
-      summary: '/skumarketplace/{id} (Obrigatório)'
+      summary: '/skumarketplace/{id}'
       tags:
         - Anúncios
       responses:
@@ -95,7 +95,7 @@ paths:
                 items:
                   $ref: ./remote_pt.yaml#/components/schemas/ConfigurationDTO
       operationId: get-api-configuration
-      description: Lista configurações
+      description: Consulta todas as configurações realizadas pelo seller no ANYMARKET.
     parameters: []
   '/configuration/{id}':
     parameters:
@@ -117,6 +117,7 @@ paths:
               schema:
                 $ref: ./remote_pt.yaml#/components/schemas/ConfigurationDTO
       operationId: get-api-configuration-id
+      description: Consulta pelo ID da conta as configurações realizadas pelo seller no ANYMARKET.
   '/orders/{id}/transmissionStatus':
     parameters:
       - schema:
@@ -236,7 +237,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Order'
       operationId: get-orders-id
-      description: Lista pedido por id
+      description: Permite o middlewar consulta os dados do pedido no ANYMARKET.
   '/orders/{id}/markAsPaid':
     parameters:
       - schema:
@@ -265,7 +266,7 @@ paths:
                 date:
                   type: string
                   format: date-time
-      description: esse request informando a data de pagamento. Feito isso o ANYMARKET ira atualizar o status do pedido para PAGO.
+      description: Utilizado para que o middleware marque o pedido como PAGO no ANYMARKET.
   '/orders/{id}/markAsShipped':
     parameters:
       - schema:
@@ -290,7 +291,7 @@ paths:
           application/json:
             schema:
               $ref: ./remote_pt.yaml#/components/schemas/ApiTracking
-      description: Marcar pedido como Enviado
+      description: Utilizado para que o middleware marque o pedido como ENVIADO no ANYMARKET.
   '/orders/{id}/markAsCanceled':
     parameters:
       - schema:
@@ -315,7 +316,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CanceledStatusDTO'
-      description: Marcar pedido como Cancelado
+      description: Utilizado para que o middleware marque o pedido como CANCELADO no ANYMARKET.
   '/orders/{id}/markAsDelivered':
     parameters:
       - schema:
@@ -340,7 +341,7 @@ paths:
           application/json:
             schema:
               $ref: ./remote_pt.yaml#/components/schemas/ApiTracking
-      description: Marcar pedido como Concluído
+      description: Utilizado para que o middleware marque o pedido como ENTREGUE no ANYMARKET.
   '/orders/{id}/markAsInvoiced':
     parameters:
       - schema:
@@ -365,7 +366,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrderStatusUpdate'
-      description: Marcar pedido como Faturado
+      description: Utilizado para que o middleware marque o pedido como FATURADO no ANYMARKET.
 components:
   securitySchemes:
     token:

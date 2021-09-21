@@ -463,7 +463,7 @@ paths:
         description: Teste de Integração
       tags:
         - Configuração
-      description: Salvar configurações de conta no marketplace
+      description: Nesta notificação enviamos os dados da configuração informados pelo Seller caso o middleware queira armazenar.
   /testIntegration:
     post:
       summary: /testIntegration
@@ -487,7 +487,7 @@ paths:
         description: Teste de Integração
       tags:
         - Configuração
-      description: Teste de Integração com marketplace
+      description: 'Nesta notificação enviamos os dados de autenticação no marketplace configurados pelo Seller, para que o middleware valide o acesso junto ao marketplace.'
   '/order/force/{idInMarketPlace}':
     parameters:
       - schema:
@@ -511,7 +511,7 @@ paths:
               examples:
                 Example:
                   value: true
-      description: Order force
+      description: Enviaremos essa notificação sempre que o seller solicitar o reenvio do pedido do marketplace para o ANYMARKET (Monitoring)
       parameters:
         - schema:
             type: string
@@ -533,7 +533,7 @@ paths:
       responses:
         '200':
           description: OK
-      description: 'Criar possivel Remote informando a data, para que o parceiro consiga criar no ANYMARKET os pedidos'
+      description: Enviaremos essa notificação quando o seller solicitar a importação de todos os pedidos para o painel do ANYMARKET (Tela de Configuração).
       parameters:
         - schema:
             type: string
