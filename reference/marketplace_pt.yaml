@@ -65,7 +65,7 @@ paths:
       tags:
         - Anúncios
     get:
-      summary: '/skumarketplace/{id}'
+      summary: '/skumarketplace/{id} (Obrigatório)'
       tags:
         - Anúncios
       responses:
@@ -79,6 +79,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/appId'
         - $ref: '#/components/parameters/token'
+      description: Consulta os dados do anúncio no ANYMARKET.
   /configuration:
     get:
       summary: /configuration
