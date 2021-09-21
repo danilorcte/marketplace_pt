@@ -27,7 +27,7 @@ servers:
 paths:
   /sendProduct:
     post:
-      summary: Envio do anúncio ao marketplace
+      summary: /sendProduct
       operationId: post-sendProduct
       responses:
         '200':
@@ -79,7 +79,7 @@ paths:
         - Anúncios
   /deletePublication:
     delete:
-      summary: Exclusão de publicação
+      summary: /deletePublication
       operationId: delete-deletePublication
       x-groupName: Api Integration
       x-sortIndex: 2
@@ -126,7 +126,7 @@ paths:
         required: true
         description: Código do Sku no Anymarket
     get:
-      summary: Obter dados obrigatórios do SKU no marketplace
+      summary: '/getDefaultSkuFields/{idSku}'
       tags:
         - Anúncios
       responses:
@@ -159,7 +159,7 @@ paths:
         É necessário que o marketplace retorne o titulo do SKU, EAN e as informações default de preço
   /canSave:
     post:
-      summary: Validações das informações da transmissão
+      summary: /canSave
       operationId: post-canSave
       responses:
         '200':
@@ -340,7 +340,7 @@ paths:
         - Anúncios
   /canActive:
     post:
-      summary: Validação das informações do Sku
+      summary: /canActive
       operationId: post-canActive
       responses:
         '200':
@@ -442,7 +442,7 @@ paths:
         - Anúncios
   /saveAccount:
     post:
-      summary: Salvar configurações de conta no marketplace
+      summary: /saveAccount
       operationId: post-saveAccount
       responses:
         '200':
@@ -497,7 +497,7 @@ paths:
         required: true
         description: Código do pedido no marketplace
     post:
-      summary: Order force
+      summary: '/order/force/{idInMarketPlace}'
       operationId: post-order-force-idInMarketPlace
       x-groupName: Api Integration
       x-sortIndex: 1
@@ -528,7 +528,7 @@ paths:
         - Pedidos
   /forceImportOrders:
     post:
-      summary: Forçar a importação de Pedidos do Marketplace para o Anymarket
+      summary: /forceImportOrders
       operationId: post-forceImportOrders
       responses:
         '200':
@@ -577,7 +577,7 @@ paths:
         required: true
         description: Código do pedido no marketplace
     get:
-      summary: Lista dados atualizados do Pedido no MarketPlace
+      summary: '/order/{idInMarketPlace}'
       responses:
         '200':
           description: OK
@@ -598,7 +598,7 @@ paths:
       description: 'A chamada de consulta do pedido consiste em obter os dados mais atualizados do pedido. A notificação será encaminhada quando o ANYMARKET for retentar algum pedido criticado ou caso o seller realize o force de forma manual. '
   /order/updateOrderStatusInMarketPlace:
     put:
-      summary: Atualizar o Status no Marketplace
+      summary: /order/updateOrderStatusInMarketPlace
       operationId: put-order-updateOrderStatusInMarketPlace
       responses:
         '200':
@@ -622,7 +622,7 @@ paths:
         - Pedidos
   /categories:
     get:
-      summary: Consulta categoria no marketplace
+      summary: /categories
       tags:
         - Vínculo de Categoria
       responses:
@@ -656,7 +656,7 @@ paths:
         required: true
         description: Código da categoria no marketplace
     get:
-      summary: Consulta detalhes de categoria no marketplace
+      summary: '/categories/{categoryIdInMarketplace}'
       tags:
         - Vínculo de Categoria
       responses:
@@ -689,7 +689,7 @@ paths:
         required: true
         description: Código de categoria no Anymarket
     get:
-      summary: Consulta dos atributos vinculados à categoria
+      summary: '/categories/attributes/{idAnymarketCategory}'
       tags:
         - Vínculo de Categoria
       responses:
@@ -723,7 +723,7 @@ paths:
       description: Consulta dos atributos vinculados à categoria
   /brands:
     get:
-      summary: Consulta marcas no marketplace
+      summary: /brands
       tags:
         - Vínculo de Marca
       operationId: get-brands
@@ -752,7 +752,7 @@ paths:
                       name: string
   '/product/{idProduct}':
     get:
-      summary: Consulta produto no marketplace
+      summary: '/product/{idProduct}'
       tags:
         - Vínculo de SKU
       responses:
@@ -791,7 +791,7 @@ paths:
         description: Código do produto
   /variations/types:
     get:
-      summary: Consulta os tipos e valores possíveis para o seller realizar o de/para.
+      summary: /variations/types
       tags:
         - Vínculo de Variação
       responses:

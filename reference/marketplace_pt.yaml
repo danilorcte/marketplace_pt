@@ -65,7 +65,7 @@ paths:
       tags:
         - Anúncios
     get:
-      summary: Consulta anúncio.
+      summary: '/skumarketplace/{id}'
       tags:
         - Anúncios
       responses:
@@ -81,7 +81,7 @@ paths:
         - $ref: '#/components/parameters/token'
   /configuration:
     get:
-      summary: Lista configurações
+      summary: /configuration
       tags:
         - Configuração
       responses:
@@ -105,7 +105,7 @@ paths:
         required: true
         description: Código de configuração gerado pelo Anymarket
     get:
-      summary: Lista configurações com id específico
+      summary: '/configuration/{id}'
       tags:
         - Configuração
       responses:
@@ -124,7 +124,7 @@ paths:
         in: path
         required: true
     put:
-      summary: Alterar status | Confirmação de consumo de atualização
+      summary: '/orders/{id}/transmissionStatus'
       tags:
         - Pedidos
       responses:
@@ -181,7 +181,7 @@ paths:
       tags:
         - Pedidos
     get:
-      summary: Listar todas os pedidos
+      summary: /orders
       operationId: get-orders
       responses:
         '200':
@@ -224,7 +224,7 @@ paths:
         required: true
         description: Código do pedido gerado pelo Anymarket
     get:
-      summary: Lista pedido por id
+      summary: '/orders/{id}'
       tags:
         - Pedidos
       responses:
@@ -244,7 +244,7 @@ paths:
         in: path
         required: true
     put:
-      summary: Marcar pedido como Pago
+      summary: '/orders/{id}/markAsPaid'
       tags:
         - Pedidos
       responses:
@@ -273,7 +273,7 @@ paths:
         in: path
         required: true
     put:
-      summary: Marcar pedido como Enviado
+      summary: '/orders/{id}/markAsShipped'
       tags:
         - Pedidos
       responses:
@@ -298,7 +298,7 @@ paths:
         in: path
         required: true
     put:
-      summary: Marcar pedido como Cancelado
+      summary: '/orders/{id}/markAsCanceled'
       tags:
         - Pedidos
       responses:
