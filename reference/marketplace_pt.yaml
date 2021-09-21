@@ -323,7 +323,7 @@ paths:
         in: path
         required: true
     put:
-      summary: Marcar pedido como Concluído
+      summary: '/orders/{id}/markAsDelivered'
       tags:
         - Pedidos
       responses:
@@ -348,7 +348,7 @@ paths:
         in: path
         required: true
     put:
-      summary: Marcar pedido como Faturado
+      summary: '/orders/{id}/markAsInvoiced'
       tags:
         - Pedidos
       responses:
