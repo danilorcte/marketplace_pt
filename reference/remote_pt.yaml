@@ -1654,10 +1654,10 @@ components:
           minimum: 0
         skuInMarketplace:
           type: string
-          description: Identificador da conta no marketplace
+          description: Sku do cliente no marketplace
         marketplaceItemCode:
           type: string
-          description: Identificador da conta no marketplace
+          description: ''
         fields:
           $ref: '#/components/schemas/SkuMarketplaceField'
         availableStock:
