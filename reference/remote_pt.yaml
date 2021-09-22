@@ -1654,7 +1654,6 @@ components:
           type: string
           description: Status da transmissão
       required:
-        - id
         - marketPlace
         - index
         - publicationStatus
