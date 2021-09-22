@@ -352,6 +352,43 @@ paths:
               examples:
                 Example:
                   value: true
+        '422':
+          description: Unprocessable Entity (WebDAV)
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  code:
+                    type: string
+                    minLength: 1
+                  httpStatus:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  details:
+                    type: string
+                    minLength: 1
+                required:
+                  - code
+                  - httpStatus
+                  - message
+                  - details
+                x-examples:
+                  example-1:
+                    code: PublicationValidationException
+                    httpStatus: 422
+                    message: string
+                    details: string
+              examples:
+                example-1:
+                  value:
+                    code: PublicationValidationException
+                    httpStatus: 422
+                    message: Erro ao validar publicação
+                    details: 'Palavra proibida identificada na descrição do anúncio, realize a correção e tente enviar o anuncio novamente'
       description: |-
         A finalidade deste remote é informar uma previa do SKU que o seller está querendo transmitir para o marketplace. O JSON que é encaminhado no corpo da chamada contem os dados do SKU e dados do produto.
         Neste momento é esperado que o marketplace faça uma breve analise do conteúdo, validando assim informações pertinentes a criação do anuncio no marketplace, como por exemplo, se dados como vinculação de categoria, marca e variação foram realizados pelo seller.
