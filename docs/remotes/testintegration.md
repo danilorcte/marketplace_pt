@@ -1,4 +1,4 @@
-# \testintegration
+# \testIntegration
 
 Neste remote iremos disparar uma notificação sempre.
 
