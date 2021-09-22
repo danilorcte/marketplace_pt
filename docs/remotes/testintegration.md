@@ -10,7 +10,7 @@ focus: false
 
 ### Requisição
 
-```json title="POST: \testIntegration" lineNumbers
+```json title="POST: \testintegration" lineNumbers
 {
 	"id": 10,
 	"active": true,
