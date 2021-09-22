@@ -750,9 +750,9 @@ paths:
                   value:
                     - codeInMarketplace: string
                       name: string
-  '/product/{idProduct}':
+  '/product/{partnerId}':
     get:
-      summary: '/product/{idProduct}'
+      summary: '/product/{partnerId}'
       tags:
         - Vínculo de SKU
       responses:
@@ -762,6 +762,87 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SkuMarketplace'
+              examples:
+                example-1:
+                  value:
+                    id: 0
+                    idInMarketplace: string
+                    marketPlace: B2W
+                    index: 0
+                    publicationStatus: string
+                    marketplaceStatus: string
+                    transmissionStatus: string
+                    errorMsg: string
+                    skuMarketPlaceMessage:
+                      message: string
+                      key: string
+                      parameters:
+                        parameter1: value1
+                        parameter2: value2
+                    price: 0
+                    priceFactor: 1
+                    discountPrice: 0
+                    skuInMarketplace: string
+                    marketplaceItemCode: string
+                    fields:
+                      title: string
+                      template: string
+                      priceFactor: string
+                      DISCOUNT_TYPE: string
+                      DISCOUNT_VALUE: string
+                      HAS_DISCOUNT: string
+                      CONCAT_ATTRIBUTES: string
+                      delivery_type: string
+                      SHIPMENT: string
+                      crossDocking: string
+                      CUSTOM_DESCRIPTION: string
+                      EAN: string
+                      MANUFACTURING_TIME: string
+                      VALUE: string
+                      PERCENT: string
+                      bronze_price: string
+                      bronze_price_factor: string
+                      buying_mode: string
+                      category_with_variation: string
+                      condition: string
+                      free_price: string
+                      free_price_factor: string
+                      free_shipping: string
+                      gold_premium_price: string
+                      gold_premium_price_factor: string
+                      gold_price: string
+                      gold_price_factor: string
+                      gold_pro_price: string
+                      gold_pro_price_factor: string
+                      gold_special_price: string
+                      gold_special_price_factor: string
+                      listing_type_id: string
+                      shipping_local_pick_up: string
+                      shipping_mode: string
+                      silver_price: string
+                      silver_price_factor: string
+                    availableStock:
+                      amount: 0
+                      availableAmount: 0
+                      cost: 0
+                      totalReservation: 0
+                      physicalAmount: 0
+                      reservedPending: 0
+                      reservedPaid: 0
+                      totalInInvoicedStatus: 0
+                      stockLocal: string
+                      additionalTime: 0
+                    attributes:
+                      cor: azul
+                      tamanho: grande
+                      material: inox
+                    idAccount: 0
+                    accountName: string
+                    origin: BIND
+                    isCatalog: true
+                    permalink: string
+                    title: string
+                    ean: string
       operationId: get-product
       description: Consulta produto no marketplace
       parameters:
@@ -785,10 +866,9 @@ paths:
     parameters:
       - schema:
           type: string
-        name: idProduct
+        name: partnerId
         in: path
         required: true
-        description: Código do produto
   /variations/types:
     get:
       summary: /variations/types
