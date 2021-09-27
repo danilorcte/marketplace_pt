@@ -1,7 +1,7 @@
 # API para Marketplaces | ANYMARKET
 
 
-### Bem vindo a documentação da API ANYMARKET para Marketplaces.
+Bem vindo a documentação da API ANYMARKET para Marketplaces.
 
 Esta documentação tem como objetivo orientar as regras e comportamentos esperados na construção do middleware responsável pela integração das informações entre o ANYMARKET e MARKETPLACE.
 
