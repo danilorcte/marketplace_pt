@@ -19,43 +19,28 @@ focus: false
 - Após o módulo ter atendido aos pré-requisitos, nosso Time de Qualidade irá executar o Roteiro de Testes a seguir para validar todas as possibilidades que o Seller poderá utilizar no novo canal de marketplace utilizando o ANYMARKET, garantindo assim uma boa experiencia aos Sellers.
 - Durante a realização dos testes, caso os nossos analistas encontrem necessidades de correções, eles irão reportar através do Trello que será compartilhado com o marketplace, para ciência da equipe de desenvolvimento responsável, possibilitando assim uma melhor visão dos ajustes necessários e andamento do processo de homologação.
 
-## Roteiro dos testes realizados
-<!--
-focus: false
--->
-![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/Dtb4Ka07I6k)
-<!--
-focus: false
--->
-![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/YukYgROMzMw)
-<!--
-focus: false
--->
-![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/QRH761vu3GI)
-<!--
-focus: false
--->
-![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/ZgtZGI660Js)
-<!--
-focus: false
--->
-![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/djbdHwe5yig)
-<!--
-focus: false
--->
-![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/NHjl6gHihGk)
-<!--
-focus: false
--->
-![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/bG71zsgRkR0)
-<!--
-focus: false
--->
-![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/ucGAVzQFEXs)
-<!--
-focus: false
--->
-![image.png](https://stoplight.io/api/v1/projects/cHJqOjgzMDA1/images/PVoYN17QBhI)
+## O que testamos no processo de homologação
+
+-	Configurações
+	-	Autenticação no Marketplace
+	-	Configurações de Preço
+	-	Configurações de Venda
+	-	Configurações de Anúncios
+	-	Configurações de Frete (Opcional)
+	-	Configurações de Multiplas Contas
+- Anúncios
+	-	Publicações de Produto Simples
+	-	Publicações de Produto com Variação
+	-	Atualizações dos dados do anúncio
+	-	Atualizações de preço
+	-	Atualizações de estoque
+	-	Atualizações de status do anúncio
+-	Pedidos
+	-	Importação de novos pedidos
+	-	Atualizações de status ANYMARKET > MARKETPLACE
+	-	Atualizações de status MARKETPLACE > ANYMARKET
+-	Cotação de Frete
+-	Fluxo Completo de Funcionalidades do ANYMARKET
 
 
 
