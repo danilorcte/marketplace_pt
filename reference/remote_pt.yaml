@@ -522,7 +522,8 @@ paths:
               schema:
                 type: boolean
               examples:
-                example-1: false
+                example-1:
+                  value: true
       requestBody:
         content:
           application/json:
@@ -1148,6 +1149,8 @@ components:
           dynamicFields:
             field1: value1
             field2: value2
+      description: |+
+
       properties:
         id:
           type: integer
