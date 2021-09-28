@@ -1151,20 +1151,36 @@ components:
             field2: value2
       description: |+
 
+      x-examples:
+        example-1:
+          id: 0
+          active: true
+          templateId: null
+          accountName: string
+          discountType: PERCENT
+          useSandbox: true
+          accountDefault: true
+          priceFactor: 0
+          discountValue: 0
+          initialDateForOrderImport: null
+          updatePriceStockStatus: true
+          additionOfFreight: 0
+          field1: value1
+          field2: value2
       properties:
         id:
           type: integer
           format: int64
-          minimum: 0
           description: Id do ANYMARKET
+          nullable: true
         active:
           type: boolean
           description: Status da conta
         templateId:
           type: integer
           format: int64
-          minimum: 0
           description: Código do template padrão
+          nullable: true
         accountName:
           type: string
           minLength: 0
@@ -1197,6 +1213,7 @@ components:
           format: date
           description: Data inicial para a importação de pedidos
           example: '2021-12-31'
+          nullable: true
         updatePriceStockStatus:
           type: boolean
           description: Permite ou não atualizar o preço e status do estoque
@@ -1205,12 +1222,12 @@ components:
           format: double
           minimum: 0
           description: Valor adicional de frete
-        dynamicFields:
-          type: object
+        field1:
+          type: string
           description: Campos customizados para atender especifidade do MarketPlace
-          properties:
-            field:
-              type: string
+        field2:
+          type: string
+          description: Campos customizados para atender especifidade do MarketPlace
       required:
         - id
         - active
