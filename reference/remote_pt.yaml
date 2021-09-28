@@ -1192,6 +1192,9 @@ components:
           maxLength: 255
           description: Tipo de desconto
           default: PERCENT
+          enum:
+            - PERCENT
+            - VALUE
         useSandbox:
           type: boolean
           description: Informa se o uso é em Sandbox
