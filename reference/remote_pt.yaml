@@ -515,6 +515,14 @@ paths:
               examples:
                 Example:
                   value: true
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: boolean
+              examples:
+                example-1: false
       requestBody:
         content:
           application/json:
@@ -524,7 +532,10 @@ paths:
         description: Teste de Integração
       tags:
         - Configuração
-      description: 'Nesta notificação enviamos os dados de autenticação no marketplace configurados pelo Seller, para que o middleware valide o acesso junto ao marketplace.'
+      description: |-
+        Nesta notificação enviamos os dados de autenticação no marketplace configurados pelo Seller, para que o middleware valide o acesso junto ao marketplace.
+
+        O remote é acionado quando o cliente no ANYMARKET clica no botão “salvar” na tela de autenticação, no modulo disponibilizada pelo ANYMARKET. 
   '/order/force/{idInMarketPlace}':
     parameters:
       - schema:
