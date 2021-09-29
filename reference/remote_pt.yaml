@@ -1165,23 +1165,22 @@ components:
           initialDateForOrderImport: 25-01-2021
           updatePriceStockStatus: true
           additionOfFreight: 0
-          dynamicFields:
-            field1: value1
-            field2: value2
+          field1: value1
+          field2: value2
       description: |+
 
       x-examples:
         example-1:
           id: 0
           active: true
-          templateId: null
+          templateId: 0
           accountName: string
           discountType: PERCENT
           useSandbox: true
           accountDefault: true
           priceFactor: 0
           discountValue: 0
-          initialDateForOrderImport: null
+          initialDateForOrderImport: 25-01-2021
           updatePriceStockStatus: true
           additionOfFreight: 0
           field1: value1
