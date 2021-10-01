@@ -126,7 +126,7 @@ paths:
         in: path
         required: true
     put:
-      summary: '/orders/{id}/transmissionStatus'
+      summary: '/orders/{marketPlaceId}/transmissionStatus'
       tags:
         - Pedidos
       responses:
@@ -238,15 +238,15 @@ paths:
                 $ref: '#/components/schemas/Order'
       operationId: get-orders-id
       description: Permite o middlewar consulta os dados do pedido no ANYMARKET.
-  '/orders/{id}/markAsPaid':
+  '/orders/{marketPlaceId}/markAsPaid':
     parameters:
       - schema:
           type: string
-        name: id
+        name: marketPlaceId
         in: path
         required: true
     put:
-      summary: '/orders/{id}/markAsPaid'
+      summary: '/orders/{marketPlaceId}/markAsPaid'
       tags:
         - Pedidos
       responses:
@@ -267,15 +267,15 @@ paths:
                   type: string
                   format: date-time
       description: Utilizado para que o middleware marque o pedido como PAGO no ANYMARKET.
-  '/orders/{id}/markAsShipped':
+  '/orders/{marketPlaceId}/markAsShipped':
     parameters:
       - schema:
           type: string
-        name: id
+        name: marketPlaceId
         in: path
         required: true
     put:
-      summary: '/orders/{id}/markAsShipped'
+      summary: '/orders/{marketPlaceId}/markAsShipped'
       tags:
         - Pedidos
       responses:
@@ -292,15 +292,15 @@ paths:
             schema:
               $ref: ./remote_pt.yaml#/components/schemas/ApiTracking
       description: Utilizado para que o middleware marque o pedido como ENVIADO no ANYMARKET.
-  '/orders/{id}/markAsCanceled':
+  '/orders/{marketPlaceId}/markAsCanceled':
     parameters:
       - schema:
           type: string
-        name: id
+        name: marketPlaceId
         in: path
         required: true
     put:
-      summary: '/orders/{id}/markAsCanceled'
+      summary: '/orders/{marketPlaceId}/markAsCanceled'
       tags:
         - Pedidos
       responses:
@@ -317,15 +317,15 @@ paths:
             schema:
               $ref: '#/components/schemas/CanceledStatusDTO'
       description: Utilizado para que o middleware marque o pedido como CANCELADO no ANYMARKET.
-  '/orders/{id}/markAsDelivered':
+  '/orders/{marketPlaceId}/markAsDelivered':
     parameters:
       - schema:
           type: string
-        name: id
+        name: marketPlaceId
         in: path
         required: true
     put:
-      summary: '/orders/{id}/markAsDelivered'
+      summary: '/orders/{marketPlaceId}/markAsDelivered'
       tags:
         - Pedidos
       responses:
@@ -342,15 +342,15 @@ paths:
             schema:
               $ref: ./remote_pt.yaml#/components/schemas/ApiTracking
       description: Utilizado para que o middleware marque o pedido como ENTREGUE no ANYMARKET.
-  '/orders/{id}/markAsInvoiced':
+  '/orders/{marketPlaceId}/markAsInvoiced':
     parameters:
       - schema:
           type: string
-        name: id
+        name: marketPlaceId
         in: path
         required: true
     put:
-      summary: '/orders/{id}/markAsInvoiced'
+      summary: '/orders/{marketPlaceId}/markAsInvoiced'
       tags:
         - Pedidos
       responses:
