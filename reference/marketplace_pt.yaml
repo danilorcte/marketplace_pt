@@ -408,8 +408,14 @@ paths:
 
         Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas.
       parameters:
-        - $ref: '#/components/parameters/appId'
-        - $ref: '#/components/parameters/token'
+        - in: header
+          name: appId
+          description: 'Identificador único do marketplace, fornecido pela equipe ANYMARKET.'
+          required: true
+        - in: header
+          name: token
+          description: 'Identificador do lojista, fornecido pelo ANYMARKET para os lojistas.'
+          required: true
       requestBody:
         content:
           application/json:
