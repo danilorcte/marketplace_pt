@@ -1227,13 +1227,13 @@ components:
     appId:
       name: appId
       in: header
-      required: false
+      required: true
       schema:
         type: string
     token:
       name: token
       in: header
-      required: false
+      required: true
       schema:
         type: string
       description: token
