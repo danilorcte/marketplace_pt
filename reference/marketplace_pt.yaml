@@ -266,6 +266,12 @@ paths:
                 date:
                   type: string
                   format: date-time
+                  description: Data do pagamento
+              required:
+                - date
+            examples:
+              example-1:
+                date: '2020-01-11T13:48:55-03:00:00'
       description: Utilizado para que o middleware marque o pedido como PAGO no ANYMARKET.
   '/orders/{marketPlaceId}/markAsShipped':
     parameters:
@@ -290,8 +296,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./remote_pt.yaml#/components/schemas/ApiTracking
-      description: Utilizado para que o middleware marque o pedido como ENVIADO no ANYMARKET.
+              description: ''
+              type: object
+              properties:
+                date:
+                  type: string
+                  minLength: 1
+              required:
+                - date
+              x-examples:
+                example-1:
+                  date: '2020-01-11T13:48:55-03:00:00'
+            examples:
+              example-1:
+                date: '2020-01-11T13:48:55-03:00:00'
+        description: |+
+
+      description: |-
+        Utilizado para que o middleware marque o pedido como ENVIADO no ANYMARKET.
+
+        Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas. 
   '/orders/{marketPlaceId}/markAsCanceled':
     parameters:
       - schema:
@@ -315,7 +339,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CanceledStatusDTO'
+              description: ''
+              type: object
+              properties:
+                date:
+                  type: string
+                  minLength: 1
+              required:
+                - date
+              x-examples:
+                example-1:
+                  date: '2020-01-11T13:48:55-03:00:00'
+            examples:
+              example-1:
+                date: '2020-01-11T13:48:55-03:00:00'
+        description: ''
       description: Utilizado para que o middleware marque o pedido como CANCELADO no ANYMARKET.
   '/orders/{marketPlaceId}/markAsDelivered':
     parameters:
@@ -340,8 +378,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./remote_pt.yaml#/components/schemas/ApiTracking
-      description: Utilizado para que o middleware marque o pedido como ENTREGUE no ANYMARKET.
+              description: ''
+              type: object
+              properties:
+                date:
+                  type: string
+                  minLength: 1
+              required:
+                - date
+              x-examples:
+                example-1:
+                  date: '2020-01-11T13:48:55-03:00:00'
+            examples:
+              example-1:
+                date: '2020-01-11T13:48:55-03:00:00'
+      description: |-
+        Utilizado para que o middleware marque o pedido como ENTREGUE no ANYMARKET.
+
+        Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas. 
   '/orders/{marketPlaceId}/markAsInvoiced':
     parameters:
       - schema:
@@ -365,8 +419,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OrderStatusUpdate'
-      description: Utilizado para que o middleware marque o pedido como FATURADO no ANYMARKET.
+              description: ''
+              type: object
+              properties:
+                date:
+                  type: string
+                  minLength: 1
+              required:
+                - date
+              x-examples:
+                example-1:
+                  date: '2020-01-11T13:48:55-03:00:00'
+            examples:
+              example-1:
+                date: '2020-01-11T13:48:55-03:00:00'
+      description: |-
+        Utilizado para que o middleware marque o pedido como FATURADO no ANYMARKET.
+
+        Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas. 
 components:
   securitySchemes:
     token:
