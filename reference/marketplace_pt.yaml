@@ -245,6 +245,7 @@ paths:
         name: marketPlaceId
         in: path
         required: true
+        description: Id do pedido no marketplace
     put:
       summary: '/orders/{marketPlaceId}/markAsPaid'
       tags:
