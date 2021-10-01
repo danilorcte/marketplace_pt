@@ -407,7 +407,9 @@ paths:
         Utilizado para que o middleware marque o pedido como ENTREGUE no ANYMARKET.
 
         Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas.
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/appId'
+        - $ref: '#/components/parameters/token'
       requestBody:
         content:
           application/json:
