@@ -273,6 +273,86 @@ paths:
               example-1:
                 date: '2020-01-11T13:48:55-03:00:00'
       description: Utilizado para que o middleware marque o pedido como PAGO no ANYMARKET.
+  '/orders/{marketPlaceId}/markAsCanceled':
+    parameters:
+      - schema:
+          type: string
+        name: marketPlaceId
+        in: path
+        required: true
+    put:
+      summary: '/orders/{marketPlaceId}/markAsCanceled'
+      tags:
+        - Pedidos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      operationId: put-id-markAsCanceled
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                date:
+                  type: string
+                  minLength: 1
+              required:
+                - date
+              x-examples:
+                example-1:
+                  date: '2020-01-11T13:48:55-03:00:00'
+            examples:
+              example-1:
+                date: '2020-01-11T13:48:55-03:00:00'
+        description: ''
+      description: Utilizado para que o middleware marque o pedido como CANCELADO no ANYMARKET.
+  '/orders/{marketPlaceId}/markAsInvoiced':
+    parameters:
+      - schema:
+          type: string
+        name: marketPlaceId
+        in: path
+        required: true
+    put:
+      summary: '/orders/{marketPlaceId}/markAsInvoiced'
+      tags:
+        - Pedidos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      operationId: put-orders-id-markAsInvoiced
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                date:
+                  type: string
+                  minLength: 1
+              required:
+                - date
+              x-examples:
+                example-1:
+                  date: '2020-01-11T13:48:55-03:00:00'
+            examples:
+              example-1:
+                date: '2020-01-11T13:48:55-03:00:00'
+      description: |-
+        Utilizado para que o middleware marque o pedido como FATURADO no ANYMARKET.
+
+        Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas. 
   '/orders/{marketPlaceId}/markAsShipped':
     parameters:
       - schema:
@@ -316,45 +396,6 @@ paths:
         Utilizado para que o middleware marque o pedido como ENVIADO no ANYMARKET.
 
         Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas. 
-  '/orders/{marketPlaceId}/markAsCanceled':
-    parameters:
-      - schema:
-          type: string
-        name: marketPlaceId
-        in: path
-        required: true
-    put:
-      summary: '/orders/{marketPlaceId}/markAsCanceled'
-      tags:
-        - Pedidos
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Order'
-      operationId: put-id-markAsCanceled
-      requestBody:
-        content:
-          application/json:
-            schema:
-              description: ''
-              type: object
-              properties:
-                date:
-                  type: string
-                  minLength: 1
-              required:
-                - date
-              x-examples:
-                example-1:
-                  date: '2020-01-11T13:48:55-03:00:00'
-            examples:
-              example-1:
-                date: '2020-01-11T13:48:55-03:00:00'
-        description: ''
-      description: Utilizado para que o middleware marque o pedido como CANCELADO no ANYMARKET.
   '/orders/{marketPlaceId}/markAsDelivered':
     parameters:
       - schema:
@@ -394,47 +435,6 @@ paths:
                 date: '2020-01-11T13:48:55-03:00:00'
       description: |-
         Utilizado para que o middleware marque o pedido como ENTREGUE no ANYMARKET.
-
-        Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas. 
-  '/orders/{marketPlaceId}/markAsInvoiced':
-    parameters:
-      - schema:
-          type: string
-        name: marketPlaceId
-        in: path
-        required: true
-    put:
-      summary: '/orders/{marketPlaceId}/markAsInvoiced'
-      tags:
-        - Pedidos
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Order'
-      operationId: put-orders-id-markAsInvoiced
-      requestBody:
-        content:
-          application/json:
-            schema:
-              description: ''
-              type: object
-              properties:
-                date:
-                  type: string
-                  minLength: 1
-              required:
-                - date
-              x-examples:
-                example-1:
-                  date: '2020-01-11T13:48:55-03:00:00'
-            examples:
-              example-1:
-                date: '2020-01-11T13:48:55-03:00:00'
-      description: |-
-        Utilizado para que o middleware marque o pedido como FATURADO no ANYMARKET.
 
         Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas. 
 components:
