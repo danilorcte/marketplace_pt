@@ -417,15 +417,7 @@ paths:
               $ref: '#/components/schemas/CanceledStatusDTO'
             examples: {}
 components:
-  securitySchemes:
-    token:
-      name: token
-      type: apiKey
-      in: header
-    appId:
-      name: appId
-      type: apiKey
-      in: header
+  securitySchemes: {}
   schemas:
     '400':
       description: ''
@@ -1253,6 +1245,3 @@ components:
           totalElements: 0
           totalPages: 0
           number: 0
-security:
-  - token: []
-  - appId: []
