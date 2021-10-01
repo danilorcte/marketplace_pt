@@ -1043,15 +1043,24 @@ components:
     OrderStatusUpdate:
       title: OrderStatusUpdate
       type: object
+      x-examples:
+        example-1:
+          success: true
+          errorMessage: string
+          marketPlaceStatus: string
       properties:
         success:
           type: boolean
         errorMessage:
           type: string
-        orderMessage:
-          $ref: ./remote_pt.yaml#/components/schemas/SkuMarketPlaceMessage
+          description: Mensagem com o motivo da não atualização do status do pedido
         marketPlaceStatus:
           type: string
+          description: Status do pedido no Marketplace
+      required:
+        - success
+        - marketPlaceStatus
+      description: 'Quando o marketplace receber a notificação de atualização de um pedido, seja ele mudando para FATURADO, ENVIADO, CONCLUIDO ou CANCELADO no endpoint /updateOrderStatusInMarketPlace. Necessariamente o marketplace deve realizar o GET para consultar os dados do pedido e na sequencia utilizar do endpoint citado a cima, removendo a sinalização de sincronização e identificando qual o status do pedido no marketplace. Lembrando que caso não processe, o erro deve ser informado também nesse endpoint.'
     Page_Order:
       title: Page_Brand
       allOf:
