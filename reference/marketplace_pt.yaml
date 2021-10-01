@@ -405,22 +405,14 @@ paths:
       description: |-
         Utilizado para que o middleware marque o pedido como ENTREGUE no ANYMARKET.
 
-        Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas. 
+        Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas.
+      parameters: []
       requestBody:
         content:
           application/json:
             schema:
-              description: ''
-              type: object
-              properties:
-                date:
-                  type: string
-                  minLength: 1
-              required:
-                - date
-              x-examples:
-                example-1:
-                  date: '2020-01-11T13:48:55-03:00:00'
+              $ref: '#/components/schemas/CanceledStatusDTO'
+            examples: {}
 components:
   securitySchemes:
     token:
