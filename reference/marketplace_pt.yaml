@@ -420,6 +420,10 @@ components:
       name: token
       type: apiKey
       in: header
+    appId:
+      name: appId
+      type: apiKey
+      in: header
   schemas:
     '400':
       description: ''
@@ -1249,4 +1253,4 @@ components:
           number: 0
 security:
   - token: []
-    appId: []
+  - appId: []
