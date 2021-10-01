@@ -96,6 +96,15 @@ paths:
                   $ref: ./remote_pt.yaml#/components/schemas/ConfigurationDTO
       operationId: get-api-configuration
       description: Consulta todas as configurações realizadas pelo seller no ANYMARKET.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: appId
+        - schema:
+            type: string
+          in: header
+          name: token
     parameters: []
   '/configuration/{id}':
     parameters:
@@ -118,6 +127,17 @@ paths:
                 $ref: ./remote_pt.yaml#/components/schemas/ConfigurationDTO
       operationId: get-api-configuration-id
       description: Consulta pelo ID da conta as configurações realizadas pelo seller no ANYMARKET.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: appId
+          required: true
+        - schema:
+            type: string
+          in: header
+          name: token
+          required: true
   '/orders/{id}/transmissionStatus':
     parameters:
       - schema:
@@ -143,6 +163,17 @@ paths:
             schema:
               $ref: '#/components/schemas/OrderStatusUpdate'
       description: 'Quando o marketplace receber a notificação de atualização de um pedido, seja ele mudando para FATURADO, ENVIADO, CONCLUIDO ou CANCELADO no endpoint /updateOrderStatusInMarketPlace. Necessariamente o marketplace deve realizar o GET para consultar os dados do pedido e na sequencia utilizar do endpoint citado a cima, removendo a sinalização de sincronização e identificando qual o status do pedido no marketplace. Lembrando que caso não processe, o erro deve ser informado também nesse endpoint.'
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: appId
+          required: true
+        - schema:
+            type: string
+          in: header
+          name: token
+          required: true
   /orders:
     post:
       summary: Criando um pedido no ANYMARKET
@@ -217,6 +248,16 @@ paths:
           in: query
           name: createdAfter
           description: Data da criação do pedido
+        - schema:
+            type: string
+          in: header
+          name: appId
+          required: true
+        - schema:
+            type: string
+          in: header
+          name: token
+          required: true
   '/orders/{id}':
     parameters:
       - schema:
@@ -238,6 +279,17 @@ paths:
                 $ref: '#/components/schemas/Order'
       operationId: get-orders-id
       description: Permite o middlewar consulta os dados do pedido no ANYMARKET.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: appId
+          required: true
+        - schema:
+            type: string
+          in: header
+          name: token
+          required: true
   '/orders/{marketPlaceId}/markAsPaid':
     parameters:
       - schema:
@@ -262,18 +314,20 @@ paths:
         content:
           application/json:
             schema:
-              description: ''
-              type: object
-              properties:
-                date:
-                  type: string
-                  minLength: 1
-              required:
-                - date
+              $ref: '#/components/schemas/CanceledStatusDTO'
             examples:
               example-1:
                 date: '2020-01-11T13:48:55-03:00:00'
       description: Utilizado para que o middleware marque o pedido como PAGO no ANYMARKET.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: appId
+        - schema:
+            type: string
+          in: header
+          name: token
   '/orders/{marketPlaceId}/markAsCanceled':
     parameters:
       - schema:
@@ -299,6 +353,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CanceledStatusDTO'
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: appId
+          required: true
+        - schema:
+            type: string
+          in: header
+          name: token
+          required: true
     description: Marcar pedido como Cancelado
   '/orders/{marketPlaceId}/markAsInvoiced':
     parameters:
@@ -323,17 +388,7 @@ paths:
         content:
           application/json:
             schema:
-              description: ''
-              type: object
-              properties:
-                date:
-                  type: string
-                  minLength: 1
-              required:
-                - date
-              x-examples:
-                example-1:
-                  date: '2020-01-11T13:48:55-03:00:00'
+              $ref: '#/components/schemas/CanceledStatusDTO'
             examples:
               example-1:
                 date: '2020-01-11T13:48:55-03:00:00'
@@ -341,6 +396,17 @@ paths:
         Utilizado para que o middleware marque o pedido como FATURADO no ANYMARKET.
 
         Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas. 
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: appId
+          required: true
+        - schema:
+            type: string
+          in: header
+          name: token
+          required: true
   '/orders/{marketPlaceId}/markAsShipped':
     parameters:
       - schema:
@@ -364,26 +430,23 @@ paths:
         content:
           application/json:
             schema:
-              description: ''
-              type: object
-              properties:
-                date:
-                  type: string
-                  minLength: 1
-              required:
-                - date
-              x-examples:
-                example-1:
-                  date: '2020-01-11T13:48:55-03:00:00'
+              $ref: '#/components/schemas/CanceledStatusDTO'
             examples:
-              example-1:
-                date: '2020-01-11T13:48:55-03:00:00'
+              example-2:
+                date: '2019-08-24T14:15:22Z'
         description: |+
 
       description: |-
         Utilizado para que o middleware marque o pedido como ENVIADO no ANYMARKET.
 
         Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas. 
+      parameters:
+        - in: header
+          name: appId
+          required: true
+        - in: header
+          name: token
+          required: true
   '/orders/{marketPlaceId}/markAsDelivered':
     parameters:
       - schema:
@@ -412,6 +475,7 @@ paths:
           name: appId
           description: 'Identificador único do marketplace, fornecido pela equipe ANYMARKET.'
           required: true
+          schema: {}
         - in: header
           name: token
           description: 'Identificador do lojista, fornecido pelo ANYMARKET para os lojistas.'
