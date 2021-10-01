@@ -261,12 +261,12 @@ paths:
         content:
           application/json:
             schema:
+              description: ''
               type: object
               properties:
                 date:
                   type: string
-                  format: date-time
-                  description: Data do pagamento
+                  minLength: 1
               required:
                 - date
             examples:
@@ -292,26 +292,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Order'
       operationId: put-id-markAsCanceled
+      description: Utilizado para que o middleware marque o pedido como CANCELADO no ANYMARKET.
       requestBody:
         content:
           application/json:
             schema:
-              description: ''
-              type: object
-              properties:
-                date:
-                  type: string
-                  minLength: 1
-              required:
-                - date
-              x-examples:
-                example-1:
-                  date: '2020-01-11T13:48:55-03:00:00'
-            examples:
-              example-1:
-                date: '2020-01-11T13:48:55-03:00:00'
-        description: ''
-      description: Utilizado para que o middleware marque o pedido como CANCELADO no ANYMARKET.
+              $ref: '#/components/schemas/CanceledStatusDTO'
+    description: Marcar pedido como Cancelado
   '/orders/{marketPlaceId}/markAsInvoiced':
     parameters:
       - schema:
@@ -415,6 +402,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/Order'
       operationId: put-orders-id-markAsDelivered
+      description: |-
+        Utilizado para que o middleware marque o pedido como ENTREGUE no ANYMARKET.
+
+        Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas. 
       requestBody:
         content:
           application/json:
@@ -430,13 +421,6 @@ paths:
               x-examples:
                 example-1:
                   date: '2020-01-11T13:48:55-03:00:00'
-            examples:
-              example-1:
-                date: '2020-01-11T13:48:55-03:00:00'
-      description: |-
-        Utilizado para que o middleware marque o pedido como ENTREGUE no ANYMARKET.
-
-        Apenas utilizado quando o marketplace possui formas de envios próprias, como modalidade fulfillment ou emissão de etiquetas. 
 components:
   securitySchemes:
     token:
@@ -1208,18 +1192,9 @@ components:
         date:
           type: string
           format: date-time
-        code:
-          type: string
-          enum:
-            - WITHOUT_STOCK
-            - SHIPPING_ADDRESS
-            - CUSTOMER_EXCHANGE
-            - GENERAL_ADJUSTMENT
-            - CUSTOMER_RETURN
-            - BUYER_CANCELED
-            - OTHER
-        marketplaceStatus:
-          type: string
+      x-examples:
+        example-1:
+          date: '2020-01-11T13:48:55-03:00:00'
   parameters:
     offset:
       name: offset
