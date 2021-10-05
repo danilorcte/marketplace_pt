@@ -699,16 +699,17 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Category'
+                $ref: '#/components/schemas/Category'
               examples:
                 Example:
                   value:
                     - codeInMarketplace: string
                       name: string
       operationId: get-categories
-      description: Consulta a categoria raiz do marketplace.
+      description: |-
+        Busca do primeiro nível da arvore de categorias do marketplace.
+
+        O reponse será um array contendo o primeiro nível de categoria do marketplace.
       parameters:
         - schema:
             type: string
@@ -741,7 +742,7 @@ paths:
                     idCategoryAnymarket: 0
                     accountIdentifier: string
       operationId: get-categories-details-categoryIdInMarketplace
-      description: Consulta detalhes de categoria no marketplace
+      description: Consulta categoria no marketplace
       parameters:
         - schema:
             type: string
@@ -1029,23 +1030,26 @@ components:
         - codeInMarketplace: string
           name: string
     Category:
+      type: array
       description: ''
-      type: object
-      properties:
-        codeInMarketplace:
-          type: string
-          minLength: 1
-        name:
-          type: string
-          minLength: 1
-      required:
-        - codeInMarketplace
-        - name
+      minItems: 1
+      uniqueItems: true
+      items:
+        type: object
+        required:
+          - codeInMarketplace
+          - name
+        properties:
+          codeInMarketplace:
+            type: string
+            minLength: 1
+          name:
+            type: string
+            minLength: 1
       x-examples:
         example-1:
-          codeInMarketplace: string
-          name: string
-      title: Category
+          - codeInMarketplace: string
+            name: string
     CategoryAssociation:
       title: CategoryAssociation
       type: object
