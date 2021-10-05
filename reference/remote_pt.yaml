@@ -708,7 +708,7 @@ paths:
                     - codeInMarketplace: string
                       name: string
       operationId: get-categories
-      description: Consulta categoria no marketplace
+      description: Consulta a categoria raiz do marketplace.
       parameters:
         - schema:
             type: string
