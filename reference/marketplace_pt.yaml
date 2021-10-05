@@ -353,6 +353,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CanceledStatusDTO'
+            examples:
+              example-1:
+                date: '2020-01-11T13:48:55-03:00:00'
       parameters:
         - schema:
             type: string
@@ -433,7 +436,7 @@ paths:
               $ref: '#/components/schemas/CanceledStatusDTO'
             examples:
               example-2:
-                date: '2019-08-24T14:15:22Z'
+                date: '2020-01-11T13:48:55-03:00:00'
         description: |+
 
       description: |-
@@ -485,7 +488,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CanceledStatusDTO'
-            examples: {}
+            examples:
+              example-1:
+                date: '2020-01-11T13:48:55-03:00:00'
 components:
   securitySchemes: {}
   schemas:

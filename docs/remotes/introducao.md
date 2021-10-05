@@ -45,7 +45,7 @@ focus: false
 |-|--------------------------------------------------------------|----|-|
 |1|Prenchimento do "Formulário de liberação de novo marketplace"|Marketplace|Neste formulário constam informações como URL do Middleware, campos necessários para autenticação no marketplace (login/senha ou token), descrição, comportamentos)|
 |2|Liberação de Ambiente Sandbox                                 |ANYMARKET|Nesta etapa o ANYMARKET criará o novo canal com base nas informações do formulário da etapa anterior e fornecerá: **Usuário de acesso ao ANYMARKET** para que você realize os testes durante o desenvolvimento. E também o seu **"appId"** que será o identificador do seu marketplace dento do ANYMARKET, este id deverá ser utilizado em todas as chamadas que você realizar para nossa API.|
-|3|Construção do Middleware                                      |Marketplace|Etapa de contrução do middleware pelo marketplace.|
+|3|Construção do Middleware                                      |Marketplace|Etapa de construção do middleware pelo marketplace.|
 |4|Homologação                                                   |ANYMARKET|Nesta etapa nossa equipe de qualidade irá realizar os testes do novo marketplace visando garantir que a integração está de acordo com os critérios de aceitação previstos. Mais informações sobre esse processo podem ser acessadas no tópico **"Processo de homologação"** da nossa documentação.|
 |5|Liberação do marketplace em Beta                              |ANYMARKET|Nesta etapa acompanhamos os 5 primeiros sellers, visando garantir que está tudo funcionando corretamente em ambiente de produção.|
 |6|Liberação do marketplace em Produção                          |ANYMARKET|Disponibilizamos o novo marketplace para todos os Sellers do ANYMARKET.|
