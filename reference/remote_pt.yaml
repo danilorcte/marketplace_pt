@@ -733,13 +733,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiCategoryDetails'
+                $ref: '#/components/schemas/CategoryDetails'
               examples:
-                Example:
-                  value:
-                    idCategoryMarketplace: string
-                    idCategoryAnymarket: 0
-                    accountIdentifier: string
+                example-1:
+                  codeInMarketPlace: 2551
+                  name: Beleza e Perfumaria
+                  isReceivingItens: true
+                  variationsMandatory: true
+                  canBeSelected: true
+                  children:
+                    - codeInMarketplace: 2554
+                      name: Maquiagem
+                    - codeInMarketplace: 2555
+                      name: Perfumes
         '':
           content:
             application/json:
@@ -1080,7 +1086,7 @@ components:
             type: object
             properties:
               codeInMarketplace:
-                type: number
+                type: string
               name:
                 type: string
                 minLength: 1
@@ -2899,30 +2905,6 @@ components:
             - SHIPPED
             - DELIVERED
             - CANCELED
-    ApiCategoryDetails:
-      title: ApiCategoryDetails
-      type: object
-      properties:
-        codeInMarketPlace:
-          type: string
-        name:
-          type: string
-        isReceivingItens:
-          type: boolean
-        variationsMandatory:
-          type: boolean
-        canBeSelected:
-          type: boolean
-        path:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-        completePath:
-          type: string
   securitySchemes:
     x-anymarket-token:
       name: x-anymarket-token
