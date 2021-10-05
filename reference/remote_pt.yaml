@@ -716,14 +716,13 @@ paths:
           in: query
           name: accountIdentifier
           description: Identificação da conta
-  '/categories/{categoryIdInMarketplace}':
+  '/categories/{codeInMarketPlace}':
     parameters:
       - schema:
           type: string
-        name: categoryIdInMarketplace
+        name: codeInMarketPlace
         in: path
         required: true
-        description: Código da categoria no marketplace
     get:
       summary: '/categories/{categoryIdInMarketplace}'
       tags:
@@ -741,6 +740,23 @@ paths:
                     idCategoryMarketplace: string
                     idCategoryAnymarket: 0
                     accountIdentifier: string
+        '':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryDetails'
+              examples:
+                example-1:
+                  codeInMarketPlace: 2551
+                  name: Beleza e Perfumaria
+                  isReceivingItens: true
+                  variationsMandatory: true
+                  canBeSelected: true
+                  children:
+                    - codeInMarketplace: 2554
+                      name: Maquiagem
+                    - codeInMarketplace: 2555
+                      name: Perfumes
       operationId: get-categories-details-categoryIdInMarketplace
       description: Consulta categoria no marketplace
       parameters:
@@ -1029,27 +1045,55 @@ components:
       examples:
         - codeInMarketplace: string
           name: string
-    Category:
-      type: array
+    CategoryDetails:
       description: ''
-      minItems: 1
-      uniqueItems: true
-      items:
-        type: object
-        required:
-          - codeInMarketplace
-          - name
-        properties:
-          codeInMarketplace:
-            type: string
-            minLength: 1
-          name:
-            type: string
-            minLength: 1
+      type: object
       x-examples:
         example-1:
-          - codeInMarketplace: string
-            name: string
+          codeInMarketPlace: 2551
+          name: Beleza e Perfumaria
+          isReceivingItens: true
+          variationsMandatory: true
+          canBeSelected: true
+          children:
+            - codeInMarketplace: 2554
+              name: Maquiagem
+            - codeInMarketplace: 2555
+              name: Perfumes
+      properties:
+        codeInMarketPlace:
+          type: string
+        name:
+          type: string
+          minLength: 1
+        isReceivingItens:
+          type: boolean
+        variationsMandatory:
+          type: boolean
+        canBeSelected:
+          type: boolean
+        children:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              codeInMarketplace:
+                type: number
+              name:
+                type: string
+                minLength: 1
+            required:
+              - codeInMarketplace
+              - name
+      required:
+        - codeInMarketPlace
+        - name
+        - isReceivingItens
+        - variationsMandatory
+        - canBeSelected
+        - children
     CategoryAssociation:
       title: CategoryAssociation
       type: object
