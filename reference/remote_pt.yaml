@@ -687,10 +687,11 @@ paths:
               $ref: '#/components/schemas/RemoteApiUpdateOrderStatus'
             examples:
               example-1:
-                orderId: 0
-                idInMarketplace: string
-                oldStatus: PAID
-                currentStatus: INVOICED
+                value:
+                  orderId: 0
+                  idInMarketplace: string
+                  oldStatus: PAID
+                  currentStatus: INVOICED
         description: ''
       tags:
         - Pedidos
