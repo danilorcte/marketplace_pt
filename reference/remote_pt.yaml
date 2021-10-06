@@ -724,9 +724,17 @@ paths:
         in: path
         required: true
     get:
-      summary: '/categories/{categoryIdInMarketplace}'
+      summary: '/categories/{codeInMarketPlace}'
       tags:
         - Vínculo de Categoria
+      operationId: get-categories-details-categoryIdInMarketplace
+      description: Consulta categoria no marketplace
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: accountIdentifier
+          description: Identificação da conta
       responses:
         '200':
           description: OK
@@ -736,41 +744,14 @@ paths:
                 $ref: '#/components/schemas/CategoryDetails'
               examples:
                 example-1:
-                  codeInMarketPlace: 2551
-                  name: Beleza e Perfumaria
+                  codeInMarketPlace: string
+                  name: string
                   isReceivingItens: true
                   variationsMandatory: true
                   canBeSelected: true
                   children:
-                    - codeInMarketplace: 2554
-                      name: Maquiagem
-                    - codeInMarketplace: 2555
-                      name: Perfumes
-        '':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CategoryDetails'
-              examples:
-                example-1:
-                  codeInMarketPlace: 2551
-                  name: Beleza e Perfumaria
-                  isReceivingItens: true
-                  variationsMandatory: true
-                  canBeSelected: true
-                  children:
-                    - codeInMarketplace: 2554
-                      name: Maquiagem
-                    - codeInMarketplace: 2555
-                      name: Perfumes
-      operationId: get-categories-details-categoryIdInMarketplace
-      description: Consulta categoria no marketplace
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: accountIdentifier
-          description: Identificação da conta
+                    - codeInMarketplace: string
+                      name: string
   '/categories/attributes/{idAnymarketCategory}':
     parameters:
       - schema:
@@ -1066,6 +1047,15 @@ components:
               name: Maquiagem
             - codeInMarketplace: 2555
               name: Perfumes
+        example-2:
+          codeInMarketPlace: string
+          name: string
+          isReceivingItens: true
+          variationsMandatory: true
+          canBeSelected: true
+          children:
+            - codeInMarketplace: string
+              name: string
       properties:
         codeInMarketPlace:
           type: string
