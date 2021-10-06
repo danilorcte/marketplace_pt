@@ -699,12 +699,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Category'
+                $ref: '#/components/schemas/Categories'
               examples:
                 Example:
                   value:
-                    - codeInMarketplace: string
-                      name: string
+                    - codeInMarketplace: '2551'
+                      name: Decoração
       operationId: get-categories
       description: |-
         Busca do primeiro nível da arvore de categorias do marketplace.
@@ -2941,6 +2941,29 @@ components:
             - SHIPPED
             - DELIVERED
             - CANCELED
+    Categories:
+      type: array
+      description: ''
+      minItems: 1
+      uniqueItems: true
+      x-examples:
+        example-1:
+          - codeInMarketplace: '2551'
+            name: Decoração
+      items:
+        type: object
+        properties:
+          codeInMarketplace:
+            type: string
+            minLength: 1
+            description: Código da categoria no Marketplace
+          name:
+            type: string
+            minLength: 1
+            description: O nome da categoria no Marketplace
+        required:
+          - codeInMarketplace
+          - name
   securitySchemes:
     x-anymarket-token:
       name: x-anymarket-token
