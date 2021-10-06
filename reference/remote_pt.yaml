@@ -781,29 +781,60 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/CategoryAttribute'
+                $ref: '#/components/schemas/CategoryAttribute'
               examples:
-                Example:
+                Atributos:
                   value:
-                    - codeInMarketPlace: string
-                      description: string
+                    - codeInMarketPlace: '665'
+                      description: Sabor
                       required: true
-                      recommended: true
+                      recommended: false
                       type: STRING_INPUT
+                    - codeInMarketPlace: '674'
+                      description: Tamanho
+                      required: false
+                      recommended: false
+                      type: NUMBER_INPUT
+                    - codeInMarketPlace: '295'
+                      description: Cor
+                      required: false
+                      recommended: false
+                      type: SELECT_INPUT
                       values:
-                        - codeInMarketplace: string
-                          name: string
-                      dataDefinitions:
-                        - codeInMarketPlace: string
-                          name: string
-                          dataDefinitionType: STRING_INPUT
-                          values:
-                            - codeInMarketplace: string
-                              name: string
+                        - codeInMarketPlace: '2954'
+                          name: Azul
+                        - codeInMarketPlace: '2953'
+                          name: Vermelho
+                        - codeInMarketPlace: '2952'
+                          name: Verde
+                        - codeInMarketPlace: '2951'
+                          name: Amarelo
       operationId: get-categories-attributes-id
-      description: Consulta dos atributos vinculados à categoria
+      description: |-
+        Quando o ANYMARKET disparar a notificação para obter os dados de características o marketplace deve retornar um payload com o seguinte formato, lembrando que pode conter 3 tipos de "type"
+
+        ​
+        STRING_INPUT = Campo aberto em que o seller pode digitar apenas valores do tipo "string".
+
+        NUMBER_INPUT = ​Campo aberto em que o seller pode digitar apenas valores do tipo "number".
+
+        SELECT_INPUT = Será aberto um dropdown para o seller escolher os valores disponibilizados pelo marketplace.
+
+
+        Pontos de atenção:
+
+        A visualização dos valores que o seller realizou o de/para das características ficarão disponíveis no momento em que for enviado o remote canSave e quando o marketplace vier consultar a transmissão do anuncio em questão. As informações ficarão dispostas no conjunto “atributes”:
+        Deixo abaixo um exemplo de uma parte do JSON enviado na chamada do remote /canSave, contendo o conjunto "atributes" já com os valores que o seller realizou o de/para. Lembrando que os valores no conteúdo JSON é os valores disponibilizados pelo marketplace.
+
+        ```json
+        ......
+        "attributes": {
+        "92": "20",
+        "5854": "50kg",
+        "455": "78"
+        }
+        ......
+        ```
   /brands:
     get:
       summary: /brands
@@ -1114,64 +1145,68 @@ components:
         accountIdentifier:
           type: string
     CategoryAttribute:
+      type: array
       description: ''
-      type: object
+      minItems: 1
+      uniqueItems: true
+      items:
+        type: object
+        required:
+          - codeInMarketPlace
+          - description
+          - required
+          - recommended
+          - type
+          - values
+        properties:
+          codeInMarketPlace:
+            type: string
+            minLength: 1
+          description:
+            type: string
+            minLength: 1
+          required:
+            type: boolean
+          recommended:
+            type: boolean
+          type:
+            type: string
+            minLength: 1
+          values:
+            type: array
+            uniqueItems: true
+            minItems: 1
+            items:
+              required:
+                - codeInMarketPlace
+                - name
+              properties:
+                codeInMarketPlace:
+                  type: string
+                  minLength: 1
+                name:
+                  type: string
+                  minLength: 1
       x-examples:
         example-1:
-          codeInMarketPlace: '665'
-          description: Sabor
-          required: true
-          recommended: false
-          type: STRING_INPUT
-      properties:
-        codeInMarketPlace:
-          type: string
-          minLength: 1
-        description:
-          type: string
-          minLength: 1
-        required:
-          type: boolean
-        recommended:
-          type: boolean
-        type:
-          type: string
-          minLength: 1
-          enum:
-            - STRING_INPUT
-            - SELECT_INPUT
-            - NUMBER_INPUT
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-        dataDefinitions:
-          type: array
-          items:
-            $ref: '#/components/schemas/CategoryDataDefinition'
-      required:
-        - codeInMarketPlace
-        - description
-        - required
-        - recommended
-        - type
-      examples:
-        - codeInMarketPlace: string
-          description: string
-          required: true
-          recommended: true
-          type: STRING_INPUT
-          values:
-            - codeInMarketplace: string
-              name: string
-          dataDefinitions:
-            - codeInMarketPlace: string
-              name: string
-              dataDefinitionType: STRING_INPUT
-              values:
-                - codeInMarketplace: string
-                  name: string
-      title: CategoryAttribute
+          - codeInMarketPlace: '665'
+            description: Sabor
+            required: true
+            recommended: false
+            type: STRING_INPUT
+          - codeInMarketPlace: '674'
+            description: Tamanho
+            required: false
+            recommended: false
+            type: STRING_INPUT
+          - codeInMarketPlace: '295'
+            description: Cor
+            required: false
+            recommended: false
+            type: SELECT_INPUT
+            values:
+              - codeInMarketPlace: '2954'
+                name: Azul
     CategoryDataDefinition:
       title: CategoryDataDefinition
       type: object
