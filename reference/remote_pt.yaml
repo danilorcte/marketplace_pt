@@ -743,7 +743,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/CategoryDetails'
               examples:
-                example-1:
+                Category Details | Subcategorias:
                   value:
                     codeInMarketPlace: 2551
                     name: Beleza e Perfumaria
@@ -755,6 +755,14 @@ paths:
                         name: Maquiagem
                       - codeInMarketplace: 2555
                         name: Perfumes
+                'Category Details | Ultimo nível ':
+                  value:
+                    codeInMarketPlace: 2557
+                    name: Porta-Retratos
+                    isReceivingItens: true
+                    variationsMandatory: true
+                    canBeSelected: true
+                    children: []
   '/categories/attributes/{idAnymarketCategory}':
     parameters:
       - schema:
