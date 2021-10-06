@@ -744,14 +744,17 @@ paths:
                 $ref: '#/components/schemas/CategoryDetails'
               examples:
                 example-1:
-                  codeInMarketPlace: string
-                  name: string
-                  isReceivingItens: true
-                  variationsMandatory: true
-                  canBeSelected: true
-                  children:
-                    - codeInMarketplace: string
-                      name: string
+                  value:
+                    codeInMarketPlace: 2551
+                    name: Beleza e Perfumaria
+                    isReceivingItens: true
+                    variationsMandatory: true
+                    canBeSelected: true
+                    children:
+                      - codeInMarketplace: 2554
+                        name: Maquiagem
+                      - codeInMarketplace: 2555
+                        name: Perfumes
   '/categories/attributes/{idAnymarketCategory}':
     parameters:
       - schema:
