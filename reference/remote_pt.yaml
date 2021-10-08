@@ -763,16 +763,15 @@ paths:
                     variationsMandatory: true
                     canBeSelected: true
                     children: []
-  '/categories/attributes/{idAnymarketCategory}':
+  '/categories/attributes/{codeInMarketPlace}':
     parameters:
       - schema:
           type: string
-        name: idAnymarketCategory
+        name: codeInMarketPlace
         in: path
         required: true
-        description: Código de categoria no Anymarket
     get:
-      summary: '/categories/attributes/{idAnymarketCategory}'
+      summary: '/categories/attributes/{codeInMarketPlace}'
       tags:
         - Vínculo de Categoria
       responses:
