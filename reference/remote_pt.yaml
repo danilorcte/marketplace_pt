@@ -685,6 +685,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RemoteApiUpdateOrderStatus'
+            examples:
+              example-1:
+                value:
+                  orderId: 0
+                  idInMarketplace: string
+                  oldStatus: PAID
+                  currentStatus: INVOICED
         description: ''
       tags:
         - Pedidos
