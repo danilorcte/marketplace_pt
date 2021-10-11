@@ -437,7 +437,8 @@ paths:
               $ref: '#/components/schemas/CanceledStatusDTO'
             examples:
               example-2:
-                date: '2020-01-11T13:48:55-03:00:00'
+                value:
+                  date: '2020-01-11T13:48:55-03:00:00'
         description: |+
 
       description: |-
