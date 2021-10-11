@@ -317,7 +317,8 @@ paths:
               $ref: '#/components/schemas/CanceledStatusDTO'
             examples:
               example-1:
-                date: '2020-01-11T13:48:55-03:00:00'
+                value:
+                  date: '2020-01-11T13:48:55-03:00:00'
       description: Utilizado para que o middleware marque o pedido como PAGO no ANYMARKET.
       parameters:
         - schema:
