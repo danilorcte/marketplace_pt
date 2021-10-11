@@ -318,7 +318,7 @@ paths:
             examples:
               example-1:
                 value:
-                  date: '2020-01-11T13:48:55-03:00:00'
+                  date: '2021-01-11T13:48:55-03:00:00'
       description: Utilizado para que o middleware marque o pedido como PAGO no ANYMARKET.
       parameters:
         - schema:
@@ -356,7 +356,8 @@ paths:
               $ref: '#/components/schemas/CanceledStatusDTO'
             examples:
               example-1:
-                date: '2020-01-11T13:48:55-03:00:00'
+                value:
+                  date: '2021-01-11T13:48:55-03:00:00'
       parameters:
         - schema:
             type: string
@@ -395,7 +396,8 @@ paths:
               $ref: '#/components/schemas/CanceledStatusDTO'
             examples:
               example-1:
-                date: '2020-01-11T13:48:55-03:00:00'
+                value:
+                  date: '2020-01-11T13:48:55-03:00:00'
       description: |-
         Utilizado para que o middleware marque o pedido como FATURADO no ANYMARKET.
 
@@ -438,7 +440,7 @@ paths:
             examples:
               example-2:
                 value:
-                  date: '2020-01-11T13:48:55-03:00:00'
+                  date: '2021-01-11T13:48:55-03:00:00'
         description: |+
 
       description: |-
@@ -492,7 +494,8 @@ paths:
               $ref: '#/components/schemas/CanceledStatusDTO'
             examples:
               example-1:
-                date: '2020-01-11T13:48:55-03:00:00'
+                value:
+                  date: '2021-01-11T13:48:55-03:00:00'
 components:
   securitySchemes: {}
   schemas:
