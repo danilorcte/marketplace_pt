@@ -905,16 +905,15 @@ paths:
               examples:
                 example-1:
                   value:
-                    value:
-                      idInMarketplace: SKUFROMMKT
-                      publicationStatus: ACTIVE
-                      marketplaceStatus: STATUS_NO_MKT_SKM2
-                      skuInMarketplace: SKU_IN_MKT_MKT_SKM2
-                      title: PRODUTO
-                      ean: '456789123456'
-                      priceFactor: 1
-                      price: 10
-                      discountPrice: 9
+                    idInMarketplace: SKUFROMMKT
+                    publicationStatus: ACTIVE
+                    marketplaceStatus: STATUS_NO_MKT_SKM2
+                    skuInMarketplace: SKU_IN_MKT_MKT_SKM2
+                    title: PRODUTO
+                    ean: '456789123456'
+                    priceFactor: 1
+                    price: 10
+                    discountPrice: 9
     parameters:
       - schema:
           type: string
