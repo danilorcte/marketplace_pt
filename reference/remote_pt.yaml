@@ -875,94 +875,6 @@ paths:
       summary: '/product/{partnerId}'
       tags:
         - Vínculo de SKU
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SkuMarketplace'
-              examples:
-                example-1:
-                  value:
-                    id: 0
-                    idInMarketplace: string
-                    marketPlace: B2W
-                    index: 0
-                    publicationStatus: string
-                    marketplaceStatus: string
-                    transmissionStatus: string
-                    errorMsg: string
-                    skuMarketPlaceMessage:
-                      message: string
-                      key: string
-                      parameters:
-                        parameter1: value1
-                        parameter2: value2
-                    price: 0
-                    priceFactor: 1
-                    discountPrice: 0
-                    skuInMarketplace: string
-                    marketplaceItemCode: string
-                    fields:
-                      title: string
-                      template: string
-                      priceFactor: string
-                      DISCOUNT_TYPE: string
-                      DISCOUNT_VALUE: string
-                      HAS_DISCOUNT: string
-                      CONCAT_ATTRIBUTES: string
-                      delivery_type: string
-                      SHIPMENT: string
-                      crossDocking: string
-                      CUSTOM_DESCRIPTION: string
-                      EAN: string
-                      MANUFACTURING_TIME: string
-                      VALUE: string
-                      PERCENT: string
-                      bronze_price: string
-                      bronze_price_factor: string
-                      buying_mode: string
-                      category_with_variation: string
-                      condition: string
-                      free_price: string
-                      free_price_factor: string
-                      free_shipping: string
-                      gold_premium_price: string
-                      gold_premium_price_factor: string
-                      gold_price: string
-                      gold_price_factor: string
-                      gold_pro_price: string
-                      gold_pro_price_factor: string
-                      gold_special_price: string
-                      gold_special_price_factor: string
-                      listing_type_id: string
-                      shipping_local_pick_up: string
-                      shipping_mode: string
-                      silver_price: string
-                      silver_price_factor: string
-                    availableStock:
-                      amount: 0
-                      availableAmount: 0
-                      cost: 0
-                      totalReservation: 0
-                      physicalAmount: 0
-                      reservedPending: 0
-                      reservedPaid: 0
-                      totalInInvoicedStatus: 0
-                      stockLocal: string
-                      additionalTime: 0
-                    attributes:
-                      cor: azul
-                      tamanho: grande
-                      material: inox
-                    idAccount: 0
-                    accountName: string
-                    origin: BIND
-                    isCatalog: true
-                    permalink: string
-                    title: string
-                    ean: string
       operationId: get-product
       description: Consulta produto no marketplace
       parameters:
@@ -983,6 +895,26 @@ paths:
           in: query
           name: definitionScope
           description: Tipo da regra de preço do produto
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VinculoSku'
+              examples:
+                example-1:
+                  value:
+                    value:
+                      idInMarketplace: string
+                      publicationStatus: string
+                      marketplaceStatus: string
+                      skuInMarketplace: string
+                      title: string
+                      ean: string
+                      priceFactor: 0
+                      price: 0
+                      discountPrice: 0
     parameters:
       - schema:
           type: string
@@ -2970,6 +2902,55 @@ components:
         required:
           - codeInMarketplace
           - name
+    VinculoSku:
+      description: ''
+      type: object
+      properties:
+        idInMarketplace:
+          type: string
+          minLength: 1
+        publicationStatus:
+          type: string
+          minLength: 1
+        marketplaceStatus:
+          type: string
+          minLength: 1
+        skuInMarketplace:
+          type: string
+          minLength: 1
+        title:
+          type: string
+          minLength: 1
+        ean:
+          type: string
+          minLength: 1
+        priceFactor:
+          type: number
+        price:
+          type: number
+        discountPrice:
+          type: number
+      required:
+        - idInMarketplace
+        - publicationStatus
+        - marketplaceStatus
+        - skuInMarketplace
+        - title
+        - ean
+        - priceFactor
+        - price
+        - discountPrice
+      x-examples:
+        example-1:
+          idInMarketplace: SKUFROMMKT
+          publicationStatus: ACTIVE
+          marketplaceStatus: STATUS_NO_MKT_SKM2
+          skuInMarketplace: SKU_IN_MKT_MKT_SKM2
+          title: PRODUTO
+          ean: '456789123456'
+          priceFactor: 1
+          price: 10
+          discountPrice: 9
   securitySchemes:
     x-anymarket-token:
       name: x-anymarket-token
