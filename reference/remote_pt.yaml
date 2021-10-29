@@ -491,16 +491,34 @@ paths:
               examples:
                 Example:
                   value: true
+      tags:
+        - Configuração
+      description: Nesta notificação enviamos os dados da configuração informados pelo Seller caso o middleware queira armazenar.
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ModuleConfiguration'
-            examples: {}
-        description: Teste de Integração
-      tags:
-        - Configuração
-      description: Nesta notificação enviamos os dados da configuração informados pelo Seller caso o middleware queira armazenar.
+              $ref: '#/components/schemas/saveAccount'
+            examples:
+              example-1:
+                value:
+                  id: 1
+                  active: true
+                  templateId: null
+                  accountName: Conta - Teste
+                  discountType: PERCENT
+                  useSandbox: true
+                  accountDefault: true
+                  priceFactor: 1
+                  discountValue: 0
+                  initialDateForOrderImport: null
+                  updatePriceStockStatus: true
+                  additionOfFreight: 0
+                  user:
+                    token: LG1234567891234R-987456321
+                    country: null
+                  field1: string
+                  field2: string
   /testIntegration:
     post:
       summary: /testIntegration
@@ -1288,6 +1306,113 @@ components:
         - initialDateForOrderImport
         - updatePriceStockStatus
         - additionOfFreight
+    saveAccount:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 0
+          active: true
+          templateId: 0
+          accountName: string
+          discountType: PERCENT
+          useSandbox: true
+          accountDefault: true
+          priceFactor: 0
+          discountValue: 0
+          initialDateForOrderImport: 25-01-2021
+          updatePriceStockStatus: true
+          additionOfFreight: 0
+          user:
+            token: LG1234567891234R-987654321
+            country: null
+          field1: value1
+          field2: value2
+      title: ''
+      properties:
+        id:
+          type: number
+          description: Id do ANYMARKET
+        active:
+          type: boolean
+          description: Status da conta
+        templateId:
+          type: number
+          description: Código do template padrão
+        accountName:
+          type: string
+          description: Nome do usuário no marketplace
+          minLength: 0
+          maxLength: 255
+        discountType:
+          type: string
+          minLength: 0
+          maxLength: 255
+          description: Tipo de desconto
+          enum:
+            - PERCENT
+            - VALUE
+          default: PERCENT
+        useSandbox:
+          type: boolean
+          description: Informa se o uso é em Sandbox
+        accountDefault:
+          type: boolean
+          description: Informa se a conta é a padrão para o marketplace
+        priceFactor:
+          type: number
+          description: Fator de preço
+          minimum: 0
+          format: double
+        discountValue:
+          type: number
+          description: Valor padrão de desconto
+          minimum: 0
+          format: double
+        initialDateForOrderImport:
+          type: string
+          minLength: 1
+          description: Data inicial para a importação de pedidos
+          nullable: true
+        updatePriceStockStatus:
+          type: boolean
+          description: Permite ou não atualizar o preço e status do estoque
+        additionOfFreight:
+          type: number
+          description: Valor adicional de frete
+          format: double
+        user:
+          type: object
+          required:
+            - token
+          properties:
+            token:
+              type: string
+              minLength: 1
+              description: Token do Seller no Anymarket
+            country:
+              nullable: true
+        field1:
+          type: string
+          minLength: 1
+          description: Campos customizados para atender especifidade do MarketPlace
+        field2:
+          type: string
+          minLength: 1
+          description: Campos customizados para atender especifidade do MarketPlace
+      required:
+        - id
+        - active
+        - accountName
+        - discountType
+        - useSandbox
+        - accountDefault
+        - priceFactor
+        - discountValue
+        - initialDateForOrderImport
+        - updatePriceStockStatus
+        - additionOfFreight
+        - user
     PriceScope:
       title: PriceScope
       type: string
