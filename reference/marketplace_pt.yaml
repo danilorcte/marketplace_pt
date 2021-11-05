@@ -267,7 +267,7 @@ paths:
         required: true
         description: Código do pedido gerado pelo Anymarket
     get:
-      summary: '/orders/{marketplaceId}'
+      summary: '/orders/{marketPlaceId}'
       tags:
         - Pedidos
       responses:
