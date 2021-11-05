@@ -138,11 +138,11 @@ paths:
           in: header
           name: token
           required: true
-  '/orders/{id}/transmissionStatus':
+  '/orders/{marketPlaceId}/transmissionStatus':
     parameters:
       - schema:
           type: string
-        name: id
+        name: marketPlaceId
         in: path
         required: true
     put:
@@ -162,7 +162,12 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrderStatusUpdate'
-      description: 'Quando o marketplace receber a notificação de atualização de um pedido, seja ele mudando para FATURADO, ENVIADO, CONCLUIDO ou CANCELADO no endpoint /updateOrderStatusInMarketPlace. Necessariamente o marketplace deve realizar o GET para consultar os dados do pedido e na sequencia utilizar do endpoint citado a cima, removendo a sinalização de sincronização e identificando qual o status do pedido no marketplace. Lembrando que caso não processe, o erro deve ser informado também nesse endpoint.'
+      description: |-
+        Quando o marketplace receber a notificação de atualização de um pedido, seja ele mudando para FATURADO, ENVIADO, CONCLUIDO ou CANCELADO no endpoint /updateOrderStatusInMarketPlace. 
+
+        Necessariamente o marketplace deve realizar o GET para consultar os dados do pedido e na sequencia utilizar do endpoint citado a cima, removendo a sinalização de sincronização e identificando qual o status do pedido no marketplace. 
+
+        Lembrando que caso não processe, o erro deve ser informado também nesse endpoint.
       parameters:
         - schema:
             type: string
