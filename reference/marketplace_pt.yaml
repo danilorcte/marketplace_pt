@@ -267,7 +267,7 @@ paths:
         required: true
         description: Código do pedido gerado pelo Anymarket
     get:
-      summary: '/orders/{id}'
+      summary: '/orders/{marketplaceId}'
       tags:
         - Pedidos
       responses:
@@ -278,7 +278,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Order'
       operationId: get-orders-id
-      description: Permite o middlewar consulta os dados do pedido no ANYMARKET.
+      description: Consulta os detalhes de um pedido
       parameters:
         - schema:
             type: string
