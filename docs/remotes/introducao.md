@@ -65,7 +65,7 @@ Para facilitar a compreensão de como o **Middleware** deve funcionar, seguem ab
 | GET    |/product/{{partnerId}} | obrigatório | Esta consulta serve para obtermos os anúncios do marketplace, para vincularmos com as transmissões do ANYMARKET. |
 | GET    |/brands | opcional | Esta consulta serve para obtermos as marcas do marketplace e vincularmos com as marcas do ANYMARKET.  |
 | GET    |/categories| opcional | Esta consulta serve para obtermos as categorias do marketplace e vincularmos com as categorias do ANYMARKET.  |
-| GET    |/categories/details/{{id}} | opcional | Esta consulta serve para obtermos as categorias filhas do marketplace e vincularmos com as categorias do ANYMARKET.   |
+| GET    |/categories/{{id}} | opcional | Esta consulta serve para obtermos as categorias filhas do marketplace e vincularmos com as categorias do ANYMARKET.   |
 | GET    |/categories/attributes/{{id}} | opcional | Esta consulta serve para obtermos os atributos do marketplace e vincularmos com os produtos do ANYMARKET.  |
 | GET    |/variations/types | opcional | Esta consulta serve para obtermos as variações do marketplace e vincularmos com as variações do ANYMARKET.   |
 | POST   |/canActive | opcional | Nesta notificação enviamos uma prévia dos dados do produto/sku para que o middleware possa validar se o mesmo pode ser publicado no marketplace. (Ação disparada quando o seller acessa a funcionalidade "Nova Publicação")   |
