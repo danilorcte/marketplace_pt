@@ -171,10 +171,7 @@ paths:
               examples:
                 Example:
                   value: true
-      description: |-
-        Após as chamadas anteriores terem sido respondidas corretamente o seller terá uma visualização no ANYMARKET das informações do anuncio, podendo assim realizar edições no título, EAN e preço.
-        Após o seller confirmar as informações ou realizar as devidas alterações será disparado esse request contendo o JSON com todas as informações atualizadas e demais informações da transmissão.
-        É nesse momento em que o marketplace deve registrar as informações e aguardar a autorização do seller para ativação dentro do marketplace ou em caso de negativa é esperado que o marketplace retorne o motivo, para assim o seller ter o retorno visual da negativa e aplicar as correções apresentadas.
+      description: ''
       requestBody:
         content:
           application/json:
@@ -2524,8 +2521,10 @@ components:
           format: int64
           minimum: 0
           exclusiveMaximum: true
+          description: idAccount gerado pelo ANYMARKET
         oi:
           type: string
+          description: Organization Id - Indentificador da base do cliente no ANYMARKET
         active:
           type: boolean
         templateId:
