@@ -124,7 +124,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./remote_pt.yaml#/components/schemas/ConfigurationDTO
+                $ref: '#/components/schemas/configuration'
       operationId: get-api-configuration-id
       description: Consulta pelo ID da conta as configurações realizadas pelo seller no ANYMARKET.
       parameters:
@@ -1334,6 +1334,118 @@ components:
           description: Data de entrega
       required:
         - deliveredDate
+    configuration:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 1
+          oi: '12345678.'
+          active: true
+          templateId: 641
+          accountName: Conta - TESTE
+          marketplace: MARKETPLACE
+          discountType: VALUE
+          useSandbox: false
+          accountDefault: true
+          priceFactor: 1.5
+          discountValue: 0
+          updatePriceStockStatus: true
+          additionOfFreight: 0
+          fields:
+            - value: '2000'
+              key: shopId
+            - value: LG1234567892346R-213987654
+              key: anymarketToken
+            - value: '12345678.'
+              key: organizationId
+          initialDateOrderImport: '2021-10-27'
+      properties:
+        id:
+          type: number
+          description: É o Id fornecido no saveAccount quando o seller ativa a integração no Anymarket.
+        oi:
+          type: string
+          minLength: 1
+          description: OI (Organization Id) do Seller
+        active:
+          type: boolean
+          description: Informa se a integração esá Ativa (Booleano).
+        templateId:
+          type: number
+          description: Id do template padrão
+        accountName:
+          type: string
+          minLength: 1
+          description: Nome da conta do Seller no Anymarket.
+        marketplace:
+          type: string
+          minLength: 1
+          description: Nome do próprio Marketplace.
+        discountType:
+          type: string
+          minLength: 1
+          description: Tipo de Desconto
+          default: PERCENT
+          enum:
+            - PERCENT
+            - VALUE
+        useSandbox:
+          type: boolean
+          description: Informa se o uso é em Sandbox.
+        accountDefault:
+          type: boolean
+          description: Informa a Conta Padrão.
+        priceFactor:
+          type: number
+          description: Fator de Preço Multiplicador (Markup Adicional)
+          format: double
+        discountValue:
+          type: number
+          description: Valor de desconto.
+          format: double
+        updatePriceStockStatus:
+          type: boolean
+          description: 'Informa se irá atualizar Preço, Estoque e Status.'
+        additionOfFreight:
+          type: number
+          description: Porcentagem adicional sobre a tabela de frete.
+        fields:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          description: Campos do módulo que são customizados para atender a autenticação do Seller ao Marketplace.
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                minLength: 1
+              key:
+                type: string
+                minLength: 1
+            required:
+              - value
+              - key
+        initialDateOrderImport:
+          type: string
+          minLength: 1
+          description: Data inicial para importação dos pedidos
+      required:
+        - id
+        - oi
+        - active
+        - accountName
+        - marketplace
+        - discountType
+        - useSandbox
+        - accountDefault
+        - priceFactor
+        - discountValue
+        - updatePriceStockStatus
+        - additionOfFreight
+        - fields
+        - initialDateOrderImport
   parameters:
     offset:
       name: offset
