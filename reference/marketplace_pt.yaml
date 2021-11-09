@@ -91,9 +91,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: ./remote_pt.yaml#/components/schemas/ConfigurationDTO
+                $ref: '#/components/schemas/configuration'
       operationId: get-api-configuration
       description: Consulta todas as configurações realizadas pelo seller no ANYMARKET.
       parameters:
