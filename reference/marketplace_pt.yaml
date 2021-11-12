@@ -749,6 +749,31 @@ paths:
                         deliveryTime: 10
                         freightType: normal
                         price: 70.75
+                example-2:
+                  value:
+                    zipCode: '87030030'
+                    products:
+                      - skuId: '00029160002'
+                        amount: 1
+                        dimensions:
+                          height: 10
+                          width: 15
+                          weight: 0.37
+                          length: 25
+                        stockAmount: 679
+                        additionalDeliveryTime: 0
+                        price: 279
+                        discountPrice: 209.9
+                    quotes:
+                      - carrierName: Total
+                        serviceName: Total Express
+                        deliveryTime: 11
+                        freightType: normal
+                        price: 55.72
+                example-3:
+                  value:
+                    missingSkus:
+                      '0002916002': 1
       description: |
         Marketplaces podem estar obtendo a cotação de frete através do ANYMARKET. Com isso basta que seja encaminhado os dados de cotação, que o ANYMARKET se encarrega de realizar a cotação com base nas parametrizações que o seller realizou na plataforma. (tabelas de frete ou utilização de algum gateway de frete.)
 
