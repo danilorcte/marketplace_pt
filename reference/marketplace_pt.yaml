@@ -509,6 +509,289 @@ paths:
               example-1:
                 value: '[object Object]'
         description: ''
+  /freight:
+    post:
+      summary: /freight
+      operationId: post-freight
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  zipCode:
+                    type: string
+                    minLength: 1
+                  products:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - skuId
+                        - amount
+                        - stockAmount
+                        - additionalDeliveryTime
+                        - price
+                        - discountPrice
+                      properties:
+                        skuId:
+                          type: string
+                          minLength: 1
+                        amount:
+                          type: number
+                        dimensions:
+                          type: object
+                          properties:
+                            height:
+                              type: number
+                            width:
+                              type: number
+                            weight:
+                              type: number
+                            length:
+                              type: number
+                          required:
+                            - height
+                            - width
+                            - weight
+                            - length
+                        stockAmount:
+                          type: number
+                        additionalDeliveryTime:
+                          type: number
+                        price:
+                          type: number
+                        discountPrice:
+                          type: number
+                  quotes:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - carrierName
+                        - serviceName
+                        - deliveryTime
+                        - freightType
+                        - price
+                      properties:
+                        carrierName:
+                          type: string
+                          minLength: 1
+                        serviceName:
+                          type: string
+                          minLength: 1
+                        deliveryTime:
+                          type: number
+                        freightType:
+                          type: string
+                          minLength: 1
+                        price:
+                          type: number
+                required:
+                  - zipCode
+                  - products
+                  - quotes
+                x-examples:
+                  example-1:
+                    zipCode: '87030030'
+                    products:
+                      - skuId: '7114000564'
+                        amount: 1
+                        dimensions:
+                          height: 10
+                          width: 15
+                          weight: 0.37
+                          length: 25
+                        stockAmount: 66
+                        additionalDeliveryTime: 0
+                        price: 549.9
+                        discountPrice: 549.9
+                    quotes:
+                      - carrierName: Carriers
+                        serviceName: Carriers
+                        deliveryTime: 7
+                        freightType: express
+                        price: 8.96
+                      - carrierName: Loggi
+                        serviceName: Loggi Outras Praças
+                        deliveryTime: 4
+                        freightType: normal
+                        price: 13.39
+                      - carrierName: Sequoia Log
+                        serviceName: Sequoia Log Standard
+                        deliveryTime: 6
+                        freightType: normal
+                        price: 15.64
+                      - carrierName: Total
+                        serviceName: Total Express
+                        deliveryTime: 5
+                        freightType: normal
+                        price: 16.65
+                      - carrierName: Correios
+                        serviceName: Correios Sedex
+                        deliveryTime: 4
+                        freightType: normal
+                        price: 44.42
+                      - carrierName: Dominalog
+                        serviceName: Dominalog Itapevi
+                        deliveryTime: 12
+                        freightType: normal
+                        price: 47.86
+                      - carrierName: Translaguna
+                        serviceName: Translaguna Itapevi
+                        deliveryTime: 11
+                        freightType: normal
+                        price: 51.9
+                      - carrierName: Total
+                        serviceName: Total Express Medio Rodo
+                        deliveryTime: 6
+                        freightType: express
+                        price: 53.35
+                      - carrierName: Translaguna Cajamar
+                        serviceName: Translaguna Cajamar
+                        deliveryTime: 11
+                        freightType: normal
+                        price: 57.09
+                      - carrierName: Jamef
+                        serviceName: Jamef Standard
+                        deliveryTime: 3
+                        freightType: normal
+                        price: 65.65
+                      - carrierName: Direcional
+                        serviceName: Direcional Itapevi
+                        deliveryTime: 7
+                        freightType: normal
+                        price: 68.72
+                      - carrierName: Prime
+                        serviceName: Prime Itapevi
+                        deliveryTime: 10
+                        freightType: normal
+                        price: 70.75
+              examples:
+                example-1:
+                  value:
+                    zipCode: '87030030'
+                    products:
+                      - skuId: '7114000564'
+                        amount: 1
+                        dimensions:
+                          height: 10
+                          width: 15
+                          weight: 0.37
+                          length: 25
+                        stockAmount: 66
+                        additionalDeliveryTime: 0
+                        price: 549.9
+                        discountPrice: 549.9
+                    quotes:
+                      - carrierName: Carriers
+                        serviceName: Carriers
+                        deliveryTime: 7
+                        freightType: express
+                        price: 8.96
+                      - carrierName: Loggi
+                        serviceName: Loggi Outras Praças
+                        deliveryTime: 4
+                        freightType: normal
+                        price: 13.39
+                      - carrierName: Sequoia Log
+                        serviceName: Sequoia Log Standard
+                        deliveryTime: 6
+                        freightType: normal
+                        price: 15.64
+                      - carrierName: Total
+                        serviceName: Total Express
+                        deliveryTime: 5
+                        freightType: normal
+                        price: 16.65
+                      - carrierName: Correios
+                        serviceName: Correios Sedex
+                        deliveryTime: 4
+                        freightType: normal
+                        price: 44.42
+                      - carrierName: Dominalog
+                        serviceName: Dominalog Itapevi
+                        deliveryTime: 12
+                        freightType: normal
+                        price: 47.86
+                      - carrierName: Translaguna
+                        serviceName: Translaguna Itapevi
+                        deliveryTime: 11
+                        freightType: normal
+                        price: 51.9
+                      - carrierName: Total
+                        serviceName: Total Express Medio Rodo
+                        deliveryTime: 6
+                        freightType: express
+                        price: 53.35
+                      - carrierName: Translaguna Cajamar
+                        serviceName: Translaguna Cajamar
+                        deliveryTime: 11
+                        freightType: normal
+                        price: 57.09
+                      - carrierName: Jamef
+                        serviceName: Jamef Standard
+                        deliveryTime: 3
+                        freightType: normal
+                        price: 65.65
+                      - carrierName: Direcional
+                        serviceName: Direcional Itapevi
+                        deliveryTime: 7
+                        freightType: normal
+                        price: 68.72
+                      - carrierName: Prime
+                        serviceName: Prime Itapevi
+                        deliveryTime: 10
+                        freightType: normal
+                        price: 70.75
+      description: |
+        Marketplaces podem estar obtendo a cotação de frete através do ANYMARKET. Com isso basta que seja encaminhado os dados de cotação, que o ANYMARKET se encarrega de realizar a cotação com base nas parametrizações que o seller realizou na plataforma. (tabelas de frete ou utilização de algum gateway de frete.)
+
+        Obtém a consulta de frete para os dados encaminhados.
+
+        > #### Pontos de atenção:
+        >- Prazo de crossdocking não é somado automaticamente, a integração deve fazer o cálculo caso não registre o dado no momento da criação do produto.
+        >- Quando o seller possui planilhas de frete no ANYMARKET o dado é retornado em dias corridos.
+        >- Quando o seller utiliza de algum gateway de frete conectado ao ANYMARKET, apenas é repassado as informações, é necessária uma avaliação com o seller se é dias corridos ou uteis.
+        >- O valor do skuId corresponde ao skuInMarketplace.
+        >- Recomendado a cotação de um sku por request.
+        >- Toda a infraestrutura ANYMARKET de servidores, está em um datacenter localizado no Estado da Virgínia, nos EUA. (https://suporteanymarket.freshdesk.com/pt-BR/support/solutions/articles/19000128745-migrac%C3%A3o-para-a-virg%C3%ADnia)
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: token
+          required: true
+          description: Token do Seller no ANYMARKET
+        - schema:
+            type: string
+          in: header
+          name: appId
+          required: true
+          description: ID do Marketplace fornecido pelo ANYMARKET
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/freight'
+            examples:
+              example-1:
+                value:
+                  zipCode: '87030030'
+                  additionalPercentual: 0
+                  products:
+                    - skuId: '7114000564'
+                      amount: 1
+                      dimensions:
+                        length: 25
+                        width: 15
+                        height: 10
+                        weight: 0.37
 components:
   securitySchemes: {}
   schemas:
@@ -1444,6 +1727,60 @@ components:
         - additionOfFreight
         - fields
         - initialDateOrderImport
+    freight:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          zipCode: '89165063'
+          additionalPercentual: 0
+          products:
+            - skuId: '47'
+              amount: 1
+              dimensions:
+                length: 25
+                width: 15
+                height: 10
+                weight: 0.37
+      properties:
+        zipCode:
+          type: string
+          minLength: 1
+          description: Código de destino.
+        additionalPercentual:
+          type: number
+        products:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              skuId:
+                type: string
+                minLength: 1
+                description: SKU do produto enviado pelo ANYMARKET (skuInMarketplace)
+              amount:
+                type: number
+                description: Quantidade para a cotação
+              dimensions:
+                type: object
+                properties:
+                  length:
+                    type: number
+                  width:
+                    type: number
+                  height:
+                    type: number
+                  weight:
+                    type: number
+            required:
+              - skuId
+              - amount
+      required:
+        - zipCode
+        - additionalPercentual
+        - products
   parameters:
     offset:
       name: offset
