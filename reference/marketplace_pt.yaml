@@ -792,6 +792,8 @@ paths:
                         width: 15
                         height: 10
                         weight: 0.37
+      tags:
+        - Cotação de Frete
 components:
   securitySchemes: {}
   schemas:
