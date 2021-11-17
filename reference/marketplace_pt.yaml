@@ -774,6 +774,10 @@ paths:
                   value:
                     missingSkus:
                       '0002916002': 1
+            application/xml:
+              schema:
+                type: object
+                properties: {}
       description: |
         Marketplaces podem estar obtendo a cotação de frete através do ANYMARKET. Com isso basta que seja encaminhado os dados de cotação, que o ANYMARKET se encarrega de realizar a cotação com base nas parametrizações que o seller realizou na plataforma. (tabelas de frete ou utilização de algum gateway de frete.)
 
