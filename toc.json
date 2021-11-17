@@ -20,6 +20,11 @@
         },
         {
           "type": "item",
+          "title": "Ativação do Módulo",
+          "uri": "docs/remotes/ativacaoModulo.md"
+        },
+        {
+          "type": "item",
           "title": "Processo de homologação",
           "uri": "docs/remotes/homologacao.md"
         },
