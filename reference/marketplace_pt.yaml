@@ -56,16 +56,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/404'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SkuMarketPlacePut'
       description: |-
         Atualizar os dados de uma transmissão, o marketplace deve acionar o endpoint para remover o status de sincronizando, sempre retornando o status do anuncio no marketplace.
         É obrigatório quando o marketplace não processe o anúncio, ou caso tenha gerado algum erro de catalogação o mesmo informe através desse endpoint para que o seller consiga estar aplicando a correção informada.
       tags:
         - Anúncios
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putskuMarketplace'
+        description: ''
     get:
       summary: '/skumarketplace/{id}'
       tags:
