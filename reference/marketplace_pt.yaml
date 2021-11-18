@@ -61,7 +61,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SkuMarketPlacePut'
-      description: Atualizar dados da transmissão.
+      description: |-
+        Atualizar os dados de uma transmissão, o marketplace deve acionar o endpoint para remover o status de sincronizando, sempre retornando o status do anuncio no marketplace.
+        É obrigatório quando o marketplace não processe o anúncio, ou caso tenha gerado algum erro de catalogação o mesmo informe através desse endpoint para que o seller consiga estar aplicando a correção informada.
       tags:
         - Anúncios
     get:
@@ -1812,6 +1814,51 @@ components:
         - zipCode
         - additionalPercentual
         - products
+    putskuMarketplace:
+      description: ''
+      type: object
+      properties:
+        idInMarketplace:
+          type: string
+          minLength: 1
+        idInSite:
+          type: string
+          minLength: 1
+        skuInMarketplace:
+          type: string
+          minLength: 1
+        marketplaceStatus:
+          type: string
+          minLength: 1
+        idSku:
+          type: number
+        transmissionStatus:
+          type: string
+          minLength: 1
+        errorMsg:
+          type: string
+        status:
+          type: string
+          minLength: 1
+      required:
+        - idInMarketplace
+        - idInSite
+        - skuInMarketplace
+        - marketplaceStatus
+        - idSku
+        - transmissionStatus
+        - errorMsg
+        - status
+      x-examples:
+        example-1:
+          idInMarketplace: '00001'
+          idInSite: '551162751'
+          skuInMarketplace: '551162751'
+          marketplaceStatus: ATIVO
+          idSku: 1540465
+          transmissionStatus: ACTIVE
+          errorMsg: ''
+          status: ACTIVE
   parameters:
     offset:
       name: offset
