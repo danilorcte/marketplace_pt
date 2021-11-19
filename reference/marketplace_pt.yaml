@@ -66,6 +66,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/putskuMarketplace'
+            examples:
+              example-1:
+                value:
+                  idInMarketplace: '00001'
+                  idInSite: '551162751'
+                  skuInMarketplace: '551162751'
+                  marketplaceStatus: ATIVO
+                  idSku: 1540465
+                  transmissionStatus: OK
+                  errorMsg: ''
+                  status: ACTIVE
         description: ''
     get:
       summary: '/skumarketplace/{id}'
