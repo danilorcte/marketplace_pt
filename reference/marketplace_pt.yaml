@@ -66,6 +66,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/putskuMarketplace'
+            examples:
+              example-1:
+                value:
+                  idInMarketplace: '00001'
+                  idInSite: '551162751'
+                  skuInMarketplace: '551162751'
+                  marketplaceStatus: ATIVO
+                  idSku: 1540465
+                  transmissionStatus: OK
+                  errorMsg: ''
+                  status: ACTIVE
         description: ''
     get:
       summary: '/skumarketplace/{id}'
@@ -1818,29 +1829,72 @@ components:
     putskuMarketplace:
       description: ''
       type: object
+      x-examples:
+        example-1:
+          idInMarketplace: '00001'
+          idInSite: '551162751'
+          skuInMarketplace: '551162751'
+          marketplaceStatus: ATIVO
+          idSku: 1540465
+          transmissionStatus: OK
+          errorMsg: ''
+          status: ACTIVE
       properties:
         idInMarketplace:
           type: string
           minLength: 1
+          description: |
+            Id do anuncio no marketplace
         idInSite:
           type: string
           minLength: 1
+          description: |
+            id do produto no site do marketplace
         skuInMarketplace:
           type: string
           minLength: 1
+          description: |
+            Sku do produto no marketplace
         marketplaceStatus:
           type: string
           minLength: 1
+          description: 'Status do anuncio no marketplace. '
+          example: 'ATIVO, EM CATALOGAÇÃO, SINCRONIZANDO, etc.'
         idSku:
           type: number
+          description: |
+            id do sku ANYMARKET
         transmissionStatus:
           type: string
           minLength: 1
+          description: |
+            Status da transmissão ANYMARKET
+          enum:
+            - WAITING_SYNC
+            - SENDING
+            - PAUSING
+            - CLOSING
+            - ERROR
+            - ACTIVATING
+            - RETRY
+            - SYNCING
+            - OK
         errorMsg:
           type: string
+          description: |
+            Mensagem de retorno quando o anuncio é criticado
         status:
           type: string
           minLength: 1
+          description: |
+            Status da transmissão no ANYMARKET
+          enum:
+            - ACTIVE
+            - CLOSED
+            - CORRUPTED
+            - PAUSED
+            - UNPUBLISHED
+            - WITHOUT_STOCK
       required:
         - idInMarketplace
         - idInSite
@@ -1850,16 +1904,6 @@ components:
         - transmissionStatus
         - errorMsg
         - status
-      x-examples:
-        example-1:
-          idInMarketplace: '00001'
-          idInSite: '551162751'
-          skuInMarketplace: '551162751'
-          marketplaceStatus: ATIVO
-          idSku: 1540465
-          transmissionStatus: ACTIVE
-          errorMsg: ''
-          status: ACTIVE
   parameters:
     offset:
       name: offset
