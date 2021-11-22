@@ -1813,7 +1813,7 @@ components:
           description: Código de destino.
         additionalPercentual:
           type: number
-          description: Porcentagem adicional (Frete)
+          description: Porcentagem adicional no valor do frete
         products:
           type: array
           uniqueItems: true
