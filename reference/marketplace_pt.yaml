@@ -535,81 +535,6 @@ paths:
               schema:
                 description: ''
                 type: object
-                properties:
-                  zipCode:
-                    type: string
-                    minLength: 1
-                  products:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
-                    items:
-                      required:
-                        - skuId
-                        - amount
-                        - stockAmount
-                        - additionalDeliveryTime
-                        - price
-                        - discountPrice
-                      properties:
-                        skuId:
-                          type: string
-                          minLength: 1
-                        amount:
-                          type: number
-                        dimensions:
-                          type: object
-                          properties:
-                            height:
-                              type: number
-                            width:
-                              type: number
-                            weight:
-                              type: number
-                            length:
-                              type: number
-                          required:
-                            - height
-                            - width
-                            - weight
-                            - length
-                        stockAmount:
-                          type: number
-                        additionalDeliveryTime:
-                          type: number
-                        price:
-                          type: number
-                        discountPrice:
-                          type: number
-                  quotes:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
-                    items:
-                      required:
-                        - carrierName
-                        - serviceName
-                        - deliveryTime
-                        - freightType
-                        - price
-                      properties:
-                        carrierName:
-                          type: string
-                          minLength: 1
-                        serviceName:
-                          type: string
-                          minLength: 1
-                        deliveryTime:
-                          type: number
-                        freightType:
-                          type: string
-                          minLength: 1
-                        price:
-                          type: number
-                required:
-                  - zipCode
-                  - products
-                  - quotes
                 x-examples:
                   example-1:
                     zipCode: '87030030'
@@ -686,6 +611,100 @@ paths:
                         deliveryTime: 10
                         freightType: normal
                         price: 70.75
+                properties:
+                  zipCode:
+                    type: string
+                    minLength: 1
+                    description: Código de destino
+                  products:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        skuId:
+                          type: string
+                          minLength: 1
+                          description: SKU do produto enviado pelo ANYMARKET (skuInMarketplace)
+                        amount:
+                          type: number
+                          description: Quantidade
+                        dimensions:
+                          type: object
+                          description: Dimensões do Produto
+                          properties:
+                            height:
+                              type: number
+                              description: Altura
+                            width:
+                              type: number
+                              description: Largura
+                            weight:
+                              type: number
+                              description: Peso
+                            length:
+                              type: number
+                              description: Comprimento
+                          required:
+                            - height
+                            - width
+                            - weight
+                            - length
+                        stockAmount:
+                          type: number
+                          description: Quantidade de estoque disponível
+                        additionalDeliveryTime:
+                          type: number
+                          description: Prazo adicional (Crossdocking)
+                        price:
+                          type: number
+                          description: Preço "De"
+                        discountPrice:
+                          type: number
+                          description: Preço "Por"
+                      required:
+                        - skuId
+                        - amount
+                        - stockAmount
+                        - additionalDeliveryTime
+                        - price
+                        - discountPrice
+                  quotes:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        carrierName:
+                          type: string
+                          minLength: 1
+                          description: Nome da transportadora
+                        serviceName:
+                          type: string
+                          minLength: 1
+                          description: Tipo do serviço
+                        deliveryTime:
+                          type: number
+                          description: Tempo de entrega (Sem Crossdocking)
+                        freightType:
+                          type: string
+                          minLength: 1
+                          description: Tipo de frete (Normal ou Expresso)
+                        price:
+                          type: number
+                          description: Valor do frete
+                      required:
+                        - carrierName
+                        - serviceName
+                        - deliveryTime
+                        - freightType
+                        - price
+                required:
+                  - zipCode
+                  - products
+                  - quotes
               examples:
                 example-1:
                   value:
