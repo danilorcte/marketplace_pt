@@ -32,7 +32,7 @@ Iremos detalhar nesse tópico como é o funcionamento da tela do módulo, quais 
 <!--
 focus: false
 -->
-![image.png](http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/31479673./BD959BD9696E77C4F87A62B56F84043B/low_resolution.jpg?t=1637330320599)
+![image.png](http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/31479673./7B7E4D33758DA4CA5602ACE8D851A890/standard_resolution.jpg)
 
 
 Baseando no fluxo acima, a partir do momento em que o Seller acessa a tela do módulo e insere as informações e clica no botão **SALVAR**, o ANYMARKET irá disparar no remote **/testIntegration** as seguintes informações:
