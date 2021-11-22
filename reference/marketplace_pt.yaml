@@ -629,7 +629,7 @@ paths:
                           description: SKU do produto enviado pelo ANYMARKET (skuInMarketplace)
                         amount:
                           type: number
-                          description: Quantidade
+                          description: Quantidade para cotação de frete
                         dimensions:
                           type: object
                           description: Dimensões do Produto
