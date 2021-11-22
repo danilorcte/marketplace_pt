@@ -692,6 +692,9 @@ paths:
                           type: string
                           minLength: 1
                           description: Tipo de frete (Normal ou Expresso)
+                          enum:
+                            - normal
+                            - express
                         price:
                           type: number
                           description: Valor do frete
