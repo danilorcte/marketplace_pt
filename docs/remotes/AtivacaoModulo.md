@@ -171,7 +171,8 @@ focus: false
 
 ---
 
+Caso o Marketplace não identifique o Seller que está ativando o Módulo, o retorno que esperamos é:
 ```json title="401 - Unauthorized"  
 false
 ```
-Caso não
+
