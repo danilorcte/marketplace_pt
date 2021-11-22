@@ -1813,6 +1813,7 @@ components:
           description: Código de destino.
         additionalPercentual:
           type: number
+          description: Porcentagem adicional (Frete)
         products:
           type: array
           uniqueItems: true
@@ -1829,15 +1830,20 @@ components:
                 description: Quantidade para a cotação
               dimensions:
                 type: object
+                description: Dimensões do Produto
                 properties:
                   length:
                     type: number
+                    description: Comprimento
                   width:
                     type: number
+                    description: Largura
                   height:
                     type: number
+                    description: Altura
                   weight:
                     type: number
+                    description: Peso
             required:
               - skuId
               - amount
