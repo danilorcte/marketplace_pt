@@ -2220,7 +2220,7 @@ components:
           format: int64
           minimum: 0
           exclusiveMaximum: true
-          description: 'id do '
+          description: ''
         mainSkuMarketplace:
           type: integer
           format: int64
@@ -3090,6 +3090,572 @@ components:
           priceFactor: 1
           price: 10
           discountPrice: 9
+    canSave:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          mainSkuMarketplace: null
+          catalog: false
+          idInMarketplace: '123456'
+          status: UNPUBLISHED
+          marketplaceStatus: unpublished
+          transmissionStatus: WAITING_SYNC
+          errorMsg: null
+          skuMarketPlaceMessage: null
+          idInSite: null
+          fields:
+            template: '641'
+            EAN: '7884016317801'
+            is_main_sku: 'true'
+            DISCOUNT_VALUE: '100'
+            title: 'Dotz: Transmitir Produto sem gênero'
+            DISCOUNT_TYPE: VALUE
+            HAS_DISCOUNT: 'true'
+            priceFactor: '1.50'
+          isCatalog: false
+          permalink: null
+          endDate: null
+          title: null
+          ean: null
+          skuInMarketplace: 19-Dotz
+          priceFactor: 1.5
+          price: 790.5
+          discountPrice: 690.5
+          idAccount: 9
+          accountName: Conta Taynara - TESTE
+          marketPlace: null
+          id: null
+          stock: null
+          attributes:
+            string: string
+          sku:
+            id: 1613194
+            partnerId: 19-Dotz
+            amount: null
+            ean: '7884016317801'
+            title: 'Dotz: Transmitir Produto sem gênero'
+            price: 527
+            sellPrice: 527
+            additionalTime: 10
+            variations: []
+            product:
+              imagesWithoutVariationValue:
+                - id: 2032070
+                  index: 1
+                  variation: null
+                  thumbnailUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./19743584A8A69721114789D612A6866B/thumbnail.jpg'
+                  standardUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./19743584A8A69721114789D612A6866B/standard_resolution.jpg'
+                  lowResolutionUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./19743584A8A69721114789D612A6866B/low_resolution.jpg'
+                  originalImage: null
+                  url: 'https://s3.sa-east-1.amazonaws.com/images.sox.anymarket.com.br/34405162./1621427842549/original.png'
+                  statusMessage: null
+                  status: PROCESSED
+                  main: true
+                  standardWidth: null
+                  standardHeight: null
+                  originalWidth: null
+                  originalHeight: null
+                - id: 2032071
+                  index: 2
+                  variation: null
+                  thumbnailUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./727679362BEA32CFD6B035291B518DB0/thumbnail.jpg'
+                  standardUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./727679362BEA32CFD6B035291B518DB0/standard_resolution.jpg'
+                  lowResolutionUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./727679362BEA32CFD6B035291B518DB0/low_resolution.jpg'
+                  originalImage: null
+                  url: 'https://s3.sa-east-1.amazonaws.com/images.sox.anymarket.com.br/34405162./1621427848204/original.png'
+                  statusMessage: null
+                  status: PROCESSED
+                  main: false
+                  standardWidth: null
+                  standardHeight: null
+                  originalWidth: null
+                  originalHeight: null
+                - id: 2032072
+                  index: 3
+                  variation: null
+                  thumbnailUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./EDBE0C4339CCBF60D6DE2BC0EB0B96E4/thumbnail.jpg'
+                  standardUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./EDBE0C4339CCBF60D6DE2BC0EB0B96E4/standard_resolution.jpg'
+                  lowResolutionUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./EDBE0C4339CCBF60D6DE2BC0EB0B96E4/low_resolution.jpg'
+                  originalImage: null
+                  url: 'https://s3.sa-east-1.amazonaws.com/images.sox.anymarket.com.br/34405162./1621427852169/original.png'
+                  statusMessage: null
+                  status: PROCESSED
+                  main: false
+                  standardWidth: null
+                  standardHeight: null
+                  originalWidth: null
+                  originalHeight: null
+              id: 2344708
+              title: 'Dotz: Transmitir Produto sem gênero'
+              description: Descrição do Produto Padrão
+              model: Intelligent Granite Chicken -Modelo Dotz
+              nbm:
+                id: '84158190'
+                description: OUTS.APARS.DE AR COND.C/DISP.REFRIG.VALV.INV.CICLO TERM
+              videoUrl: null
+              definitionPriceScope: COST
+              characteristics:
+                - index: 0
+                  name: 993-CaracteristicaConectaLa
+                  value: string
+              origin:
+                name: NACIONAL
+                id: 0
+              category:
+                id: 772965
+                idInMarketplace: c100715
+                name: Categoria Padrão Dotz
+                path: Categoria Padrão Dotz
+              height: 677
+              length: 306
+              width: 516
+              weight: 359
+              images:
+                - id: 2032070
+                  index: 1
+                  variation: null
+                  thumbnailUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./19743584A8A69721114789D612A6866B/thumbnail.jpg'
+                  standardUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./19743584A8A69721114789D612A6866B/standard_resolution.jpg'
+                  lowResolutionUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./19743584A8A69721114789D612A6866B/low_resolution.jpg'
+                  originalImage: null
+                  url: 'https://s3.sa-east-1.amazonaws.com/images.sox.anymarket.com.br/34405162./1621427842549/original.png'
+                  statusMessage: null
+                  status: PROCESSED
+                  main: true
+                  standardWidth: null
+                  standardHeight: null
+                  originalWidth: null
+                  originalHeight: null
+                - id: 2032071
+                  index: 2
+                  variation: null
+                  thumbnailUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./727679362BEA32CFD6B035291B518DB0/thumbnail.jpg'
+                  standardUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./727679362BEA32CFD6B035291B518DB0/standard_resolution.jpg'
+                  lowResolutionUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./727679362BEA32CFD6B035291B518DB0/low_resolution.jpg'
+                  originalImage: null
+                  url: 'https://s3.sa-east-1.amazonaws.com/images.sox.anymarket.com.br/34405162./1621427848204/original.png'
+                  statusMessage: null
+                  status: PROCESSED
+                  main: false
+                  standardWidth: null
+                  standardHeight: null
+                  originalWidth: null
+                  originalHeight: null
+                - id: 2032072
+                  index: 3
+                  variation: null
+                  thumbnailUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./EDBE0C4339CCBF60D6DE2BC0EB0B96E4/thumbnail.jpg'
+                  standardUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./EDBE0C4339CCBF60D6DE2BC0EB0B96E4/standard_resolution.jpg'
+                  lowResolutionUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/34405162./EDBE0C4339CCBF60D6DE2BC0EB0B96E4/low_resolution.jpg'
+                  originalImage: null
+                  url: 'https://s3.sa-east-1.amazonaws.com/images.sox.anymarket.com.br/34405162./1621427852169/original.png'
+                  statusMessage: null
+                  status: PROCESSED
+                  main: false
+                  standardWidth: null
+                  standardHeight: null
+                  originalWidth: null
+                  originalHeight: null
+              brand:
+                id: 231107
+                idInMarketplace: 614894a9b6080b7646238105
+                name: Marca Padrão Dotz
+                partnerId: Marca Padrão Dotz
+              warrantyTime: 1
+              warrantyText: Texto da Garantia Vem aqui
+              priceFactor: 1
+              calculatedPrice: true
+              hasVariations: false
+              gender: null
+              skus: null
+              allowAutomaticSkuMarketplaceCreation: false
+      properties:
+        mainSkuMarketplace:
+          description: ''
+        catalog:
+          type: boolean
+        idInMarketplace:
+          type: string
+          minLength: 1
+          description: sku no Markeplace
+        status:
+          type: string
+          minLength: 1
+          enum:
+            - UNPUBLISHED
+        marketplaceStatus:
+          type: string
+          minLength: 1
+          enum:
+            - unpublished
+        transmissionStatus:
+          type: string
+          minLength: 1
+          enum:
+            - WAITING_SYNC
+        errorMsg: {}
+        skuMarketPlaceMessage: {}
+        idInSite: {}
+        fields:
+          type: object
+          required:
+            - template
+            - EAN
+            - is_main_sku
+            - DISCOUNT_VALUE
+            - title
+            - DISCOUNT_TYPE
+            - HAS_DISCOUNT
+            - priceFactor
+          properties:
+            template:
+              type: string
+              minLength: 1
+            EAN:
+              type: string
+              minLength: 1
+              description: Código de barras
+            is_main_sku:
+              type:
+                - boolean
+                - string
+              description: Identificador de variação principal
+            DISCOUNT_VALUE:
+              type: string
+              minLength: 1
+              description: Valor ou percentual de desconto
+            title:
+              type: string
+              minLength: 1
+              description: Titulo da publicação
+            DISCOUNT_TYPE:
+              type: string
+              minLength: 1
+              description: Tipo de desconto
+            HAS_DISCOUNT:
+              type: string
+              minLength: 1
+              description: Se possui desconto
+            priceFactor:
+              type: string
+              minLength: 1
+              description: Markup
+        isCatalog:
+          type: boolean
+        permalink:
+          description: Link da publicação
+        endDate: {}
+        title: {}
+        ean: {}
+        skuInMarketplace:
+          type: string
+          minLength: 1
+        priceFactor:
+          type: number
+        price:
+          type: number
+        discountPrice:
+          type: number
+        idAccount:
+          type: number
+        accountName:
+          type: string
+          minLength: 1
+        marketPlace: {}
+        id: {}
+        stock: {}
+        attributes:
+          type: object
+          properties:
+            string:
+              type: string
+        sku:
+          type: object
+          required:
+            - id
+            - partnerId
+            - ean
+            - title
+            - price
+            - sellPrice
+            - additionalTime
+            - variations
+            - product
+          properties:
+            id:
+              type: number
+            partnerId:
+              type: string
+              minLength: 1
+            amount: {}
+            ean:
+              type: string
+              minLength: 1
+            title:
+              type: string
+              minLength: 1
+            price:
+              type: number
+            sellPrice:
+              type: number
+            additionalTime:
+              type: number
+            variations:
+              type: array
+              items:
+                type: object
+                properties:
+                  '':
+                    type: string
+            product:
+              type: object
+              required:
+                - imagesWithoutVariationValue
+                - id
+                - title
+                - description
+                - model
+                - nbm
+                - definitionPriceScope
+                - characteristics
+                - origin
+                - category
+                - height
+                - length
+                - width
+                - weight
+                - images
+                - brand
+                - warrantyTime
+                - warrantyText
+                - priceFactor
+                - calculatedPrice
+                - hasVariations
+                - allowAutomaticSkuMarketplaceCreation
+              properties:
+                imagesWithoutVariationValue:
+                  type: array
+                  uniqueItems: true
+                  minItems: 1
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      index:
+                        type: number
+                      variation: {}
+                      thumbnailUrl:
+                        type: string
+                        minLength: 1
+                      standardUrl:
+                        type: string
+                        minLength: 1
+                      lowResolutionUrl:
+                        type: string
+                        minLength: 1
+                      originalImage: {}
+                      url:
+                        type: string
+                        minLength: 1
+                      statusMessage: {}
+                      status:
+                        type: string
+                        minLength: 1
+                      main:
+                        type: boolean
+                      standardWidth: {}
+                      standardHeight: {}
+                      originalWidth: {}
+                      originalHeight: {}
+                    required:
+                      - id
+                      - index
+                      - thumbnailUrl
+                      - standardUrl
+                      - lowResolutionUrl
+                      - url
+                      - status
+                      - main
+                id:
+                  type: number
+                title:
+                  type: string
+                  minLength: 1
+                description:
+                  type: string
+                  minLength: 1
+                model:
+                  type: string
+                  minLength: 1
+                nbm:
+                  type: object
+                  required:
+                    - id
+                    - description
+                  properties:
+                    id:
+                      type: string
+                      minLength: 1
+                    description:
+                      type: string
+                      minLength: 1
+                videoUrl: {}
+                definitionPriceScope:
+                  type: string
+                  minLength: 1
+                characteristics:
+                  type: array
+                  uniqueItems: true
+                  minItems: 1
+                  items:
+                    type: object
+                    properties:
+                      index:
+                        type: number
+                      name:
+                        type: string
+                        minLength: 1
+                      value:
+                        type: string
+                        minLength: 1
+                    required:
+                      - index
+                      - name
+                      - value
+                origin:
+                  type: object
+                  required:
+                    - name
+                    - id
+                  properties:
+                    name:
+                      type: string
+                      minLength: 1
+                    id:
+                      type: number
+                category:
+                  type: object
+                  required:
+                    - id
+                    - idInMarketplace
+                    - name
+                    - path
+                  properties:
+                    id:
+                      type: number
+                    idInMarketplace:
+                      type: string
+                      minLength: 1
+                    name:
+                      type: string
+                      minLength: 1
+                    path:
+                      type: string
+                      minLength: 1
+                height:
+                  type: number
+                length:
+                  type: number
+                width:
+                  type: number
+                weight:
+                  type: number
+                images:
+                  type: array
+                  uniqueItems: true
+                  minItems: 1
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      index:
+                        type: number
+                      variation: {}
+                      thumbnailUrl:
+                        type: string
+                        minLength: 1
+                      standardUrl:
+                        type: string
+                        minLength: 1
+                      lowResolutionUrl:
+                        type: string
+                        minLength: 1
+                      originalImage: {}
+                      url:
+                        type: string
+                        minLength: 1
+                      statusMessage: {}
+                      status:
+                        type: string
+                        minLength: 1
+                      main:
+                        type: boolean
+                      standardWidth: {}
+                      standardHeight: {}
+                      originalWidth: {}
+                      originalHeight: {}
+                    required:
+                      - id
+                      - index
+                      - thumbnailUrl
+                      - standardUrl
+                      - lowResolutionUrl
+                      - url
+                      - status
+                      - main
+                brand:
+                  type: object
+                  required:
+                    - id
+                    - idInMarketplace
+                    - name
+                    - partnerId
+                  properties:
+                    id:
+                      type: number
+                    idInMarketplace:
+                      type: string
+                      minLength: 1
+                    name:
+                      type: string
+                      minLength: 1
+                    partnerId:
+                      type: string
+                      minLength: 1
+                warrantyTime:
+                  type: number
+                warrantyText:
+                  type: string
+                  minLength: 1
+                priceFactor:
+                  type: number
+                calculatedPrice:
+                  type: boolean
+                hasVariations:
+                  type: boolean
+                gender: {}
+                skus: {}
+                allowAutomaticSkuMarketplaceCreation:
+                  type: boolean
+      required:
+        - catalog
+        - idInMarketplace
+        - status
+        - marketplaceStatus
+        - transmissionStatus
+        - fields
+        - isCatalog
+        - skuInMarketplace
+        - priceFactor
+        - price
+        - discountPrice
+        - idAccount
+        - accountName
+        - attributes
+        - sku
   securitySchemes:
     x-anymarket-token:
       name: x-anymarket-token
