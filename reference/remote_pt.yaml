@@ -171,7 +171,7 @@ paths:
               examples:
                 Example:
                   value: true
-      description: |
+      description: |-
         O \canSave é um remote obrigatório e é utilizado para que o marketplace realize uma pré validação do anuncio, antes que ele seja publicado.
         Exemplos de validação:
         - Atributos;
@@ -182,6 +182,11 @@ paths:
         - Autorização para vendar determinada marca no MarketPlace;
 
         **Mesmo se tratando de um remote obrigatório, o marketplace pode não optar por realizar essa pré-validação, retornando nesses casos um http (status 200, OK) e no "responsebody = true" que é a informação esperada para prosseguir com o anuncio.**
+
+        <!--
+        focus: false
+        -->
+        ![image.png](http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/31479673./3775713692465E756FBEAD86AB14131B/standard_resolution.jpg)
       requestBody:
         content:
           application/json:
@@ -2215,6 +2220,7 @@ components:
           format: int64
           minimum: 0
           exclusiveMaximum: true
+          description: 'id do '
         mainSkuMarketplace:
           type: integer
           format: int64
