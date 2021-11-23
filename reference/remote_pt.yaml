@@ -171,7 +171,17 @@ paths:
               examples:
                 Example:
                   value: true
-      description: ''
+      description: |
+        O \canSave é um remote obrigatório e é utilizado para que o marketplace realize uma pré validação do anuncio, antes que ele seja publicado.
+        Exemplos de validação:
+        - Atributos;
+        - Verificar se a ficha técnica estão completas para a categoria que estão enviando;
+        - validar se contem palavras proibidas na descrição e titulo;
+        - Trava de valor minimo no anúncio;
+        - Se o cliente tem a liberação para publicar na categoria;
+        - Autorização para vendar determinada marca no MarketPlace;
+
+        **Mesmo se tratando de um remote obrigatório, o marketplace pode não optar por realizar essa pré-validação, retornando nesses casos um http (status 200, OK) e no "responsebody = true" que é a informação esperada para prosseguir com o anuncio.**
       requestBody:
         content:
           application/json:
