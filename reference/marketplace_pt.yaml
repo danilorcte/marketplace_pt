@@ -82,18 +82,199 @@ paths:
       summary: '/skumarketplace/{id}'
       tags:
         - Anúncios
+      operationId: get-skumarketplace-id
+      parameters:
+        - $ref: '#/components/parameters/appId'
+        - $ref: '#/components/parameters/token'
+      description: 'Após o envio da notificação do sendProduct, o marketplace deve realizar uma consulta com base no id enviado(idSkuInMarkeplace), obtendo assim os dados atualizados da transmissão, como preço, estoque e demais informações pertinentes ao anuncio.'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SkuMarketplace'
-      operationId: get-skumarketplace-id
-      parameters:
-        - $ref: '#/components/parameters/appId'
-        - $ref: '#/components/parameters/token'
-      description: Consulta os dados do anúncio no ANYMARKET.
+                $ref: '#/components/schemas/getskuMarketplace-variation'
+              examples:
+                Produto com Variação:
+                  value:
+                    catalog: false
+                    status: UNPUBLISHED
+                    marketplaceStatus: Não publicado - O Marketplace está processando a atualização.
+                    fields:
+                      template: '0'
+                      is_main_sku: 'false'
+                      DISCOUNT_VALUE: '50'
+                      DISCOUNT_TYPE: PERCENT
+                      HAS_DISCOUNT: 'true'
+                      priceFactor: '1.00'
+                    isCatalog: false
+                    title: Produto Teste com variação de Cor - Azul
+                    ean: '1912345678812'
+                    skuInMarketplace: COMVARIAOAZUL
+                    priceFactor: 1
+                    price: 20
+                    discountPrice: 10
+                    idAccount: 25
+                    accountName: Conta Teste
+                    id: 61233
+                    stock:
+                      amount: 10
+                      availableAmount: 10
+                      cost: 100
+                      totalReservation: 0
+                      physicalAmount: 10
+                      stockLocal: Estoque Físico
+                      additionalTime: 0
+                    attributes:
+                      Indicado para: Dia a Dia
+                    sku:
+                      id: 1610303
+                      partnerId: COMVARIAÇÃOAZUL
+                      amount: 10
+                      ean: '1912345678910'
+                      title: Produto Teste com variação de Cor - Azul
+                      price: 20
+                      sellPrice: 10
+                      additionalTime: 0
+                      variations:
+                        - id: 35191285
+                          idInMarketplace: 1992-AZUL
+                          description: Azul
+                          type:
+                            id: 32605
+                            idInMarketplace: 1B629497xK278415
+                            name: Cor
+                            visualVariation: true
+                      product:
+                        id: 2356789
+                        title: Produto Teste com variação de Cor
+                        description: <p>Produto Teste com varia&ccedil;&atilde;o de Cor</p>
+                        model: Produto Teste
+                        definitionPriceScope: SKU
+                        characteristics:
+                          - index: 1
+                            name: Indicado para
+                            value: Dia a Dia
+                        origin:
+                          name: NACIONAL
+                          id: 0
+                        category:
+                          id: 774786
+                          idInMarketplace: '10'
+                          name: Produto com Variação
+                          path: Produto Fisico/Produto com Variação
+                        height: 0
+                        length: 0
+                        width: 0
+                        weight: 0
+                        images:
+                          - id: 2015385
+                            index: 1
+                            variation: Azul
+                            thumbnailUrl: 'http://link-imagem/thumbnail.jpg'
+                            standardUrl: 'http://link-imagem/standard_resolution.jpg'
+                            lowResolutionUrl: 'http://link-imagem/low_resolution.jpg'
+                            originalImage: 'http://link-imagem/original_image.jpg'
+                            url: 'http://link-imagem/original.jpeg'
+                            status: PROCESSED
+                            main: true
+                            standardWidth: 1000
+                            standardHeight: 1000
+                            originalWidth: 1000
+                            originalHeight: 1000
+                          - id: 2015386
+                            index: 2
+                            variation: Verde
+                            thumbnailUrl: 'http://link-imagem/thumbnail.jpg'
+                            standardUrl: 'http://link-imagem/standard_resolution.jpg'
+                            lowResolutionUrl: 'http://link-imagem/low_resolution.jpg'
+                            originalImage: 'http://link-imagem/original_image.jpg'
+                            url: 'http://link-imagem/original.jpeg'
+                            status: PROCESSED
+                            main: true
+                            standardWidth: 1000
+                            standardHeight: 1000
+                            originalWidth: 1200
+                            originalHeight: 1200
+                        brand:
+                          id: 231949
+                          idInMarketplace: '2000016'
+                          name: MARCA TESTE
+                        warrantyTime: 1
+                        warrantyText: '1'
+                        priceFactor: 1
+                        calculatedPrice: false
+                        hasVariations: true
+                        gender: FEMALE
+                        allowAutomaticSkuMarketplaceCreation: true
+                Produto Simples:
+                  value:
+                    catalog: false
+                    status: UNPUBLISHED
+                    marketplaceStatus: unpublished
+                    fields:
+                      template: '0'
+                      is_main_sku: 'true'
+                      DISCOUNT_VALUE: '0'
+                      DISCOUNT_TYPE: PERCENT
+                      HAS_DISCOUNT: 'true'
+                      priceFactor: '1.00'
+                    isCatalog: false
+                    title: Produto de Teste
+                    ean: '8212345678910'
+                    skuInMarketplace: testeAny
+                    priceFactor: 1
+                    price: 10
+                    discountPrice: 10
+                    idAccount: 25
+                    accountName: Teste
+                    id: 61234
+                    stock:
+                      amount: 10
+                      availableAmount: 10
+                      cost: 10
+                      totalReservation: 0
+                      physicalAmount: 10
+                      stockLocal: Estoque Físico
+                      additionalTime: 0
+                    sku:
+                      id: 1609358
+                      partnerId: teste-Any
+                      amount: 10
+                      ean: '8212345678910'
+                      title: Produto de teste
+                      price: 10
+                      sellPrice: 10
+                      additionalTime: 0
+                      product:
+                        id: 2340714
+                        title: teste
+                        description: <p>Teste de descrição dos produtos</p>
+                        model: '123'
+                        definitionPriceScope: SKU
+                        origin:
+                          name: NACIONAL
+                          id: 0
+                        category:
+                          id: 774786
+                          idInMarketplace: '10'
+                          name: Categoria de teste
+                          path: Produto Fisico/Categoria de teste
+                        height: 0
+                        length: 0
+                        width: 0
+                        weight: 0
+                        brand:
+                          id: 231946
+                          idInMarketplace: '2000195'
+                          name: Marca teste
+                          partnerId: '123'
+                        warrantyTime: 1
+                        warrantyText: '1'
+                        priceFactor: 1
+                        calculatedPrice: false
+                        hasVariations: false
+                        allowAutomaticSkuMarketplaceCreation: true
   /configuration:
     get:
       summary: /configuration
@@ -1932,6 +2113,912 @@ components:
         - transmissionStatus
         - errorMsg
         - status
+    getSkuMarketplace:
+      description: Produto Simples
+      type: object
+      x-examples:
+        example-1:
+          catalog: false
+          status: UNPUBLISHED
+          marketplaceStatus: unpublished
+          fields:
+            template: '0'
+            is_main_sku: 'true'
+            DISCOUNT_VALUE: '0'
+            DISCOUNT_TYPE: PERCENT
+            HAS_DISCOUNT: 'true'
+            priceFactor: '1.00'
+          isCatalog: false
+          title: Produto de Teste
+          ean: '8212345678910'
+          skuInMarketplace: testeAny
+          priceFactor: 1
+          price: 10
+          discountPrice: 10
+          idAccount: 25
+          accountName: Teste
+          id: 61234
+          stock:
+            amount: 10
+            availableAmount: 10
+            cost: 10
+            totalReservation: 0
+            physicalAmount: 10
+            stockLocal: Estoque Físico
+            additionalTime: 0
+          sku:
+            id: 1609358
+            partnerId: teste-Any
+            amount: 10
+            ean: '8212345678910'
+            title: Produto de teste
+            price: 10
+            sellPrice: 10
+            additionalTime: 0
+            product:
+              id: 2340714
+              title: teste
+              description: <p>Teste de descrição dos produtos</p>
+              model: '123'
+              definitionPriceScope: SKU
+              origin:
+                name: NACIONAL
+                id: 0
+              category:
+                id: 774786
+                idInMarketplace: '10'
+                name: Categoria de teste
+                path: Produto Fisico/Categoria de teste
+              height: 0
+              length: 0
+              width: 0
+              weight: 0
+              brand:
+                id: 231946
+                idInMarketplace: '2000195'
+                name: Marca teste
+                partnerId: '123'
+              warrantyTime: 1
+              warrantyText: '1'
+              priceFactor: 1
+              calculatedPrice: false
+              hasVariations: false
+              allowAutomaticSkuMarketplaceCreation: true
+      properties:
+        catalog:
+          type: boolean
+        status:
+          type: string
+          minLength: 1
+          default: UNPUBLISHED
+          description: 'Status da Publicação (Por padrão, a publicação é criada como UNPUBLISHED)'
+        marketplaceStatus:
+          type: string
+          minLength: 1
+          description: Status do produto no Marketplace
+        fields:
+          type: object
+          required:
+            - is_main_sku
+            - DISCOUNT_VALUE
+            - template
+            - DISCOUNT_TYPE
+            - HAS_DISCOUNT
+            - priceFactor
+          properties:
+            is_main_sku:
+              type: boolean
+              description: Informa se é o SKU principal.
+            DISCOUNT_VALUE:
+              type: string
+              minLength: 1
+              description: Valor de Desconto
+            template:
+              type: string
+              minLength: 1
+            DISCOUNT_TYPE:
+              type: string
+              minLength: 1
+              description: Tipo de desconto
+              enum:
+                - VALUE
+                - PERCENT
+            HAS_DISCOUNT:
+              type: string
+              minLength: 1
+              description: Informa se possui desconto
+            priceFactor:
+              type: string
+              minLength: 1
+              description: Markup
+        isCatalog:
+          type: boolean
+        title:
+          type: string
+          minLength: 1
+          description: Titulo da Publicação
+        ean:
+          type: string
+          minLength: 1
+          description: Ean do Produto no Anymarket
+        skuInMarketplace:
+          type: string
+          minLength: 1
+          description: SKU do produto (Aplicado o REGEX)
+        priceFactor:
+          type: number
+          description: Markup
+        price:
+          type: number
+          description: 'Preço DE:'
+        discountPrice:
+          type: number
+          description: 'Preço POR:'
+        idAccount:
+          type: number
+          description: Id da conta que é gerado na configuração do Módulo
+        accountName:
+          type: string
+          minLength: 1
+          description: Nome da Conta definido na tela do Módulo
+        id:
+          type: number
+        stock:
+          type: object
+          required:
+            - amount
+            - availableAmount
+            - cost
+            - totalReservation
+            - physicalAmount
+            - stockLocal
+            - additionalTime
+          properties:
+            amount:
+              type: number
+              description: Total de Estoque
+            availableAmount:
+              type: number
+              description: Quantidade disponível do SKU
+            cost:
+              type: number
+              description: Valor de custo do Produto.
+            totalReservation:
+              type: number
+              description: Total de Reserva.
+            physicalAmount:
+              type: number
+            stockLocal:
+              type: string
+              minLength: 1
+            additionalTime:
+              type: number
+        sku:
+          type: object
+          required:
+            - id
+            - partnerId
+            - amount
+            - ean
+            - title
+            - price
+            - sellPrice
+            - additionalTime
+            - product
+          properties:
+            id:
+              type: number
+              description: Id do Sku
+            partnerId:
+              type: string
+              minLength: 1
+              description: Sku do Produto no ANYMARKET (Sem aplicação do REGEX)
+            amount:
+              type: number
+              description: Quantidade em estoque desse SKU
+            ean:
+              type: string
+              minLength: 1
+            title:
+              type: string
+              minLength: 1
+              description: 'Titulo do SKU (EM CASO DE PRODUTOS COM VARIAÇÃO, O ANY CONCATENA A VARIAÇÃO AO TITULO)'
+            price:
+              type: number
+            sellPrice:
+              type: number
+            additionalTime:
+              type: number
+            product:
+              type: object
+              required:
+                - id
+                - title
+                - description
+                - model
+                - definitionPriceScope
+                - origin
+                - category
+                - height
+                - length
+                - width
+                - weight
+                - brand
+                - warrantyTime
+                - warrantyText
+                - priceFactor
+                - calculatedPrice
+                - hasVariations
+                - allowAutomaticSkuMarketplaceCreation
+              properties:
+                id:
+                  type: number
+                  description: Id do Produto.
+                title:
+                  type: string
+                  minLength: 1
+                  description: Titulo do Produto
+                description:
+                  type: string
+                  minLength: 1
+                  description: 'Descrição do Produto (Obs: ANYMARKET aceita tags HTML, caso o marketplace não aceite, será necessario fazer a retirada)'
+                model:
+                  type: string
+                  minLength: 1
+                  description: Modelo do Produto
+                definitionPriceScope:
+                  type: string
+                  minLength: 1
+                origin:
+                  type: object
+                  required:
+                    - name
+                    - id
+                  properties:
+                    name:
+                      type: string
+                      minLength: 1
+                      description: Informa se o produto é Nacional
+                    id:
+                      type: number
+                      description: Id Origin
+                category:
+                  type: object
+                  required:
+                    - id
+                    - idInMarketplace
+                    - name
+                    - path
+                  properties:
+                    id:
+                      type: number
+                      description: 'Id da categoria no ANYMARKET  '
+                    idInMarketplace:
+                      type: string
+                      minLength: 1
+                      description: Id da Categoria no Marketplace (Obtido atraves da vinculação da categoria)
+                    name:
+                      type: string
+                      minLength: 1
+                      description: Nome da Categoria
+                    path:
+                      type: string
+                      minLength: 1
+                      description: Caminho da Categoria no ANYMARKET
+                height:
+                  type: number
+                  description: altura da Embalagem
+                length:
+                  type: number
+                  description: Comprimento da Embalagem
+                width:
+                  type: number
+                  description: Largura da Embalagem
+                weight:
+                  type: number
+                  description: Peso da Embalagem
+                brand:
+                  type: object
+                  required:
+                    - id
+                    - idInMarketplace
+                    - name
+                    - partnerId
+                  properties:
+                    id:
+                      type: number
+                      description: Id da Marca no ANYMARKET
+                    idInMarketplace:
+                      type: string
+                      minLength: 1
+                      description: Id da marca no MARKETPLACE (Obtido na vinculação da marca)
+                    name:
+                      type: string
+                      minLength: 1
+                      description: Nome da Marca
+                    partnerId:
+                      type: string
+                      minLength: 1
+                      description: identificado da Marca ( Informado pelo Seller)
+                warrantyTime:
+                  type: number
+                  description: Tempo de Garantia em dias
+                warrantyText:
+                  type: string
+                  minLength: 1
+                  description: Texto de Garantia
+                priceFactor:
+                  type: number
+                calculatedPrice:
+                  type: boolean
+                hasVariations:
+                  type: boolean
+                  description: Informa se o produto tem variação.
+                allowAutomaticSkuMarketplaceCreation:
+                  type: boolean
+      required:
+        - catalog
+        - status
+        - marketplaceStatus
+        - fields
+        - isCatalog
+        - title
+        - ean
+        - skuInMarketplace
+        - priceFactor
+        - price
+        - discountPrice
+        - idAccount
+        - accountName
+        - id
+        - stock
+        - sku
+      title: getskuMarketplace
+    getskuMarketplace-variation:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          catalog: false
+          status: UNPUBLISHED
+          marketplaceStatus: Não publicado - O Marketplace está processando a atualização.
+          fields:
+            template: '0'
+            is_main_sku: 'false'
+            DISCOUNT_VALUE: '50'
+            DISCOUNT_TYPE: PERCENT
+            HAS_DISCOUNT: 'true'
+            priceFactor: '1.00'
+          isCatalog: false
+          title: Produto Teste com variação de Cor - Azul
+          ean: '1912345678812'
+          skuInMarketplace: COMVARIAOAZUL
+          priceFactor: 1
+          price: 20
+          discountPrice: 10
+          idAccount: 25
+          accountName: Conta Teste
+          id: 61233
+          stock:
+            amount: 10
+            availableAmount: 10
+            cost: 100
+            totalReservation: 0
+            physicalAmount: 10
+            stockLocal: Estoque Físico
+            additionalTime: 0
+          attributes:
+            Indicado para: Dia a Dia
+          sku:
+            id: 1610303
+            partnerId: COMVARIAÇÃOAZUL
+            amount: 10
+            ean: '1912345678910'
+            title: Produto Teste com variação de Cor - Azul
+            price: 20
+            sellPrice: 10
+            additionalTime: 0
+            variations:
+              - id: 35191285
+                idInMarketplace: 1992-AZUL
+                description: Azul
+                type:
+                  id: 32605
+                  idInMarketplace: 1B629497xK278415
+                  name: Cor
+                  visualVariation: true
+            product:
+              id: 2356789
+              title: Produto Teste com variação de Cor
+              description: <p>Produto Teste com varia&ccedil;&atilde;o de Cor</p>
+              model: Produto Teste
+              definitionPriceScope: SKU
+              characteristics:
+                - index: 1
+                  name: Indicado para
+                  value: Dia a Dia
+              origin:
+                name: NACIONAL
+                id: 0
+              category:
+                id: 774786
+                idInMarketplace: '10'
+                name: Produto com Variação
+                path: Produto Fisico/Produto com Variação
+              height: 0
+              length: 0
+              width: 0
+              weight: 0
+              images:
+                - id: 2015385
+                  index: 1
+                  variation: Azul
+                  thumbnailUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/12345678./6C0C01E3435CADFE017A307703D1FA93/thumbnail.jpg'
+                  standardUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/12345678./6C0C01E3435CADFE017A307703D1FA93/standard_resolution.jpg'
+                  lowResolutionUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/12345678./6C0C01E3435CADFE017A307703D1FA93/low_resolution.jpg'
+                  originalImage: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/12345678./6C0C01E3435CADFE017A307703D1FA93/original_image.jpg'
+                  url: 'https://s3.sa-east-1.amazonaws.com/images.sox.anymarket.com.br/12345678./1636471915306/original.jpeg'
+                  status: PROCESSED
+                  main: true
+                  standardWidth: 1000
+                  standardHeight: 1000
+                  originalWidth: 1000
+                  originalHeight: 1000
+                - id: 2015386
+                  index: 2
+                  variation: Verde
+                  thumbnailUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/12345678./C9F2B763201EBEC20C07F56DACC990E1/thumbnail.jpg'
+                  standardUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/12345678./C9F2B763201EBEC20C07F56DACC990E1/standard_resolution.jpg'
+                  lowResolutionUrl: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/12345678./C9F2B763201EBEC20C07F56DACC990E1/low_resolution.jpg'
+                  originalImage: 'http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/12345678./C9F2B763201EBEC20C07F56DACC990E1/original_image.jpg'
+                  url: 'https://s3.sa-east-1.amazonaws.com/images.sox.anymarket.com.br/12345678./1636471956004/original.jpeg'
+                  status: PROCESSED
+                  main: true
+                  standardWidth: 1000
+                  standardHeight: 1000
+                  originalWidth: 1200
+                  originalHeight: 1200
+              brand:
+                id: 231949
+                idInMarketplace: '2000016'
+                name: MARCA TESTE
+              warrantyTime: 1
+              warrantyText: '1'
+              priceFactor: 1
+              calculatedPrice: false
+              hasVariations: true
+              gender: FEMALE
+              allowAutomaticSkuMarketplaceCreation: true
+      properties:
+        catalog:
+          type: boolean
+        status:
+          type: string
+          minLength: 1
+          description: 'Status da Publicação (Por padrão, a publicação é criada como UNPUBLISHED)'
+          default: UNPUBLISHED
+        marketplaceStatus:
+          type: string
+          minLength: 1
+          description: Texto disponibilizado pelo Market informando o Status do produto
+        fields:
+          type: object
+          required:
+            - template
+            - is_main_sku
+            - DISCOUNT_VALUE
+            - DISCOUNT_TYPE
+            - HAS_DISCOUNT
+            - priceFactor
+          properties:
+            template:
+              type: string
+              minLength: 1
+            is_main_sku:
+              type: string
+              minLength: 1
+              description: Informa se é o SKU principal.
+            DISCOUNT_VALUE:
+              type: string
+              minLength: 1
+              description: Valor de Desconto
+            DISCOUNT_TYPE:
+              type: string
+              minLength: 1
+              description: Tipo de desconto
+            HAS_DISCOUNT:
+              type: string
+              minLength: 1
+              description: Informa se possui desconto
+            priceFactor:
+              type: string
+              minLength: 1
+              description: Markup
+        isCatalog:
+          type: boolean
+        title:
+          type: string
+          minLength: 1
+          description: Titulo da Publicação
+        ean:
+          type: string
+          minLength: 1
+          description: EAN do produto
+        skuInMarketplace:
+          type: string
+          minLength: 1
+          description: SKU do produto (Aplicado o REGEX)
+        priceFactor:
+          type: number
+          description: Markup
+        price:
+          type: number
+          description: 'Preço DE:'
+        discountPrice:
+          type: number
+          description: 'Preço POR:'
+        idAccount:
+          type: number
+          description: Id da conta que é gerado na Ativação do Módulo
+        accountName:
+          type: string
+          minLength: 1
+          description: Nome da Conta que fez a publicação.
+        id:
+          type: number
+        stock:
+          type: object
+          required:
+            - amount
+            - availableAmount
+            - cost
+            - totalReservation
+            - physicalAmount
+            - stockLocal
+            - additionalTime
+          properties:
+            amount:
+              type: number
+              description: Total de Estoque
+            availableAmount:
+              type: number
+              description: Quantidade disponível do SKU em Estoque
+            cost:
+              type: number
+              description: Valor de custo do Produto.
+            totalReservation:
+              type: number
+              description: Total de Reserva de Estoque.
+            physicalAmount:
+              type: number
+            stockLocal:
+              type: string
+              minLength: 1
+              description: 'Local de '
+            additionalTime:
+              type: number
+              description: Prazo de Crossdocking
+        attributes:
+          type: object
+          description: ''
+          required:
+            - String
+          properties:
+            String:
+              type: string
+              minLength: 1
+              description: Nome do Atributo
+        sku:
+          type: object
+          required:
+            - id
+            - partnerId
+            - amount
+            - ean
+            - title
+            - price
+            - sellPrice
+            - additionalTime
+            - variations
+            - product
+          properties:
+            id:
+              type: number
+              description: Id do SKU
+            partnerId:
+              type: string
+              minLength: 1
+              description: Sku no ANYMARKET (Sem aplicação do REGEX)
+            amount:
+              type: number
+              description: Quantidade em estoque desse SKU
+            ean:
+              type: string
+              minLength: 1
+              description: EAN do SKU
+            title:
+              type: string
+              minLength: 1
+              description: 'Titulo do SKU (EM CASO DE PRODUTOS COM VARIAÇÃO, O ANY CONCATENA A VARIAÇÃO AO TITULO)'
+            price:
+              type: number
+            sellPrice:
+              type: number
+            additionalTime:
+              type: number
+            variations:
+              type: array
+              uniqueItems: true
+              minItems: 1
+              items:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: Id do valor Variação no ANYMARKET
+                  idInMarketplace:
+                    type: string
+                    minLength: 1
+                    description: Id do valor da variação no Marketplace (Obtido ao realizar o vinculo de variação)
+                  description:
+                    type: string
+                    minLength: 1
+                    description: Valor da Variação
+                    example: 'P, M, G, GG'
+                  type:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                        description: Id do Tipo de Variação no ANYMARKET
+                      idInMarketplace:
+                        type: string
+                        minLength: 1
+                        description: Id do tipo de Variação no Marketplace (Obtido ao realizar o vinculo de variação)
+                      name:
+                        type: string
+                        minLength: 1
+                        description: Nome do Tipo de variação
+                        example: Tamanho
+                      visualVariation:
+                        type: boolean
+                        description: 'Informa se é uma variação Visual. (EX: Cor, Estampa, etc)'
+                    required:
+                      - id
+                      - idInMarketplace
+                      - name
+                      - visualVariation
+                required:
+                  - id
+                  - idInMarketplace
+                  - description
+            product:
+              type: object
+              required:
+                - id
+                - title
+                - description
+                - model
+                - definitionPriceScope
+                - characteristics
+                - origin
+                - category
+                - height
+                - length
+                - width
+                - weight
+                - images
+                - brand
+                - warrantyTime
+                - warrantyText
+                - priceFactor
+                - calculatedPrice
+                - hasVariations
+                - gender
+                - allowAutomaticSkuMarketplaceCreation
+              properties:
+                id:
+                  type: number
+                  description: Id do Produto. (Pode se utilizar desse ID para realizar agrupamento dos produtos com variação)
+                title:
+                  type: string
+                  minLength: 1
+                  description: Titulo do Produto
+                description:
+                  type: string
+                  minLength: 1
+                  description: 'Descrição do Produto (Obs: ANYMARKET aceita tags HTML, caso o marketplace não aceite, será necessario fazer a retirada)'
+                model:
+                  type: string
+                  minLength: 1
+                  description: Modelo do Produto
+                definitionPriceScope:
+                  type: string
+                  minLength: 1
+                characteristics:
+                  type: array
+                  uniqueItems: true
+                  minItems: 1
+                  items:
+                    type: object
+                    properties:
+                      index:
+                        type: number
+                      name:
+                        type: string
+                        minLength: 1
+                      value:
+                        type: string
+                        minLength: 1
+                    required:
+                      - index
+                      - name
+                      - value
+                origin:
+                  type: object
+                  required:
+                    - name
+                    - id
+                  properties:
+                    name:
+                      type: string
+                      minLength: 1
+                    id:
+                      type: number
+                category:
+                  type: object
+                  required:
+                    - id
+                    - idInMarketplace
+                    - name
+                    - path
+                  properties:
+                    id:
+                      type: number
+                      description: Id da Categoria no ANYMARKET
+                    idInMarketplace:
+                      type: string
+                      minLength: 1
+                      description: Id da Categoria no MARKETPLACE (Obtido ao realizar o vinculo de categoria)
+                    name:
+                      type: string
+                      minLength: 1
+                      description: Nome da Categoria
+                    path:
+                      type: string
+                      minLength: 1
+                      description: Caminho da Categoria
+                height:
+                  type: number
+                  description: Altura da Embalagem
+                length:
+                  type: number
+                  description: Comprimento da Embalagem
+                width:
+                  type: number
+                  description: Largura da Embalagem
+                weight:
+                  type: number
+                  description: Peso da Embalagem
+                images:
+                  type: array
+                  uniqueItems: true
+                  minItems: 1
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      index:
+                        type: number
+                        description: Ordenação das Imagens
+                      variation:
+                        type: string
+                        minLength: 1
+                        description: Informa qual variação essa imagem pertence.
+                      thumbnailUrl:
+                        type: string
+                        minLength: 1
+                      standardUrl:
+                        type: string
+                        minLength: 1
+                        description: 'Recomendamos utilizar essa imagem, pois é a imagem que o ANYMARKET processou e está em nosso servidor.'
+                      lowResolutionUrl:
+                        type: string
+                        minLength: 1
+                      originalImage:
+                        type: string
+                        minLength: 1
+                      url:
+                        type: string
+                        minLength: 1
+                      status:
+                        type: string
+                        minLength: 1
+                        description: Status do processamento da Imagem
+                      main:
+                        type: boolean
+                        description: Informa se a imagem é a principal.
+                      standardWidth:
+                        type: number
+                      standardHeight:
+                        type: number
+                      originalWidth:
+                        type: number
+                      originalHeight:
+                        type: number
+                    required:
+                      - id
+                      - index
+                      - variation
+                      - thumbnailUrl
+                      - standardUrl
+                      - lowResolutionUrl
+                      - originalImage
+                      - url
+                      - status
+                      - main
+                      - standardWidth
+                      - standardHeight
+                      - originalWidth
+                      - originalHeight
+                brand:
+                  type: object
+                  required:
+                    - id
+                    - idInMarketplace
+                    - name
+                  properties:
+                    id:
+                      type: number
+                      description: Id da Marca no ANYMARKET
+                    idInMarketplace:
+                      type: string
+                      minLength: 1
+                      description: Id da Marca no Marketplace (Obtido ao realizar o vinculo de marcas)
+                    name:
+                      type: string
+                      minLength: 1
+                      description: Nome da Marca
+                warrantyTime:
+                  type: number
+                  description: Tempo de garantia em dias.
+                warrantyText:
+                  type: string
+                  minLength: 1
+                  description: Texto de garantia
+                priceFactor:
+                  type: number
+                  description: MARKUP
+                calculatedPrice:
+                  type: boolean
+                hasVariations:
+                  type: boolean
+                  description: Informa se o produto possui Variação
+                gender:
+                  type: string
+                  minLength: 1
+                  description: Gênero
+                allowAutomaticSkuMarketplaceCreation:
+                  type: boolean
+      required:
+        - catalog
+        - status
+        - marketplaceStatus
+        - fields
+        - isCatalog
+        - title
+        - ean
+        - skuInMarketplace
+        - priceFactor
+        - price
+        - discountPrice
+        - idAccount
+        - accountName
+        - id
+        - stock
+        - attributes
+        - sku
   parameters:
     offset:
       name: offset
