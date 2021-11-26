@@ -275,6 +275,10 @@ paths:
                         calculatedPrice: false
                         hasVariations: false
                         allowAutomaticSkuMarketplaceCreation: true
+                Anúncio não existente:
+                  value:
+                    code: 404
+                    message: 'Recurso com o id ''{{id}}'' não encontrado'
   /configuration:
     get:
       summary: /configuration
