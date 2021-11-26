@@ -275,7 +275,28 @@ paths:
                         calculatedPrice: false
                         hasVariations: false
                         allowAutomaticSkuMarketplaceCreation: true
-                Anúncio não existente:
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                required:
+                  - code
+                  - message
+                x-examples:
+                  example-1:
+                    code: 404
+                    message: 'Recurso com o id ''{{id}}'' não encontrado'
+              examples:
+                example-1:
                   value:
                     code: 404
                     message: 'Recurso com o id ''{{id}}'' não encontrado'
