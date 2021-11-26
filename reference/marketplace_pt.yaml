@@ -2625,7 +2625,7 @@ components:
         marketplaceStatus:
           type: string
           minLength: 1
-          description: Texto disponibilizado pelo Market informando o Status do produto
+          description: Texto disponibilizado pelo Marketplace informando o Status do produto
         fields:
           type: object
           required:
@@ -2651,6 +2651,9 @@ components:
               type: string
               minLength: 1
               description: Tipo de desconto
+              enum:
+                - VALUE
+                - PERCENT
             HAS_DISCOUNT:
               type: string
               minLength: 1
