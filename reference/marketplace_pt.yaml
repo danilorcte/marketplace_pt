@@ -2863,6 +2863,11 @@ components:
                 definitionPriceScope:
                   type: string
                   minLength: 1
+                  description: 'Suporte aos tipos SKU (Manual, eu controlo o preço pelo SKU), SKU_MARKETPLACE (Manual, eu controlo o preço pelo anúncio) ou COST (Automático, pela mudança do custo) '
+                  enum:
+                    - SKU
+                    - SKU_MARKETPLACE
+                    - COST
                 characteristics:
                   type: array
                   uniqueItems: true
