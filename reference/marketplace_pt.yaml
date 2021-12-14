@@ -59,6 +59,148 @@ paths:
       description: |-
         Atualizar os dados de uma transmissão, o marketplace deve acionar o endpoint para remover o status de sincronizando, sempre retornando o status do anuncio no marketplace.
         É obrigatório quando o marketplace não processe o anúncio, ou caso tenha gerado algum erro de catalogação o mesmo informe através desse endpoint para que o seller consiga estar aplicando a correção informada.
+
+        Nessa etapa do desenvolvimento o marketplace deve levar em considerações algumas informações como: 
+        - Quais são as equivalências de status do ANYMARKET com o meu marketplace? 
+        - Há processo de catalogação manual?
+        - Sempre que eu receber uma notificação no remote /sendProduct como devo prosseguir?
+
+        ### EQUIVALENCIAS DE STATUS
+        O primeiro passo é que o marketplace consiga identificar quais as equivalências de status do ANYMARKET e as do marketplace. Por exemplo: 
+
+        | STATUS        |      SIGNIFICADO      |   MARKETPLACE|
+        | ------------- | :-----------: | -----: |
+        |`UNPUBLISHED`| Não publicado  | Rascunho |
+        |`ACTIVE` |   Ativo     |   Publicado  |
+        | `PAUSED` |   Pausado     | Sem estoque |
+        | `CLOSED` |   Fechado     |   Não publicado |
+        | `WITHOUT_STOCK` |   Sem estoque     |Sem estoque |
+
+
+        Sabendo das equivalências o marketplace consegue ter um norte para quando for realizar as chamadas de atualização no ANYMARKET. 
+
+        ------
+        ## EXISTE PROCESSO DE CATALOGAÇÃO?
+        Um segundo passo para que seja feito o desenvolvimento corretamente e que o seller consiga identificar o real status do anuncio no marketplace é necessário que o parceiro entenda das regras de negocio do marketplace, um caso é se o marketplace vai possuir um processo de catalogação manual ou não.  
+
+        Deixo abaixo alguns cenários e exemplos de retornos que podem ser realizados: 
+
+        ## Cenario 1
+
+        **Descrição:** É enviado notificação do sendProduct e quando a integração realiza a consulta identificado que se trata de um novo SKU para ser registrado no marketplace. Nesse momento o marketplace consulta todos os dados pertinentes e registra no banco de dados e informa o status equivalente.  
+
+        **Resultado esperado:**
+
+        **Sucesso**: 
+        ```json
+        { 
+
+            "idInMarketplace": " MLB00001", 
+            "idInSite": "", 
+            "skuInMarketplace": " CAD001", 
+            "marketplaceStatus": "Ativo", 
+            "idSku": "", 
+            "transmissionStatus": "OK", 
+            "errorMsg": "", 
+            "status": "ACTIVE" 
+        } 
+        ```
+
+        **Critica:**
+        ```json
+        { 
+            "idInMarketplace": " MLB00001", 
+            "idInSite": "", 
+            "skuInMarketplace": " CAD001", 
+            "marketplaceStatus": "Ativo", 
+            "idSku": "", 
+            "transmissionStatus": "ERROR", 
+            "errorMsg": "É necessário informar o atributo “Código do fabricante”", 
+            "status": "UNPUBLISHED" 
+        } 
+        ```
+        ### Caso possua catalogação:
+        > Status deve permanecer como `UNPUBLISHED`
+        ```json
+        { 
+           "idInMarketplace": " MLB00001", 
+           "idInSite": "", 
+           "skuInMarketplace": " CAD001", 
+           "marketplaceStatus": "O Marketplace está processando a atualização", 
+           "idSku": "", 
+           "transmissionStatus": "ok", 
+           "errorMsg": "", 
+           "status": "UNPUBLISHED" 
+        } 
+        ```
+        **Finalizou o processo de catalogação e ficou disponivel no marketplace:**
+        ```json
+        { 
+            "idInMarketplace": " MLB00001", 
+            "idInSite": "", 
+            "skuInMarketplace": " CAD001", 
+            "marketplaceStatus": "Ativo", 
+            "idSku": "", 
+            "transmissionStatus": "OK", 
+            "errorMsg": "", 
+            "status": "ACTIVE" 
+        } 
+        ```
+        -------
+
+        ## CENARIO 2
+
+        **Descrição:** O anuncio está em processo de catalogação, porem foi notificado o sendProduct novamente. Nesse momento o marketplace deve fazer uma consulta do id notificado afim de obter as informações para que no processo de catalogação o marketplace tenha as informações mais atualizadas do anúncio.
+
+        **Retorno esperado caso esteja em processo de catalogação:**
+        ```json
+        { 
+           "idInMarketplace": "", 
+           "idInSite": "", 
+           "skuInMarketplace": "MLB00001", 
+           "marketplaceStatus": "O Marketplace está processando a atualização", 
+           "idSku": "", 
+           "transmissionStatus": "ok", 
+           "errorMsg": "", 
+           "status": "UNPUBLISHED" 
+        } 
+        ```
+        --------
+        ## CENARIO 3
+
+        **Descrição:** Anuncio ativo no marketplace e é recebido a notificação do /sendProduct. Nesse momento o marketplace deve prestar atenção nas propriedades que estão sendo enviadas no /sendProduct pois nela vai conter informações se é para atualizar todos os dados do produto ou somente preço, estoque e status.  
+
+        Ao saber dessas informações o marketplace ao consultar, irá consumir as informações pertinentes a configuração encaminhada.  
+        ```json
+        { 
+            "idInMarketplace": " MLB00001", 
+            "idInSite": "", 
+            "skuInMarketplace": " CAD001", 
+            "marketplaceStatus": "Ativo", 
+            "idSku": "", 
+            "transmissionStatus": "OK", 
+            "errorMsg": "", 
+            "status": " 
+        } 
+        ```
+        Descrição: Anuncio ativo no marketplace e é recebido a notificação do /sendProduct. Nesse momento o marketplace deve prestar atenção nas propriedades que estão sendo enviadas no /sendProduct pois nela vai conter informações se é para atualizar todos os dados do produto ou somente preço, estoque e status.  
+
+        Ao saber dessas informações o marketplace ao consultar, irá consumir as informações pertinentes a configuração encaminhada. Lembrando sempre de manter a transmissão com o status que se encontra no marketplace. 
+
+        **Sucesso:** 
+
+        ```json
+        { 
+            "idInMarketplace": " MLB00001", 
+            "idInSite": "", 
+            "skuInMarketplace": " CAD001", 
+            "marketplaceStatus": "Ativo", 
+            "idSku": "", 
+            "transmissionStatus": "OK", 
+            "errorMsg": "", 
+            "status": " 
+        } 
+        ```
       tags:
         - Anúncios
       requestBody:
