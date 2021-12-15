@@ -79,6 +79,20 @@ paths:
                   onlySyncPrice: true
                   onlySyncStock: true
                   onlySyncStatus: true
+              example 2 - Exemplo de Atualização:
+                value:
+                  idSkuMarketplace: 58717
+                  idSkuMarketplaceMain: 58717
+                  status: ACTIVE
+                  onlySync: true
+                  idSku: 791780
+                  availableAmount: 100
+                  idAccount: 1
+                  idProduct: 1234
+                  skuInMarketplace: null
+                  onlySyncPrice: true
+                  onlySyncStock: true
+                  onlySyncStatus: true
         description: ''
       tags:
         - Anúncios
