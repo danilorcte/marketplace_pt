@@ -42,6 +42,11 @@ paths:
                     publicationStatus: UNPUBLISHED
                     marketplaceStatus: string
                     transmissionStatus: WAITING_SYNC
+                Exemplo 2 - Atualização:
+                  value:
+                    publicationStatus: ACTIVE
+                    marketplaceStatus: Ativo - O Marketplace está processando a atualização.
+                    transmissionStatus: SYNCING
       description: |-
         O objetivo da chamada sendProduct é enviar o anúncio para o Marketplace informando que foi criado no ANYMARKET ou que teve uma atualização que deve ser refletida no marketplace. 
         <!-- theme: warning -->
