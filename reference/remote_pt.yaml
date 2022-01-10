@@ -824,17 +824,17 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/VariationType'
+                $ref: '#/components/schemas/variation_response'
               examples:
-                Example:
+                example-1:
                   value:
-                    - codeInMarketplace: string
-                      name: string
-                      values:
-                        - codeInMarketplace: string
-                          name: string
+                    codeInMarketplace: COLOR_VARIANT
+                    name: Cor
+                    values:
+                      - codeInMarketplace: RED
+                        name: Vermelho
+                      - codeInMarketplace: BLUE
+                        name: Azul
       operationId: get-variations-types
       description: Consulta os tipos e valores possíveis para o seller realizar o de/para.
 components:
@@ -3519,6 +3519,49 @@ components:
         - accountName
         - attributes
         - sku
+    variation_response:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          codeInMarketplace: COLOR_VARIANT
+          name: Cor
+          values:
+            - codeInMarketplace: RED
+              name: Vermelho
+            - codeInMarketplace: BLUE
+              name: Azul
+      properties:
+        codeInMarketplace:
+          type: string
+          minLength: 1
+          description: Código do Tipo de Variação no mMrketplace
+        name:
+          type: string
+          minLength: 1
+          description: Nome do Tipo de Variação
+        values:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              codeInMarketplace:
+                type: string
+                minLength: 1
+                description: Código do Valor de Variação no Marketplace
+              name:
+                type: string
+                minLength: 1
+                description: Nome da Variação
+            required:
+              - codeInMarketplace
+              - name
+      required:
+        - codeInMarketplace
+        - name
+        - values
   securitySchemes:
     x-anymarket-token:
       name: x-anymarket-token
