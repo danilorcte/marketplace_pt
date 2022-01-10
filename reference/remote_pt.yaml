@@ -3535,7 +3535,7 @@ components:
         codeInMarketplace:
           type: string
           minLength: 1
-          description: Código do Tipo de Variação no mMrketplace
+          description: Código do Tipo de Variação no Marketplace
         name:
           type: string
           minLength: 1
@@ -3544,6 +3544,7 @@ components:
           type: array
           uniqueItems: true
           minItems: 1
+          description: Valores da Variação
           items:
             type: object
             properties:
