@@ -496,11 +496,9 @@ paths:
           description: OK
       description: |-
         Enviaremos essa notificação quando o seller solicitar a importação de todos os pedidos para o painel do ANYMARKET (Tela de Configuração).
-
         Após receber essa notificação, o Marketplace deve nos retornar um HTTP Status 200 Ok e realizar a seguinte ação:
-
-        - Verificar em sua base de dados se existem Pedidos PENDENTES ou PAGOS, a partir da DATA que foi informado no atributo initialDateForOrderImport;
-        - Após verificar os pedidos, o Marketplace deve realizar o POST /orders inserindo esses pedidos no ANYMARKET.
+        - Verificar em sua base de dados se existem pedidos PENDENTES ou PAGOS, a partir da DATA informada no atributo `initialDateForOrderImport`;
+        - Após verificar os pedidos, o Marketplace deve realizar o POST `/orders` inserindo esses pedidos no ANYMARKET.
       parameters:
         - schema:
             type: string
