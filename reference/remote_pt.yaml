@@ -190,6 +190,43 @@ paths:
               examples:
                 Example:
                   value: true
+        '422':
+          description: Unprocessable Entity (WebDAV)
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  code:
+                    type: string
+                    minLength: 1
+                  httpStatus:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  details:
+                    type: string
+                    minLength: 1
+                required:
+                  - code
+                  - httpStatus
+                  - message
+                  - details
+                x-examples:
+                  example-1:
+                    code: PublicationValidationException
+                    httpStatus: 422
+                    message: Erro ao validar publicação
+                    details: O anuncio não possui os atributos obrigatorios solicitados (.....)
+              examples:
+                Exemplo- Erro na validação:
+                  value:
+                    code: PublicationValidationException
+                    httpStatus: 422
+                    message: Erro ao validar publicação
+                    details: O anuncio não possui os atributos obrigatorios solicitados (.....)
       description: |-
         O \canSave é um remote obrigatório e é utilizado para que o marketplace realize uma pré validação do anuncio, antes que ele seja publicado.
         Exemplos de validação:
