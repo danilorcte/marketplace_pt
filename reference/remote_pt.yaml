@@ -250,7 +250,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/canSave'
-            examples: {}
   /canActive:
     post:
       summary: /canActive
@@ -3605,12 +3604,6 @@ components:
         - codeInMarketplace
         - name
         - values
-    canSave_novo:
-      title: canSave_novo
-      type: object
-      properties:
-        id:
-          type: string
   securitySchemes:
     x-anymarket-token:
       name: x-anymarket-token
