@@ -531,6 +531,13 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+              examples:
+                example-1:
+                  value: true
       description: |-
         Enviaremos essa notificação quando o seller solicitar a importação de todos os pedidos para o painel do ANYMARKET (Tela de Configuração).
         Após receber essa notificação, o Marketplace deve nos retornar um HTTP Status 200 Ok e realizar a seguinte ação:
