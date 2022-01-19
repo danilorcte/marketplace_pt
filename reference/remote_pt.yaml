@@ -250,6 +250,140 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/canSave'
+            examples:
+              example-1:
+                value:
+                  mainSkuMarketplace: null
+                  catalog: false
+                  idInMarketplace: CAM-001
+                  status: UNPUBLISHED
+                  marketplaceStatus: unpublished
+                  transmissionStatus: WAITING_SYNC
+                  errorMsg: null
+                  skuMarketPlaceMessage: null
+                  idInSite: null
+                  fields:
+                    template: '0'
+                    EAN: '123456789123456'
+                    is_main_sku: 'true'
+                    DISCOUNT_VALUE: '0'
+                    title: Camiseta Colorida - Azul - P
+                    DISCOUNT_TYPE: PERCENT
+                    HAS_DISCOUNT: 'false'
+                    priceFactor: '2.00'
+                  isCatalog: false
+                  permalink: null
+                  endDate: null
+                  title: null
+                  ean: null
+                  skuInMarketplace: CAM-001
+                  priceFactor: 1
+                  price: 80
+                  discountPrice: 80
+                  idAccount: 1
+                  accountName: Conta Teste
+                  marketPlace: null
+                  id: null
+                  stock: null
+                  attributes: {}
+                  sku:
+                    id: 1234
+                    partnerId: CAM-001
+                    amount: null
+                    ean: '123456789123456'
+                    title: Camiseta Colorida - Azul - P
+                    price: 80
+                    sellPrice: 80
+                    additionalTime: 0
+                    variations:
+                      - id: 35212345
+                        idInMarketplace: null
+                        description: P
+                        type:
+                          id: 32983
+                          idInMarketplace: 125
+                          name: Tamanho
+                          partnerId: null
+                          visualVariation: false
+                          values: []
+                        partnerId: null
+                      - id: 35212225
+                        idInMarketplace: null
+                        description: Azul
+                        type:
+                          id: 32696
+                          idInMarketplace: 55
+                          name: Cor
+                          partnerId: null
+                          visualVariation: true
+                          values: []
+                        partnerId: null
+                    product:
+                      imagesWithoutVariationValue: []
+                      id: 2351284
+                      title: Camiseta Colorida
+                      description: <p>Camisetas B&aacute;sicas com decote arredondado e mangas curtas.&nbsp;</p>
+                      model: AX11
+                      nbm: null
+                      videoUrl: null
+                      definitionPriceScope: COST
+                      characteristics: []
+                      origin:
+                        name: NACIONAL
+                        id: 0
+                      category:
+                        id: 783217
+                        idInMarketplace: '555'
+                        name: Camisetas
+                        path: Roupas/Camisetas
+                      height: 10
+                      length: 20
+                      width: 15
+                      weight: 10
+                      images:
+                        - id: 2054512
+                          index: 1
+                          variation: Azul
+                          thumbnailUrl: 'https://url/thumbnail.jpg'
+                          standardUrl: 'https://url/standard_resolution.jpg'
+                          lowResolutionUrl: 'https://url//low_resolution.jpg'
+                          originalImage: null
+                          url: 'https://url/camiseta-azul-royal1-5fea6c79b47441b4f315809497526236-1024-1024.jpg'
+                          statusMessage: null
+                          status: PROCESSED
+                          main: true
+                          standardWidth: null
+                          standardHeight: null
+                          originalWidth: null
+                          originalHeight: null
+                        - id: 2054513
+                          index: 2
+                          variation: Amarelo
+                          thumbnailUrl: 'https://url/thumbnail.jpg'
+                          standardUrl: 'https://url/standard_resolution.jpg'
+                          lowResolutionUrl: 'https://url/low_resolution.jpg'
+                          originalImage: null
+                          url: 'https://url/fd3382abead261097fd0b827dc53bd60.jpg'
+                          statusMessage: null
+                          status: PROCESSED
+                          main: true
+                          standardWidth: null
+                          standardHeight: null
+                          originalWidth: null
+                          originalHeight: null
+                      brand:
+                        id: 235701
+                        idInMarketplace: null
+                        name: Camisetas Coloridas
+                        partnerId: null
+                      warrantyTime: 1
+                      warrantyText: Contra defeito de fabricação
+                      priceFactor: 1
+                      calculatedPrice: true
+                      hasVariations: true
+                      gender: MALE
+                      skus: null
+                      allowAutomaticSkuMarketplaceCreation: true
   /canActive:
     post:
       summary: /canActive
