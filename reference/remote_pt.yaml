@@ -790,9 +790,9 @@ paths:
       operationId: get-brands
       description: |-
         ### Informação
-        A vinculação de marcas nada mais é que um DE/PARA que o seller ira realizar na camada ANYMARKET, informando ao marketplace que a marca "X" corresponde a marca "Y" do marketplace em questão. Nesse cenário, o parceiro receberá a chamada GET para que o ANYMARKET possa obter a informação de marca existente no marketplace e posteriormente as chamadas de vinculação e obtenção do vinculo.
+        A vinculação de marcas nada mais é que um DE/PARA que o seller ira realizar na camada ANYMARKET, informando ao marketplace que a marca "X" corresponde a marca "Y" do marketplace em questão. Nesse cenário, o parceiro receberá a chamada GET para que o ANYMARKET possa obter a informação das marcas existentes no marketplace, onde devemos receber no response um array contendo o codeInMarketplace (Id da Marca no MARKETPLACE) e o name (Nome da Marca no Marketplace) e esse DE/PARA ficará salvo na base ANYMARKET.
 
-        Lembrando que ao realizar o vínculo de marca, o parceiro deve armazenar os IDs da vinculação, para posteriormente, quando for enviado o produto vinculado a marca o mesmo saber qual foi o de/para realizado pelo cliente no processo de vinculação.
+        Ao publicar um novo produto para aquela marca em específico, será enviado no JSON os dados referente a marca aqui no ANYMARKET e tambem um atributo com nome de: `idInMarketplace` que é referente ao código da marca no MARKETPLACE.
 
         ### Objetivo
         Obter as marcas disponíveis no marketplace para vinculação.
