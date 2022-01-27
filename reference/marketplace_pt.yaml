@@ -1713,13 +1713,6 @@ components:
           type: array
           items:
             $ref: ./remote_pt.yaml#/components/schemas/ApiOrderItemShipping
-        marketPlaceId:
-          type: string
-        orderItemId:
-          type: integer
-          format: int64
-          minimum: 0
-          exclusiveMaximum: true
     OrderPost:
       title: OrderPost
       allOf:
