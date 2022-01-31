@@ -25,6 +25,11 @@
         },
         {
           "type": "item",
+          "title": "Fluxo Anúncio",
+          "uri": "docs/remotes/fluxoAnuncio.md"
+        },
+        {
+          "type": "item",
           "title": "Processo de homologação",
           "uri": "docs/remotes/homologacao.md"
         },
