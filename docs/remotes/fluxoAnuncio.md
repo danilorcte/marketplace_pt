@@ -11,10 +11,7 @@ Toda nova criação de publicação, a informação de STATUS que será disparad
 
 O esperado é que essas ações ocorram de forma síncrona.
 
-**Sobre os tipos de Status no ANYMARKET acesse;**
-
-https://anymarketplace.stoplight.io/docs/marketplace-pt/b3A6MjA2MjE0NTk-atualizar-dados-da-transmissao
-
+**Sobre os tipos de Status no ANYMARKET clique nesse [LINK](reference/marketplace_pt.yaml/paths/~1skumarketplace~1{id})**
 
 ### O remote do /sendProduct será disparado sempre quando tivermos alguma criação ou atualização da transmissão.
 
