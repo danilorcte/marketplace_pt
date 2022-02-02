@@ -792,7 +792,7 @@ paths:
         ### Informação
         A vinculação de marcas nada mais é que um DE/PARA que o seller ira realizar na camada ANYMARKET, informando ao marketplace que a marca "X" corresponde a marca "Y" do marketplace em questão. Nesse cenário, o parceiro receberá a chamada GET para que o ANYMARKET possa obter a informação das marcas existentes no marketplace, onde devemos receber no response um array contendo o codeInMarketplace (Id da Marca no MARKETPLACE) e o name (Nome da Marca no Marketplace) e esse DE/PARA ficará salvo na base ANYMARKET.
 
-        Ao publicar um novo produto para aquela marca em específico, será enviado no JSON os dados referente a marca aqui no ANYMARKET e tambem um atributo com nome de: `idInMarketplace` que é referente ao código da marca no MARKETPLACE.
+        Ao publicar um novo produto para aquela marca em específico, será enviado os dados referente a marca aqui no ANYMARKET e tambem um atributo no JSON com nome de: `idInMarketplace` que é referente ao código da marca no MARKETPLACE.
 
         ### Objetivo
         Obter as marcas disponíveis no marketplace para vinculação.
@@ -2955,41 +2955,6 @@ components:
     VinculoSku:
       description: ''
       type: object
-      properties:
-        idInMarketplace:
-          type: string
-          minLength: 1
-        publicationStatus:
-          type: string
-          minLength: 1
-        marketplaceStatus:
-          type: string
-          minLength: 1
-        skuInMarketplace:
-          type: string
-          minLength: 1
-        title:
-          type: string
-          minLength: 1
-        ean:
-          type: string
-          minLength: 1
-        priceFactor:
-          type: number
-        price:
-          type: number
-        discountPrice:
-          type: number
-      required:
-        - idInMarketplace
-        - publicationStatus
-        - marketplaceStatus
-        - skuInMarketplace
-        - title
-        - ean
-        - priceFactor
-        - price
-        - discountPrice
       x-examples:
         example-1:
           idInMarketplace: SKUFROMMKT
@@ -3001,6 +2966,57 @@ components:
           priceFactor: 1
           price: 10
           discountPrice: 9
+      properties:
+        idInMarketplace:
+          type: string
+          minLength: 1
+        publicationStatus:
+          type: string
+          minLength: 1
+          enum:
+            - UNPUBLISHED
+            - CLOSED
+            - CORRUPTED
+            - PAUSED
+            - WITHOUT_STOCK
+            - ACTIVE
+          description: 'Status da publicação no Marketplace. '
+        marketplaceStatus:
+          type: string
+          minLength: 1
+          description: Campo de String onde o marketplace pode retornar qual o STATUS do anuncio no Marketplace.
+          example: '"ATIVO", "Anuncio Encerrado", "Anuncio Pausado".'
+        skuInMarketplace:
+          type: string
+          minLength: 1
+          description: SKU do produto no Marketplace
+        title:
+          type: string
+          minLength: 1
+          description: Titulo da Publicação
+        ean:
+          type: string
+          minLength: 1
+          description: Ean do Produto
+        priceFactor:
+          type: number
+          example: 1
+        price:
+          type: number
+          description: 'Preço DE:'
+        discountPrice:
+          type: number
+          description: 'Preço POR:'
+      required:
+        - idInMarketplace
+        - publicationStatus
+        - marketplaceStatus
+        - skuInMarketplace
+        - title
+        - ean
+        - priceFactor
+        - price
+        - discountPrice
     canSave:
       description: ''
       type: object
