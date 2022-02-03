@@ -44,13 +44,13 @@ Baseando no fluxo acima, a partir do momento em que o Seller acessa a tela do m�
 
 Exemplo JWT ANYMARKET:
 
-```` json
+```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpcCI6IjEwLjAuOS4xNzIiLCJvcmdhbml6YXRpb24iOiJBTllNQVJLRVQgVGVzdGUgLSBCcmFzaWwiLCJvaSI6IjIyNDQ5NTA0LiIsImV4cCI6MTYxMjc5MTI2NCwibG9naW4iOiJkYW5pbG8ub2xpdmVpcmFAZGIxLmNvbS5iciJ9.FKF8wRb97xZmpakGbkoYfO0cjIkj48rwcis4DOGlUEh4cD98sFRJTVfrmMOaAe-XrBoPvTWbSdJfNy81-_VMLq9dbcKpBPO8MfHDXmqWV7tuHT1BaIcOkYZl-uIvOMtxCmDiCrX1ny2DvjY_LLuzRjexM6CQw4rRt8NXZb3dGV4
-````
+```
 
 Este JWT contem as seguintes informações:
 
-```` json
+``` json
 "organization" - Nome da empresa
 "oi" - Organization ID, identificador único do lojista; Esse campo diferencia os sellers
 "exp" - Tempo de expiração do token
