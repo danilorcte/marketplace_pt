@@ -491,188 +491,48 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getskuMarketplace-variation'
+                description: ''
+                type: object
+                properties:
+                  id:
+                    type: number
+                  skuInMarketplace:
+                    type: string
+                    minLength: 1
+                  idInMarketplace:
+                    type: string
+                    minLength: 1
+                  price:
+                    type: number
+                  discountPrice:
+                    type: number
+                  availableAmount:
+                    type: number
+                required:
+                  - id
+                  - skuInMarketplace
+                  - idInMarketplace
+                  - price
+                  - discountPrice
+                  - availableAmount
+                x-examples:
+                  example-1:
+                    id: 62325
+                    skuInMarketplace: '22222'
+                    idInMarketplace: '62325'
+                    price: 59.9
+                    discountPrice: 43.93
+                    availableAmount: 100
               examples:
-                Produto com Variação:
+                example-1:
                   value:
-                    catalog: false
-                    status: UNPUBLISHED
-                    marketplaceStatus: Não publicado - O Marketplace está processando a atualização.
-                    fields:
-                      template: '0'
-                      is_main_sku: 'false'
-                      DISCOUNT_VALUE: '50'
-                      DISCOUNT_TYPE: PERCENT
-                      HAS_DISCOUNT: 'true'
-                      priceFactor: '1.00'
-                    isCatalog: false
-                    title: Produto Teste com variação de Cor - Azul
-                    ean: '1912345678812'
-                    skuInMarketplace: COMVARIAOAZUL
-                    priceFactor: 1
-                    price: 20
-                    discountPrice: 10
-                    idAccount: 25
-                    accountName: Conta Teste
-                    id: 61233
-                    stock:
-                      amount: 10
-                      availableAmount: 10
-                      cost: 100
-                      totalReservation: 0
-                      physicalAmount: 10
-                      stockLocal: Estoque Físico
-                      additionalTime: 0
-                    attributes:
-                      Indicado para: Dia a Dia
-                    sku:
-                      id: 1610303
-                      partnerId: COMVARIAÇÃOAZUL
-                      amount: 10
-                      ean: '1912345678910'
-                      title: Produto Teste com variação de Cor - Azul
-                      price: 20
-                      sellPrice: 10
-                      additionalTime: 0
-                      variations:
-                        - id: 35191285
-                          idInMarketplace: 1992-AZUL
-                          description: Azul
-                          type:
-                            id: 32605
-                            idInMarketplace: 1B629497xK278415
-                            name: Cor
-                            visualVariation: true
-                      product:
-                        id: 2356789
-                        title: Produto Teste com variação de Cor
-                        description: <p>Produto Teste com varia&ccedil;&atilde;o de Cor</p>
-                        model: Produto Teste
-                        definitionPriceScope: SKU
-                        characteristics:
-                          - index: 1
-                            name: Indicado para
-                            value: Dia a Dia
-                        origin:
-                          name: NACIONAL
-                          id: 0
-                        category:
-                          id: 774786
-                          idInMarketplace: '10'
-                          name: Produto com Variação
-                          path: Produto Fisico/Produto com Variação
-                        height: 0
-                        length: 0
-                        width: 0
-                        weight: 0
-                        images:
-                          - id: 2015385
-                            index: 1
-                            variation: Azul
-                            thumbnailUrl: 'http://link-imagem/thumbnail.jpg'
-                            standardUrl: 'http://link-imagem/standard_resolution.jpg'
-                            lowResolutionUrl: 'http://link-imagem/low_resolution.jpg'
-                            originalImage: 'http://link-imagem/original_image.jpg'
-                            url: 'http://link-imagem/original.jpeg'
-                            status: PROCESSED
-                            main: true
-                            standardWidth: 1000
-                            standardHeight: 1000
-                            originalWidth: 1000
-                            originalHeight: 1000
-                          - id: 2015386
-                            index: 2
-                            variation: Verde
-                            thumbnailUrl: 'http://link-imagem/thumbnail.jpg'
-                            standardUrl: 'http://link-imagem/standard_resolution.jpg'
-                            lowResolutionUrl: 'http://link-imagem/low_resolution.jpg'
-                            originalImage: 'http://link-imagem/original_image.jpg'
-                            url: 'http://link-imagem/original.jpeg'
-                            status: PROCESSED
-                            main: true
-                            standardWidth: 1000
-                            standardHeight: 1000
-                            originalWidth: 1200
-                            originalHeight: 1200
-                        brand:
-                          id: 231949
-                          idInMarketplace: '2000016'
-                          name: MARCA TESTE
-                        warrantyTime: 1
-                        warrantyText: '1'
-                        priceFactor: 1
-                        calculatedPrice: false
-                        hasVariations: true
-                        gender: FEMALE
-                        allowAutomaticSkuMarketplaceCreation: true
-                Produto Simples:
-                  value:
-                    catalog: false
-                    status: UNPUBLISHED
-                    marketplaceStatus: unpublished
-                    fields:
-                      template: '0'
-                      is_main_sku: 'true'
-                      DISCOUNT_VALUE: '0'
-                      DISCOUNT_TYPE: PERCENT
-                      HAS_DISCOUNT: 'true'
-                      priceFactor: '1.00'
-                    isCatalog: false
-                    title: Produto de Teste
-                    ean: '8212345678910'
-                    skuInMarketplace: testeAny
-                    priceFactor: 1
-                    price: 10
-                    discountPrice: 10
-                    idAccount: 25
-                    accountName: Teste
-                    id: 61234
-                    stock:
-                      amount: 10
-                      availableAmount: 10
-                      cost: 10
-                      totalReservation: 0
-                      physicalAmount: 10
-                      stockLocal: Estoque Físico
-                      additionalTime: 0
-                    sku:
-                      id: 1609358
-                      partnerId: teste-Any
-                      amount: 10
-                      ean: '8212345678910'
-                      title: Produto de teste
-                      price: 10
-                      sellPrice: 10
-                      additionalTime: 0
-                      product:
-                        id: 2340714
-                        title: teste
-                        description: <p>Teste de descrição dos produtos</p>
-                        model: '123'
-                        definitionPriceScope: SKU
-                        origin:
-                          name: NACIONAL
-                          id: 0
-                        category:
-                          id: 774786
-                          idInMarketplace: '10'
-                          name: Categoria de teste
-                          path: Produto Fisico/Categoria de teste
-                        height: 0
-                        length: 0
-                        width: 0
-                        weight: 0
-                        brand:
-                          id: 231946
-                          idInMarketplace: '2000195'
-                          name: Marca teste
-                          partnerId: '123'
-                        warrantyTime: 1
-                        warrantyText: '1'
-                        priceFactor: 1
-                        calculatedPrice: false
-                        hasVariations: false
-                        allowAutomaticSkuMarketplaceCreation: true
+                    '0': null
+                    id: 12345
+                    skuInMarketplace: '2222'
+                    idInMarketplace: '2525'
+                    price: 50.15
+                    discountPrice: 44.9
+                    availableAmount: 27
         '404':
           description: Not Found
           content:
