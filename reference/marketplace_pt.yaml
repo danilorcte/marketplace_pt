@@ -57,7 +57,7 @@ paths:
         in: path
         required: true
     put:
-      summary: Atualizar dados da transmissão.
+      summary: '/skumarketplace/{id}'
       operationId: put-skumarketplace-id
       responses:
         '200':
