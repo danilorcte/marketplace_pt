@@ -477,11 +477,14 @@ paths:
       summary: '/skumarketplace/{id}/priceStock'
       tags:
         - Anúncios
-      operationId: get-skumarketplace-id
+      operationId: get-skumarketplace-id-priceStock
       parameters:
         - $ref: '#/components/parameters/appId'
         - $ref: '#/components/parameters/token'
-      description: 'Após o envio da notificação do sendProduct, o marketplace deve realizar uma consulta com base no id enviado(idSkuInMarkeplace), obtendo assim os dados atualizados da transmissão, como preço, estoque e demais informações pertinentes ao anuncio.'
+      description: |-
+        Tem por objetivo atualizar somente os valores pertinentes ao preço de(price), preço por(discountPrice), estoque(availableAmount) e status quando o seller define habilitar a flag "Atualizar apenas preço, estoque e status?".
+
+        Assim não precisando acionar duas rotas sempre que o /sendProduct for disparado, sabendo de fato o que atualizar conforme os parâmetros encaminhados ou até mesmo retirar a necessidade de comparação dos valores para realizar a atualização.  
       responses:
         '200':
           description: OK
