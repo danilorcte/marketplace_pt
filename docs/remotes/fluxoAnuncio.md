@@ -50,7 +50,7 @@ Caso a flag do modulo esteja **"Habilitada"** (**onlySyncStatus,onlySyncPrice,on
     "discountPrice": 43.93,
     "availableAmount": 100
 }
-```
+````
 
 
 Se o anuncio sofreu atualização de estoque, preço ou status eles seram mapeados nos seguintes atributos do json do **/sendProduct:**
