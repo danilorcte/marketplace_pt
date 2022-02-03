@@ -482,9 +482,9 @@ paths:
         - $ref: '#/components/parameters/appId'
         - $ref: '#/components/parameters/token'
       description: |-
-        Tem por objetivo atualizar somente os valores pertinentes ao preço de(price), preço por(discountPrice), estoque(availableAmount) e status quando o seller define habilitar a flag "Atualizar apenas preço, estoque e status?" na aba "Configuração de Anúncios" na tela do Módulo.
+        Tem por objetivo retornar os dados pertinentes ao preço de(price), preço por(discountPrice) e estoque(availableAmount).
 
-        Assim não precisando acionar duas rotas sempre que o /sendProduct for disparado, sabendo de fato o que atualizar conforme os parâmetros encaminhados ou até mesmo retirar a necessidade de comparação dos valores para realizar a atualização.  
+        Mais informações sobre a utilização desse endpoint acessar o [link](https://anymarketplace.stoplight.io/docs/marketplace-pt/ZG9jOjM4MjcwOTQ4-fluxo-anuncio)
       responses:
         '200':
           description: OK
