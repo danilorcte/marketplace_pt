@@ -474,7 +474,7 @@ paths:
         in: path
         required: true
     get:
-      summary: '/skumarketplace/{id}'
+      summary: '/skumarketplace/{id}/priceStock'
       tags:
         - Anúncios
       operationId: get-skumarketplace-id
