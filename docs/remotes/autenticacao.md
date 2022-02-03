@@ -37,7 +37,7 @@ Este JWT contem as seguintes informações:
 ```
 O middleware deve estar preparado para receber o token, verificar a expiração do mesmo e identificar a assinatura com a chave pública do ANYMARKET.
 
-### Chave pública ANYMARKET
+#### Chave pública ANYMARKET
 
 ``` Token
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDVfxWEym1WAYwGhrNjvEUWRgB+p9oUPGu59yePzUT+I/d+C2x9xjURa/Zc+VVZsK2OrHga1+4X4iO1q+nWhmXkD5VysCaJ9vf7IVntWogFpaBauG2EI7J93Y/sKUBxwxSDZPKhovsaM3DxoNCfW4lUHAWnlIuzPx302TBGtfCpUwIDAQAB
