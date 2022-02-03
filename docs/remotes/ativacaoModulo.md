@@ -80,10 +80,9 @@ O middleware deve estar preparado para receber o token, verificar a expiração 
 	"senha": "XXXXXXXX"
 }
 ```
-
 ---
 
-```json json_schema
+``` json json_schema
 {
   "title": "testIntegration",
   "type": "object",
