@@ -482,7 +482,7 @@ paths:
         - $ref: '#/components/parameters/appId'
         - $ref: '#/components/parameters/token'
       description: |-
-        Tem por objetivo atualizar somente os valores pertinentes ao preço de(price), preço por(discountPrice), estoque(availableAmount) e status quando o seller define habilitar a flag "Atualizar apenas preço, estoque e status?".
+        Tem por objetivo atualizar somente os valores pertinentes ao preço de(price), preço por(discountPrice), estoque(availableAmount) e status quando o seller define habilitar a flag "Atualizar apenas preço, estoque e status?" na aba "Configuração de Anúncios" na tela do Módulo.
 
         Assim não precisando acionar duas rotas sempre que o /sendProduct for disparado, sabendo de fato o que atualizar conforme os parâmetros encaminhados ou até mesmo retirar a necessidade de comparação dos valores para realizar a atualização.  
       responses:
