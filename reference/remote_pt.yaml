@@ -401,8 +401,17 @@ paths:
               schema:
                 type: boolean
               examples:
-                Example:
+                Sucesso:
                   value: true
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: boolean
+              examples:
+                Falha:
+                  value: false
       tags:
         - Configuração
       description: Nesta notificação enviamos os dados da configuração informados pelo Seller caso o middleware queira armazenar.
