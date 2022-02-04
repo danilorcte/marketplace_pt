@@ -1149,7 +1149,7 @@ paths:
                   - products
                   - quotes
               examples:
-                example-1:
+                Frete - Varias Transportadoras:
                   value:
                     zipCode: '87030030'
                     products:
@@ -1225,7 +1225,7 @@ paths:
                         deliveryTime: 10
                         freightType: normal
                         price: 70.75
-                example-2:
+                Frete- Apenas um retorno:
                   value:
                     zipCode: '87030030'
                     products:
@@ -1246,10 +1246,76 @@ paths:
                         deliveryTime: 11
                         freightType: normal
                         price: 55.72
-                example-3:
+                Frete - SKU não encontrado ou Publicação UNPUBLISHED:
                   value:
                     missingSkus:
                       '0002916002': 1
+                Frete - Prazo Adicional em dias (Crossdocking):
+                  value:
+                    zipCode: '87030030'
+                    products:
+                      - skuId: '0140420009'
+                        amount: 1
+                        dimensions:
+                          height: 10
+                          width: 15
+                          weight: 0.37
+                          length: 25
+                        stockAmount: 972
+                        additionalDeliveryTime: 3
+                        price: 679.9
+                        discountPrice: 639.9
+                    quotes:
+                      - carrierName: Braspress
+                        serviceName: Braspress Standard 2
+                        deliveryTime: 6
+                        freightType: normal
+                        price: 16.94
+                      - carrierName: Loggi
+                        serviceName: Loggi Express - ES
+                        deliveryTime: 2
+                        freightType: normal
+                        price: 17.8
+                      - carrierName: Rede Sul
+                        serviceName: Rede Sul Standard
+                        deliveryTime: 2
+                        freightType: normal
+                        price: 18.69
+                      - carrierName: JadLog
+                        serviceName: Jadlog Package
+                        deliveryTime: 5
+                        freightType: normal
+                        price: 18.69
+                      - carrierName: JadLog
+                        serviceName: Jadlog Package Origem Vitoria
+                        deliveryTime: 5
+                        freightType: normal
+                        price: 18.69
+                      - carrierName: JadLog
+                        serviceName: Jadlog .COM
+                        deliveryTime: 4
+                        freightType: express
+                        price: 19.59
+                      - carrierName: JadLog
+                        serviceName: Jadlog .COM Origem Vitoria
+                        deliveryTime: 4
+                        freightType: normal
+                        price: 19.59
+                      - carrierName: Infoar Recalculo Protheus
+                        serviceName: Meridional Origem Vitoria
+                        deliveryTime: 5
+                        freightType: express
+                        price: 40.61
+                      - carrierName: Sequoia
+                        serviceName: SEQUOIA - ES
+                        deliveryTime: 6
+                        freightType: normal
+                        price: 49.07
+                      - carrierName: Prime Express
+                        serviceName: Direcional ES - Express
+                        deliveryTime: 9
+                        freightType: normal
+                        price: 52.33
             application/xml:
               schema:
                 type: object

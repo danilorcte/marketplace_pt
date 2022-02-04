@@ -621,6 +621,13 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+              examples:
+                example-1:
+                  value: true
       description: |
         O endpoint será acionado quando o seller realizar alguma alteração de status de pedido. Com isso será encaminhado a notificação no endpoint acima passando algumas informações referente ao pedido.
         Assim que o marketplace receber a chamada o mesmo deve consultar o pedido em questão na nossa API afim de coletar os dados mais atualizados do pedido e assim confirmar que a atualização ocorreu sem problemas.
