@@ -2127,7 +2127,7 @@ components:
           format: date-time
       x-examples:
         example-1:
-          date: '2020-01-11T13:48:55-03:00:00'
+          date: '2022-02-07T10:55:42-03:00'
     markAsShipped:
       description: ''
       type: object
