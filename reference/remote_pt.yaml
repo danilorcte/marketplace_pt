@@ -488,6 +488,22 @@ paths:
                 additionOfFreight: 0
                 field1: value1
                 field2: value2
+              example-2:
+                value:
+                  id: 0
+                  active: true
+                  templateId: 0
+                  accountName: string
+                  discountType: PERCENT
+                  useSandbox: true
+                  accountDefault: true
+                  priceFactor: 0
+                  discountValue: 0
+                  initialDateForOrderImport: 25-01-2021
+                  updatePriceStockStatus: true
+                  additionOfFreight: 0
+                  field1: value1
+                  field2: value2
         description: Teste de Integração
       tags:
         - Configuração
