@@ -822,6 +822,10 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/markAsCanceled'
+            examples:
+              example-1:
+                value:
+                  date: '2022-02-07T10:56:42-03:00'
     description: Marcar pedido como Cancelado
   '/orders/{marketPlaceId}/markAsInvoiced':
     parameters:
