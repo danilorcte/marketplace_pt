@@ -806,15 +806,6 @@ paths:
                 $ref: '#/components/schemas/Order'
       operationId: put-id-markAsCanceled
       description: Utilizado para que o middleware marque o pedido como CANCELADO no ANYMARKET.
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CanceledStatusDTO'
-            examples:
-              example-1:
-                value:
-                  date: '2021-01-11T13:48:55-03:00:00'
       parameters:
         - schema:
             type: string
@@ -826,6 +817,11 @@ paths:
           in: header
           name: token
           required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/markAsCanceled'
     description: Marcar pedido como Cancelado
   '/orders/{marketPlaceId}/markAsInvoiced':
     parameters:
@@ -3345,6 +3341,18 @@ components:
         - stock
         - attributes
         - sku
+    markAsCanceled:
+      description: ''
+      type: object
+      properties:
+        date:
+          type: string
+          minLength: 1
+      required:
+        - date
+      x-examples:
+        example-1:
+          date: '2022-02-07T10:56:42-03:00'
   parameters:
     offset:
       name: offset
