@@ -87,4 +87,6 @@ A utilização do endpoint **/skumarketplace/{id}/priceStock** também pode ser 
 
 ### DELETE /deletePublication
 
-Esse remote é acionado quando uma publicação é excluida no AnyMarket, notificando ao Marketplace que foi realizado uma exclusão e que é necessário que ele desative essa publicação tambem no Marketplace.
+Esse remote é acionado quando uma publicação é excluida no ANYMARKET, notificando ao Marketplace que a publicação está sendo removida do ANYMARKET e com isso o Marketplace não recebera mais atualizações de preço, estoque e consequentemente realizar a inserção de pedidos na base.
+
+Por isso, quando o marketplace receber a notificação é importante que o mesmo inative o produto para vendas, evitando assim vendas sem estoque e problemas futuros.
