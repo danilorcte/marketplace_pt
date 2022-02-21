@@ -167,7 +167,7 @@ Caso o marketplace valide as informações, iremos disparar outra chamada aciona
   "id": 127,
   "active": true,
   "templateId": null,
-  "accountName": "Teste",
+  "accountName": "Seller_test",
   "discountType": "PERCENT",
   "useSandbox": false,
   "accountDefault": true,
@@ -180,7 +180,8 @@ Caso o marketplace valide as informações, iremos disparar outra chamada aciona
     "country": null
   },
   "initialDateOrderImport": "09-02-2022",
-  "storeId": "74ca4686-3fcc"
+  "storeId": "123456",
+  "password": "!@Teste"
 }
 ```
 
