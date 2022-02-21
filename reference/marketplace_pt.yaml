@@ -675,7 +675,6 @@ paths:
                     discount: 0
                     freight: 0
                     productNet: 0
-                    gross: 0
                     total: 0
                     interestValue: 0
                     items:
