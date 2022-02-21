@@ -63,7 +63,7 @@ O middleware deve estar preparado para receber o token, verificar a expiração 
 
 ```json title="POST: \testIntegration" lineNumbers
 {
-	"id": 10,
+	"id": null,
 	"active": true,
 	"templateId": 10,
 	"accountName": "accountName",
@@ -162,6 +162,27 @@ true
 
 Caso o marketplace valide as informações, iremos disparar outra chamada acionando o remote do **/saveAccount**. Nesse momento, o Marketplace irá armazenar as configurações que o Seller realizou e a informação visual via tela ficará como Ativo. 
 
+```json title="POST: \saveAccount" lineNumbers
+{
+  "id": 127,
+  "active": true,
+  "templateId": null,
+  "accountName": "Teste",
+  "discountType": "PERCENT",
+  "useSandbox": false,
+  "accountDefault": true,
+  "priceFactor": 1,
+  "discountValue": 0,
+  "updatePriceStockStatus": true,
+  "additionOfFreight": 0,
+  "user": {
+    "token": "LG1620824269786R9896699",
+    "country": null
+  },
+  "initialDateOrderImport": "09-02-2022",
+  "storeId": "74ca4686-3fcc"
+}
+```
 
 <!--
 focus: false
