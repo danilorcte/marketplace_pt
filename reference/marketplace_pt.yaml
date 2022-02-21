@@ -668,6 +668,112 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrderPost'
+            examples:
+              example-1:
+                value:
+                  marketPlaceId: string
+                  marketPlaceNumber: string
+                  createdAt: '2019-08-24T14:15:22Z'
+                  discount: 0
+                  freight: 0
+                  productNet: 0
+                  total: 0
+                  interestValue: 0
+                  items:
+                    - partnerId: string
+                      sku:
+                        partnerId: string
+                      amount: 0
+                      unit: 0
+                      gross: 0
+                      total: 0
+                      discount: 0
+                      shippings:
+                        - id: 0
+                          shippingtype: string
+                          shippingCarrierNormalized: string
+                          shippingCarrierTypeNormalized: string
+                  idAccount: 0
+                  accountName: string
+                  status: PENDING
+                  subChannel: string
+                  subChannelNormalized: string
+                  marketPlaceUrl: string
+                  marketPlaceStatus: string
+                  marketPlaceStatusComplement: string
+                  shipping:
+                    city: string
+                    state: string
+                    stateNameNormalized: string
+                    country: string
+                    countryAcronymNormalized: string
+                    countryNameNormalized: string
+                    number: string
+                    neighborhood: string
+                    street: string
+                    comment: string
+                    reference: string
+                    zipCode: string
+                    address: string
+                    promisedShippingTime: '2019-08-24T14:15:22Z'
+                    receiverName: string
+                  billingAddress:
+                    city: string
+                    state: string
+                    stateNameNormalized: string
+                    country: string
+                    countryAcronymNormalized: string
+                    countryNameNormalized: string
+                    number: string
+                    neighborhood: string
+                    street: string
+                    comment: string
+                    reference: string
+                    zipCode: string
+                  buyer:
+                    Long: 0
+                    marketPlaceId: string
+                    name: string
+                    email: string
+                    document: string
+                    documentType: string
+                    phone: string
+                    cellPhone: string
+                    documentNumberNormalized: string
+                  payments:
+                    - method: string
+                      status: string
+                      value: 0
+                      installments: 0
+                      marketplaceId: string
+                      paymentMethodNormalized: string
+                      paymentDetailNormalized: string
+                      dueDate: '2019-08-24T14:15:22Z'
+                  observation: string
+                  anymarketAddress:
+                    country: string
+                    state: string
+                    city: string
+                    zipCode: string
+                    neighborhood: string
+                    address: string
+                    street: string
+                    number: string
+                    comment: string
+                    receiverName: string
+                    promisedShippingTime: '2019-08-24T14:15:22Z'
+                  tracking:
+                    url: string
+                    number: string
+                    carrier: string
+                    carrierDocument: string
+                    date: '2019-08-24T14:15:22Z'
+                    estimateDate: '2019-08-24T14:15:22Z'
+                    shippedDate: '2019-08-24T14:15:22Z'
+                    deliveredDate: '2019-08-24T14:15:22Z'
+                  documentIntermediator: string
+                  intermediateRegistrationId: string
+                  documentPaymentInstitution: string
       tags:
         - Pedidos
     get:
