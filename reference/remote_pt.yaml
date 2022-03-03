@@ -1217,7 +1217,7 @@ components:
           type: string
           format: date
           description: Data inicial para a importação de pedidos
-          example: '2021-12-31'
+          example: 31-12-2021
           nullable: true
         updatePriceStockStatus:
           type: boolean
