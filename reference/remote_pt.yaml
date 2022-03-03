@@ -1164,7 +1164,7 @@ components:
           accountDefault: true
           priceFactor: 0
           discountValue: 0
-          initialDateForOrderImport: 25-01-2021
+          initialDateOrderImport: 25-01-2021
           updatePriceStockStatus: true
           additionOfFreight: 0
           field1: value1
@@ -1213,7 +1213,7 @@ components:
           format: double
           minimum: 0
           description: Valor padrão de desconto
-        initialDateForOrderImport:
+        initialDateOrderImport:
           type: string
           format: date
           description: Data inicial para a importação de pedidos
@@ -1242,7 +1242,7 @@ components:
         - accountDefault
         - priceFactor
         - discountValue
-        - initialDateForOrderImport
+        - initialDateOrderImport
         - updatePriceStockStatus
         - additionOfFreight
     saveAccount:
