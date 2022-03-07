@@ -2545,9 +2545,11 @@ components:
         createdAt:
           type: string
           format: date-time
+          example: '"2022-07-03T10:00:00-03:00"'
         paymentDate:
           type: string
           format: date-time
+          example: '"" ,"2022-03-07T10:10:00-03:00"'
         cancelDate:
           type: string
           format: date-time
@@ -2693,68 +2695,90 @@ components:
     ApiShipping:
       title: ApiShipping
       type: object
+      description: ''
       properties:
         city:
           type: string
+          description: Cidade do Destinatário
         state:
           type: string
+          description: Estado do Destinatário
         stateNameNormalized:
           type: string
         country:
           type: string
+          description: País do Destinatário
         countryAcronymNormalized:
           type: string
         countryNameNormalized:
           type: string
         number:
           type: string
+          description: Numero do Destinatário
         neighborhood:
           type: string
+          description: Bairro do destinatário
         street:
           type: string
+          description: Rua do destinatário
         comment:
           type: string
+          description: Complemento
         reference:
           type: string
+          description: 'Referência '
         zipCode:
           type: string
+          description: CEP do Destinatário
         address:
           type: string
+          description: Endereço completo
+          example: '"Rua Teste, 100, apto 602, zona 07. Maringá-PR"'
         promisedShippingTime:
           type: string
           format: date-time
+          description: Data estimada de Entrega
         receiverName:
           type: string
-      description: ''
+          description: Nome do Recebedor
     ApiBillingAddress:
       title: ApiBillingAddress
       type: object
+      description: ''
       properties:
         city:
           type: string
+          description: Cidade (Endereço de Cobrança)
         state:
           type: string
+          description: Estado (Endereço de Cobrança)
         stateNameNormalized:
           type: string
         country:
           type: string
+          description: País (Endereço de Cobrança)
         countryAcronymNormalized:
           type: string
         countryNameNormalized:
           type: string
         number:
           type: string
+          description: Número (Endereço de Cobrança)
         neighborhood:
           type: string
+          description: Bairro (Endereço de Cobrança)
         street:
           type: string
+          description: Rua (Endereço de Cobrança)
         comment:
           type: string
+          description: Complemento (Endereço de Cobrança)
         reference:
           type: string
+          description: Referência (Endereço de Cobrança)
         zipCode:
           type: string
-      description: ''
+          description: CEP do Endereço de Cobrança
     ApiAnymarketOrderAddress:
       title: ApiAnymarketOrderAddress
       type: object
@@ -2794,18 +2818,29 @@ components:
           exclusiveMaximum: true
         marketPlaceId:
           type: string
+          description: 'Caso o Marketplace possua algum identificador de cliente, pode ser passado nesse atributo'
         name:
           type: string
+          description: Nome do Comprador
         email:
           type: string
+          description: E-mail do Comprador (*Importante vir o e-mail criptografado*)
+          example: AeOks56588@marketplace.com
         document:
           type: string
+          description: Cpf ou CNPJ do Comprador
         documentType:
           type: string
+          description: Tipo de documento do Comprador
+          enum:
+            - CPF
+            - CNPJ
         phone:
           type: string
+          description: Telefone do Comprador
         cellPhone:
           type: string
+          description: Celular do Comprador
         documentNumberNormalized:
           type: string
     ApiTracking:
@@ -2838,18 +2873,24 @@ components:
       properties:
         method:
           type: string
+          description: Forma de Pagamento
+          example: 'PIX, Boleto, Cartão de Crédito a Vista, Cartão de Crédito 5x, etc'
         status:
           type: string
+          description: Status do Pagamento
+          example: 'Pendente de Pagamento, Pagamento Aprovado, etc'
         value:
           type: number
           format: double
           minimum: 0
           exclusiveMaximum: true
+          description: Valor do Pagamento (*O Valor tem que ser igual ao total do pedido*)
         installments:
           type: integer
           format: int64
           minimum: 0
           exclusiveMaximum: true
+          description: Quantidade de Parcelas
         marketplaceId:
           type: string
         paymentMethodNormalized:
@@ -2870,6 +2911,8 @@ components:
           exclusiveMaximum: true
         shippingtype:
           type: string
+          description: 'Forma de entrega do Pedido (*Importante enviar nesse campo a Transportadora concatenado com o tipo de serviço, conforme exemplo abaixo*)'
+          example: '"CORREIOS - SEDEX" , "CORREIOS - NORMAL"'
         shippingCarrierNormalized:
           type: string
         shippingCarrierTypeNormalized:
@@ -2880,31 +2923,37 @@ components:
       properties:
         partnerId:
           type: string
+          description: SKU do produto no Anymarket já aplicado o regex (skuInMarketplace)
         amount:
           type: number
           format: double
           minimum: 0
           exclusiveMaximum: true
+          description: Quantidade
         unit:
           type: number
           format: double
           minimum: 0
           exclusiveMaximum: true
+          description: Valor Unitário
         gross:
           type: number
           format: double
           minimum: 0
           exclusiveMaximum: true
+          description: Valor Bruto sem o desconto
         total:
           type: number
           format: double
           minimum: 0
           exclusiveMaximum: true
+          description: 'Total é : (gross*unit) - discount'
         discount:
           type: number
           format: double
           minimum: 0
           exclusiveMaximum: true
+          description: Desconto do item
         shippings:
           type: array
           items:
