@@ -25,6 +25,24 @@ servers:
   - url: 'http://endereco.marketplace.com.br'
     description: Servidor do Marketplace
 paths:
+  '/order/{marketplaceId}/invoice/document?idAccount={idAccount}}':
+    get:
+      summary: '/order/{marketplaceId}/invoice/document'
+      tags: []
+      responses: {}
+      operationId: ''
+    parameters:
+      - schema:
+          type: string
+        name: marketplaceId
+        in: path
+        required: true
+        description: id do pedido no marketplace
+      - schema:
+          type: string
+        name: idAccount
+        in: path
+        required: true
   /sendProduct:
     post:
       summary: /sendProduct
@@ -901,24 +919,6 @@ paths:
                         name: Azul
       operationId: get-variations-types
       description: Consulta os tipos e valores possíveis para o seller realizar o de/para.
-  '/order/{marketplaceId}/invoice/document?idAccount={idAccount}}':
-    get:
-      summary: '/order/{marketplaceId}/invoice/document'
-      tags: []
-      responses: {}
-      operationId: ''
-    parameters:
-      - schema:
-          type: string
-        name: marketplaceId
-        in: path
-        required: true
-        description: id do pedido no marketplace
-      - schema:
-          type: string
-        name: idAccount
-        in: path
-        required: true
 components:
   schemas:
     Attributes:
