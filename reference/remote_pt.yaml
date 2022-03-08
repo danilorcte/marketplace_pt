@@ -901,6 +901,24 @@ paths:
                         name: Azul
       operationId: get-variations-types
       description: Consulta os tipos e valores possíveis para o seller realizar o de/para.
+  '/order/{marketplaceId}/invoice/document?idAccount={idAccount}}':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: ''
+    parameters:
+      - schema:
+          type: string
+        name: marketplaceId
+        in: path
+        required: true
+        description: id do pedido no marketplace
+      - schema:
+          type: string
+        name: idAccount
+        in: path
+        required: true
 components:
   schemas:
     Attributes:
