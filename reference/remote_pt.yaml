@@ -607,6 +607,10 @@ paths:
           description: OK
       tags:
         - Pedidos
+      description: |
+        Remote aonde o marketplace receberá o arquivo XML da nota fiscal, caso tenha como obrigatoriedade a necessidade de receber essa informação para marcar o status do pedido como “Faturado”.
+
+        O marketplace ao receber o arquivo XML deve seguir os passos:
   '/order/{idInMarketPlace}':
     parameters:
       - schema:
