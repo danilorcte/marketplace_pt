@@ -587,11 +587,6 @@ paths:
       tags:
         - Pedidos
   '/order/{marketplaceId}/invoice/document?idAccount={idAccount}}':
-    get:
-      summary: '/order/{marketplaceId}/invoice/document'
-      tags: []
-      responses: {}
-      operationId: ''
     parameters:
       - schema:
           type: string
@@ -604,6 +599,12 @@ paths:
         name: idAccount
         in: path
         required: true
+    put:
+      summary: '/order/{marketplaceId}/invoice/document'
+      operationId: put-order-marketplaceId-invoice-document?idAccount=-idAccount
+      responses:
+        '200':
+          description: OK
   '/order/{idInMarketPlace}':
     parameters:
       - schema:
