@@ -616,7 +616,6 @@ paths:
             examples:
               example-1:
                 value: |-
-                  {
                   <nfeProc xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
                   <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
                   <infNFe versao="4.00" Id="NFe41190908328657000194550015624654251041433087">
@@ -819,7 +818,6 @@ paths:
                   </infProt>
                   </protNFe>
                   </nfeProc>
-                  }
   '/order/{idInMarketPlace}':
     parameters:
       - schema:
