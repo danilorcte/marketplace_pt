@@ -604,10 +604,221 @@ paths:
       operationId: put-order-marketplaceId-invoice-document?idAccount=-idAccount
       responses:
         '200':
-          description: OK
+          description: 'true'
       tags:
         - Pedidos
-      description: "Remote aonde o marketplace receberá o arquivo XML da nota fiscal, caso tenha como obrigatoriedade a necessidade de receber essa informação para marcar o status do pedido como “Faturado”.\n\n![image.png](http://s3-sa-east-1.amazonaws.com/images.anymarket.com.br/31479673./323FB9A7CAAEED10424A56FCB590D604/standard_resolution.jpg)\n\n\n\n1.\tSeller encaminha os dados via JSON\n     - a. Marketplace recebe a notificação de atualização;\n     - b. Validar se o pedido já possui os dados de fatura;\n     - c. Se possuir dados de fatura, o marketplace deve marcar o pedido com o status atual no marketplace e retornar sucesso na requisição;\n\t - d. Se não possuir os dados de fatura, o marketplace deve marcar o pedido com o status atual no marketplace e retornar o erro na requisição.\n\t \n2.\tSeller encaminha o arquivo XML\n\t - a.\tMarketplace recebe a chamada com o arquivo XML.\n     - b.\tSe o marketplace possuir processos síncronos deve ser retornado 200(ok) ou informar o erro já na chamada de notificação.\n     - c.\tSe o marketplace possuir processos assíncronos, após validar o arquivo o marketplace deve marcar o pedido com o status atual no marketplace e retornar o erro ou sucesso na requisição.\n\t \nÉ importante levar em consideração também que o seller pode encaminhar primeiramente o XML e posteriormente o JSON e vice-versa, entretanto caso as validações conforme exemplificadas no fluxo acima sejam realizadas, todos os cenários serão cobertos e o seller terá a visibilidade do status.\n\nHá uma particularidade nos cenários quando:\n\n3.    Seller realizar o envio do XML via API\n       - a. O pedido ficará como status PAGO(PAID) no ANYMARKET até que o pedido seja marcado para ENVIADO (SHIPPED).\n4.    Seller realizar o envio do XML via tela ANYMARKET\n       - b. O pedido ficará como status PAGO(PAID) no ANYMARKET até que o pedido seja marcado para ENVIADO (SHIPPED). \n\n"
+      description: "Remote aonde o marketplace receberá o arquivo XML da nota fiscal, caso tenha como obrigatoriedade a necessidade de receber essa informação para marcar o status do pedido como “Faturado”.\n\n![image.png](https://i.ibb.co/yNQ0fLH/Faturado-Diagrama-4.png)\n\n\n\n1.\tSeller encaminha os dados via JSON\n     - a. Marketplace recebe a notificação de atualização;\n     - b. Validar se o pedido já possui os dados de fatura;\n     - c. Se possuir dados de fatura, o marketplace deve marcar o pedido com o status atual no marketplace e retornar sucesso na requisição;\n\t - d. Se não possuir os dados de fatura, o marketplace deve marcar o pedido com o status atual no marketplace e retornar o erro na requisição.\n\t \n2.\tSeller encaminha o arquivo XML\n\t - a.\tMarketplace recebe a chamada com o arquivo XML.\n     - b.\tSe o marketplace possuir processos síncronos deve ser retornado 200(ok) ou informar o erro já na chamada de notificação.\n     - c.\tSe o marketplace possuir processos assíncronos, após validar o arquivo o marketplace deve marcar o pedido com o status atual no marketplace e retornar o erro ou sucesso na requisição.\n\t \nÉ importante levar em consideração também que o seller pode encaminhar primeiramente o XML e posteriormente o JSON e vice-versa, entretanto caso as validações conforme exemplificadas no fluxo acima sejam realizadas, todos os cenários serão cobertos e o seller terá a visibilidade do status.\n\nHá uma particularidade nos cenários quando:\n\n3.    Seller realizar o envio do XML via API\n       - a. O pedido ficará como status PAGO(PAID) no ANYMARKET até que o pedido seja marcado para ENVIADO (SHIPPED).\n4.    Seller realizar o envio do XML via tela ANYMARKET\n       - b. O pedido ficará como status PAGO(PAID) no ANYMARKET até que o pedido seja marcado para ENVIADO (SHIPPED). \n\n"
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+            examples:
+              example-1:
+                value: |-
+                  <nfeProc xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+                  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+                  <infNFe versao="4.00" Id="NFe41190908328657000194550015624654251041433087">
+                  <ide>
+                  <cUF>41</cUF>
+                  <cNF>04143308</cNF>
+                  <natOp>Venda de mercadorias</natOp>
+                  <mod>55</mod>
+                  <serie>1</serie>
+                  <nNF>562465425</nNF>
+                  <dhEmi>2019-09-11T15:57:56-03:00</dhEmi>
+                  <tpNF>1</tpNF>
+                  <idDest>1</idDest>
+                  <cMunFG>4115200</cMunFG>
+                  <tpImp>1</tpImp>
+                  <tpEmis>1</tpEmis>
+                  <cDV>7</cDV>
+                  <tpAmb>2</tpAmb>
+                  <finNFe>1</finNFe>
+                  <indFinal>1</indFinal>
+                  <indPres>9</indPres>
+                  <procEmi>0</procEmi>
+                  <verProc>Bling 1.0</verProc>
+                  </ide>
+                  <emit>
+                  <CNPJ>08328657000194</CNPJ>
+                  <xNome>Anymarket DB1</xNome>
+                  <enderEmit>
+                  <xLgr>Av. Advogado Horacio Raccanello Filho</xLgr>
+                  <nro>5410</nro>
+                  <xBairro>Novo Centro</xBairro>
+                  <cMun>4115200</cMun>
+                  <xMun>Maringa</xMun>
+                  <UF>PR</UF>
+                  <CEP>87020035</CEP>
+                  <cPais>1058</cPais>
+                  <xPais>Brasil</xPais>
+                  <fone>4430336300</fone>
+                  </enderEmit>
+                  <IE>9038912540</IE>
+                  <CRT>1</CRT>
+                  </emit>
+                  <dest>
+                  <CPF>42159270130</CPF>
+                  <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+                  <enderDest>
+                  <xLgr>Praca Amabile Giroldo</xLgr>
+                  <nro>100</nro>
+                  <xCpl>maca, area, avo, avo</xCpl>
+                  <xBairro>Zona 04</xBairro>
+                  <cMun>4115200</cMun>
+                  <xMun>Maringa</xMun>
+                  <UF>PR</UF>
+                  <CEP>87014280</CEP>
+                  <cPais>1058</cPais>
+                  <xPais>Brasil</xPais>
+                  <fone>4432202020</fone>
+                  </enderDest>
+                  <indIEDest>9</indIEDest>
+                  <email>ttest.7y5snb2-oge3dcojrgmztcmbt@mail.mercadolivre.com</email>
+                  </dest>
+                  <det nItem="1">
+                  <prod>
+                  <cProd>AKCI00990ZPTODAVIDA</cProd>
+                  <cEAN>SEM GTIN</cEAN>
+                  <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+                  <NCM>01029000</NCM>
+                  <CFOP>5102</CFOP>
+                  <uCom>1</uCom>
+                  <qCom>1.0000</qCom>
+                  <vUnCom>160.00</vUnCom>
+                  <vProd>160.00</vProd>
+                  <cEANTrib>SEM GTIN</cEANTrib>
+                  <uTrib>1</uTrib>
+                  <qTrib>1.0000</qTrib>
+                  <vUnTrib>160.00</vUnTrib>
+                  <indTot>1</indTot>
+                  <nItemPed>1</nItemPed>
+                  </prod>
+                  <imposto>
+                  <vTotTrib>25.92</vTotTrib>
+                  <ICMS>
+                  <ICMSSN102>
+                  <orig>0</orig>
+                  <CSOSN>400</CSOSN>
+                  </ICMSSN102>
+                  </ICMS>
+                  <IPI>
+                  <cEnq>301</cEnq>
+                  <IPINT>
+                  <CST>52</CST>
+                  </IPINT>
+                  </IPI>
+                  <PIS>
+                  <PISNT>
+                  <CST>07</CST>
+                  </PISNT>
+                  </PIS>
+                  <COFINS>
+                  <COFINSNT>
+                  <CST>07</CST>
+                  </COFINSNT>
+                  </COFINS>
+                  </imposto>
+                  </det>
+                  <total>
+                  <ICMSTot>
+                  <vBC>0.00</vBC>
+                  <vICMS>0.00</vICMS>
+                  <vICMSDeson>0</vICMSDeson>
+                  <vFCP>0.00</vFCP>
+                  <vBCST>0.00</vBCST>
+                  <vST>0.00</vST>
+                  <vFCPST>0.00</vFCPST>
+                  <vFCPSTRet>0.00</vFCPSTRet>
+                  <vProd>160.00</vProd>
+                  <vFrete>0.00</vFrete>
+                  <vSeg>0.00</vSeg>
+                  <vDesc>0.00</vDesc>
+                  <vII>0.00</vII>
+                  <vIPI>0.00</vIPI>
+                  <vIPIDevol>0.00</vIPIDevol>
+                  <vPIS>0.00</vPIS>
+                  <vCOFINS>0.00</vCOFINS>
+                  <vOutro>0.00</vOutro>
+                  <vNF>160.00</vNF>
+                  <vTotTrib>25.92</vTotTrib>
+                  </ICMSTot>
+                  </total>
+                  <transp>
+                  <modFrete>0</modFrete>
+                  <transporta>
+                  <xNome>DESCONHECIDO</xNome>
+                  </transporta>
+                  <vol>
+                  <pesoL>0.000</pesoL>
+                  <pesoB>0.000</pesoB>
+                  </vol>
+                  </transp>
+                  <cobr>
+                  <fat>
+                  <nFat>562465425</nFat>
+                  <vOrig>160.00</vOrig>
+                  <vDesc>0</vDesc>
+                  <vLiq>160.00</vLiq>
+                  </fat>
+                  <dup>
+                  <nDup>001</nDup>
+                  <dVenc>2019-09-11</dVenc>
+                  <vDup>160.00</vDup>
+                  </dup>
+                  </cobr>
+                  <pag>
+                  <detPag>
+                  <tPag>01</tPag>
+                  <vPag>160.00</vPag>
+                  </detPag>
+                  </pag>
+                  <infAdic>
+                  <infCpl>Total aproximado de tributos: R$ 25,92 (16,20%) Federais R$ 6,72 (4,20%) Estaduais R$ 19,20 (12,00%) . Fonte IBPT.<br /></infCpl>
+                  </infAdic>
+                  <infRespTec>
+                  <CNPJ>01056417000139</CNPJ>
+                  <xContato>Jonatan Fracasso da Silva</xContato>
+                  <email>fiscal@bling.com.br</email>
+                  <fone>05430550479</fone>
+                  </infRespTec>
+                  </infNFe>
+                  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+                  <SignedInfo>
+                  <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+                  <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+                  <Reference URI="#NFe41190908328657000194550015624654251041433087">
+                  <Transforms>
+                  <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                  <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+                  </Transforms>
+                  <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                  <DigestValue>JYjiWB7sFoiM7jQckhdvLsSBpQw=</DigestValue>
+                  </Reference>
+                  </SignedInfo>
+                  <SignatureValue>H6DfZXCiFcypfHAXdaotLTU2hSJxaCCDIEHkU84eioyd4VVSqYu/0FbBAYnmlb5xGbqio59fzlZ2P7OvR4UogYcW32jT95HfuB2wkUxIbCPzI14uEQzm7Sve8NG+0H0Oge1U/vTApeZHcGfVsQiGCRItvDUVuGJ50qPCGONz1BV6yBO9cr9WxtA2AhOklb4uShPrb+08W+LZ2ReYKLND5vJVofEmUE9jU1hgFGm/WM2zMgauKNqgJr2/nlPI13PxyxYZ6QTC7EenkEJdr+L9ziWzN5haFQ7mw2jtVQOwpnU5KQBbfmpyWZKQ9sUDPOrnr9y73iKGrPAf6cvTNEhZAA==</SignatureValue>
+                  <KeyInfo>
+                  <X509Data>
+                  <X509Certificate>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</X509Certificate>
+                  </X509Data>
+                  </KeyInfo>
+                  </Signature>
+                  </NFe>
+                  <protNFe versao="4.00">
+                  <infProt>
+                  <tpAmb>2</tpAmb>
+                  <verAplic>PR-v4_4_9</verAplic>
+                  <chNFe>41190908328657000194550015624654251041433087</chNFe>
+                  <dhRecbto>2019-09-11T15:57:57-03:00</dhRecbto>
+                  <nProt>141190000835627</nProt>
+                  <digVal>JYjiWB7sFoiM7jQckhdvLsSBpQw=</digVal>
+                  <cStat>100</cStat>
+                  <xMotivo>Autorizado o uso da NF-e</xMotivo>
+                  </infProt>
+                  </protNFe>
+                  </nfeProc>
   '/order/{idInMarketPlace}':
     parameters:
       - schema:
